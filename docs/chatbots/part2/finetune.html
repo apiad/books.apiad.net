@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>11&nbsp; Fine-tuning – How to Train your Chatbot</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../part2/optimization.html" rel="next">
+<link href="../part2/agents.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../part2/index.html">Techniques</a></li><li class="breadcrumb-item"><a href="../part2/finetune.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Fine-tuning</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">How to Train your Chatbot</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://store.apiad.net/l/chatbots" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-book"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../part1/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Principles</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part1/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What is a language model?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part1/training.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">How do LLMs work?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part1/capabilities.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What can LLMs do?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part1/limitations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The limits of language models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part1/evaluation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Evaluating LLMs</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../part2/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Techniques</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part2/prompting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Prompt engineering</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part2/rag.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Retrieval augmented generation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part2/functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Function calling</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part2/code.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Code generation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part2/agents.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Agents</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part2/finetune.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Fine-tuning</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part2/optimization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Optimization of LLMs</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../part3/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Applications</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part3/01_chatbot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The Chatbot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part3/02_pdfbot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">The PDF Reader</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part3/03_search.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The Answer Engine</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part3/04_shoping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The Salesbot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part3/05_analyst.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">The Data Analyst</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part3/06_cli.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">The Hackerbot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part3/07_writer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">The Writer</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part3/08_coder.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">The Coder</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../conclusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Future of Language Modeling</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#why-fine-tuning" id="toc-why-fine-tuning" class="nav-link active" data-scroll-target="#why-fine-tuning">Why Fine-Tuning?</a>
+  <ul class="collapse">
+  <li><a href="#solving-a-novel-task-or-domain" id="toc-solving-a-novel-task-or-domain" class="nav-link" data-scroll-target="#solving-a-novel-task-or-domain">Solving a Novel Task or Domain</a></li>
+  <li><a href="#reusing-large-models" id="toc-reusing-large-models" class="nav-link" data-scroll-target="#reusing-large-models">Reusing Large Models</a></li>
+  <li><a href="#incorporating-user-preferences" id="toc-incorporating-user-preferences" class="nav-link" data-scroll-target="#incorporating-user-preferences">Incorporating User Preferences</a></li>
+  <li><a href="#reducing-costs" id="toc-reducing-costs" class="nav-link" data-scroll-target="#reducing-costs">Reducing Costs</a></li>
+  </ul></li>
+  <li><a href="#flavors-of-fine-tuning" id="toc-flavors-of-fine-tuning" class="nav-link" data-scroll-target="#flavors-of-fine-tuning">Flavors of Fine-Tuning</a>
+  <ul class="collapse">
+  <li><a href="#full-parameter-fine-tuning" id="toc-full-parameter-fine-tuning" class="nav-link" data-scroll-target="#full-parameter-fine-tuning">1. Full Parameter Fine-Tuning</a></li>
+  <li><a href="#partial-fine-tuning" id="toc-partial-fine-tuning" class="nav-link" data-scroll-target="#partial-fine-tuning">2. Partial Fine-Tuning</a></li>
+  <li><a href="#parameter-efficient-fine-tuning" id="toc-parameter-efficient-fine-tuning" class="nav-link" data-scroll-target="#parameter-efficient-fine-tuning">3. Parameter-Efficient Fine-Tuning</a></li>
+  <li><a href="#prompt-prefix-tuning" id="toc-prompt-prefix-tuning" class="nav-link" data-scroll-target="#prompt-prefix-tuning">4. Prompt &amp; Prefix Tuning</a></li>
+  </ul></li>
+  <li><a href="#tips-for-effective-fine-tuning" id="toc-tips-for-effective-fine-tuning" class="nav-link" data-scroll-target="#tips-for-effective-fine-tuning">Tips for Effective Fine-Tuning</a>
+  <ul class="collapse">
+  <li><a href="#exhaust-prompt-engineering" id="toc-exhaust-prompt-engineering" class="nav-link" data-scroll-target="#exhaust-prompt-engineering">1. Exhaust Prompt Engineering</a></li>
+  <li><a href="#quality-trumps-quantity" id="toc-quality-trumps-quantity" class="nav-link" data-scroll-target="#quality-trumps-quantity">2. Quality Trumps Quantity</a></li>
+  <li><a href="#start-small-grow-as-needed" id="toc-start-small-grow-as-needed" class="nav-link" data-scroll-target="#start-small-grow-as-needed">3. Start Small, Grow As Needed</a></li>
+  <li><a href="#stay-in-the-loop" id="toc-stay-in-the-loop" class="nav-link" data-scroll-target="#stay-in-the-loop">4. Stay in the Loop</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../part2/index.html">Techniques</a></li><li class="breadcrumb-item"><a href="../part2/finetune.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Fine-tuning</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Fine-tuning</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Base LLMs, especially the largest ones, are often all you need. They have proven to be remarkably effective just with well-crafted prompts. However, there are instances where relying solely on base models, no matter how strong, may not suffice. Sometimes, you actually need to train your own chatbot.</p>
+<p>Two examples are when you want to incorporate private knowledge or customize a model’s behavior to align with specific industry requirements. If the task you need to solve is very specific or the requirements are very strict, it may be too hard to tame a large base model purely using prompt engineering.</p>
+<p>In these cases, you can fine-tune an existing model, effectively enhancing its performance for specialized tasks and ensuring it meets your unique needs. This can range from a full training batch to using very efficient and laser-focused tweaks in specific parts of a model.</p>
+<p>This chapter will explore the most important fine-tuning techniques available today, from traditional methods to more parameter-efficient approaches. Additionally, I will give you some practical tips to help you get the most out of your fine-tuning efforts.</p>
+<section id="why-fine-tuning" class="level2">
+<h2 class="anchored" data-anchor-id="why-fine-tuning">Why Fine-Tuning?</h2>
+<p>In short, fine-tuning allows you to adapt pre-trained models to domains, tasks, or general requirements for which they were not designed initially with minimum effort. This is achieved with additional training, but some clever techniques are used to make it as efficient as possible. Let’s look at some examples of cases where you may want to fine-tune a model.</p>
+<section id="solving-a-novel-task-or-domain" class="level3">
+<h3 class="anchored" data-anchor-id="solving-a-novel-task-or-domain">Solving a Novel Task or Domain</h3>
+<p>As the landscape of machine learning evolves, new tasks frequently emerge that require specialized understanding and capabilities. Fine-tuning enables existing models to be tailored to these novel tasks without starting from scratch. For instance, a general-purpose language model can be fine-tuned for specialized applications such as legal document analysis, medical diagnosis, or customer sentiment analysis.</p>
+<p>Training a model from the ground up is often resource-intensive, requiring substantial computational power, time, and large amounts of labeled data. Fine-tuning offers a more efficient alternative by building upon the knowledge already embedded in pre-trained models.</p>
+<p>Since these models have already learned general language patterns and structures during their initial training phase, fine-tuning can often focus on optimizing only a fraction of the parameters relevant to the new task.</p>
+</section>
+<section id="reusing-large-models" class="level3">
+<h3 class="anchored" data-anchor-id="reusing-large-models">Reusing Large Models</h3>
+<p>The ability to reuse pre-trained models across different downstream tasks is one of the most significant advantages of fine-tuning. Instead of developing separate models for each task, organizations can maintain a single base model that serves multiple purposes through fine-tuning.</p>
+<p>That is, you can have a large model trained on a large, general purpose corpora, and a bunch of small “adapter” models that you can plugin to steer the big model as necessary.</p>
+<p>For example, a base LLM trained on general text can be fine-tuned for tasks such as document classification or question-answering in the same domain by adding small adapters for each subtask. This means instead of dozens of big models—one for each task—you can have one even bigger model with dozens of small pluggable parts, maximizing the utility of existing resources and reducing redundancy. This not only streamlines development processes but also fosters consistency across applications.</p>
+</section>
+<section id="incorporating-user-preferences" class="level3">
+<h3 class="anchored" data-anchor-id="incorporating-user-preferences">Incorporating User Preferences</h3>
+<p>User preferences and requirements can evolve over time, requiring adjustments to how models respond or behave. Fine-tuning provides a mechanism to incorporate these changes incrementally without retraining from scratch. By training on new datasets that reflect updated user preferences or feedback, organizations can enhance user satisfaction and engagement with their applications.</p>
+<p>For instance, a conversational AI can be fine-tuned to align more closely with specific customer service protocols or corporate idioms or styles. This responsiveness not only improves the model’s relevance but also fosters trust and loyalty among users.</p>
+</section>
+<section id="reducing-costs" class="level3">
+<h3 class="anchored" data-anchor-id="reducing-costs">Reducing Costs</h3>
+<p>In many cases, organizations may seek to reduce costs associated with deploying large models due to infrastructure limitations or budget constraints. Fine-tuning allows you to adapt smaller models to achieve performance levels comparable to larger base models.</p>
+<p>By hyper-focusing on specific tasks—and forgetting general-purpose linguistic capacities you may not need, such as the ability to answer Wikipedia-like trivia questions—smaller models can be optimized to deliver high-quality outputs without incurring the expenses associated with larger counterparts. This approach enables organizations to maintain competitive performance while minimizing operational costs.</p>
+</section>
+</section>
+<section id="flavors-of-fine-tuning" class="level2">
+<h2 class="anchored" data-anchor-id="flavors-of-fine-tuning">Flavors of Fine-Tuning</h2>
+<p>Fine-tuning techniques can be categorized based on their computational cost and efficiency. Here’s an overview of the main fine-tuning strategies, sorted from the most costly to the most efficient.</p>
+<section id="full-parameter-fine-tuning" class="level3">
+<h3 class="anchored" data-anchor-id="full-parameter-fine-tuning">1. Full Parameter Fine-Tuning</h3>
+<p>In full parameter fine-tuning, all parameters of the pre-trained model are updated during the training process. This approach allows for maximum flexibility and potential performance improvement on specific tasks, as the model can fully adapt to new data. However, it is computationally expensive and requires significant memory resources, making it impractical for very large models or when working with limited hardware.</p>
+</section>
+<section id="partial-fine-tuning" class="level3">
+<h3 class="anchored" data-anchor-id="partial-fine-tuning">2. Partial Fine-Tuning</h3>
+<p>Partial fine-tuning involves updating only a subset of the model’s parameters while keeping others frozen. Typically, this method focuses on the upper layers of the model, which are more task-specific, while lower layers remain unchanged. This approach strikes a balance between performance and resource efficiency, allowing for faster training times and lower memory requirements compared to full fine-tuning.</p>
+</section>
+<section id="parameter-efficient-fine-tuning" class="level3">
+<h3 class="anchored" data-anchor-id="parameter-efficient-fine-tuning">3. Parameter-Efficient Fine-Tuning</h3>
+<p>Parameter-efficient fine-tuning techniques, such as LoRA (Low-Rank Adaptation) and adapters, involve modifying only a small number of additional parameters while freezing most of the pre-trained model’s weights. This drastically reduces computational costs and storage requirements. PEFT methods maintain comparable performance to full fine-tuning but are much more efficient, making them suitable for low-resource environments and enabling easier deployment across multiple tasks.</p>
+</section>
+<section id="prompt-prefix-tuning" class="level3">
+<h3 class="anchored" data-anchor-id="prompt-prefix-tuning">4. Prompt &amp; Prefix Tuning</h3>
+<p>Prompt tuning involves adding trainable prompt embeddings to the input data rather than modifying model parameters directly. This technique allows models to adapt to new tasks by optimizing these prompts while keeping the rest of the model frozen. It is a lightweight approach that requires significantly fewer resources than traditional fine-tuning methods.</p>
+<p>Similarly, prefix tuning adds trainable tensors to each transformer block in a model. These tensors act as context that guides the model’s output without altering its core parameters. Prefix tuning is efficient and effective for certain applications but may not achieve the same level of performance as more comprehensive fine-tuning methods.</p>
+</section>
+</section>
+<section id="tips-for-effective-fine-tuning" class="level2">
+<h2 class="anchored" data-anchor-id="tips-for-effective-fine-tuning">Tips for Effective Fine-Tuning</h2>
+<p>Fine-tuning can significantly enhance the performance of language models, but to maximize its effectiveness, practitioners should consider several key strategies. As usual, it is critical not to miss the forest for the trees and not fall prey to early optimization. Here are essential tips for effective fine-tuning.</p>
+<section id="exhaust-prompt-engineering" class="level3">
+<h3 class="anchored" data-anchor-id="exhaust-prompt-engineering">1. Exhaust Prompt Engineering</h3>
+<p>This is the most important advice and the most critical mistake I see small organizations making every single time. Before even thinking about fine-tuning, ensure you have thoroughly explored prompt engineering.</p>
+<p>If a state-of-the-art model like GPT-4 cannot solve your task with a well-structured prompt and perhaps some few-shot examples, fine-tuning a smaller model is unlikely to yield better results. Effective prompt engineering can often resolve issues without requiring extensive fine-tuning, which is always more costly.</p>
+</section>
+<section id="quality-trumps-quantity" class="level3">
+<h3 class="anchored" data-anchor-id="quality-trumps-quantity">2. Quality Trumps Quantity</h3>
+<p>If you have already decided fine-tuning is the way to go, prioritize data quality. Focus on gathering high-quality, diverse examples accurately representing the new task or domain. However much data you can gather will be minuscule compared to the base training set, so quality is the only thing you can control.</p>
+<p>Keep in mind that while you can leverage large models with clever prompt engineering to synthesize additional training data, you must always validate these examples with human experts to ensure their relevance and correctness. One great novel example beats 100 excellent but similar ones.</p>
+</section>
+<section id="start-small-grow-as-needed" class="level3">
+<h3 class="anchored" data-anchor-id="start-small-grow-as-needed">3. Start Small, Grow As Needed</h3>
+<p>Begin your fine-tuning efforts with parameter-efficient techniques, such as adapters or Low-Rank Adaptation (LoRA). These methods require fewer resources and are often easier to implement than full parameter tuning.</p>
+<p>You’ll find tons of open-source implementations of efficient fine-tuning methods, so don’t let the prospect of technical difficulty scare you. Likewise, several LLM providers will let you fine-tune comercial or open source models on their infrastructure, effectively bypassing all need for self-hosting models. This way you get the best of both worlds: a model just for you that someone else takes care of.</p>
+<p>If and only if parameter-efficient fine-tuning does not meet your needs, then consider transitioning to full parameter tuning as a subsequent step, but unless you’re swimming in private data—and I mean, terabytes of data—you’re most likely safely on the efficient fine-tuning side.</p>
+</section>
+<section id="stay-in-the-loop" class="level3">
+<h3 class="anchored" data-anchor-id="stay-in-the-loop">4. Stay in the Loop</h3>
+<p>Finally, remember the field of AI is evolving extremely fast, with new models and techniques appearing basically every single week. A task that may require fine-tuning today could potentially be solved through effective prompting in next-generation models released tomorrow.</p>
+<p>Therefore, avoid over-investing in ad-hoc fine-tuning pipelines that may become obsolete in a couple of months. Also, assess the capabilities of newer models regularly and be prepared to pivot away from fine-tuned proprietary models as soon as a good prompt shows marginally better results. Prompts are far more portable than models.</p>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Fine-tuning is an excellent strategy for small organizations tackling domain-specific tasks effectively. As AI continues to evolve, the ability to adapt large pre-trained models to meet unique business needs is no longer a luxury but a necessity. For smaller organizations and individual developers, fine-tuning offers a pathway to harness the power of advanced language models without the prohibitive costs associated with training from scratch.</p>
+<p>Also, leveraging fine-tuning allows small organizations to capitalize on their private data, tailoring models to reflect their specific industry requirements and user preferences. The moat is no longer having the bigger model since some of the best models are open source. The moat is your private data, and fine-tuning lets you get the best combo: a world-class base model trained on privileged data none of your competitors have.</p>
+<p>Moreover, in a competitive landscape where larger organizations like Microsoft, Google, and Meta rely solely on base models, fine-tuning gives small businesses an advantage in niche domains. By optimizing existing models with proprietary data, they can differentiate themselves through improved performance and specialized capabilities that address the specific market needs.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../part2/agents.html" class="pagination-link" aria-label="Agents">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Agents</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../part2/optimization.html" class="pagination-link" aria-label="Optimization of LLMs">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Optimization of LLMs</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright 2024 - The Authors</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link active" href="https://store.apiad.net/l/chatbots" aria-current="page">
+      <i class="bi bi-book" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

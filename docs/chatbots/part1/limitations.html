@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>4&nbsp; The limits of language models – How to Train your Chatbot</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../part1/evaluation.html" rel="next">
+<link href="../part1/capabilities.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../part1/index.html">Principles</a></li><li class="breadcrumb-item"><a href="../part1/limitations.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The limits of language models</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">How to Train your Chatbot</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://store.apiad.net/l/chatbots" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-book"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../part1/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Principles</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part1/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What is a language model?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part1/training.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">How do LLMs work?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part1/capabilities.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What can LLMs do?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part1/limitations.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The limits of language models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part1/evaluation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Evaluating LLMs</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../part2/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Techniques</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part2/prompting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Prompt engineering</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part2/rag.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Retrieval augmented generation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part2/functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Function calling</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part2/code.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Code generation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part2/agents.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Agents</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part2/finetune.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Fine-tuning</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part2/optimization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Optimization of LLMs</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../part3/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Applications</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part3/01_chatbot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The Chatbot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part3/02_pdfbot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">The PDF Reader</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part3/03_search.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The Answer Engine</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part3/04_shoping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The Salesbot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part3/05_analyst.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">The Data Analyst</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part3/06_cli.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">The Hackerbot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part3/07_writer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">The Writer</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part3/08_coder.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">The Coder</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../conclusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Future of Language Modeling</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#how-do-llms-learn" id="toc-how-do-llms-learn" class="nav-link active" data-scroll-target="#how-do-llms-learn">How do LLMs learn?</a></li>
+  <li><a href="#sec-reasoning" id="toc-sec-reasoning" class="nav-link" data-scroll-target="#sec-reasoning">Reasoning</a>
+  <ul class="collapse">
+  <li><a href="#why-llms-cant-reason" id="toc-why-llms-cant-reason" class="nav-link" data-scroll-target="#why-llms-cant-reason">Why LLMs can’t reason</a></li>
+  <li><a href="#improving-llm-reasoning-skills" id="toc-improving-llm-reasoning-skills" class="nav-link" data-scroll-target="#improving-llm-reasoning-skills">Improving LLM reasoning skills</a></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
+  </ul></li>
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
+  <li><a href="#biases" id="toc-biases" class="nav-link" data-scroll-target="#biases">Biases</a></li>
+  <li><a href="#sec-hallucinations" id="toc-sec-hallucinations" class="nav-link" data-scroll-target="#sec-hallucinations">Hallucinations</a>
+  <ul class="collapse">
+  <li><a href="#real-world-implications-of-ai-hallucinations" id="toc-real-world-implications-of-ai-hallucinations" class="nav-link" data-scroll-target="#real-world-implications-of-ai-hallucinations">Real-World Implications of AI Hallucinations</a></li>
+  <li><a href="#why-hallucinations-happen" id="toc-why-hallucinations-happen" class="nav-link" data-scroll-target="#why-hallucinations-happen">Why Hallucinations Happen?</a></li>
+  <li><a href="#mitigating-hallucinations-in-ai" id="toc-mitigating-hallucinations-in-ai" class="nav-link" data-scroll-target="#mitigating-hallucinations-in-ai">Mitigating Hallucinations in AI</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../part1/index.html">Principles</a></li><li class="breadcrumb-item"><a href="../part1/limitations.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The limits of language models</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-limitations" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The limits of language models</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>In this chapter we will examine what are the main implications of how LLMs work, and what inherent limitations this entails. We’ll touch upon four main types of issues.</p>
+<p>First, we will look at reasoning skills, and argue why LLMs lack the capability to perform open-ended reasoning to arbitrary levels of complexity. Next, we’ll discuss the many issues that arise from the limited context size, including limitations for long-term and precise recall. Then, we’ll talk about biases and misrepresentation issues arising from both the training data and the way these models are fine-tuned. Finally, we’ll look at the most insidious problem in statistical language modeling, hallucinations, and argue why eliminating them completely might require a new paradigm altogether.</p>
+<p>But before that deep dive, let’s go back to how LLMs learn and contrast it with how humans learn. This comparison will give us some insights into the reasons for the limitations of LLMs.</p>
+<section id="how-do-llms-learn" class="level2">
+<h2 class="anchored" data-anchor-id="how-do-llms-learn">How do LLMs learn?</h2>
+<p>Regarding the differences between how large language models and humans learn language, a few key points stand out. First, the scale is vastly different—large models require billions of training examples to generate grammatically correct sentences, while human children need far fewer. This has sparked debate in linguistics about nature versus nurture in language acquisition. Is there a pre-programmed structure in the brain for learning grammar, or is it all learned during childhood? Although I’m not an expert in linguistics, we know that machine learning models with built-in biases for specific problems can learn more easily and with less data. It makes sense that there might be similar architectural designs in the human brain.</p>
+<p>However, we also know that backpropagation, the learning algorithm used in large language models, is biologically impossible. The neural networks in our brains function differently than those in artificial models. This fundamental difference in learning algorithms could impact how much these models truly understand.</p>
+<p>Another important distinction is symbolic grounding. When humans learn language, they not only learn relationships between words but also connections to real-world objects. Current LLMs lack this grounding, which could affect their understanding of language.</p>
+<p>Symbols, like the sound of cats or the word “cat” in a text, connect to real-life anchors, such as an actual cat. Grounding is crucial in language acquisition because children first learn concepts they experience daily, like mom, dad, food, and home. Only later do they make connections with abstract ideas like ethical values or metacognition, that can’t be directly tied to experiences.</p>
+<p>So, humans learn language while interacting with the real world. Language is grounded in physical experiences and other sensory inputs like images, touch, sound, and taste. This contrasts with large language models that only learn correlations between words without grounding their meaning in experience.</p>
+<p>For example, when you say “the apple is red” to a large language model, it recognizes this as a likely true sentence due to context. However, for a human, the same phrase connects the abstract symbols with experiences of what an apple looks like, tastes like, and feels like. This shows that language models reason differently than humans when it comes to real-world concepts.</p>
+<p>One could argue that humans can reason about purely symbolic things, like math. Even though numbers might be grounded in physical notions of quantity, abstract fields of math involve humans reasoning by manipulating symbols and learning correlations between them. In this sense, there may be a case for language models to be able to reason similarly in certain contexts.</p>
+<p>In summary, reasoning in LLMs, in its current limited form, involves understanding how words, sentences, and contexts relate and appear together. This provides a certain level of linguistic comprehension. However, this level of understanding differs greatly from that of humans or even animals with primitive intelligence.</p>
+</section>
+<section id="sec-reasoning" class="level2">
+<h2 class="anchored" data-anchor-id="sec-reasoning">Reasoning</h2>
+<p>Large language models often seem to be able to reason effectively. They can generate coherent and contextually relevant responses that resemble human reasoning. However, this apparent capability can be misleading.</p>
+<p>LLMs frequently make mistakes when faced with complex problems requiring extensive reasoning chains. Their responses may seem logical initially, but they often lack the depth and accuracy for sound reasoning. This is particularly evident in tasks that involve multiple steps or intricate logical deductions, where the model may falter and produce incorrect conclusions.</p>
+<p>This article explores the fundamental limitations of large language models (LLMs) in reasoning — highlighting the difference between their advanced outputs and their evident inability to perform logical deductions. By examining the stochastic nature of these models, their computational constraints, and their lack of complete computational capabilities, we will uncover the reasons behind their failures in complex reasoning tasks.</p>
+<p>Additionally, we will discuss current strategies to enhance LLMs’ reasoning capabilities, including chain of thought prompting and self-critique mechanisms, while critically assessing their effectiveness and underlying challenges. This article aims to foster a deeper understanding of what LLMs can and cannot achieve, urging caution in interpreting their seemingly intelligent responses.</p>
+<section id="why-llms-cant-reason" class="level3">
+<h3 class="anchored" data-anchor-id="why-llms-cant-reason">Why LLMs can’t reason</h3>
+<p>One significant limitation of language models regarding reasoning is their stochastic nature. These models generate outputs based on probabilistic predictions rather than deterministic logical rules. This means that even a well-structured prompt can yield different responses on different occasions due to the randomness in their decision-making process.</p>
+<p>Consequently, an LLM might arrive at a wrong conclusion purely by chance, leading to inconsistencies in reasoning. For example, when asked to solve a mathematical problem or make a logical inference, the model’s response may vary significantly depending on the random seed used during generation, undermining trust in its reasoning capabilities.</p>
+<p>Granted, you may set the temperature to zero effectively forcing the model to fix the output for a given input. But this output is still probabilistic, you’re just sampling the most likely continuation. The fact that the mapping between input and output hinges on a probabilistic distribution that encodes correlations between elements in the input and corresponding elements in the output is already suspicious. It would be very weird, although not impossible, that we just happened to converge on the right probability distribution that produces the correct output for every input, in terms of logical deduction rules.</p>
+<p>However, this limitation is still not definitive. But it gets worse.</p>
+<p>By design, large language models spend a fixed amount of computation per token processed. This means the amount of computation an LLM does before it produces the first output token is a function of just two numbers: the input size and the model size. So, if you ask an LLM to produce a yes or no question for a logical puzzle, all the “thinking” the model can do is some fixed—albeit huge—number of matrix multiplications that only depend on the input size. See where I’m going here?</p>
+<p>Now, consider that you have two different logical puzzles with the same input size, i.e., the same number of tokens. But one is an easy puzzle that can be solved with a short chain of deduction steps, while the other requires a much higher number of steps. Here is the kicker: any LLM will spend exactly the same amount of computation in both problems. This can’t be right, can it?</p>
+<p>A basic result in computational complexity theory is that some problems with very small inputs seem to require an exponentially high computational cost to be solved correctly. These are NP-complete problems, and most computer scientists believe there are no efficient algorithms to solve them. Crucially, a huge number of reasoning problems fall in this category, including the most basic logical puzzle of all—determining if a given logical formula can be satisfied.</p>
+<p>When faced with an instance of an NP-complete problem, an LLM will produce an answer after a fixed amount of computation defined solely by the input size. Now, by sheer size, some larger models might just spend enough computation to cover many smaller instances of NP-complete problems. As it happens, a huge constant function can be larger than an exponential function for smaller inputs. But crucially, we can always find instances of NP-complete problems that require, even in principle, a sufficiently large amount of computation to surpass the computational capacity of any LLM, no matter how big.</p>
+<p>But this means something even more profound. Ultimately, LLMs are not Turing-complete systems but essentially very large finite automata. While they can handle a wide range of tasks and produce outputs that appear sophisticated, their underlying architecture limits the types of problems they can solve.</p>
+<p>Turing completeness is the ability of a computational system to perform any computation given sufficient time and resources. Modern computers and many seemingly simple systems, such as cellular automata, are Turing complete systems. But LLMs are not, ironically.</p>
+<p>The reason is simple. We know from computability theory that any Turing complete system must be able to loop indefinitely. There are some problems—some reasoning tasks—where the only possible solution is to compute, and compute, and compute until some condition holds, and the amount of computation required cannot be known in advance. You need potentially unbounded computation to be Turing complete.</p>
+<p>And this is the final nail in the coffin. LLMs, by definition, are computationally bounded. No matter their size, there will always be problem instances—which we may not be able to identify beforehand—that require more computation than is available in the huge chain of matrix multiplications inside the LLM.</p>
+<p>Thus, when LLMs seem to tackle complex reasoning problems, they often solve specific instances of those problems rather than demonstrating general problem-solving capabilities. This might just be enough for practical purposes—we may never need to tackle the larger instances—but, in principle, LLMs are incapable of truly open-ended computation, which means they are incapable of true reasoning. Case closed.</p>
+</section>
+<section id="improving-llm-reasoning-skills" class="level3">
+<h3 class="anchored" data-anchor-id="improving-llm-reasoning-skills">Improving LLM reasoning skills</h3>
+<p>However, we need not throw the hat here. Researchers and practitioners have explored several innovative strategies, including Chain of Thought prompting, self-critique mechanisms, and integrating external tools to improve the reasoning skills of large language models.</p>
+<p>CoT prompting encourages LLMs to articulate their thought processes, allowing them to break complex problems into manageable steps and improve their accuracy in reasoning tasks. On the other hand, self-critique aims to refine outputs through an internal evaluation process, yet it has shown mixed effectiveness in meaningfully correcting errors. Additionally, incorporating external tools such as reasoning engines and code generation systems can significantly augment the LLMs’ capabilities by providing structured logic and formal verification.</p>
+<p>However, each approach has its own set of challenges, and their potential and limitations in fostering true reasoning abilities within LLMs need to be carefully examined.</p>
+<section id="chain-of-thought" class="level4">
+<h4 class="anchored" data-anchor-id="chain-of-thought">Chain of Thought</h4>
+<p>Chain-of-thought prompting has emerged as a promising technique for enhancing the reasoning capabilities of large language models. By guiding models to articulate intermediate reasoning steps before arriving at a final answer, CoT prompting helps decompose complex problems into manageable parts. This method has improved performance across various reasoning tasks, such as arithmetic and commonsense reasoning.</p>
+<p>CoT prompting instructs LLMs to break down complex problems into simpler, sequential steps and then tackle each step independently. This structured approach enables the model to tackle each component individually, improving response accuracy and precision. Studies have shown that this technique can significantly boost performance on reasoning tasks, particularly when the model has a sufficient number of parameters (around 100 billion) to use the benefits of CoT prompting effectively.</p>
+<p>By encouraging models to articulate their thought processes, CoT prompting taps into the extensive pool of knowledge that LLMs acquire during training. This mechanism helps models apply relevant information more effectively, addressing their inherent difficulties with logical reasoning and problem-solving.</p>
+<p>Additionally, CoT makes the LLM “think harder” in the sense it forces the model to produce what we can consider “internal thought” tokens. Thus, we may view it as a way to produce additional computation on the input before deciding on the response.</p>
+<p>However, despite its advantages, CoT prompting remains insufficient for several reasons.</p>
+<p>The effectiveness of CoT prompting is highly contingent on the quality and diversity of the prompts used. If the examples provided are not representative or sufficiently varied, the model may struggle to generate coherent reasoning chains, leading to suboptimal performance. This reliance on effective prompt engineering can limit the technique’s scalability and generalizability.</p>
+<p>And again, the stochastic nature of LLMs means that even with CoT prompting, outputs can vary significantly across different runs due to randomness in generation processes. This variability can lead to inconsistent reasoning outcomes, undermining the reliability of the model’s responses.</p>
+<p>Ultimately, CoT extends the computation budget by a finite amount. Unless we try some cyclic scheme where the LLM is prompted to continue thinking, potentially indefinitely, until satisfied, their fundamental limitation on Turing incompleteness remains.</p>
+</section>
+<section id="self-critique" class="level4">
+<h4 class="anchored" data-anchor-id="self-critique">Self-critique</h4>
+<p>Another intuitive approach to improving reasoning is self-critique, which involves evaluating and refining an LLM’s responses with the same model, using prompts that instruct the model to read its previous output, highlight potential errors, and try to correct them. A form of after-the-fact chain-of-thought, if you might. However, recent research has highlighted significant limitations in the effectiveness of this self-critique capability.</p>
+<p>While LLMs can generate multiple ideas and attempt to critique their initial outputs, studies indicate that they cannot often meaningfully self-correct. The assumption that verification of correctness should be easier than generation—a fundamental idea in computational complexity theory—does not seem to hold true, in general, for LLMs. This is particularly problematic in reasoning tasks where the model struggles to adequately assess its outputs’ accuracy. For example, if an LLM generates a flawed answer, its attempt to critique and revise it can lead to further errors rather than improvements.</p>
+<p>Research shows that self-correction techniques in LLMs are heavily contingent on the availability of external feedback. In many cases, LLMs perform better when they have access to an external verifier or additional context rather than relying solely on their internal reasoning capabilities. For example, when solving complex problems, such as graph coloring or planning tasks, LLMs often fail to produce reliable solutions without external guidance.</p>
+<p>Interestingly, attempts at self-critique can sometimes degrade performance rather than enhance it. Studies have shown that when LLMs engage in self-critique without external validation, they may generate false positives or incorrect conclusions. If you push harder, you can easily fall into a cycle of self-reinforcement of invalid or erroneous arguments, making the LLM increasingly more certain despite it getting worse and worse.</p>
+</section>
+<section id="external-tools" class="level4">
+<h4 class="anchored" data-anchor-id="external-tools">External tools</h4>
+<p>Integrating external tools, such as reasoning engines or code generation systems, into large language models represents a promising—and, for me, the only really viable—approach to enhancing their reasoning capabilities.</p>
+<p>Connecting LLMs to external reasoning engines or logical inference tools makes it possible to augment their reasoning capabilities significantly. These tools can handle complex logical deductions, mathematical computations, or even domain-specific knowledge that the LLM might not possess inherently. This integration allows for more accurate and reliable outputs, as the external tools can apply formal logic and structured reasoning that LLMs typically struggle with.</p>
+<p>Similarly, external code generation systems enable LLMs to produce executable code for specific tasks. This capability can streamline software development processes and improve efficiency in generating functional code snippets. The external systems can provide rigorous checks and balances that help ensure the correctness of the generated code.</p>
+<p>By leveraging these external resources, LLMs can potentially overcome some of their inherent limitations in logical reasoning and problem-solving. For starters, an external inference engine will be Turing-complete, so we scratch that problem down, right?</p>
+<p>Not so fast. Unfortunately, this approach has many challenges, particularly regarding the LLM’s ability to generate the correct input for function calls or code execution. It all circles back to the original sin of LLMs: stochastic output.</p>
+<p>First, the effectiveness of function calling or code generation hinges on the model’s ability to accurately interpret a task and generate appropriate inputs. If the model misinterprets the requirements or generates vague or incorrect prompts, the external tool may produce erroneous outputs or fail to execute altogether. This reliance introduces a potential failure point where the model’s limitations in understanding context and intent become apparent.</p>
+<p>Many reasoning tasks require a nuanced understanding of logic and context that may exceed the capabilities of language models. For instance, when generating inputs for a logical inference engine, the model must understand the problem and articulate it in a way that aligns with the system’s requirements. If the model fails to capture these nuances, it may lead to incorrect deductions or ineffective reasoning processes.</p>
+<p>Translating text into code or structured queries makes it more complex and can undermine reasoning capabilities. This conversion requires programming syntax and logic knowledge that may not be intuitive for an LLM trained primarily in natural language data. Mistakes in this translation can spread to the external system, causing more errors.</p>
+<p>While external tools can, in principle, improve the reasoning capabilities of an LLM by providing structured logic and formal verification, they cannot compensate for LLMs’ basic limitations in generating precise inputs. Therefore, there is no formal guarantee that the outputs from this integration will be logically sound or appropriate for the context, simply because of the age-old adage: garbage in, garbage out.</p>
+</section>
+</section>
+<section id="conclusions" class="level3">
+<h3 class="anchored" data-anchor-id="conclusions">Conclusions</h3>
+<p>While large language models may exhibit some reasoning capabilities, their fundamentally stochastic nature and fixed computational architecture hinder their ability to engage in open-ended, arbitrary-length deductions. This underlying limitation means that despite ongoing research and exploring various techniques to enhance reasoning, such as Chain of Thought prompting and self-critique mechanisms, and even duck-taping them with powerful reasoning engines, we still don’t know how to make language models reason using flawless, formal logic.</p>
+<p>The emergence of models like OpenAI’s o1, which boasts impressive reasoning abilities, may seem like a significant step forward. However, this approach does not represent a fundamentally new paradigm in logical reasoning with LLMs. Deep down, this is “just” a way to explicitly incorporate chain of thought prompting in a fine-tuning phase and teach the model via reinforcement learning to select mostly coherent paths of deduction.</p>
+<p>Thus, while definitely an impressive technical and engineering feat, o1 (terrible name) —and any future models based on the same paradigm— will continue to share the same core limitations inherent to all LLMs, only mitigated using some clever tricks. Thus, while they may excel in certain contexts, caution must be exercised in interpreting their outputs as definitive reasoning.</p>
+</section>
+</section>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This section is under construction.</p>
+</div>
+</div>
+</section>
+<section id="biases" class="level2">
+<h2 class="anchored" data-anchor-id="biases">Biases</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This section is under construction.</p>
+</div>
+</div>
+</section>
+<section id="sec-hallucinations" class="level2">
+<h2 class="anchored" data-anchor-id="sec-hallucinations">Hallucinations</h2>
+<p>The term “hallucination” in the context of AI refers to the phenomenon where a large language model (LLM) or other generative AI system produces outputs that appear plausible and coherent, but do not accurately reflect reality or the intended purpose of the system. These hallucinations manifest as the generation of false, inaccurate, or nonsensical information the AI system presents with confidence, as if it were factual.</p>
+<p>First, a caveat. Unlike human hallucinations, which involve perceiving things that are not real, AI hallucinations are associated with the model producing unjustified responses or beliefs, rather than perceptual experiences. The name “hallucination” is therefore imperfect, and it often leads to mistakes as people tend to antropomorphize these models and make erroneous assumptions about how they work and the causes of these failures.</p>
+<p>However, we will stick to this name in this article because it is the prevalent nomenclature used everywhere people talk about AI. Just keep in mind we’re talking about something completely different to what the term “hallucination” means in general.</p>
+<section id="real-world-implications-of-ai-hallucinations" class="level3">
+<h3 class="anchored" data-anchor-id="real-world-implications-of-ai-hallucinations">Real-World Implications of AI Hallucinations</h3>
+<p>The occurrence of hallucinations in AI systems, and particularly in large language models (LLMs), can have significant consequences, especially in high-stakes applications such as healthcare, finance, or public safety. For example, a healthcare AI model that incorrectly identifies a malignant skin lession as benign can doom a patient. On the other hand, identifying a benign skin lesion as malignant could lead to unnecessary medical interventions, also causing harm to the patient. Similarly, in the financial sector, hallucinated outputs from an AI system could result in poor investment decisions with potentially devastating economic impacts.</p>
+<p>However, even in low-stakes applications, the insidious nature of hallucinations make then a fundamental barrier to the widespread adoption of AI. For example, imagine you’re using an LLM to generate summaries from audio transcripts of a meeting, extracting relevant talking points and actionable items. If the model tends to hallucinate once in a while, either failing to extract one key item, or worse, producing an spurious item, it will be virtually impossible for anyone to detect that without manually revising the transcript, thus rendering the whole application of AI in this domain useless.</p>
+<p>For this reason, one of the key challenges in addressing the real-world implications of language model hallucinations is the difficulty in effectively communicating the limitations of these systems to end-users. LLMs are trained to produce fluent, coherent outputs that can appear plausible, even when they are factually incorrect. If the end-users of an AI system are not sufficiently informed to review the output of the system with a critical eye, they may never spot any hallucinations. This leads to a chain of mistakes as the errors from the AI system propagate upstream through the layers of decision makers in an organization. Ultimately, you could be making a very bad decision that seems entirely plausible given all the available information because the source of the error –an AI hallucination– is impossible to detect.</p>
+<p>Thus, the development and deployment of LLMs with hallucination capabilities raises important ethical considerations. There is a need for responsible AI development practices that prioritize transparency, accountability, and the mitigation of potential harms. This includes establishing clear guidelines for testing and validating LLMs before real-world use, as well as implementing robust monitoring and oversight mechanisms to identify and address hallucinations as they arise.</p>
+<p>Crucially, there are absolutely zero generative AI systems today that can guarantee they don’t hallucinate. This tech is simply unreliable in fundamental ways, so every actor in this domain, from developers to users, must be aware there will be hallucinations in your system, and you must have guardrails in place to deal with the output of unreliable AIs. And this is so perverse because we are used to software just working. Whenever software doesn’t do what it should, that’s a bug. But hallucinations are not a bug of AI, at least in the current paradigm. As we will see in the next section, they are an inherent feature of the way generative models work.</p>
+</section>
+<section id="why-hallucinations-happen" class="level3">
+<h3 class="anchored" data-anchor-id="why-hallucinations-happen">Why Hallucinations Happen?</h3>
+<p>There are many superficial reasons for hallucinations, from data and modelling problems, to issues with prompting. However, the underlying cause of all hallucinations, at least in large language models, is that the current language modeling paradigm used in these systems is, by design, a hallucination machine. Let’s unpack that.</p>
+<p>As we saw in <a href="capabilities.html" class="quarto-xref"><span>Chapter 3</span></a>, generative AI models, including LLMs, rely on capturing statistical patterns in their training data to generate outputs. Rather than storing explicit factual claims, LLMs implicitly encode information as statistical correlations between words and phrases. This means the models do not have a clear, well-defined understanding of what is true or false, they can just generate plausibly sounding text.</p>
+<p>The reason this mostly works, is because generating plausibly sounding text has a high probabilty of reproducing something that is true, provided you trained on mostly truthful data. But large language models (LLMs) are trained on vast corpora of text data from the internet, which contains inaccuracies, biases, and even fabricated information. So these models have “seen” many true sentences and thus picked up correlations between words that tend to generate true sentences, but they’ve also seen many variants of the same sentences which are slightly or even entirely wrong.</p>
+<p>So one of the primary reasons for the occurrence of hallucinations is the lack of grounding in authoritative knowledge sources. Without a strong foundation in verified, factual knowledge, the models struggle to distinguish truth from falsehood, leading to the generation of hallucinated outputs. But this is far from the only problem. Even if you only train on factual information—assuming there would be enough of such high-quality data to begin with—the statistical nature of language models make them susceptible to hallucinate.</p>
+<p>Suppose your model has only seen truthful sentences, and learned the correlations between words in these sentences. Imagine there are two very similar sentences, both factually true, that differ in just a couple of words –maybe a date and a name, for example “Person A was born in year X” and “Person B was born in year Y”. Given the way these models work, the probability of generating a mixed-up sentence like “Person B was born in year X” is only slightly smaller than generating either of the original sentences.</p>
+<p>What’s going on here is that the statistical model implicitely assumes that small changes in the input (the sequence of words) lead to small changes in the output (the probability of generating a sentence). In more technical terms, the statistical model assumes a smooth distribution, which is necessary because the amount of data the model needs to encode is orders of magnitude bigger than the memory (i.e., number of parameters) in the model. Thus, the models has to compress the training corpus, and compression implies loosing some of the information.</p>
+<p>In other words, statistical language models inherently assume that sentences very similar to what they have seen in the training data are also plausible sentences. They encode a smooth representation of language, and that’s fine, as long as you don’t equate plausible with factual. See, these models weren’t designed with factuality in mind. They were originally designed for tasks like translation, where plausibility and coherence are all that matters. It’s only when you turn them into answering machines that you run into a problem.</p>
+<p>The problem is there is nothing smooth about facts. A sentence is eithre factual or not, there are no degrees of truthfulness —for the most part; let’s not get dragged into epistemological discussions here. But LLMs cannot, by design, define a strict frontier between true and false sentences. All the frontiers are fuzzy, so there is no clear cutoff point where you can say, if a sentence has less than X value of perplexity then it is false. And even if you could define such a threshold, it would different for all sentences.</p>
+<p>You may ask why can’t we avoid using this “smooth” representation altogether. The reason is that you want to generate sentences that are not in the training set. This means you need to somehow guess that some sentences you have never seen are also plausible, and guessing means you have to make some assumptions. The smooth hypothesis is very reasonable —and computationally convenient, as these models are trained with gradient descent, which requieres smoothness in the loss function— again, as long as you don’t care about factuality. If you don’t compress the training data in this smooth, lossy way, you will simply I can’t wait for you to start training your own chatbot and building exciting applications with LLMs!not be able to generate novel sentences at all.</p>
+<p>In summary, this is the underlying reason why the current paradigm of generative AI will always hallucinate, no matter how good is your data and how ellaborated are your training procedures or guardrails. The statistical language modeling paradigm, at its core, is a hallucination machine. It is concocting plausibly-sounding sentences by mixing and matching words that is has seen together in similar contexts in the training set. It has no inherent notion of whether a given sentence is true or false. All it can tell is that it looks like sentences that appear in the training set.</p>
+<p>Now, a silver-lining could be this idea that even if some false sentences will unavoidably be generated, we can train the system to minimize their ocurrence by showing it lots and lots of high quality data. That is, can we push the probability of a hallucination to a sufficiently low value that, in practice, almost never happens? Recent research suggests that if there is a sentence that can be generated at all, no matter how low its base probability, then there is a prompt that will generate it with almost 100% certainty. This means that if we introduce malicious actors into our equation, we can never be sure our system can’t be jailbroken.</p>
+</section>
+<section id="mitigating-hallucinations-in-ai" class="level3">
+<h3 class="anchored" data-anchor-id="mitigating-hallucinations-in-ai">Mitigating Hallucinations in AI</h3>
+<p>So far we’ve argued that hallucinations are inherently impossible to eliminate completely. But this doesn’t mean we can’t do anything about it in practice. I want to end this article with a short summary of mitigation approaches that are being used today by researchers and developers.</p>
+<p>One key strategy is to incorporate external knowledge bases and fact-checking systems into the AI models. By grounding the models in authoritative, verified information sources, the risk of generating fabricated or inaccurate outputs can be reduced.</p>
+<p>Researchers are also exploring ways to develop more robust model architectures and training paradigms that are less susceptible to hallucinations. This may involve techniques like increasing model complexity, incorporating explicit reasoning capabilities, or using specialized training data and loss functions.</p>
+<p>Enhancing the transparency and interpretability of AI models is also crucial for addressing hallucinations. By making the models’ decision-making processes more transparent, it becomes easier to identify and rectify the underlying causes of hallucinations.</p>
+<p>Alongside these technical approaches, the development of standardized benchmarks and test sets for hallucination assessment is crucial. This will enable researchers and developers to quantify the prevalence and severity of hallucinations, as well as compare the performance of different models in this regard. Thus, if you can’t completely eliminate the problem, at least you can quantify it and make informed decisions about where and when it is safe enough to deploy a generative model.</p>
+<p>Finally, addressing the challenge of hallucinations in AI requires an interdisciplinary approach, involving collaboration between AI researchers, domain experts, and authorities in fields like scientific reasoning, legal argumentation, and other relevant disciplines. By fostering cross-disciplinary knowledge sharing and research, the understanding and mitigation of hallucinations can be further advanced.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../part1/capabilities.html" class="pagination-link" aria-label="What can LLMs do?">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What can LLMs do?</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../part1/evaluation.html" class="pagination-link" aria-label="Evaluating LLMs">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Evaluating LLMs</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright 2024 - The Authors</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link active" href="https://store.apiad.net/l/chatbots" aria-current="page">
+      <i class="bi bi-book" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

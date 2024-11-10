@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>9&nbsp; Code generation – How to Train your Chatbot</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../part2/agents.html" rel="next">
+<link href="../part2/functions.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../part2/index.html">Techniques</a></li><li class="breadcrumb-item"><a href="../part2/code.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Code generation</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">How to Train your Chatbot</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://store.apiad.net/l/chatbots" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-book"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../part1/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Principles</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part1/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What is a language model?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part1/training.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">How do LLMs work?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part1/capabilities.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What can LLMs do?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part1/limitations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The limits of language models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part1/evaluation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Evaluating LLMs</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../part2/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Techniques</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part2/prompting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Prompt engineering</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part2/rag.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Retrieval augmented generation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part2/functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Function calling</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part2/code.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Code generation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part2/agents.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Agents</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part2/finetune.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Fine-tuning</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part2/optimization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Optimization of LLMs</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../part3/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Applications</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part3/01_chatbot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The Chatbot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part3/02_pdfbot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">The PDF Reader</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part3/03_search.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The Answer Engine</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part3/04_shoping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The Salesbot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part3/05_analyst.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">The Data Analyst</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part3/06_cli.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">The Hackerbot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part3/07_writer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">The Writer</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part3/08_coder.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">The Coder</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../conclusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Future of Language Modeling</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#how-code-generation-works" id="toc-how-code-generation-works" class="nav-link active" data-scroll-target="#how-code-generation-works">How code generation works</a></li>
+  <li><a href="#code-generation-use-cases" id="toc-code-generation-use-cases" class="nav-link" data-scroll-target="#code-generation-use-cases">Code generation use cases</a>
+  <ul class="collapse">
+  <li><a href="#code-completion" id="toc-code-completion" class="nav-link" data-scroll-target="#code-completion">Code completion</a></li>
+  <li><a href="#code-maintainance" id="toc-code-maintainance" class="nav-link" data-scroll-target="#code-maintainance">Code maintainance</a></li>
+  <li><a href="#translation-and-explanation" id="toc-translation-and-explanation" class="nav-link" data-scroll-target="#translation-and-explanation">Translation and explanation</a></li>
+  <li><a href="#using-external-tools" id="toc-using-external-tools" class="nav-link" data-scroll-target="#using-external-tools">Using external tools</a></li>
+  <li><a href="#enhanced-reasoning" id="toc-enhanced-reasoning" class="nav-link" data-scroll-target="#enhanced-reasoning">Enhanced reasoning</a></li>
+  </ul></li>
+  <li><a href="#prompting-tips-for-code-generation" id="toc-prompting-tips-for-code-generation" class="nav-link" data-scroll-target="#prompting-tips-for-code-generation">Prompting tips for code generation</a></li>
+  <li><a href="#limitations-and-caveats" id="toc-limitations-and-caveats" class="nav-link" data-scroll-target="#limitations-and-caveats">Limitations and caveats</a></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../part2/index.html">Techniques</a></li><li class="breadcrumb-item"><a href="../part2/code.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Code generation</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-code" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Code generation</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Function calling is one step towards enabling LLMs to interact with external systems, by giving them more flexibility in choosing which operations to perform—i.e., which methods to call—based on the conversation context. But, in the end, function calling still limits how much the model can do. It is restricted to the set of preprogrammed functionalities we give it access to.</p>
+<p>This may be exactly what you want, because it gives you total control over the action space of the LLM. However, for some of the most complex tasks, it may be too hard to come up with a flexible enough API.</p>
+<p>Suppose you’re making a data analysis bot, that will read a CSV file and answer questions about it. You can ask it to group, filter, or otherwise process the data in a myriad of ways. You could conceivably come up with a set of functions that cover your entire question space, but you would end up coding something that resembles the <code>pandas</code> API. What you actually want, is for your chatbot to write and run <code>pandas</code> code!</p>
+<p>Enter code generation. Instead of coming up with a very flexible and broad set of API functions, simply let your bot write Python code (or any other programming language) and run it. If the model is sufficiently well trained in code generation, it can often solve a majority of the low-level coding tasks that you would end up encapsulating anyway.</p>
+<p>There are many flavors to code generation, ranging in complexity from single instructions to fully working applications. There is also the question of how that code gets used. One option is to execute immediately, maybe even transparently to the user, to obtain a response. In this case, the result from running the code is what matters, rather than the code itself. On the other hand, you might want the code as the end result, maybe to copy and paste it somewhere else.</p>
+<p>In this chapter, we will explore the most interesting use cases for code generation, and some tips and strategies to get the most out of language model that can code.</p>
+<section id="how-code-generation-works" class="level2">
+<h2 class="anchored" data-anchor-id="how-code-generation-works">How code generation works</h2>
+<p>In the simplest case, you can think of code generation as a subset instance of text generation. If your model is trained on mixed natural language and code input, and/or fine-tuned with coding instructions, it will naturally learn to answer to some prompts with actual code. For example, you can train an LLM on programming contests, where the input is a problem statement, and the output is the code of the solution in some programming language.</p>
+<p>It is at least somewhat surprising that vanilla LLMs, trained on code, can learn to write code at all. The reason to be skeptic is that programming languages have very strict syntax rules which make it hard, at least in principle, for a purely statistical language model to produce something that is just parseable code, not to mention semantically correct. Failing to produce a single semicolon in the exact location can make incorrect an otherwise perfect piece of code. Yet, LLMs learn to code, almost without additional effort.</p>
+<p>In fact, most general-purpose models now available have at least some general capabilities for code generation, if only because they are trained of vast datasets that contain, among the many types of text modalities, lots and lots of code. And even if you don’t want an LLM explicitely for code generation, training on code and text (rather than just text) has shown to improve the general reasoning capabilities of a model, even for text-only tasks! But although you can get reasonably good code generation almost for free, the best coding LLMs are fine-tuned on precise text-and-code datasets.</p>
+<p>There are many reasons to prefer a model fine-tuned for coding to a general one. The simplest argument is that, contrary to natural language, highly plausible code can still be incorrect. Fine-tuning a model specifically on code reinforces the syntax rules and makes it much less likely to generate almost-correct but still syntactically wrong code.</p>
+<p>In the same vein, since programming languages are much more rigid in terms of syntax than natural language, fine-tuning can make a smaller model as good or even better than larger, general models, if focused on a specific language. Likewise, even if your general LLM can code Python, it may not know the specific framework you’re interested in, or code with the exact style you want.</p>
+</section>
+<section id="code-generation-use-cases" class="level2">
+<h2 class="anchored" data-anchor-id="code-generation-use-cases">Code generation use cases</h2>
+<p>In this section we’ll look at code generation from a high-level perspective, to understand what are the most interesting use cases it unlocks. We won’t go in-depth into technical details of how to make these use cases work in practice, as we will have plenty of time in Part 3 to see concrete examples in action.</p>
+<section id="code-completion" class="level3">
+<h3 class="anchored" data-anchor-id="code-completion">Code completion</h3>
+<p>The simplest use case for code generation is straightforward code completion. This can be as simple as asking ChatGPT the code to solve a concrete problem without any additional context. However, this use case becomes much more interesting when you can provide the LLM with relevant context (existing code, class hierarchies, function declarations, etc.) and have it produce code that fits right into an existing codebase.</p>
+<p>Code completion, at its core, is just a particular form of text completion, with all the quirks and caveats. The same prompt can produce different results, and slightly different prompts can vary widely in the quality of the output. All prompt techniques we’ve discussed so far apply: format your prompt carefully, be precise, don’t overshare, use examples whenever possible (no negative examples, please), and overall be intentional and cognizant of all usual gotchas.</p>
+</section>
+<section id="code-maintainance" class="level3">
+<h3 class="anchored" data-anchor-id="code-maintainance">Code maintainance</h3>
+<p>Code maintainance is an slightly more advanced form of code completion, in which we ask the model not code to support new functionality, but rather to modify existing code (or add to the existing code) to improve its quality, maintainability, clarity, etc. A typical example is automatic refactoring: asking the model to, e.g., extract some functionality into its own function, or otherwise abstract or encapsulate relevant fragments of code.</p>
+<p>This process can be enhanced with the use of prompt templates for common tasks, including generating boilerplate code or running typical refactors like splitting methods, encapsulating functionality, or changing style from, e.g., a recursive implementation to an iterative one.</p>
+<p>Another form of code maintainance is adding unit tests. A careful explanation of the relevant functional requisites, in natural language, might be enough to have a model generate reasonably good unit tests for the most common use cases.</p>
+</section>
+<section id="translation-and-explanation" class="level3">
+<h3 class="anchored" data-anchor-id="translation-and-explanation">Translation and explanation</h3>
+<p>The previous use cases are mostly examples of language to code generation. On the other hand, we can have code to code and code to language generation.</p>
+<p>The first case is useful for code translation. A simple example is to translate code in one programming language to another, perhaps because you found the solution to your problem online but it’s not in the right programming language. But you can also translate between two versions of the same language, say, from Python 2 to Python 3, to update an implementation. Or translate between different frameworks, or different implementation styles.</p>
+<p>The second case is useful for automatically adding comments to existing code, or otherwise generate explanations in any level of detail. As usual, the accuracy of the explanation is subject to how powerful the model is, and how complex the code. In general, it is impossible to understand what a given code will do without executing it, but you can get pretty far at least in the most common scenarios.</p>
+</section>
+<section id="using-external-tools" class="level3">
+<h3 class="anchored" data-anchor-id="using-external-tools">Using external tools</h3>
+<p>Now we get into the domain of code as means to an end rather than the end in itself. You can use code generation to interface with external tools that either don’t have a high-level functional API or that, by their nature, are code based.</p>
+<p>An example of the former is using any of the myriad utilities in your terminal, via Bash scripts. If you want your LLM to be capable of, e.g., creating files, making commits, downloading stuff, compressing and moving things around, etc., it is very likely that a reasonably good LLM can generate a Bash one-liner or small script to work these tasks out.</p>
+<p>In the latter case, you may want to interface with tools that are code-based, such as SQL databases, or any number of special-purpose computing engines, from Wolfram Alpha to a SAT solver or an in-house tool. If the language used by that tool is not mainstream—meaning, the LLM won’t be trained on it—you’ll need to fine-tune on it.</p>
+<p>And finally, you can interface with programming frameworks that have, e.g., a Python-based API. Again, unless the framework is very well-known—e.g., sklearn—you may need to fine-tune your model to teach it how to use that concrete API. But in many cases the model might generalize from its basic Python knowledge to specific APIs with a small set of carefully curated k-shot examples.</p>
+</section>
+<section id="enhanced-reasoning" class="level3">
+<h3 class="anchored" data-anchor-id="enhanced-reasoning">Enhanced reasoning</h3>
+<p>As we’ve seen in <a href="../part1/limitations.html" class="quarto-xref"><span>Chapter 4</span></a>, LLMs are lousy at mathematical and logical reasoning. This is rather surprising at first, because computers are supposed to be precise mathematical machines. However, when you understand how LLMs reason, you realize they don’t have any explicit mechanism for even the simplest mathematical operations. But you know what does? Python! (and any other programming language).</p>
+<p>Code generation is the most effective way to enhance the mathematical skills of LLMs. Instead of having the model directly answer questions involving mathematical operations, make it generate a short code expression that computes the right formula, run it, and feed the result back to the LLM. This way you can “teach” an LLM to solve complex mathematical problems by doing the same we humans do: using the right tool.</p>
+<p>But the possibilites go far beyond simple (or fairly involved) mathematical operations. You can pair an LLM with any of the many specialized inference engines the AI community has invented over the decades. Make your LLM generate Prolog code and voilá, you have a general purpose logic reasoning engine from natural language, or make it generate SymPy expressions and you have a symbolic reasoner.</p>
+<p>But this is no silver bullet, of course. Your LLM can simply fail to generate the right code. So even if you have the perfect computing engine that solves the right problem, getting a language model to generate semantically correct code for that engine is an open problem, and one which is ultimately unsolvable according to basic computatibility theory.</p>
+<p>However, for many practical cases, given enough examples for k-shot or a small fine-tuning process, you can get an LLM to learn how to solve interesting problems reasonably well. And this is an active area of research, so we can only expect these capabilities to improve in the near future.</p>
+</section>
+</section>
+<section id="prompting-tips-for-code-generation" class="level2">
+<h2 class="anchored" data-anchor-id="prompting-tips-for-code-generation">Prompting tips for code generation</h2>
+<p>In many common cases, you can make an LLM write code simply by asking. A prompt like “Generate a Python function to find the third maximum element from a list” will work almost flawlessly in any sufficiently capable language model you can find today. And this works fine for many use cases where the code is all you need. At least is no worst than searching for a similar snippet of code online.</p>
+<p>However, there are several drawbacks with this KISS approach. First, most LLMs you’ll find online are fine-tuned for chat, so they are… chatty. Instead of the raw code, they might answer with something like “Sure, here is a function in Python to do ….” and then the code. This makes it hard to integrate them with external tools that need just the code, because then you have to parse the response.</p>
+<p>In many cases, you can get away by adding an explicit instruction like “Please answer just with the source code”, but still, some models may refuse. And even if they comply, different models output code in different formats. Some will enclose the code in markdown-style code block annotations while other models might indent the code. It depends heavily on their training data.</p>
+<p>Another problem you may face is when asking for one-liners, i.e., single instructions or expressions that you want to evaluate with, e.g., the <code>eval</code> function in Python. If you ask for a single <code>pandas</code> expression to, say, group and filter a dataset, the model may sometimes produce a propper expression—e.g., <code>df.groupby(...).agg(...)</code>—and other times an instruction—e.g., <code>df = df.groupby(...)</code>. You may work around these issues by doing some checking and post-processing of the response, like removing anything before the last <code>=</code> sign, but this is a very brittle approach.</p>
+<p>In these cases, some of our well-known prompt techniques also apply. Be very intentional with the prompt and provide positive examples of the exact response format you expect. While none of this will 100% guarantee you’ll get a response in the format you need, when paired with a try-and-repeat strategy, you can often get away with the performance you need. For example, if the model makes a mistake 10% of the time, you’ll need to redo one in ten queries on average, which is not that terrible all things considered.</p>
+<p>In many cases, when retrying the same code generation task, it helps including in the prompt the previous answer and the error. This can often be automated simply by trying to run the code, capturing any exceptions, and feeding the model back with the exception message asking it to try and fix it.</p>
+<p>Finally, with some tricks, we can force the LLM to produce syntactically-correct code—even if not guaranteed to be semantically valid. The trick is to restrict the sampling step to only select among the tokens that would be syntactically valid.</p>
+<p>Some open-source LLM inference engines, like llama.cpp, support passing a formal grammar that defines the syntax of the programming language. During sampling, the engine will select among the top-k tokens only those that are valid according to the production rules of the grammar. This can be done efficiently with a linearly bound automaton that can be constructed automatically from the formal grammar definition. While this is a relatively novel and, arguably, rather advanced feature, some commercial APIs, like &lt;fireworks.ai&gt; are starting to support it.</p>
+</section>
+<section id="limitations-and-caveats" class="level2">
+<h2 class="anchored" data-anchor-id="limitations-and-caveats">Limitations and caveats</h2>
+<p>Needless to say, code generation is full of subtle and not-so-subtle problems. For starters, some hallucinations are going to happen, and this might result in several different types of problems. The simplest case is getting code that is not syntactically-correct, that is, code that doesn’t parse. If this is your main problem, then you’re lucky because this is simple to check. Just run a linter for your target language and retry if you find any syntax errors.</p>
+<p>A more complicated issue is when your model generates syntactically-correct code that throws an exception. This is still not so terrible because you can run the code and check for exceptions. However, running code generated by an LLM is a bad idea if you don’t have some guardrails in place. For all you know, the code may have an instruction to wipe out your hard drive. So you must <strong>always run LLM-generated code in a sandboxed environment</strong>. This is especially true when you’re running code generated by a user-facing LLM. Someone <em>will</em> hack that LLM to generate some system-breaking instruction.</p>
+<p>The third level of problem is when your LLM generates code that runs without exceptions but doesn’t do the right thing. This is, in general, impossible to detect beforehand. However, depending on your specific use case, you may be able to check the result is what you expect, and even roll-back any potential side effects if that isn’t the case. For example, you can have your code work on a copy of the relevant data, and check for any unexpected changes before merging that data back.</p>
+<p>This is, however, the most important open problem in program synthesis from natural language, and one that, I believe, will require a new paradigm that goes beyond statistical language modeling to fully solve it.</p>
+<p>Grammar-restricted output is is one of the most effective ways to make code generation more robust. Still, this process is ad-hoc, not baked into the training process. Thus, it is entirely possible for the LLM to get stuck simply because it doesn’t give a high probability to any valid tokens. If the LLM wouldn’t naturally produce, at least with some non-trivial probability, the right response, there is no ad-hoc filtering mechanism that can force it to generate correct code.</p>
+<p>This means adequate prompting and possibly fine-tuning for specific domains will remain relevant strategies in the near term.</p>
+</section>
+<section id="conclusions" class="level2">
+<h2 class="anchored" data-anchor-id="conclusions">Conclusions</h2>
+<p>Code generation is one of the most surprising (weakly) emergent capabilities in the current language modeling paradigm. The fact that pure statistical correlations between tokens give rise to something that can mostly code—granted, at the level of maybe a 2nd year CS college student, in the best of cases—is something I wouldn’t expect to be possible even three years ago. On the other hand, strong code generation is one of the most powerful and versatile capabilities in language models. It opens the door for a myriad of integrations with existing and newly created tools.</p>
+<p>A general-purpose language model paired with a general-purpose code interpreter is one step closer to AGI, there is no doubt. If Turing is right—and would you bet he isn’t?—, any problem that can be solved with an effective, repeatable, systematic method, can be solved with any of the modern general-purpose programming languages. An LLM that can code at the level of the best human programmers would, almost by definition, have a general intelligence.</p>
+<p>The only gap that needs bridging is getting the model to produce the right code. But this might well be the hardest problem in computer science. We know that it is, in general, impossible to know what a program will do without running it. But this doesn’t mean machines are necessarily any less capable than humans in principle. Who says our brains aren’t just very powerful machines?</p>
+<p>But all of that is hypothetical. In the meantime, even with the many limitations of modern LLMs, code generation is one of the most useful tools you have at your disposal to build practical, useful applications using language models. We will spend a lot of time in Part 3 playing around with different strategies to turn LLMs into effective coders.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../part2/functions.html" class="pagination-link" aria-label="Function calling">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Function calling</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../part2/agents.html" class="pagination-link" aria-label="Agents">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Agents</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright 2024 - The Authors</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link active" href="https://store.apiad.net/l/chatbots" aria-current="page">
+      <i class="bi bi-book" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>12&nbsp; Optimization of LLMs – How to Train your Chatbot</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../part3/index.html" rel="next">
+<link href="../part2/finetune.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../part2/index.html">Techniques</a></li><li class="breadcrumb-item"><a href="../part2/optimization.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Optimization of LLMs</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">How to Train your Chatbot</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://store.apiad.net/l/chatbots" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-book"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../part1/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Principles</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part1/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What is a language model?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part1/training.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">How do LLMs work?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part1/capabilities.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What can LLMs do?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part1/limitations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The limits of language models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part1/evaluation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Evaluating LLMs</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../part2/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Techniques</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part2/prompting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Prompt engineering</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part2/rag.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Retrieval augmented generation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part2/functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Function calling</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part2/code.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Code generation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part2/agents.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Agents</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part2/finetune.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Fine-tuning</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part2/optimization.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Optimization of LLMs</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../part3/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Applications</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part3/01_chatbot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The Chatbot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part3/02_pdfbot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">The PDF Reader</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part3/03_search.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The Answer Engine</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part3/04_shoping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The Salesbot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part3/05_analyst.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">The Data Analyst</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part3/06_cli.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">The Hackerbot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part3/07_writer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">The Writer</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part3/08_coder.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">The Coder</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../conclusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Future of Language Modeling</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#weight-prunning" id="toc-weight-prunning" class="nav-link active" data-scroll-target="#weight-prunning">Weight prunning</a>
+  <ul class="collapse">
+  <li><a href="#unstructured-weight-pruning" id="toc-unstructured-weight-pruning" class="nav-link" data-scroll-target="#unstructured-weight-pruning">Unstructured Weight Pruning</a></li>
+  <li><a href="#structured-weight-pruning" id="toc-structured-weight-pruning" class="nav-link" data-scroll-target="#structured-weight-pruning">Structured Weight Pruning</a></li>
+  <li><a href="#dynamic-weight-pruning" id="toc-dynamic-weight-pruning" class="nav-link" data-scroll-target="#dynamic-weight-pruning">Dynamic Weight Pruning</a></li>
+  </ul></li>
+  <li><a href="#model-quantization" id="toc-model-quantization" class="nav-link" data-scroll-target="#model-quantization">Model quantization</a>
+  <ul class="collapse">
+  <li><a href="#post-training-quantization-ptq" id="toc-post-training-quantization-ptq" class="nav-link" data-scroll-target="#post-training-quantization-ptq">Post-Training Quantization (PTQ)</a></li>
+  <li><a href="#quantization-aware-training-qat" id="toc-quantization-aware-training-qat" class="nav-link" data-scroll-target="#quantization-aware-training-qat">Quantization-Aware Training (QAT)</a></li>
+  <li><a href="#dynamic-quantization" id="toc-dynamic-quantization" class="nav-link" data-scroll-target="#dynamic-quantization">Dynamic Quantization</a></li>
+  <li><a href="#dynamic-range-quantization" id="toc-dynamic-range-quantization" class="nav-link" data-scroll-target="#dynamic-range-quantization">Dynamic Range Quantization</a></li>
+  </ul></li>
+  <li><a href="#knowledge-distillation" id="toc-knowledge-distillation" class="nav-link" data-scroll-target="#knowledge-distillation">Knowledge Distillation</a>
+  <ul class="collapse">
+  <li><a href="#offline-distillation" id="toc-offline-distillation" class="nav-link" data-scroll-target="#offline-distillation">Offline Distillation</a></li>
+  <li><a href="#online-distillation" id="toc-online-distillation" class="nav-link" data-scroll-target="#online-distillation">Online Distillation</a></li>
+  <li><a href="#self-distillation" id="toc-self-distillation" class="nav-link" data-scroll-target="#self-distillation">Self-Distillation</a></li>
+  <li><a href="#advantages-and-disadvantages-of-knowledge-distillation" id="toc-advantages-and-disadvantages-of-knowledge-distillation" class="nav-link" data-scroll-target="#advantages-and-disadvantages-of-knowledge-distillation">Advantages and Disadvantages of Knowledge Distillation</a></li>
+  </ul></li>
+  <li><a href="#factorization" id="toc-factorization" class="nav-link" data-scroll-target="#factorization">Factorization</a>
+  <ul class="collapse">
+  <li><a href="#low-rank-factorization" id="toc-low-rank-factorization" class="nav-link" data-scroll-target="#low-rank-factorization">Low-Rank Factorization</a></li>
+  </ul></li>
+  <li><a href="#sparse-architectures" id="toc-sparse-architectures" class="nav-link" data-scroll-target="#sparse-architectures">Sparse Architectures</a>
+  <ul class="collapse">
+  <li><a href="#mixture-of-experts-moe" id="toc-mixture-of-experts-moe" class="nav-link" data-scroll-target="#mixture-of-experts-moe">Mixture of Experts (MoE)</a></li>
+  <li><a href="#other-sparse-architectures" id="toc-other-sparse-architectures" class="nav-link" data-scroll-target="#other-sparse-architectures">Other Sparse Architectures</a></li>
+  </ul></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../part2/index.html">Techniques</a></li><li class="breadcrumb-item"><a href="../part2/optimization.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Optimization of LLMs</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Optimization of LLMs</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>As the demand for advanced artificial intelligence applications grows, the need for optimization techniques in large language models (LLMs) becomes increasingly critical. These models are often computationally intensive and require significant memory resources, which can limit their deployment on commodity hardware. To address these challenges, various optimization strategies have been developed to enhance the efficiency and performance of LLMs without sacrificing their capabilities.</p>
+<p>In optimizing large language models (LLMs), the primary goal is to reduce the size of the model. This reduction is crucial because it directly influences the memory costs associated with hosting the model and the inference costs, which are often proportional to the model size. However, optimization efforts can also focus on improving inference time by modifying the architecture without necessarily compressing the model.</p>
+<p>This article explores various optimization techniques, including weight pruning, quantization, knowledge distillation, factorization, and sparse architectures. Each of these methods presents unique advantages and trade-offs, making them suitable for different scenarios. By understanding and applying these techniques, developers can create more efficient models that perform well even on commodity hardware, ultimately enhancing the accessibility and usability of advanced AI technologies.</p>
+<section id="weight-prunning" class="level2">
+<h2 class="anchored" data-anchor-id="weight-prunning">Weight prunning</h2>
+<p>Pruning is the process of completely removing a number of parameters, thus making the model smaller. The usual approach involves finding a set of parameters that are minimally important, that is, weights that are as close to zero as possible. By setting these weights to exactly zero, we can compress a model and thus reduce the download time and the inference cost. Here are the main variants of weight pruning, along with their advantages and caveats.</p>
+<section id="unstructured-weight-pruning" class="level3">
+<h3 class="anchored" data-anchor-id="unstructured-weight-pruning">Unstructured Weight Pruning</h3>
+<p>Unstructured weight pruning is like trimming the leaves of a tree. Instead of cutting off entire branches, you carefully snip off the individual leaves that are less important. In the context of neural networks, these “leaves” are the individual weights, and the goal is to remove the ones that don’t contribute much to the overall performance of the model.</p>
+<p>The process works by identifying the weights that are closest to zero. These weights are considered less significant, so they get the chop. By removing these near-zero weights, you can shrink the size of the model without losing too much of its accuracy.</p>
+<p>One advantage of this approach is its simplicity. It’s easy to understand and implement, and you can apply it at any point in the network. This gives you a lot of flexibility in deciding which weights to remove and where. Another perk is the potential for high compression. If you can identify a large number of unimportant weights, you can really pack down the size of the model, making it more efficient to store and run.</p>
+<p>However, there are a couple of downsides to keep in mind. First, the resulting model might end up with a scattered distribution of zero weights, which can be tricky for certain types of hardware to work with efficiently. Second, removing weights can sometimes mess with the intricate relationships that the model has learned, leading to a drop in its overall accuracy.</p>
+</section>
+<section id="structured-weight-pruning" class="level3">
+<h3 class="anchored" data-anchor-id="structured-weight-pruning">Structured Weight Pruning</h3>
+<p>Structured weight pruning is like giving your model a haircut instead of just trimming individual strands of hair. Instead of snipping away at individual weights, this method focuses on removing whole sections of the network, such as entire neurons, filters, or channels. By taking out these larger structures, you can make the model smaller while keeping its overall shape intact.</p>
+<p>One of the great things about structured pruning is that it can lead to improved efficiency. When you remove entire neurons or filters, the model can run faster on hardware that’s designed for dense computations. This means you can get better performance without sacrificing too much accuracy.</p>
+<p>Another benefit is that structured pruning tends to have a milder impact on the model’s performance compared to unstructured pruning. Because you’re preserving the overall architecture and the relationships between different parts of the model, it often results in less accuracy loss. It’s like giving your model a neat trim rather than a drastic change.</p>
+<p>However, there are some challenges to consider. This method can be a bit more aggressive, meaning it might alter the model’s architecture significantly, which isn’t always what you want. Plus, deciding which structures to prune can be more complex than just picking off individual weights. You need to carefully choose which neurons or filters to remove, which can take some extra thought and experimentation.</p>
+</section>
+<section id="dynamic-weight-pruning" class="level3">
+<h3 class="anchored" data-anchor-id="dynamic-weight-pruning">Dynamic Weight Pruning</h3>
+<p>Dynamic weight pruning is a more flexible approach that adjusts the weights during the training process based on their importance. Unlike static methods, which prune weights after training is complete, dynamic pruning continuously evaluates and prunes weights as the model learns. This means that as the model trains, it can adaptively remove weights that are deemed less significant, allowing for a more nuanced and responsive pruning process.</p>
+<p>One of the main advantages of dynamic weight pruning is its adaptability. Since the model is constantly assessing which weights are important, it can make more informed decisions about what to prune. This often leads to better retention of crucial weights, which helps maintain or even improve overall model performance compared to static pruning methods.</p>
+<p>However, this approach does come with some trade-offs. For one, it can increase training time since the model must continuously evaluate and adjust weights throughout the training process. Additionally, the complexity of implementing dynamic pruning can be a challenge, requiring careful tuning of the pruning criteria and schedules.</p>
+<p>When you contrast dynamic weight pruning with the static variants like unstructured and structured pruning, the differences become clearer. Unstructured pruning is straightforward and focuses on removing individual weights based on their magnitude after training, which can lead to scattered zero weights in the model. Structured pruning, on the other hand, removes entire neurons or filters, resulting in a more organized model but potentially altering its architecture significantly.</p>
+<p>In summary, dynamic weight pruning offers a more adaptive and responsive method for pruning, allowing the model to maintain performance while reducing size. However, it requires more effort in terms of training time and implementation complexity compared to the more straightforward static methods. Each pruning strategy has its own strengths and weaknesses, making the choice largely dependent on the specific needs of the model and the deployment context.</p>
+</section>
+</section>
+<section id="model-quantization" class="level2">
+<h2 class="anchored" data-anchor-id="model-quantization">Model quantization</h2>
+<p>Model quantization is a technique used to reduce the memory footprint and computational requirements of neural networks by representing weights and activations with lower precision. Instead of using the standard 32-bit floating-point numbers, quantization allows for smaller formats, such as 16-bit or even 8-bit integers.</p>
+<p>This reduction in precision means that each weight becomes an approximate representation of its original value. While this can introduce some mathematical differences in computations, the inherent approximations in language modeling often mean that a well-quantized model can still perform similarly to its full-precision counterpart, all while significantly decreasing memory usage and speeding up inference times.</p>
+<p>These are some of the most common variants of model quantization:</p>
+<section id="post-training-quantization-ptq" class="level3">
+<h3 class="anchored" data-anchor-id="post-training-quantization-ptq">Post-Training Quantization (PTQ)</h3>
+<p>Post-Training Quantization (PTQ) is a technique that involves applying quantization to a model that has already been trained, without any additional training steps. In this process, the model’s weights and activations are converted to lower precision formats after the initial training is complete.</p>
+<p>One of the main benefits of PTQ is its simplicity; it is easy to implement because it does not require retraining the model. This allows for quick deployment, making it possible to rapidly quantize existing models and prepare them for use.</p>
+<p>However, there is a downside to this approach. The model may experience a drop in accuracy if the quantization process does not effectively capture the characteristics of the original model. This means that while PTQ is efficient, it can lead to reduced performance in some cases.</p>
+</section>
+<section id="quantization-aware-training-qat" class="level3">
+<h3 class="anchored" data-anchor-id="quantization-aware-training-qat">Quantization-Aware Training (QAT)</h3>
+<p>Quantization-Aware Training (QAT) is a method used during the training of a model to prepare it for quantization. This technique simulates the effects of quantization while the model is being trained, allowing it to learn how to handle reduced precision from the beginning. By incorporating quantization effects into both the forward and backward passes of training, the model becomes more robust to the eventual reduction in precision.</p>
+<p>One of the key benefits of QAT is that it typically results in better accuracy retention compared to models that are quantized after training. Since the model is aware of quantization during training, it can adapt its weights and activations accordingly, leading to more reliable performance. This adaptability helps the model cope with the noise introduced by quantization.</p>
+<p>However, QAT comes with some challenges. The training process becomes more complex and resource-intensive because it requires additional operations and adjustments to the loss function. Implementing QAT demands careful tuning and validation to ensure that the model accurately simulates quantization effects. As a result, QAT often requires more computational resources and a longer training time compared to simpler methods like Post-Training Quantization (PTQ).</p>
+</section>
+<section id="dynamic-quantization" class="level3">
+<h3 class="anchored" data-anchor-id="dynamic-quantization">Dynamic Quantization</h3>
+<p>Dynamic quantization is a method where the weights of a model are converted to lower precision during inference, while the activations are quantized based on their observed range at runtime. This means that instead of using fixed lower precision for everything, the model adapts the precision of activations dynamically as it processes data.</p>
+<p>One of the main advantages of dynamic quantization is its flexibility. By adapting to the input data, it can help maintain accuracy even with lower precision. This adaptability allows the model to perform well across a variety of inputs without needing extensive modifications.</p>
+<p>Additionally, dynamic quantization is simpler to implement compared to techniques like Quantization-Aware Training (QAT). It can often be applied to existing models without requiring significant changes, making it a practical choice for many applications.</p>
+<p>However, there are some downsides. Dynamic quantization may not achieve the same level of compression as other quantization methods, since activations remain in floating-point format, which can lead to larger memory usage during inference. Moreover, careful tuning is required to ensure that the quantization parameters are optimized for the best performance, which can add complexity to the implementation process.</p>
+</section>
+<section id="dynamic-range-quantization" class="level3">
+<h3 class="anchored" data-anchor-id="dynamic-range-quantization">Dynamic Range Quantization</h3>
+<p>Dynamic range quantization is a specific form of dynamic quantization that aims to strike a balance between full integer quantization and standard floating-point inference. In this approach, the weights of the model are quantized to 8-bit integers during conversion, while other tensors, like activations, remain in floating-point format. However, during inference, the activations are dynamically quantized to integers based on their observed range, allowing the model to maintain higher accuracy while still benefiting from reduced memory usage and faster computations.</p>
+<p>One of the main advantages of dynamic range quantization is its ability to achieve significant speed improvements similar to full integer quantization while maintaining higher accuracy. This method also has a simpler pipeline compared to full integer quantization, making it easier to implement. The dynamic adjustment of activation quantization allows for better utilization of the quantized bits, maximizing the accuracy of the model.</p>
+<p>However, there are some downsides to consider. While dynamic range quantization reduces the model size, it may not achieve the same level of compression as full integer quantization since activations are still stored in floating-point format. Additionally, although it generally maintains good accuracy, it’s important to evaluate the quantized model to ensure that performance degradation is acceptable. Some optimizations may not be fully realized if the target hardware does not support dynamic quantization efficiently.</p>
+</section>
+</section>
+<section id="knowledge-distillation" class="level2">
+<h2 class="anchored" data-anchor-id="knowledge-distillation">Knowledge Distillation</h2>
+<p>Knowledge distillation is a technique used to train a smaller “student” model to replicate the behavior of a larger “teacher” model. The student model learns to match the outputs or intermediate representations of the teacher model, allowing it to absorb essential knowledge while being more compact and efficient. This method is particularly beneficial for deploying models in resource-constrained environments, as it helps maintain high performance with reduced computational demands.</p>
+<p>There are several approaches to knowledge distillation, each with its own methodology and use cases. The three primary variants are offline distillation, online distillation, and self-distillation.</p>
+<section id="offline-distillation" class="level3">
+<h3 class="anchored" data-anchor-id="offline-distillation">Offline Distillation</h3>
+<p>This is the traditional approach where the teacher model is trained first. After the teacher has been trained, the student model is trained separately using the soft labels generated by the teacher. These soft labels provide more nuanced information than hard labels, enabling the student to learn from the teacher’s predictions effectively. The main advantage of offline distillation is its straightforward implementation, as the teacher’s weights remain unchanged during the training of the student. However, this method requires a well-trained teacher model in advance, which can be resource-intensive.</p>
+</section>
+<section id="online-distillation" class="level3">
+<h3 class="anchored" data-anchor-id="online-distillation">Online Distillation</h3>
+<p>This approach addresses scenarios where a pre-trained teacher model may not be available or when the teacher model is too large to store or process efficiently. In this approach, the teacher and student models are trained simultaneously, allowing the student to learn from the teacher dynamically during training. This method can be particularly useful for handling non-stationary or streaming data. While online distillation can lead to faster training times and adaptability, it requires that both models share the same architecture, which can complicate the setup.</p>
+</section>
+<section id="self-distillation" class="level3">
+<h3 class="anchored" data-anchor-id="self-distillation">Self-Distillation</h3>
+<p>A variant where the student and teacher are the same model, but the model is trained multiple times. In this case, the model first learns from the data and then refines its predictions by treating its own outputs as soft labels in subsequent training iterations. This approach can help improve the model’s performance without needing a separate teacher model. The advantage of self-distillation is its simplicity and reduced resource requirements, but it may not capture the full range of knowledge that a larger teacher model could provide.</p>
+</section>
+<section id="advantages-and-disadvantages-of-knowledge-distillation" class="level3">
+<h3 class="anchored" data-anchor-id="advantages-and-disadvantages-of-knowledge-distillation">Advantages and Disadvantages of Knowledge Distillation</h3>
+<p>Knowledge distillation offers several benefits. It significantly reduces the size of the model, making it more feasible to deploy on devices with limited storage and computational power. Distilled models can also process data more quickly, leading to faster inference times, which is crucial for real-time applications. Additionally, training a student model using knowledge distillation is less resource-intensive than training a large model from scratch, as it often requires less data and computational power.</p>
+<p>However, there are some drawbacks to consider. The distillation process necessitates a well-trained teacher model, which can be a barrier in terms of the required computational resources and training time. Furthermore, while distilled models retain much of the accuracy of their larger counterparts, they may lose some minor decision-making nuances that the more complex model captures.</p>
+</section>
+</section>
+<section id="factorization" class="level2">
+<h2 class="anchored" data-anchor-id="factorization">Factorization</h2>
+<p>Factorization is a general technique used to simplify neural network models by breaking down weight matrices into products of smaller matrices. This process reduces the number of parameters in the model, making it more efficient in terms of storage and computation. By using factorization, we can maintain performance while creating more compact models.</p>
+<p>Two very common approaches are low-rank factorization and block-term decomposition.</p>
+<section id="low-rank-factorization" class="level3">
+<h3 class="anchored" data-anchor-id="low-rank-factorization">Low-Rank Factorization</h3>
+<p>Low-rank factorization involves decomposing a large weight matrix into two smaller matrices. The idea is that many weight matrices in neural networks can be approximated well by using fewer parameters. By representing the original matrix as a product of two smaller matrices, we can significantly cut down on the number of parameters that need to be stored and processed. But this is not always feasible, because it may be difficult to find a large number of near-zero weights.</p>
+<p>Block-term decomposition (BTD) is a more advanced factorization technique that breaks down a weight matrix into a sum of products of smaller matrices. This method allows for a more nuanced representation of the original matrix by capturing different patterns and structures within the weights.</p>
+<p>BTD offers a higher compression ratio compared to low-rank factorization, which means it can reduce the model size even further. This is particularly beneficial when dealing with convolutional layers, as it helps preserve the spatial relationships in the data, leading to better performance. However, BTD is more complex to implement and requires careful tuning of the sizes of the smaller matrices. Like low-rank factorization, optimizing these sizes for each layer can also be resource-intensive.</p>
+</section>
+</section>
+<section id="sparse-architectures" class="level2">
+<h2 class="anchored" data-anchor-id="sparse-architectures">Sparse Architectures</h2>
+<p>Sparse architectures are neural network designs that only require a subset of weights to be active during inference. This approach aims to improve efficiency by reducing the computational and memory requirements of the model. The most common example of a sparse architecture is the mixture of experts (MoE) model.</p>
+<section id="mixture-of-experts-moe" class="level3">
+<h3 class="anchored" data-anchor-id="mixture-of-experts-moe">Mixture of Experts (MoE)</h3>
+<p>In a MoE model, several sub-networks, called experts, are trained in parallel on different parts of the input space. During inference, a gating network selects one or a few of the most relevant experts to process the input, while the other experts remain inactive. This sparse activation of experts leads to computational and memory savings compared to a dense model where all experts are active for every input.</p>
+<p>The Mixture of Experts (MoE) architecture has several advantages that enhance its performance and efficiency. By activating only a subset of experts for each input, MoE models achieve improved computational and memory efficiency compared to dense models. This selective activation allows MoE models to scale effectively, accommodating a large number of experts that can specialize in handling diverse inputs. As a result, the ability to choose relevant experts for each input can lead to better performance, particularly on complex or varied datasets.</p>
+<p>However, there are also challenges associated with MoE models. The increased complexity of training a MoE model arises from the need for additional components, such as the gating network, which can complicate the overall training process and extend the time required to train the model. Additionally, there is a risk of load imbalance; if the gating network assigns inputs unevenly among the experts, some may be underutilized while others are overburdened. This imbalance can hinder the model’s efficiency. Furthermore, the sequential nature of expert selection can limit opportunities for parallelization, which is crucial for efficient inference.</p>
+</section>
+<section id="other-sparse-architectures" class="level3">
+<h3 class="anchored" data-anchor-id="other-sparse-architectures">Other Sparse Architectures</h3>
+<p>While MoE is the most prominent example, there are other sparse architecture designs:</p>
+<ol type="1">
+<li><p><strong>Sparse Convolutional Neural Networks (Sparse CNNs):</strong> These models exploit the inherent sparsity in convolutional layers by only storing and computing non-zero weights and activations. Sparse CNNs can achieve significant memory and computational savings compared to dense CNNs.</p></li>
+<li><p><strong>Sparse Transformer Models:</strong> Transformer models, widely used in natural language processing, can be made sparse by introducing sparsity in the attention mechanism. Sparse Transformers aim to reduce the quadratic complexity of standard attention by only computing attention scores for a subset of token pairs.</p></li>
+<li><p><strong>Sparse Recurrent Neural Networks:</strong> Sparsity can also be introduced in recurrent neural networks by selectively activating neurons or connections during inference. This can lead to more efficient processing of sequential data.</p></li>
+</ol>
+</section>
+</section>
+<section id="conclusions" class="level2">
+<h2 class="anchored" data-anchor-id="conclusions">Conclusions</h2>
+<p>While various optimization techniques for large language models (LLMs) such as weight pruning, quantization, knowledge distillation, factorization, and sparse architectures offer significant benefits, none of these approaches can be deemed universally superior. Each method comes with its own set of trade-offs that must be carefully considered based on the specific requirements of the application. Plus, they can often be combined.</p>
+<p>For instance, weight pruning can effectively reduce model size and improve efficiency, but it may lead to accuracy loss if important weights are removed. Quantization can significantly lower memory usage and speed up inference, yet it can also introduce precision-related errors that affect performance. Knowledge distillation allows for the creation of smaller, more efficient models but relies on the availability of a well-trained teacher model. Factorization techniques can simplify models and reduce parameters, but they may require complex tuning to maintain accuracy. Sparse architectures, particularly mixture of experts, enhance efficiency by activating only a subset of parameters, but they introduce additional complexity and potential load balancing issues.</p>
+<p>The most successful modern LLMs that can operate effectively on commodity hardware often employ a combination of these techniques. By integrating sparse architectures with clever quantization strategies, these models can achieve a balance between performance and resource efficiency. Additionally, many smaller models are distilled from larger ones, allowing them to retain essential knowledge while being more compact and easier to deploy. This synergy among various optimization methods can be seen as a kind of “free lunch,” where the benefits of one approach can complement another.</p>
+<p>When there is a need to further enhance performance, practitioners can explore additional methods or refine existing techniques. The key lies in understanding the specific needs of the application and the constraints of the deployment environment. By leveraging the strengths of multiple optimization strategies, developers can create efficient, high-performing models that meet the demands of real-world applications.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../part2/finetune.html" class="pagination-link" aria-label="Fine-tuning">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Fine-tuning</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../part3/index.html" class="pagination-link" aria-label="Applications">
+        <span class="nav-page-text">Applications</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright 2024 - The Authors</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link active" href="https://store.apiad.net/l/chatbots" aria-current="page">
+      <i class="bi bi-book" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
