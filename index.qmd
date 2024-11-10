@@ -1,0 +1,89 @@
+---
+title: "Mostly Harmless Books"
+---
+
+This page contains all the information about of my published, in-progress, and planned books. You can get any of them in digital form (and, in future, some of them in printed form) following the links in each section.
+
+But before that, please the [The Mostly Harmless Compendium](https://store.apiad.net/l/compendium). It's a bundle of all my current and future educational projects (books, technical guides, etc) at a significantly reduced price. Getting it today grants you access in perpetuity to all my digital educational work, including all the books in this page and whatever I come up with in the future.
+
+## 📚 Early Access
+
+Early access projects are books I'm currently writing that you can read in their unfinished form. They are all available under the same paradigm. Every chapter comes out as a blog post in [Mostly Harmless Ideas](https://blog.apiad.net) first. Then, PDF and EPUD versions are updated and available in [my Gumroad profile](https://store.apiad.net) at a reduced price. Finally, all my books are free to read online in this very website. Follow the links in each section.
+
+An early access copy grants you access to all future digital versions of the book, including future editions, forever. If possible, I will also provide you with reduced-price links to printed copies when (and if ever) I make one of those.
+
+The legend for **Status** is as follows:
+
+- **🔴 Alpha:** Some chapters have drafts available, but part of the content is not even written.
+- **🟠 Beta:** All chapters have at least a first draft available. First round of editing and revision (structure) is under way.
+- **🔵 Delta:** First round of revision (structure) is done. All digital assets are ready (charts, code, graphics, etc). The general structure of the book is locked in. Second round of revision is under way.
+- **🟣 Epsilon:** Second round of revision (content) is done. Book content is locked in, only aesthetic changes and formatting remain.
+- **🟢 Omega:** Final version of the book is ready and published.
+
+Getting an early access copy to any of my books is the best way to support my work. It allows me to invest time and resources into writing, editing, and formatting the book(s), and it signals there is an interested audience. Also, early access copies are significantly cheaper than any future finished copy.
+
+### The Science of Computation
+
+| | |
+|-|-|
+| Audience  | General |
+| Status    | Alpha   |
+| Progress  | 🔴🔴🔴⚪⚪⚪⚪⚪⚪⚪ |
+| Pages     | 53 (of +300) |
+| Links     | [Gumroad](https://store.apiad.net/l/tsoc), [Web](https://books.apiad.net/tsoc)
+
+#### Summary
+
+This is my opus magna, a grand view of the whole field of computer science, from foundational theory to systems to applications. The book is divided into four main parts: foundations of computer science, computational systems, software engineering, and artificial intelligence. Each part is a broad discipline in computer science. The book has zero mathematical formulas or computer code.
+
+### Mostly Harmless Graphs
+
+| | |
+|-|-|
+| Audience  | Technical |
+| Status    | Alpha   |
+| Progress  | 🔴🔴⚪⚪⚪⚪⚪⚪⚪⚪ |
+| Pages     | 54 (of +300) |
+| Links     | [Gumroad](https://store.apiad.net/l/graphs)
+
+#### Summary
+
+This is a book about graphs, from theory to algorithms to practical applications. Contrary to most textbooks on graphs, this book is not meant to cover all the definitions and theory. Instead, it focuses directly on applications and builds the theory as necessary. Each chapter starts with a concrete, practical problem (even if fictionalized) and gives a solution in the form of one or more algorithms. It also provides key theorems whenever suitable.
+
+### How to Train your Chatbot
+
+| | |
+|-|-|
+| Audience  | General & Technical |
+| Status    | Alpha   |
+| Progress  | 🔴🔴🔴🔴🔴🔴🔴⚪⚪⚪ |
+| Pages     | 183 (of ~250) |
+| Links     | [Gumroad](https://store.apiad.net/l/chatbots)
+
+#### Summary
+
+This is a very hands-on book on building applications with large language models. It presents the main strategies to integrate LLMs into software applications from prompt engineering and retrieval augmented generation to code interpreter, tools, and agents. It also gives a solid foundation on how LLMs work and key insights on their capabilities and limitations.
+
+## ❤️‍🔥 Backburner
+
+These are ideas for books I'm currently considering. Most are based on courses I'm currently teaching or have taught in the recent past, so some of the material is already there. There are no dates for these as some may never see the light. Also, all titles are temporary.
+
+### Mostly Harmless Algorithms
+
+This is a book on algorithm design and analysis. It is not a book on coding but on problem-solving using algorithms. Each chapter will present a problem and we will design an algorithm, prove its correctness, and analyze its performance. It should cover from basic algorithms like searching and sorting to advanced techniques like greedy algorithms, dynamic programming, and backtracking, as well as approximate and randomized algorithms. No fancy theory on computability or complexity, but it will have some hints of this when we analyze running costs.
+
+### Mostly Harmless Compilers
+
+A book to learn how compilers work. We will build a compiler from scratch at the same time we design a small but fairly powerful programming language. We will learn how to build a parser, implement a reasonable level of semantic analysis, and generate code that runs on an actual computer. It’s a very opinionated book that shows how to build a practical compiler using modern techniques, and at the same time, will teach you the underlying formal language theory.
+
+### The Hacker Guide to Coding
+
+A book to learn how to code, based on Python, but different to most coding books. It’s a project-based book where each chapter we solve a concrete problem with code. So instead of going through the programming language feature and seeing artificial and isolated examples, every new concept is introduced in the context of a major problem we want to solve.
+
+### How to Think Like a Computer Scientist
+
+A book on computational thinking. This book is for all readers who want to incorporate computational thinking into their daily life. The purpose is to teach you how to think rigorously and deeply about problems, applying well-known techniques from computer science to come up with clever, effective solutions to these problems.
+
+### Languages and Computation
+
+A technical book on theoretical aspects of computer science, from computability theory to formal languages and complexity. It’s a book suitable for an undergrad-level course on computability and formal languages. The central idea in the book is the duality between languages and computation, how a language defines a problem and a machine defines an algorithm. Weaving this narrative we'll build the theory of computability and complexity on top of formal languages and automata.

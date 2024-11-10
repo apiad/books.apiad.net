@@ -1,0 +1,27 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Mostly Harmless Books"
+
+  navbar:
+    left:
+      - text: The Mostly Harmless Compendium
+        href: https://store.apiad.net/l/compendium
+      - text: Read Online Now
+        menu:
+          - text: The Science of Computation
+            href: https://books.apiad.net/tsoc
+          - text: Mostly Harmless Graphs
+            href: https://books.apiad.net/graphs
+          - text: How to Train your Chatbot
+            href: https://books.apiad.net/chatbots
+
+format:
+  html:
+    theme:
+      dark: darkly
+      light: flatly
+    css: styles.css
+    toc: true
