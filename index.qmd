@@ -30,7 +30,7 @@ Getting an early access copy to any of my books is the best way to support my wo
 | Status    | Alpha   |
 | Progress  | 🔴🔴🔴⚪⚪⚪⚪⚪⚪⚪ |
 | Pages     | 53 (of +300) |
-| Links     | [Gumroad](https://store.apiad.net/l/tsoc), [Web](https://books.apiad.net/tsoc)
+| Links     | 🎁 [Buy on Gumroad](https://store.apiad.net/l/tsoc), 📖 [Read Online](https://books.apiad.net/tsoc)
 
 #### Summary
 
@@ -44,7 +44,8 @@ This is my opus magna, a grand view of the whole field of computer science, from
 | Status    | Alpha   |
 | Progress  | 🔴🔴⚪⚪⚪⚪⚪⚪⚪⚪ |
 | Pages     | 54 (of +300) |
-| Links     | [Gumroad](https://store.apiad.net/l/graphs)
+| Links     | 🎁 [Buy on Gumroad](https://store.apiad.net/l/graphs), 📖 [Read Online](https://books.apiad.net/graphs)
+
 
 #### Summary
 
@@ -58,7 +59,8 @@ This is a book about graphs, from theory to algorithms to practical applications
 | Status    | Alpha   |
 | Progress  | 🔴🔴🔴🔴🔴🔴🔴⚪⚪⚪ |
 | Pages     | 183 (of ~250) |
-| Links     | [Gumroad](https://store.apiad.net/l/chatbots)
+| Links     | 🎁 [Buy on Gumroad](https://store.apiad.net/l/chatbots), 📖 [Read Online](https://books.apiad.net/chatbots)
+
 
 #### Summary
 
