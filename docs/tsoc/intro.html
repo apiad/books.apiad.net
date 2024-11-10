@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Introduction: The Quest to Answer all Questions – The Science of Computation</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./theory/intro.html" rel="next">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Introduction: The Quest to Answer all Questions</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">The Science of Computation</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://store.apiad.net/l/tsoc" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-book"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Introduction: The Quest to Answer all Questions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./theory/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Foundations of Computer Science</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./theory/turing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What is Computation?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./theory/algorithms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Algorithms, Lots of Algorithms</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./theory/languages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Languages and Computation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./theory/complexity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Easy and Hard Problems</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">systems/intro.qmd - systems/cpus.qmd - systems/os.qmd - systems/networking.qmd - systems/internet.qmd - systems/security.qmd</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Software Engineering</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./ai/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Artificial Intelligence</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ai/ai.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Why we need Artificial Intelligence</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ai/search.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Search</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./epilogue.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Road Ahead</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#leibnizs-dream" id="toc-leibnizs-dream" class="nav-link active" data-scroll-target="#leibnizs-dream">Leibniz’s Dream</a></li>
+  <li><a href="#the-rules-of-thought" id="toc-the-rules-of-thought" class="nav-link" data-scroll-target="#the-rules-of-thought">The Rules of Thought</a></li>
+  <li><a href="#the-final-frontier" id="toc-the-final-frontier" class="nav-link" data-scroll-target="#the-final-frontier">The Final Frontier</a></li>
+  <li><a href="#crisis-in-infinite-math" id="toc-crisis-in-infinite-math" class="nav-link" data-scroll-target="#crisis-in-infinite-math">Crisis in Infinite Math</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Introduction: The Quest to Answer all Questions</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Humanity’s ingenuity extends far back into the foggy ages of the agricultural revolution, and probably even farther back. Since the dawn of Homo sapiens, our species has always been interested in predicting the future. Tracking the seasons, planning crops, estimating an enemy’s forces, and building cities, all of these tasks require significantly complex computations that often need to be reasonably accurate to be helpful.</p>
+<p>To tackle these problems, humanity invented mathematics, our greatest collective intellectual achievement. Nowadays, it is easy to think of math as this coherent body of knowledge that can be built from the ground up –much like you learn it in school– where every new concept, theorem, or technique, is beautifully derived from previous concepts and theorems. The whole edifice of math seems like a divine gift, a perfect tool for solving the most complex problems.</p>
+<p>But this wasn’t always the case. Mathematics as we know it today is a very recent invention. Before the 20th century, we had several chunks of math that weren’t really all that compatible with each other. So much so, that finding bridges between two different mathematical theories (or fields) has been one of the most fruitful, and challenging work of some of the most eminent mathematicians of all time.</p>
+<p>The first big block of mathematical knowledge we came up with is <strong>Euclidean Geometry</strong>, developed by ancient Greeks (and most likely many other ancient civilizations as well). Euclid, a Greek mathematician, was the first to sit down and systematize the existing knowledge in a book, full of axioms, definitions, theorems, and proofs. From Euclid, we inherited the idea that mathematical proofs are sequences of claims based on previous claims, that start with some axioms and definitions.</p>
+<p>The Greeks gave us another big chunk of math: <strong>Logic</strong>. Aristotle, one of the most important philosophers of all times, came up with what he called “syllogisms”, which are just rules for sound reasoning. A classic example of an Aristotelian syllogism is “if all men are mortal, and Socrates is a man, then Socrates is mortal”. The most essential such rule, which underpins all mathematical reasoning is called <em>modus ponens</em>, and it basically says something like: “A implies B, and A is true, then B is true”. Aristotelian logic was further extended, formalized, and developed into modern mathematicl logic in the late 19th and early 20th century.</p>
+<p>But not all math came from Ancient Greece. We inherited some of the most important mathematical concepts from the Arab and Asian world. From the Arabs we learned <strong>Algebra</strong>, the art of manipulating symbols such X and Y in equations to find the value of some unknown quantity. Algebra is much bigger than that, of course, but one of its biggest impacts was the idea of inventing procedures, or <em>algorithms</em>, to solve specific problems, such as systems of equations.</p>
+<p>From India, we learned <strong>Arithmetic</strong>, which deals with numbers. In the Middle Ages, Europeans were using a terrible numerical system inherited from Rome, which made even the most mundane arithmetic a pain (as an example, try to multiply CLXIV times LVII in your head). The Hindu gave us the decimal system, which features a positional encoding that makes it a breeze to add, multiply, and many more fancy operations with numbers. They also gave us a wealth of knowledge about numbers and their relations.</p>
+<p>The final ingredient in our mathematical soup is <strong>Calculus</strong>, co-invented by Isaac Newton and Gottfried Leibniz. Calculus is the math of changing quantities, and it was crucial in understanding the physical world: how objects move and interact with each other under the influence of several forces. Calculus introduces the mind-bending notion of <em>infinite sums of infinitesimal quantities</em>, and marks the maturity of our mathematical journey.</p>
+<p>At the beginning of the 20th century, we found ourselves with an unwieldy collection of disparate mathematical theories, many of which had intriguing similarities but were still not entirely compatible. Early successes in bridging whole mathematical subfields –such as Descartes invention of analytic geometry, combining algebra and geometry into a unified body of knowledge and showing that curves and equations are two sides of the same coin– suggested that there was a grand mathematical theory underneath all these different ideas.</p>
+<p>And then humanity attempted its greatest intellectual feat so far: to unify all math under a single theory. A bold enterprise that sought to, not only make all existing mathematical knowledge compatible, but also solve the most pressing mathematical questions from each of these fields. In their hubris, mathematicians and logicians thought we could figure it all out, but math was about to give us the biggest modesty check in the history of human intellect.</p>
+<p>The result of this journey is the foundation of a new type of science: the science of computation. But to get there, we have to start a bit earlier, with the dream of one of the greatest mathematicians that ever existed.</p>
+<section id="leibnizs-dream" class="level2">
+<h2 class="anchored" data-anchor-id="leibnizs-dream">Leibniz’s Dream</h2>
+<p>The modern history of Computer Science can be said to begin with&nbsp;Gottfried Leibniz, one of the most famous mathematicians of all time. Leibniz worked on so many fronts that it is hard to overestimate his impact. He made major contributions to math, philosophy, laws, history, ethics, and politics.</p>
+<p>He is probably best known for co-inventing, or co-discovering, calculus along with Isaac Newton. Most of our modern calculus notation, including the integral and differential symbols, is heavily inspired by Leibniz’s original notation. Leibniz is widely regarded as the last universal genius, but in this story we want to focus on his larger dream about what mathematics could be.</p>
+<p>Leibniz was amazed by how much notation could simplify a complex mathematical problem. Take a look at the following example:</p>
+<p><em>“Bob and Alice are siblings. Bob is 5 years older than Alice. Two years ago, his age was twice as hers. How old are they?”</em></p>
+<p>Before Algebra was invented, the only way to work through this problem was to think hard, or maybe try a few lucky guesses. But with algebraic notation, you just write some equations like the following and then apply some straightforward rules to obtain an answer.</p>
+<p><span class="math display">\[
+\begin{array}{rcl}
+b &amp; = &amp; a + 5 \\
+b - 2 &amp; = &amp; 2(a-2)
+\end{array}
+\]</span></p>
+<p>Any high-school math student can solve this kind of problem today, and most don’t really have the slightest idea of what they’re doing. They just apply the rules, and voila, the answer comes out. The point is not about this problem in particular but about the fact that using the right notation –algebraic notation, in this case– and applying a set of prescribed rules –an algorithm– you can just plug in some data, and the math seems to work by itself, pretty much guaranteeing a correct answer.</p>
+<p>In cases like this,&nbsp;<em>you</em>&nbsp;are the computer, following a set of instructions devised by some smart “programmers” that require no creativity or intelligence, just to painstakingly apply every step correctly.</p>
+<p>Leibniz saw this and thought: “<em>What if we can devise a language, like algebra or calculus, but instead of manipulating known and unknown magnitudes, it takes known and unknown truth statements in general?</em>”</p>
+<p>In his dream, you would write equations relating known truths with some statements you don’t know, and by the pure syntactic manipulation of symbols, you could arrive at the truth of those statements.</p>
+<p>Leibniz called it&nbsp;<em>Characteristica Universalis</em>.&nbsp;He imagined it to be a universal language for expressing human knowledge, independently of any particular language or cultural constraint, and applicable to all areas of human thought. If this language existed, it would be just a matter of building a large physical device –like a giant windmill, he might have imagined– to be able to cram into it all of the current human knowledge, let it run, and it would output new theorems about math, philosophy, laws, ethics, etc. In short, Leibniz was asking for an&nbsp;<em>algebra of thoughts</em>, which we today call&nbsp;<strong>logic</strong>.</p>
+<p>He wasn’t the first to consider the possibility of automating reasoning, though. Having a language that can produce true statements reliably is a major trend in Western philosophy, starting with Aristotle’s syllogisms and continuing through the works of Descartes, Newton, Kant, and basically every single rationalist that has ever lived. Around four centuries earlier, philosopher&nbsp;Ramon Llull&nbsp;had a similar but narrower idea which he dubbed the&nbsp;<em>Ars Magna</em>, a logical system devised to prove statements about, among other things, God and the Creation.</p>
+<p>However, Leibniz is the first to go as far as to consider that all human thought could be systematized in a mathematical language and, even further, to dare dream about building a machine that could apply a set of rules and derive new knowledge automatically. For this reason, he is widely regarded as the first computer scientist in an age where Computer Science wasn’t even an idea.</p>
+<p>Leibniz’s dream echoes some of the most fundamental ideas in modern Computer Science. He imagined, for example, that prime numbers could play a major part in formalizing thought, an idea that is eerily prescient of&nbsp;<em>Gödel’s numbering</em>. But what I find most resonant with modern Computer Science is the&nbsp;<em>equivalence between a formal language and a computational device</em>, which ultimately becomes the central notion of <a href="computability-theory">computability theory</a>, a topic we will explore in our first chapter.</p>
+<p>Unfortunately, most of Leibniz’s work in this regard remained unpublished until the beginning of the 20th century, when most of the developments in logic needed to fulfill his dream were well on their way, pioneered by logicians like Gottlob Frege, Georg Cantor, Bertrand Russell.</p>
+<p>We will look at that part of the story next.</p>
+</section>
+<section id="the-rules-of-thought" class="level2">
+<h2 class="anchored" data-anchor-id="the-rules-of-thought">The Rules of Thought</h2>
+<p>The exploration of logical thought begins with Aristotle, whose development of syllogisms laid the foundation for rational thinking. In his work Prior Analytics, Aristotle defined a syllogism as a structured argument where a conclusion necessarily follows from two premises. For example, if we assert that “All men are mortal” (major premise) and “Socrates is a man” (minor premise), we can validly conclude that “Socrates is mortal.” This formalization of reasoning was revolutionary, establishing a method for drawing conclusions and clarifying thought that would influence philosophical discourse for centuries.</p>
+<p>During the Dark Ages, the progress of logic did not stagnate; rather, it flourished in unexpected ways. Scholars in the Islamic Golden Age preserved and expanded upon Aristotle’s works, introducing new ideas and interpretations that would later permeate European thought. Figures like Al-Farabi and Avicenna enriched logical inquiry, ensuring that Aristotle’s legacy endured even as Europe grappled with its own intellectual challenges. When the Renaissance emerged, it was this rich tapestry of knowledge that would help rekindle interest in classical logic.</p>
+<p>George Boole entered this intellectual landscape in the mid-19th century, creating an algebra for logic that transformed how we understand reasoning. Boole’s work did for logic what Descartes had accomplished for geometry: he provided a systematic way to manipulate logical statements through algebraic expressions. By representing logical operations—such as conjunctions and disjunctions—using symbols, Boole enabled a level of precision in reasoning that was previously unattainable. His innovations marked a significant step toward formalizing logic as a mathematical discipline.</p>
+<p>Following Boole, Gottlob Frege expanded the scope of logic by moving from propositional logic to predicate logic. Frege’s introduction of quantifiers allowed discussions about properties and relationships among objects, enabling statements about universality (e.g., “All men”) and existence (e.g., “There exists a man”). This extension was crucial for addressing more complex logical structures and paved the way for modern mathematical logic. Frege’s work highlighted the need for a rigorous foundation in logic, setting the stage for future developments in the field.</p>
+<p>Finally, Georg Cantor took on one of the most profound challenges in mathematics: the study of infinity. He introduced the concept of transfinite numbers and explored different sizes of infinity, fundamentally altering our understanding of sets. Cantor’s groundbreaking work on set theory allowed him to confront infinity directly, leading to insights that were both revolutionary and unsettling. His struggle with these concepts ultimately took a toll on his mental health, illustrating the profound impact that grappling with such abstract ideas can have on one’s psyche.</p>
+</section>
+<section id="the-final-frontier" class="level2">
+<h2 class="anchored" data-anchor-id="the-final-frontier">The Final Frontier</h2>
+<blockquote class="blockquote">
+<p>Hilbert’s program to solve all mathematical problems.</p>
+</blockquote>
+</section>
+<section id="crisis-in-infinite-math" class="level2">
+<h2 class="anchored" data-anchor-id="crisis-in-infinite-math">Crisis in Infinite Math</h2>
+<blockquote class="blockquote">
+<p>The crisis of math that started with Russell and then Gödel We end the prologue here, just before Turing.</p>
+</blockquote>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link" aria-label="Preface">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./theory/intro.html" class="pagination-link" aria-label="Foundations of Computer Science">
+        <span class="nav-page-text">Foundations of Computer Science</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright 2024 - The Authors</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link active" href="https://store.apiad.net/l/tsoc" aria-current="page">
+      <i class="bi bi-book" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
