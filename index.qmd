@@ -4,7 +4,7 @@ title: "Mostly Harmless Books"
 
 This page contains all the information about of my published, in-progress, and planned books. You can get any of them in digital form (and, in future, some of them in printed form) following the links in each section.
 
-But before that, please the [The Mostly Harmless Compendium](https://store.apiad.net/l/compendium). It's a bundle of all my current and future educational projects (books, technical guides, etc) at a significantly reduced price. Getting it today grants you access in perpetuity to all my digital educational work, including all the books in this page and whatever I come up with in the future.
+But before that, please check out the [The Mostly Harmless Compendium](https://store.apiad.net/l/compendium). It's a bundle of all my current and future educational projects (books, technical guides, etc) at a significantly reduced price. Getting it today grants you access in perpetuity to all my digital educational work, including all the books in this page and whatever I come up with in the future.
 
 ## 📚 Early Access
 
@@ -35,6 +35,18 @@ Getting an early access copy to any of my books is the best way to support my wo
 #### Summary
 
 This is my opus magna, a grand view of the whole field of computer science, from foundational theory to systems to applications. The book is divided into four main parts: foundations of computer science, computational systems, software engineering, and artificial intelligence. Each part is a broad discipline in computer science. The book has zero mathematical formulas or computer code.
+
+### Mostly Harmless AI
+
+| | |
+|-|-|
+| Audience  | General |
+| Status    | Beta   |
+| Progress  | 🟠⚪⚪⚪⚪⚪⚪⚪⚪⚪ |
+| Pages     | 92 |
+| Links     | 🎁 [Buy on Gumroad](https://store.apiad.net/l/mhai), 📖 [Read Online](https://books.apiad.net/mhai)
+
+This is a collection of essays on Artificial Intelligence and its impact on society. These appeared first as independent issues in my newsletter. In this book, they have been revised and formatted just a bit to make for a more or less coherent narrative. The essays range from the impact of AI in software development and education, to existentials risks of AI, to inherent limitations of current AI systems, to potential future developments.
 
 ### Mostly Harmless Graphs
 
