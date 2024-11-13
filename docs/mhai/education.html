@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>3&nbsp; The AI Revolution We Don’t Need – Mostly Harmless AI</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./beyond-chatbot.html" rel="next">
+<link href="./coding-is-dead.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./education.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The AI Revolution We Don’t Need</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Mostly Harmless AI</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prologue.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prologue: The Age of Artificial Intelligence</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./road-to-agi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Road to AGI</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./coding-is-dead.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Coding is Dead; Long Live Coding!</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./education.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The AI Revolution We Don’t Need</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./beyond-chatbot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Beyond the Chatbot Revolution</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ai-kill-us.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Will AI Kill Us All?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./risks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The Actual Risks of AI</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./hallucinations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Reliable AI needs a New Paradigm</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./reasoning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Large Language Models Cannot Reason</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./alignment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Why AI Alignment is So Hard</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./open-source.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">The Future of AI is Open Source</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./epilogue.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Epilogue: The Road Ahead</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#supposed-uses-of-ai-for-education" id="toc-supposed-uses-of-ai-for-education" class="nav-link active" data-scroll-target="#supposed-uses-of-ai-for-education">Supposed uses of AI for education</a>
+  <ul class="collapse">
+  <li><a href="#question-answering" id="toc-question-answering" class="nav-link" data-scroll-target="#question-answering">Question answering</a></li>
+  <li><a href="#writing-assistance" id="toc-writing-assistance" class="nav-link" data-scroll-target="#writing-assistance">Writing assistance</a></li>
+  <li><a href="#personalized-tutoring" id="toc-personalized-tutoring" class="nav-link" data-scroll-target="#personalized-tutoring">Personalized tutoring</a></li>
+  <li><a href="#in-summary" id="toc-in-summary" class="nav-link" data-scroll-target="#in-summary">In summary</a></li>
+  </ul></li>
+  <li><a href="#bonus-ai-for-personalized-feedback" id="toc-bonus-ai-for-personalized-feedback" class="nav-link" data-scroll-target="#bonus-ai-for-personalized-feedback">Bonus: AI for Personalized Feedback</a></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The AI Revolution We Don’t Need</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Modern education is in desperate need of transformation. We all know that. The education system, once considered modern, is no longer so.</p>
+<p>Historically, education has focused on providing access to knowledge and information. Schools, academia, universities, and colleges were the exclusive places where knowledgeable individuals could impart wisdom to the younger generation. The prevalent method of training the new generation involved placing them physically in the presence of experienced individuals with specialized knowledge.</p>
+<p>However, with the advent of the internet —arguably the most significant technological advancement of the past century, if not millennium— the education dynamics have changed. The availability of information ceased to be exclusive and became accessible to all. Over a few decades, we have developed a global network of freely accessible world-class educational content.</p>
+<p>Today, we have resources such as Wikipedia, videos from the finest educators worldwide, and even complete courses with interactive materials, masterclasses, and platforms for skill-sharing. The landscape of accessing knowledge has dramatically shifted. It has become significantly easier to find answers to any questions.</p>
+<p>This raises an important question:&nbsp;<em>What is the role of education in this new era of information surplus?</em></p>
+<p>This question becomes even more relevant with the advent of artificial intelligence-powered chatbots. In the next 10 years, as we enter a new era, many believe we will be able to deliver the dream of personalized education for every student, a personalized Aristotelian tutor for each of them.</p>
+<p>Dare to imagine this future! Gone will be the days when one had to match the pace of the class or struggle to understand what the professor was conveying. Now, we will have a fully customized AI companion that adapts to our learning style, language, and individual characteristics. This companion will understand our strengths, weaknesses, and challenges, tailoring the learning process specifically to us. Imagine having a world-class professor dedicated 24/7 to your education! This is the future that educational chatbots and AI agents are predicted to bring.</p>
+<p>Many believe this advancement will democratize education, granting all students the privilege once reserved for aristocratic individuals like Alexander the Great, who could afford the GOAT tutor Aristotle. This long-awaited educational revolution —so it is claimed— will not only revolutionize how we teach and learn but also redefine the role of educational institutions in society, perhaps making them completely irrelevant.</p>
+<p>In today’s issue, I want us to pause and question whether this transformation is inevitable. Is it possible that despite these advancements, the role of education may remain unchanged? Could we be missing the point of education altogether? Is the role of educational institutions really replaceable with generative AI?</p>
+<section id="supposed-uses-of-ai-for-education" class="level2">
+<h2 class="anchored" data-anchor-id="supposed-uses-of-ai-for-education">Supposed uses of AI for education</h2>
+<p>Let’s start by examining three proposed beneficial applications of AI in the classroom that aim to transform education. I will explain my reservations about these scenarios.</p>
+<p>The three scenarios involve using AI as a question-answering system to supplant traditional information channels, using AI as a writing assistant to lessen students’ workload, and using AI as a personalized tutor to remove the need for teachers altogether.</p>
+<p>As you might tell already, I’m deeply skeptical about the feasibility and effectiveness of these three applications. Let me tell you why.</p>
+<section id="question-answering" class="level3">
+<h3 class="anchored" data-anchor-id="question-answering">Question answering</h3>
+<p>There are places where accessing information is really hard. Lack of education is prevalent in these areas, and efforts to enhance educational access are undoubtedly beneficial. However, in this article, I want to focus on Western countries, where the notion that access to education is a primary obstacle no longer holds true.</p>
+<p>In our scenario, even in cases where some individuals face limitations in accessing education, such as being unable to enroll in university courses due to failed exams or financial constraints, most of the information taught in these courses is readily available online.</p>
+<p>Thanks to platforms like Coursera, Udacity, Edex, and even free courses on YouTube, numerous high-quality college courses are accessible to students who cannot directly access professors. The abundance of online resources renders the AI revolution’s role in providing more information access less impactful, as we are already inundated with vast information. In fact, we have reached a point where the information available at our fingertips surpasses what we can actually process.</p>
+<p>Therefore, the problem lies not in accessing information but other factors.</p>
+<p>True, asking ChatGPT for answers may be slightly more convenient than reading Wikipedia or watching a video, but it is not&nbsp;<em>qualitatively</em>&nbsp;better. A few Google searches can already provide most of the necessary information. While there is undeniable improvement for the general user in being able to ask a question and receive a direct answer, rather than searching through multiple sources, in the case of students, it is even debatable whether the ease of obtaining information is more educational or if some effort —e.g., like having to read multiple sources— is desirable.</p>
+<p>However, my main point is that even with the slight convenience of accessing information, it is not a game changer because we can already find answers to any question online. ChatGPT does not provide new answers to previously unanswerable questions —and this is a hill I’m willing to die on— at least not for students and the types of questions they typically ask.</p>
+<p>The scenario is different when using ChatGPT to summarize paragraphs or answer specific questions from a knowledge base. In those cases, such as when users of an application can directly ask the AI instead of browsing through FAQs or documentation, generative AI can be a game changer.</p>
+<p>Yet, in the context of education and the type of questions students ask about topics like, I don’t know, atoms, planets, dinosaurs, etc., there isn’t much to gain from asking ChatGPT as opposed to looking up information in a book or a YouTube video. Those answers are already there and in a pretty convenient —and, more importantly, pedagogical— format. ChatGPT is not better than your favorite YouTube physics channel explaining black holes —in fact, it is ostensibly worse because it can be subtly mistaken.</p>
+<p>In summary, while the convenience of automatically synthesizing knowledge so students can ask direct questions to the book rather than searching for answers themselves, at least in terms of efficiency, is better —though the merits of not struggling even a bit to find information are debatable— this method alone does not possess the transformative power to redefine education.</p>
+</section>
+<section id="writing-assistance" class="level3">
+<h3 class="anchored" data-anchor-id="writing-assistance">Writing assistance</h3>
+<p>Generative AI can assist students in various writing tasks, such as generating reports and essays, significantly improving their writing performance.</p>
+<p>This advancement, however, poses a significant challenge for educators as the evaluation problem has now reached new heights. In the past, the main concerns regarding cheating were students copying content from books, but with the internet and Wikipedia, the issue extended to copying from any online source. As a result, the need arose to develop methods to detect and address this problem. Copying is problematic not only because it hinders genuine learning, as students fail to synthesize knowledge independently, but also because they may copy from unreliable sources, such as your uncle’s factually incorrect blog.</p>
+<p>With the emergence of language models that provide unique phrasing for each user, detecting AI-generated content has become virtually impossible. This difficulty will persist, making distinguishing AI writing from authentic human writing increasingly challenging. While we may identify subpar AI-generated writing and contrast it to mediocre student work, detecting the best AI-generated writing is nearly impossible, and this will only become more challenging in the future. Any attempts to detect AI writing are highly susceptible to simple text alterations, making it a brittle solution. Many experts, including myself, believe that this is an inherently unsolvable problem.</p>
+<p>Consequently, our inability to detect fraudulent use of generative AI requires a complete transformation in how we evaluate student work. This presents a significant challenge in itself. However, the purpose of this article is not to delve into the challenges associated with generative AI, as many other writers on Substack have extensively explored this topic. Instead, I want to explore the potential impact of having access to exceptional text generators and whether it truly has the potential to revolutionize and democratize education.</p>
+<p>In the educational context, the advantage for students of having an exceptional text generator is not immediately clear. The purpose of assigning essays to students is to engage them in mental processes such as recalling information, identifying key ideas, synthesizing information, and presenting creative solutions to questions that go beyond what is found in their reading materials. It’s not the essay itself that matters but the process students must go through when crafting it.</p>
+<p>By bypassing this process and going straight to the answers using generative AI, we undermine the most valuable aspect of this type of exercise. Professors already know the answers, and they are often unimportant.</p>
+<p>In this regard, generative AI seems more of an obstacle, as it hampers the educational process by allowing students to bypass the valuable exercises that help their brains learn and grow. It offers a shortcut to problem-solving without the necessary process of understanding and learning how to solve it.</p>
+<p>In light of these arguments, it seems that generative AI is not neutral but rather detrimental to education, though we will return to this discussion in short.</p>
+</section>
+<section id="personalized-tutoring" class="level3">
+<h3 class="anchored" data-anchor-id="personalized-tutoring">Personalized tutoring</h3>
+<p>Now, let’s talk about the infamous personalized learning paths. What if we had an AI agent capable of scanning the entire internet and creating a tailor-made learning path for individuals? This personalized path would consider the person’s existing knowledge, preferred learning methods, strategies, and weaknesses.</p>
+<p>A problem often highlighted in modern education is student pacing mismatch. Some students will naturally be faster or slower in certain topics, but since the classroom moves at an average speed, almost everyone will mismatch that rhythm. Is this really a problem, though? And can we solve it with the help of these AI agents?</p>
+<p>Let’s suppose we can. Suppose we develop a learning tutor capable of resolving hallucinations, biases, and other issues that may arise in extreme cases, but can still be catastrophic for a fully customized learning path. Suppose we can overcome all these obstacles and have an agent who can meticulously design a personalized course for each individual.</p>
+<p>In the context we are analyzing, is the lack of a personalized path the central problem students face in modern education in Western countries with sufficient access to information?</p>
+<p>No, it isn’t. And here’s why.</p>
+<p>The first argument is that we already have access to resources like YouTube, Coursera, and online courses. While lacking the convenience of an AI agent —see the first section on question-answering— we can already create completely personalized learning paths. There are thousands of websites with this exact value proposition, and many self-taught individuals who have learned to code, for example, have done so using the Internet to craft their own unique paths.</p>
+<p>However, studying individually and independently is not necessarily an advantage. In fact, it can be a huge disadvantage.</p>
+<p>Let me elaborate on why this is the case.</p>
+<p>Yes, plenty of self-educated individuals have successfully learned, e.g., coding, and built successful careers. However, there are major drawbacks to being self-educated. One obvious disadvantage is that you may lack some fundamental theory you would have gained through formal education. This could lead to gaps in your knowledge that may or may not be relevant to your job but could potentially cause challenges down the line. I’ve seen this firsthand in computer science, where a total lack of knowledge in topics like computability theory and complexity can lead to catastrophic decisions in difficult problems.</p>
+<p>However, the lack of fundamental theory is not the biggest issue with self-education. The main problem that most self-educated people face is maintaining motivation and getting feedback.</p>
+<p>Motivation comes naturally in a classroom because you’re surrounded by peers with similar skills and interests. Seeing others tackle challenges and grow alongside you creates a sense of motivation to overcome difficulties and keep learning. Having a community of learners is key to staying motivated, which is why all self-educated people try to find an online community to connect and support each other in their learning journeys.</p>
+<p>Feedback, on the other hand, plays a crucial role in the learning process. I’ve talked&nbsp;<a href="https://blog.apiad.net/p/college-evaluation">extensively about its importance</a>, and I actually believe it’s the key value proposition of modern education. Good feedback lets you iterate quickly on your ideas and projects and hone your problem-solving skills. Timely and informative feedback is essential for intellectual growth.</p>
+<p>In traditional education, there are two sources of feedback you can rely on: mentors or teachers and peers. They can provide guidance and let you know if you’re on the right track. With their support, you can assess your progress and make improvements.</p>
+<p>Ultimately, learning independently, crafting your own path, and consuming books and videos at your own pace is less effective than learning in a community. Being part of a learning community provides the motivation, support, and valuable feedback needed for successful learning. So, learning together always beats learning alone.</p>
+</section>
+<section id="in-summary" class="level3">
+<h3 class="anchored" data-anchor-id="in-summary">In summary</h3>
+<p>Thus, we come back to my main argument. The radical transformation of education predicted by generative AI assumes that studying alone at one’s own pace with a personalized tutor is superior to studying within a collective community. I believe this premise is deeply flawed and that there is ample evidence to suggest otherwise.</p>
+<p>What is truly lacking in modern education is not personalization. However, this does not mean that personalization, the use of generative AI, and the integration of more technology will not enhance education. On the contrary, I believe it will. In fact, I will end this article with an extra section highlighting ideas on how we can use the new generation of AI technology to improve education.</p>
+<p>Nevertheless, I remain skeptical that these advancements will lead to a complete transformation of education, as claimed by the most radical educational innovators. The face of education will not undergo a total overhaul, nor will it fundamentally alter the role of educational institutions. The purpose of institutions like schools, colleges, and universities is not to provide information, knowledge, grades, or certifications. These elements are secondary in importance.</p>
+<p>Instead, the role of educational institutions is to cultivate an environment that fosters collective learning. Educational institutions should equip students with the necessary tools to create a collaborative learning environment where they can engage in teamwork, exchange feedback, and develop the skills crucial for&nbsp;<a href="https://blog.apiad.net/p/its-all-about-team-work-short-essay">each individual to excel as a team player</a>.</p>
+</section>
+</section>
+<section id="bonus-ai-for-personalized-feedback" class="level2">
+<h2 class="anchored" data-anchor-id="bonus-ai-for-personalized-feedback">Bonus: AI for Personalized Feedback</h2>
+<p>Let’s conclude by discussing how generative AI can positively impact modern education. While interesting, the most straightforward idea of AI tutors that can explain lessons in personalized ways is not targeting the core issues, as I’ve argued.</p>
+<p>Instead, consider another possibility: using AI tutors to provide&nbsp;<em>feedback</em>&nbsp;and critique on students’ work. Instead of asking the AI to explain how something is solved, students can present their solutions and request the AI to analyze and pinpoint weaknesses in their mathematical proofs, essays, or arguments. The AI tutor can guide students toward improvement through personalized feedback without directly offering the solution.</p>
+<p>As we’ve seen, access to good feedback is a crucial limitation in modern education. Feedback is often scarce, delayed, and unforgiving. Traditional education provides feedback only after you fail the exam, affecting your final grades. Generative AI has the potential to change this by providing immediate, tailored feedback that suits each student’s needs.</p>
+<p>However, relying solely on automated feedback is sub-optimal due to biases and limitations in current AI technology. A far more effective approach involves human educators, mentors, or tutors who can guide the AI in delivering feedback. By skimming through a student’s essay, for example, an educator can identify specific areas for improvement and instruct the AI to provide personalized feedback, focusing on those particular points.</p>
+<p>This collaboration between AI and educators creates a killer application for generative AI in education. It doesn’t replace the role of educators or undermine the importance of collective learning. Instead, it streamlines the feedback process and addresses one of the weakest aspects of modern education —the time it takes to receive feedback, especially considering the high student-to-professor ratios.</p>
+<p>If you want to read more on these human-centric approaches to introducing AI in education, there are several educators here on Substack doing some fabulous job on this front, including&nbsp;</p>
+<p><a href="https://open.substack.com/users/846835-ethan-mollick?utm_source=mentions">Ethan Mollick</a></p>
+<p>,&nbsp;</p>
+<p><a href="https://open.substack.com/users/129389476-lance-cummings?utm_source=mentions">Lance Cummings</a></p>
+<p>,&nbsp;</p>
+<p><a href="https://open.substack.com/users/21090761-josh-brake?utm_source=mentions">Josh Brake</a></p>
+<p>, and&nbsp;</p>
+<p><a href="https://open.substack.com/users/156304717-nick-potkalitsky?utm_source=mentions">Nick Potkalitsky</a></p>
+<p>.</p>
+</section>
+<section id="conclusions" class="level2">
+<h2 class="anchored" data-anchor-id="conclusions">Conclusions</h2>
+<p>The AI revolution is already upon us, and we now possess immensely powerful new tools. Despite the limitations of this technology —some of which may be insurmountable, such as hallucinations and biases— it is undeniable that AI can greatly enhance education. It would be foolish not to incorporate AI into education and consider its potential positive impact on improving the learning experience.</p>
+<p>There are positive ways in which AI can improve education by shortening the feedback cycle and complementing the traditional role of educators. However, the notion that AI chatbot mentors will completely replace traditional colleges and universities is deeply flawed. This idea is based on the premise that students require more individualized learning, which is not true, especially when access to information is not a major problem.</p>
+<p>In places where the main obstacle to education is the lack of resources, such as books, the internet, and access to educators, having an AI tutor who can provide answers and support is a game-changer. There are locations in the world where education is in a dire state, and AI can make a significant difference there. Still, it remains to be seen how to even deploy AI in such places, given the inadequate access to information, technology, and infrastructure.</p>
+<p>While AI may work as a replacement in contexts where a total lack of educators is the main issue, in traditional Western education, we have a different challenge altogether: a large number of students per teacher means a limited time for teachers to dedicate to each student.</p>
+<p>The solution to this problem is not to isolate students and have them learn independently. True learning occurs in an environment where you face challenges, solve problems, and put your knowledge into action. Learning does not happen in conversation with a chatbot —or a human— alone, and most importantly, it is not an individual pursuit. A community of people is essential for supporting, motivating, exchanging ideas, and facilitating the learning process.</p>
+<p>The main issue stemming from the imbalance between professors and students is the turnaround time for feedback. Feedback is crucial for effective learning, provided it is timely and informative. However, professors often lack sufficient time to provide each student with the deep, personalized feedback they require.</p>
+<p>The current generation of AI can revolutionize the classroom by complementing how teachers give feedback. By incorporating teacher criticism and evaluation into generative AI systems, students can receive more customized and timely feedback grounded in the teacher’s evaluation, offering the best of both worlds.</p>
+<p>In conclusion, while we do need an educational revolution, the current generation of AI should be seen as a complement rather than an all-encompassing replacement. It should be integrated into a system that keeps humans at the center, with students, professors, and the community guiding and building an effective learning environment. The educational revolution, when it comes, must be centered on the human.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./coding-is-dead.html" class="pagination-link" aria-label="Coding is Dead; Long Live Coding!">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Coding is Dead; Long Live Coding!</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./beyond-chatbot.html" class="pagination-link" aria-label="Beyond the Chatbot Revolution">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Beyond the Chatbot Revolution</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

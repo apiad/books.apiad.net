@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>10&nbsp; The Future of AI is Open Source – Mostly Harmless AI</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./epilogue.html" rel="next">
+<link href="./alignment.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./open-source.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">The Future of AI is Open Source</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Mostly Harmless AI</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prologue.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prologue: The Age of Artificial Intelligence</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./road-to-agi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Road to AGI</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./coding-is-dead.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Coding is Dead; Long Live Coding!</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./education.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The AI Revolution We Don’t Need</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./beyond-chatbot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Beyond the Chatbot Revolution</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ai-kill-us.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Will AI Kill Us All?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./risks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The Actual Risks of AI</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./hallucinations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Reliable AI needs a New Paradigm</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./reasoning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Large Language Models Cannot Reason</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./alignment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Why AI Alignment is So Hard</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./open-source.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">The Future of AI is Open Source</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./epilogue.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Epilogue: The Road Ahead</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#what-does-open-source-ai-look-like" id="toc-what-does-open-source-ai-look-like" class="nav-link active" data-scroll-target="#what-does-open-source-ai-look-like">What does open-source AI look like?</a></li>
+  <li><a href="#to-open-source-or-not-to-open-source" id="toc-to-open-source-or-not-to-open-source" class="nav-link" data-scroll-target="#to-open-source-or-not-to-open-source">To open-source or not to open-source</a></li>
+  <li><a href="#the-advantage-of-open-sourcing" id="toc-the-advantage-of-open-sourcing" class="nav-link" data-scroll-target="#the-advantage-of-open-sourcing">The advantage of open-sourcing</a></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">The Future of AI is Open Source</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>I strongly believe in the potential of open source. Open source software offers numerous benefits over closed source. Over the past 30 years, we have witnessed the growth of this movement from being a fringe ideology to becoming a widely embraced mindset, even by the world’s leading companies.</p>
+<p>Nevertheless, not everything can be open source. Building a business around software requires having some proprietary elements that can be monetized for profit. However, many successful business models involve a hybrid approach, where certain portions of your codebase are open-sourced while others remain closed-source.</p>
+<p>One effective approach to capitalize on open source is releasing your codebase as an open-source project, allowing you to leverage the community effect. In addition, you can offer premium services such as cloud hosting and enterprise solutions, including single sign-on and customer service. This is particularly advantageous for those who prefer not to self-host.</p>
+<p>This model is widely employed in the realm of backend-, platform-, and infrastructure-as-a-service. It is prevalent in various domains, including database systems and productivity tools like GitLab. While you can self-host these services, selling their cloud version is often their main business model.</p>
+<p>The hybrid model combines the advantages of the open-source and closed-source models. With open source, you benefit from the community effect, as well as a large number of beta testers and early adopters, which improves the reliability of your product. Additionally, public development allows you to receive feedback and reports on platforms like GitHub. Even small contributions, such as documentation or user examples, greatly enhance the open-source model.</p>
+<p>On the other hand, maintaining a closed part of your application has its benefits. For instance, you can close your user interface while releasing the backend and core functionality. By offering a cloud-hosted user interface, along with advanced features like drag-and-drop interfaces and logging administration, you can cater to enterprise users willing to pay for these services. Furthermore, you can also provide customer service, on-premise deployment, and develop client-specific plugins or components.</p>
+<p>As AI becomes the foundation of the new Software 2.0 paradigm, the discussion between open- and closed-source software becomes central issue. What does open-source AI look like? Are there clear benefits to open-sourcing at least some part of your AI stack? Can you gain more by giving away more?</p>
+<p>In this issue, I want to explore these questions, focusing on the rise of large language models as the backbone infrastructure for a significant part of the AI applications of the near future.</p>
+<section id="what-does-open-source-ai-look-like" class="level2">
+<h2 class="anchored" data-anchor-id="what-does-open-source-ai-look-like">What does open-source AI look like?</h2>
+<p>Open source is progressively dominating the realm of software, starting from the core layers and expanding towards the infrastructure layers of computing. The primary type of software likely to be open source is infrastructure software. For instance, operating systems, virtualization software, and many drivers are open source. Moving up the hierarchy, development tools also fall within the realm of open source, as they form a slightly higher infrastructure level.</p>
+<p>However, regarding consumer applications, open source does not excel similarly. Open-source compilers tend to be superior, but image, video, and audio editors are not competitive compared to closed-source alternatives such as Photoshop or other Adobe products. Similarly, open-source video games are far behind their closed-source counterparts regarding entertainment value. The closer the software is to lower-level implementation details, the more beneficial it becomes to adopt an open-source approach.</p>
+<p>Now, let’s examine how this applies in the context of Artificial Intelligence. First, it’s important to note that the development tools and frameworks in AI, such as TensorFlow and PyTorch, while open source, are not the core of my argument —their open-source nature primarily stems from their classification as development tools, even though they are part of the AI stack.</p>
+<p>Looking closely at language models within the AI stack, we can draw a parallel to basic infrastructure. For instance, foundation models —models trained on extensive text corpora, like the Llama family models and their various iterations— serve as fundamental building blocks. These models can be likened to the operating system level, forming the core infrastructure of the AI ecosystem.</p>
+<p>Suddenly, we have the option to commercialize fine-tuned adapters for specific domains. Let’s say you have Llama as an open-source model. You can either fine-tune it yourself using your own infrastructure or provide me with your data, and I will fine-tune it for you on my infrastructure.</p>
+<p>Moreover, there is an opportunity to sell fine-tuned versions of models for commercializable domains. For instance, I take an open-source model trained on large data. I then fine-tuned it on a small amount of data specifically for, say, the market valuation domain. This model can be used for generating business models, business plans, enterprise emails, quarterly reports, etc.</p>
+<p>Essentially, you can take one of these infrastructure-like, foundational models, fine-tune it for a specific domain using your collected data and computational and human resources, and it would make sense for you to sell it. Thus, as we get closer to the application layer, it becomes more sensible to keep things closed.</p>
+</section>
+<section id="to-open-source-or-not-to-open-source" class="level2">
+<h2 class="anchored" data-anchor-id="to-open-source-or-not-to-open-source">To open-source or not to open-source</h2>
+<p>Then why don’t companies like Google or OpenAI open source their foundation models? This question is worth pondering because not all companies are keen on open-sourcing AI. Currently, only Meta is trying to open-source very large models. The remaining open-source models are typically smaller and built upon existing open-source foundation models. The large-scale models are generally kept closed source.</p>
+<p>So, what is preventing companies like Google and OpenAI from joining the open-sourcing trend? Baring some extreme views, the fundamental argument these companies have to choose open or closed source is, of course, an economic one. What is the strategy that will provide the most profit? Call me a cynic, but I don’t get fooled by their appeal to safety or privacy principles. These are for-profit companies, so their incentives are aligned with their investors —and there’s nothing inherently wrong about that, if you ask me.</p>
+<p>So let’s examine, from their point of view, the financial advantages of open-sourcing or not their foundation models. Collecting large datasets and investing significant computing power in training a huge model puts your competitors in a difficult position. They need to invest similar resources to compete with you. Consequently, only major players like Google, Meta, and Microsoft could achieve this independently.</p>
+<p>In contrast, if, say, OpenAI chooses to open source GPT-4, they would give away whatever advantage they had initially. Doing so saves competitors from replicating the extensive computing power needed to utilize their model. Thus, OpenAI could only differentiate itself through the fine-tuned and application layers. Their advantage would be not the GPT-based model but just the ChatGPT application.</p>
+<p>It is understandable why these companies are unwilling to open source their foundation models as they invest significant resources in building them. Unlike projects such as the Linux kernel, which can thrive on contributions from hobbyists worldwide, developing a foundation model appears to require the backing of a large corporation with substantial financial and infrastructural capabilities.</p>
+<p>Training GPT4 is significantly more expensive than creating the Linux kernel, at least in the short term. One may argue that the Linux kernel has required extensive monetary investment in volunteer hours over many years, and these numbers may amount to a substantial quantity. However, when faced with training a massive model in just six months, it becomes evident that no open-source software, regardless of its nature, can allocate millions of dollars within such a short timeframe to go from inception to completion. Thus, this distinction between traditional open-source and AI open-source is crucial.</p>
+<p>However, Meta did open-source their model. Although they initially were reticent to go full open-source —they released Llama under a non-commercial research license until it was “accidentally” leaked. Nonetheless, Llama 2, the newest model, is commercially licensed. There is an unusual restriction, though: companies generating billions in revenue are, in principle, prohibited from using it commercially.</p>
+<p>This sounds like Meta wants to have their cake and eat it, too. They aim to gain recognition for being a cutting-edge company that shares open-source projects —crucial for their credibility with developers since they are not the “cool” company; Google holds that reputation. Thus, Meta seeks the social credit associated with being the company that shares significant projects like Llama while simultaneously striving to limit competition from major players.</p>
+<p>Meta sees Google and the other big players as the only competition because, unlike other AI-first startups like OpenAI, Hugging Face, Anthropic, etc., Meta’s core product is not language models or anything AI-related. Like Google, Meta’s core product is much bigger and darker: advertisement.</p>
+<p>AI and language models serve only as valuable tools to enhance their core business model’s profitability. In this regard, Meta does not directly compete with many small startups attempting to develop ChatGPTs for various domains. Meta is indifferent to such competition.</p>
+<p>Whether you use Llama to create a chatbot for business purposes, generate fiction, or automate emails, it bears no significance to them. They are distinct from Grammarly, Hugging Face, and countless other startups focused on constructing AI-powered tools. This is not their area of expertise or profit.</p>
+<p>Consequently, they are not bothered by granting these smaller companies a more convenient life by releasing their models. Their primary concern is making it harder for Google, Amazon, Microsoft, and Apple to outpace them. Hence, by outmaneuvering these four entities, they can benefit fully from the clout of being open-source friendly without any of the business drawbacks.</p>
+<p>The reasoning behind Meta’s decision to open source Llama, I think, is to strengthen their status as a cool company while safeguarding their tech from its real competitors. Despite not sharing Meta’s ethos, I agree with their choice to open-source AI. This move benefits the community, advances scientific research, and enhances business prospects when embraced by all.</p>
+</section>
+<section id="the-advantage-of-open-sourcing" class="level2">
+<h2 class="anchored" data-anchor-id="the-advantage-of-open-sourcing">The advantage of open-sourcing</h2>
+<p>However, doesn’t open-sourcing your model put you at a disadvantage in a world where no one else is doing it? Aren’t companies like Google, Microsoft, Amazon, and Apple, by building foundation models but not open-sourcing them, still beating you to the punch?</p>
+<p>I believe not. Open sourcing a foundation model and allowing a vast community of researchers, hobbyists, entrepreneurs, start-ups, and students worldwide to contribute offers numerous advantages. The extensive collaboration from these groups enables the development of innovative ideas and products on top of the foundation model. I argue this far outweighs any potential drawbacks of keeping the model closed and restricting product development solely to the company.</p>
+<p>In the future, all our creations will rely either on closed services like ChatGPT or open-source models like Llama. The considerable brand recognition gained from having a community of users of your foundation model is an invaluable asset. However, it is not the sole or most significant benefit of open-sourcing your foundation models.</p>
+<p>That is collaboration. You see, the most significant issue that needs to be addressed in language models if they are to have lasting value and not be just a passing trend is&nbsp;<em>reliability</em>. The challenges of hallucinations, prompt reproducibility, and biases can all hinder the progress of language model technology and even bring a new AI winter. To truly become more than mere entertainment tools and instead serve as foundational infrastructure that can be relied upon for building applications, language models must tackle these fundamental problems.</p>
+<p>However, solving these problems requires going beyond the API layer. Any solution to hallucinations requires modifying the model —adjusting the weights, altering the architecture, or refining the sampling process. These changes must be implemented at the model level rather than relying solely on API access.</p>
+<p>With open-source models, anyone can contribute to addressing hallucinations, grounding the model, improving biased language, enhancing adherence to prompting, and increasing reliability. The availability of model weights and access to the source allows for a seamless combination of efforts. This approach allows for the multiple benefits of a distributed community of researchers and developers addressing the core issues, in the same sense that reliability issues of traditional software are often solved by open collaboration.</p>
+<p>In contrast, if you operate on a closed-source basis and keep the model internally within your company, even if you have the power to invest as much money as you desire, the resource that remains most restricted is the availability of sufficiently skilled individuals who can tackle these challenges effectively.</p>
+<p>Throwing money allows for extensive data collection and scaling computational power. However, scaling the number of qualified personnel is not as easy. Even with substantial resources, OpenAI, Microsoft, or Google cannot recruit every artificial intelligence engineer, data scientist, or machine learning theorist worldwide.</p>
+<p><em>The key limitation to making AI truly useful lies in the scarcity of human resources.</em></p>
+<p>Open source is the key to scaling in human resources. This model promises unlimited and mostly free access to a vast pool of talented individuals eager to work with you. In contrast, closed source restricts your access to only those individuals you can persuade to work for you, often depending on the salary you offer. No matter the amount you pay, there will always be exceptionally bright individuals who choose to work for your competitors instead of you.</p>
+<p>Open-source language models, such as Llama, have the leading edge here. Unlike GPT, the community will develop and improve Llama and its successors. This means they can become more reliable, customizable, and practical compared to closed-source models. As open-source OSes, compilers, databases, and development tools have demonstrated before, I think open-source language models will eventually become more robust and generally superior to anything you can develop in closed source.</p>
+</section>
+<section id="conclusions" class="level2">
+<h2 class="anchored" data-anchor-id="conclusions">Conclusions</h2>
+<p>The current state of open-source language models versus closed-source models is far from the ideal I just painted. Today, closed-source models far exceed open-source models regarding reliability and robustness. Anyone who has attempted to build applications using GPT through OpenAI’s API and then transitioned to Llama or other open-source models has witnessed their unreliability and general lack of robustness.</p>
+<p>However, this situation is not unique to language models. This unreliability is expected in initial open-source projects, as the first generation of any open-source software is typically subpar.</p>
+<p>Linux, for instance, took a considerable amount of time before it became a robust operating system, surpassing all closed-source alternatives. Similar patterns are seen with compilers, database engines, IDEs, and frameworks. Initially, closed-source solutions have advantages in terms of development speed, benefiting from massive upfront investment in computing and data, which open-source initiatives cannot match.</p>
+<p>Nevertheless, we witness open-source scalability in infrastructure-oriented software. This is because the potential of open source is nearly limitless, tapping into a vast pool of human contributors. In contrast, closed-source tools remain constrained by the number of individuals they can hire. As a result, open source holds the advantage in the long run, at least at the foundational level.</p>
+<p>Currently, open-source machine learning and language models are in their early stages. Therefore, you should expect closed-source models to outperform open-source models for the next few iterations, perhaps even a few years. However, as history has demonstrated, open source will eventually catch up and become the optimal solution. Closed-source AI companies will gradually transition to open-source and contribute to the community. Eventually, the infrastructure layer of AI will become open-source, like most software infrastructure has.</p>
+<p>For developers today, I advise continuing to use closed-source models for production but keeping tabs on the open-source landscape. Become an early adopter and contributor, and help enhance the robustness and accessibility of AI for future generations. Computer Science is undergoing a massive revolution akin to the 60s and 70s. This time, you can be one of the pioneers.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./alignment.html" class="pagination-link" aria-label="Why AI Alignment is So Hard">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Why AI Alignment is So Hard</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./epilogue.html" class="pagination-link" aria-label="Epilogue: The Road Ahead">
+        <span class="nav-page-text">Epilogue: The Road Ahead</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

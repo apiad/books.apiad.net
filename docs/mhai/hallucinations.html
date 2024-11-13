@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>7&nbsp; Reliable AI needs a New Paradigm – Mostly Harmless AI</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./reasoning.html" rel="next">
+<link href="./risks.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./hallucinations.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Reliable AI needs a New Paradigm</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Mostly Harmless AI</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prologue.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prologue: The Age of Artificial Intelligence</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./road-to-agi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Road to AGI</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./coding-is-dead.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Coding is Dead; Long Live Coding!</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./education.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The AI Revolution We Don’t Need</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./beyond-chatbot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Beyond the Chatbot Revolution</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ai-kill-us.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Will AI Kill Us All?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./risks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The Actual Risks of AI</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./hallucinations.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Reliable AI needs a New Paradigm</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./reasoning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Large Language Models Cannot Reason</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./alignment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Why AI Alignment is So Hard</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./open-source.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">The Future of AI is Open Source</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./epilogue.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Epilogue: The Road Ahead</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#what-are-hallucinations-in-ai" id="toc-what-are-hallucinations-in-ai" class="nav-link active" data-scroll-target="#what-are-hallucinations-in-ai">What are Hallucinations in AI?</a></li>
+  <li><a href="#real-world-implications-of-ai-hallucinations" id="toc-real-world-implications-of-ai-hallucinations" class="nav-link" data-scroll-target="#real-world-implications-of-ai-hallucinations">Real-World Implications of AI Hallucinations</a></li>
+  <li><a href="#why-hallucinations-happen" id="toc-why-hallucinations-happen" class="nav-link" data-scroll-target="#why-hallucinations-happen">Why Hallucinations Happen?</a></li>
+  <li><a href="#mitigating-hallucinations-in-ai" id="toc-mitigating-hallucinations-in-ai" class="nav-link" data-scroll-target="#mitigating-hallucinations-in-ai">Mitigating Hallucinations in AI</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Reliable AI needs a New Paradigm</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Hallucinations, in the context of AI systems, refer to the phenomenon where an AI model generates outputs that appear plausible and coherent, but do not accurately reflect the real-world facts or the intended purpose of the system. These hallucinations can manifest in various forms, such as fabricated information, nonsensical responses, or outputs that are inconsistent with the input data. Hallucinations can occur in a wide range of AI applications, from natural language processing to computer vision and beyond.</p>
+<p>Addressing the issue of hallucinations in AI is crucial for ensuring the reliable and trustworthy deployment of these systems. Hallucinations can lead to erroneous decision-making, false conclusions, and potentially harmful outcomes, especially in critical applications such as healthcare, finance, and public safety, just to mention a few. By understanding the causes and mechanisms behind hallucinations, researchers and developers can work to mitigate these issues, improving the overall robustness and reliability of AI systems.</p>
+<p>The main thesis of this article is that, although hallucinations can be reduced or mitigated with a variety of practical approaches, the core issue is a fundamental flaw in the assumptions about the nature of language and truth that are intrinsic to the prevalent language modeling paradigms used today. If this thesis is correct, we won’t be able to solve AI hallucinations entirely with incremental improvements to current tech; we will need a new machine learning paradigm altogether.</p>
+<section id="what-are-hallucinations-in-ai" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-hallucinations-in-ai">What are Hallucinations in AI?</h2>
+<p>The term “hallucination” in the context of AI refers to the phenomenon where a large language model (LLM) or other generative AI system produces outputs that appear plausible and coherent, but do not accurately reflect reality or the intended purpose of the system. These hallucinations manifest as the generation of false, inaccurate, or nonsensical information that the AI presents with confidence, as if it were factual.</p>
+<p>First, a caveat. Unlike human hallucinations, which involve perceiving things that are not real, AI hallucinations are associated with the model producing unjustified responses or beliefs, rather than perceptual experiences. The name “hallucination” is therefore imperfect, and it often leads to mistakes as people tend to antropomorphize these models and make erroneous assumptions about how they work and the causes of these failures. However, we will stick to this name in this article because it is the prevalent nomenclature used everywhere people talk about AI. Just keep in mind we’re talking about something completely different to what the term “hallucination” means in general.</p>
+<p>Before diving in the why of AI hallucinations, let’s distinguish them from other typical failures of generative models, such as out-of-distribution errors or biased outputs.</p>
+<p><strong>Out-of-distribution errors</strong> occur when an AI model is presented with input data that is significantly different from its training data, causing it to produce unpredictable or nonsensical outputs. In these cases, the model’s limitations are clear, and it is evident that the input is outside of its capabilities. This is just an error of generalization which usually points to either: 1) the model’s hypothesis space is too constrained to entirely capture the actual distribution of data, or 2) the available data or training regimes are insuficient to pinpoint a general-enough hypothesis.</p>
+<p>Hallucinations are more insidious than out-of-distribution errors because they happen within the input distribution, where the model is supposedly well-behaved. Even worse, due to the stochastic nature of generative models, hallucinations tend happen entirely randomly, which means that for the same input the model can hallucinate once out of 100 times, making it almost impossible to evaluate and debug.</p>
+<p><strong>Biased outputs</strong>, on the other hand, arise when an AI model’s training data or algorithms contain inherent biases, leading to the generation of outputs that reflect those biases, such as stereotypes or prejudices. These are often not hallucinations, but realistic reproductions of the very human biases that pervade our societies: The model is producing something that reflects the reality underlying its training data. It’s just that such reality is an ugly one. Dealing with biases in AI is one of the most important challenges in making AI safe, but it is a completely different problem that we can tackle in a future issue.</p>
+<p>Hallucinations, in contrast, involve the AI model generating information that is not necessarily biased, but completely fabricated or detached from reality. This makes the problem of detecting them far hard, because the model’s responses appear confident and coherent, and there is no obvious telltale that helps human evaluators quickly identify it.</p>
+</section>
+<section id="real-world-implications-of-ai-hallucinations" class="level2">
+<h2 class="anchored" data-anchor-id="real-world-implications-of-ai-hallucinations">Real-World Implications of AI Hallucinations</h2>
+<p>The occurrence of hallucinations in AI systems, and particularly in large language models (LLMs), can have significant consequences, especially in high-stakes applications such as healthcare, finance, or public safety. For example, a healthcare AI model that incorrectly identifies a malignant skin lession as benign can doom a patient. On the other hand, identifying a benign skin lesion as malignant could lead to unnecessary medical interventions, also causing harm to the patient. Similarly, in the financial sector, hallucinated outputs from an AI system could result in poor investment decisions with potentially devastating economic impacts.</p>
+<p>However, even in low-stakes applications, the insidious nature of hallucinations make then a fundamental barrier to the widespread adoption of AI. For example, imagine you’re using an LLM to generate summaries from audio transcripts of a meeting, extracting relevant talking points and actionable items. If the model tends to hallucinate once in a while, either failing to extract one key item, or worse, producing an spurious item, it will be virtually impossible for anyone to detect that without manually revising the transcript, thus rendering the whole application of AI in this domain useless.</p>
+<p>For this reason, one of the key challenges in addressing the real-world implications of language model hallucinations is <strong>the difficulty in effectively communicating the limitations of these systems to end-users</strong>. LLMs are trained to produce fluent, coherent outputs that can appear plausible, even when they are factually incorrect. If the end-users of an AI system are not sufficiently informed to review the output of the system with a critical eye, they may never spot any hallucinations. This leads to a chain of mistakes as the errors from the AI system propagate upstream through the layers of decision makers in an organization. Ultimately, you could be making a very bad decision that seems entirely plausible given all the available information because the source of the error –an AI hallucination– is impossible to detect.</p>
+<p>Thus, the development and deployment of LLMs with hallucination capabilities raises important ethical considerations. There is a need for <strong>responsible AI development practices that prioritize transparency, accountability, and the mitigation of potential harms</strong>. This includes establishing clear guidelines for testing and validating LLMs before real-world use, as well as implementing robust monitoring and oversight mechanisms to identify and address hallucinations as they arise.</p>
+<p>Crucially, <strong>there are absolutely zero generative AI systems today that can guarantee they don’t hallucinate</strong>. This tech is simply unreliable in fundamental ways, so every actor in this domain, from developers to users, must be aware there will be hallucinations in your system, and you must have guardrails in place to deal with the output of unreliable AIs. And this is so perverse because we are used to software just working. Whenever software doesn’t do what it should, that’s a bug. But hallucinations are not a bug of AI, at least in the current paradigm. As we will see in the next section, they are an inherent feature of the way generative models work.</p>
+</section>
+<section id="why-hallucinations-happen" class="level2">
+<h2 class="anchored" data-anchor-id="why-hallucinations-happen">Why Hallucinations Happen?</h2>
+<p>There are many superficial reasons for hallucinations, from data and modelling problems, to issues with prompting. However, the underlying cause of all hallucinations, at least in large language models, is that the current language modeling paradigm used in these systems is, by design, <em>a hallucination machine</em>. Let’s unpack that.</p>
+<p>Generative AI models, including LLMs, rely on capturing statistical patterns in their training data to generate outputs. Rather than storing explicit factual claims, LLMs implicitly encode information as statistical correlations between words and phrases. This means the models do not have a clear, well-defined understanding of what is true or false, they can just generate plausibly sounding text.</p>
+<p>The reason this mostly works, is because generating plausibly sounding text has a high probabilty of reproducing something that is true, provided you trained on mostly truthful data. But large language models (LLMs) are trained on vast corpora of text data from the internet, which contains inaccuracies, biases, and even fabricated information. So these models have “seen” many true sentences and thus picked up correlations between words that tend to generate true sentences, but they’ve also seen many variants of the same sentences which are slightly or even entirely wrong.</p>
+<p>So one of the primary reasons for the occurrence of hallucinations is the <strong>lack of grounding in authoritative knowledge sources</strong>. Without a strong foundation in verified, factual knowledge, the models struggle to distinguish truth from falsehood, leading to the generation of hallucinated outputs. But this is far from the only problem. Even if you only train on factual information—assuming there would be enough of such high-quality data to begin with—the statistical nature of language models make them susceptible to hallucinate.</p>
+<p>Suppose your model has only seen truthful sentences, and learned the correlations between words in these sentences. Imagine there are two very similar sentences, both factually true, that differ in just a couple of words –maybe a date and a name, for example “Person A was born in year X” and “Person B was born in year Y”. Given the way these models work, the probability of generating a mixed-up sentence like “Person B was born in year X” is only slightly smaller than generating either of the original sentences.</p>
+<p>What’s going on here is that the statistical model implicitely assumes that small changes in the input (the sequence of words) lead to small changes in the output (the probability of generating a sentence). In more technical terms, the statistical model assumes a <em>smooth distribution</em>, which is necessary because the amount of data the model needs to encode is orders of magnitude bigger than the memory (i.e., number of parameters) in the model. Thus, the models has to compress the training corpus, and compression implies loosing some of the information.</p>
+<p>In other words, <strong>statistical language models inherently assume that sentences very similar to what they have seen in the training data are also plausible sentences</strong>. They encode a <em>smooth</em> representation of language, and that’s fine, as long as you don’t equate <em>plausible</em> with <em>factual</em>. See, these models weren’t designed with factuality in mind. They were originally designed for tasks like translation, where plausibility and coherence are all that matters. It’s only when you turn them into answering machines that you run into a problem.</p>
+<p>The problem is there is nothing smooth about facts. A sentence is eithre factual or not, there are no degrees of truthfulness —for the most part; let’s not get dragged into epistemological discussions here. But LLMs cannot, by design, define a strict frontier between true and false sentences. All the frontiers are fuzzy, so there is no clear cutoff point where you can say, if a sentence has less than X value of perplexity then it is false. And even if you could define such a threshold, it would different for all sentences.</p>
+<p>You may ask why can’t we avoid using this “smooth” representation altogether. The reason is that you want to generate sentences that are not in the training set. This means you need to somehow guess that some sentences you have never seen are also plausible, and guessing means you have to make some assumptions. The smooth hypothesis is very reasonable —and computationally convenient, as these models are trained with gradient descent, which requieres smoothness in the loss function— again, as long as you don’t care about factuality. If you don’t compress the training data in this smooth, lossy way, you will simply I can’t wait for you to start training your own chatbot and building exciting applications with LLMs!not be able to generate novel sentences at all.</p>
+<p>In summary, this is the underlying reason why the current paradigm of generative AI will always hallucinate, no matter how good is your data and how ellaborated are your training procedures or guardrails. <strong>The statistical language modeling paradigm, at its core, is a hallucination machine</strong>. It is concocting plausibly-sounding sentences by mixing and matching words that is has seen together in similar contexts in the training set. It has no inherent notion of whether a given sentence is true or false. All it can tell is that it looks like sentences that appear in the training set.</p>
+<p>Now, a silver-lining could be this idea that even if some false sentences will unavoidably be generated, we can train the system to minimize their ocurrence by showing it lots and lots of high quality data. That is, can we push the probability of a hallucination to a sufficiently low value that, in practice, almost never happens? Recent research suggests that if there is a sentence that can be generated at all, no matter how low its base probability, then there is a prompt that will generate it with almost 100% certainty. This means that if we introduce malicious actors into our equation, we can never be sure our system can’t be jailbroken.</p>
+</section>
+<section id="mitigating-hallucinations-in-ai" class="level2">
+<h2 class="anchored" data-anchor-id="mitigating-hallucinations-in-ai">Mitigating Hallucinations in AI</h2>
+<p>So far we’ve argued that hallucinations are inherently impossible to eliminate completely. But this doesn’t mean we can’t do anything about it in practice. I want to end this article with a short summary of mitigation approaches that are being used today by researchers and developers.</p>
+<p>One key strategy is to <strong>incorporate external knowledge bases and fact-checking systems</strong> into the AI models. By grounding the models in authoritative, verified information sources, the risk of generating fabricated or inaccurate outputs can be reduced.</p>
+<p>Researchers are also exploring ways to develop more <strong>robust model architectures and training paradigms</strong> that are less susceptible to hallucinations. This may involve techniques like increasing model complexity, incorporating explicit reasoning capabilities, or using specialized training data and loss functions.</p>
+<p>Enhancing the <strong>transparency and interpretability of AI models</strong> is also crucial for addressing hallucinations. By making the models’ decision-making processes more transparent, it becomes easier to identify and rectify the underlying causes of hallucinations.</p>
+<p>Alongside these technical approaches, the development of standardized <strong>benchmarks and test sets for hallucination assessment</strong> is crucial. This will enable researchers and developers to quantify the prevalence and severity of hallucinations, as well as compare the performance of different models in this regard. Thus, if you can’t completely eliminate the problem, at least you can quantify it and make informed decisions about where and when it is safe enough to deploy a generative model.</p>
+<p>Finally, addressing the challenge of hallucinations in AI requires an <strong>interdisciplinary approach</strong>, involving collaboration between AI researchers, domain experts, and authorities in fields like scientific reasoning, legal argumentation, and other relevant disciplines. By fostering cross-disciplinary knowledge sharing and research, the understanding and mitigation of hallucinations can be further advanced.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>The issue of hallucinations in AI systems, particularly in large language models, poses a significant challenge for the reliable and trustworthy deployment of these powerful technologies. Hallucinations, where AI models generate plausible-sounding but factually inaccurate outputs, can have serious consequences in high-stakes applications and undermine user trust.</p>
+<p>The underlying causes of hallucinations stem from the fundamental limitations of current language modeling approaches, including the lack of grounding in authoritative knowledge sources, the reliance on statistical patterns in training data, and the inherent difficulty in reliably distinguishing truth from falsehood using statistics alone. These limitations highlight the need for more advanced techniques that can better understand the nuances of language and factual claims, probably involving some fundamental paradigm shifts in machine learning that take us beyond what pure statistical models can achieve.</p>
+<p>Mitigating hallucinations in practice requires a multifaceted approach, involving the incorporation of external knowledge bases and fact-checking systems, the development of more robust model architectures and training paradigms, the leveraging of human-in-the-loop and interactive learning strategies, and the improvement of model transparency and interpretability. Standardized benchmarks and test sets for hallucination assessment, as well as interdisciplinary collaboration between AI researchers, domain experts, and authorities in related fields, will be crucial for advancing the understanding and mitigation of this challenge.</p>
+<p>I hope this article has given you some food for thought. We went a bit deep into the technical details of how generative models work, but that is necessary to understand why these issues are so hard to solve. If you like this type of article, please let me know with a comment, and feel free to suggest future topics of your interest.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./risks.html" class="pagination-link" aria-label="The Actual Risks of AI">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The Actual Risks of AI</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./reasoning.html" class="pagination-link" aria-label="Large Language Models Cannot Reason">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Large Language Models Cannot Reason</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Prologue: The Age of Artificial Intelligence – Mostly Harmless AI</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./road-to-agi.html" rel="next">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./prologue.html">Prologue: The Age of Artificial Intelligence</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Mostly Harmless AI</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prologue.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Prologue: The Age of Artificial Intelligence</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./road-to-agi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Road to AGI</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./coding-is-dead.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Coding is Dead; Long Live Coding!</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./education.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The AI Revolution We Don’t Need</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./beyond-chatbot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Beyond the Chatbot Revolution</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ai-kill-us.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Will AI Kill Us All?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./risks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The Actual Risks of AI</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./hallucinations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Reliable AI needs a New Paradigm</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./reasoning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Large Language Models Cannot Reason</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./alignment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Why AI Alignment is So Hard</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./open-source.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">The Future of AI is Open Source</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./epilogue.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Epilogue: The Road Ahead</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#the-road-so-far" id="toc-the-road-so-far" class="nav-link active" data-scroll-target="#the-road-so-far">The road so far</a>
+  <ul class="collapse">
+  <li><a href="#how-to-train-your-chatbot" id="toc-how-to-train-your-chatbot" class="nav-link" data-scroll-target="#how-to-train-your-chatbot">How to train your chatbot</a></li>
+  <li><a href="#learning-to-follow-instructions" id="toc-learning-to-follow-instructions" class="nav-link" data-scroll-target="#learning-to-follow-instructions">Learning to follow instructions</a></li>
+  <li><a href="#dont-be-evil-please" id="toc-dont-be-evil-please" class="nav-link" data-scroll-target="#dont-be-evil-please">Don’t be evil… please?</a></li>
+  </ul></li>
+  <li><a href="#the-rise-of-ai" id="toc-the-rise-of-ai" class="nav-link" data-scroll-target="#the-rise-of-ai">The Rise of AI</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Prologue: The Age of Artificial Intelligence</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>The last couple of years undoubtedly mark the begining of the Age of Artificial Intelligence. The release of ChatGPT was the iPhone moment of AI. While it isn’t necessarily a fundamental breakthrough in the scientific or technical advancement of the field, it undeniably marks the inception of the widespread of AI. It has already had a significant cultural impact. It has reshaped public perception and discourse surrounding AI, bringing awareness of its potential and ability to influence our lives.</p>
+<p>For a long time, Artificial Intelligence has been in the collective imagination, from its portrayal in science fiction to many mildly successful attempts at practical applications. However, with ChatGPT’s release and the subsequent surge in large language models and chatbots, AI has finally become a fundamental technology for the general population, even if it is nascent.</p>
+<p>Reasonably enough, many skeptics –myself included on occasions– question AI’s authenticity and transformative potential in its current form beyond the hype and excitement of a shiny new toy. Debates on whether AI is merely an illusion or a revolutionary force happen daily across all traditional and digital media.</p>
+<p>In this last issue of Mostly Harmless for 2023, we will review the evolving promises and expectations of Generative AI, highlighting the essential challenges and unresolved issues necessary for the technology to realize its intended potential.</p>
+<p>Approaching the subject with a healthy balance of skepticism and optimism, I will critique the current state of generative AI from the perspective of a deeply optimist machine learning researcher who loves the field. I will re-examine the most impactful milestones that brought us here and assess the challenges and obstacles ahead.</p>
+<p>By the end, I hope you share with me the excitement of being in the early days of what could potentially be the most important invention of our civilization, with the necessary suspicion and open-mindedness to understand the path forward isn’t guaranteed.</p>
+<section id="the-road-so-far" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-so-far">The road so far</h2>
+<p>Let’s start by looking back at the last few years in generative AI, from the inception of the transformer architecture to the release of the first widely useful AI application.</p>
+<p>When discussing generative AI, we can address different domains: language/text, images, and audio/music. Arguably, the most impactful advancements are in the text domain due to the emergence of large language models. The other domains have also seen incredible progress with the development of, e.g., diffusion models allowing for controllable text-to-image generation and realistic text-to-speech and speech-to-text conversion.</p>
+<p>Thus, I want to specifically focus on language, first because it’s my area of expertise, and second, because the majority of economically valuable jobs projected to be automated in the near future will be due to the existence of language models. While the other domains certainly have exciting applications in art, marketing, video games, and content creation, the potential reach of very powerful language models with real language understanding surpasses that of generative sound, music, and image combined.</p>
+<p>The reason is simple. Language is the primary means of human communication, interaction with the social environment, collaboration, and task-solving. Natural language is frequently used to describe tasks and their solutions. Therefore, solving natural language understanding and developing a machine capable of comprehending instructions, following them, and communicating back in a natural language could potentially be the most transformative technology we could ever invent. We’re still far from full natural language understanding, though. But, at the same time, we’re so much father ahead than anyone seriously involved in AI in the late 2010’s could predict.</p>
+<p>Let’s turn our attention to language modeling, then. At the moment of writing, there is no doubt GPT-4 is the state of the art, at least in terms of being the most powerful, widely available general-purpose language model. That might not be the case in a couple of months when Gemini is finally out, but still, looking over at the story of the GPT series seems like the best way to understand how we got here and where we might go next.</p>
+<section id="how-to-train-your-chatbot" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-train-your-chatbot">How to train your chatbot</h3>
+<p>The history of chatbots goes all the way back to ELIZA in 1962, but their most recent incarnation started, at least in the public mind, with the&nbsp;<a href="https://paperswithcode.com/paper/language-models-are-unsupervised-multitask">advent of GPT-2 in 2019</a>. Its ability to fabricate stories about talking unicorns found in the Peruvian mountains, a significant leap from anything we’d seen before, blew our minds. Sure, we had made strides in translation and text classification with bare transformers, but nothing came close to GPT-2’s coherence in generating general-purpose text. Suddenly, an AI model could write a short story!</p>
+<p>This was also the first time researchers decided not to immediately release the weights of the model, apparently not for any commercial reasons but for fear of it being misused to generate fake news and impersonate people online. Oh, the irony!</p>
+<p>Next year, GPT-3 shook things up with its paper on&nbsp;<a href="https://paperswithcode.com/paper/language-models-are-few-shot-learners">large language models as few-shot learners</a>, marking the first significant breakthrough in transfer learning. Transfer learning is a pivotal area in AI, exploring how quickly we can adapt to new tasks similar to ones we’ve already learned without starting from scratch. This was the focus of the GPT-3 paper, and the first time we had a hint that such a thing as general-purpose language models could exist.</p>
+<p>The GPT-3 paper reveals something many linguists already believed: language understanding is a general-purpose task. Furthermore, text completion is also a very general-purpose task. If you excel at completing sentences across various domains, you also excel at a wide range of tasks that aren’t trivially just text completion, as many tasks can essentially be boiled down to “please complete the following text.” Summarizing text, translating to another language, or solving math problems are all examples of tasks easily framed as text completion.</p>
+<p>However, there’s a catch. While models like GPT-3 excel at predicting and completing text, they struggle to follow specific instructions. This happens because the training data doesn’t resemble instructions. So, even though the model may know how to summarize or translate, you have to figure out how these tasks are presented in the training data to prompt the model effectively. For example, to summarize, you would give the model your text and append “TL-DR;.”</p>
+</section>
+<section id="learning-to-follow-instructions" class="level3">
+<h3 class="anchored" data-anchor-id="learning-to-follow-instructions">Learning to follow instructions</h3>
+<p>What if you want to give clear instructions to the model that allow for some flexibility in how you provide them? This is crucial because multiple ways exist to fill in a given text. For instance, when you ask GPT-3 a question, the text can be completed by providing an answer. Still, it is also valid to continue with similar questions, as vast collections of questions are available on the internet. The model doesn’t know whether you want more questions or the answer to the previous question.</p>
+<p>That’s where instruction fine-tuning comes in,&nbsp;<a href="https://paperswithcode.com/paper/training-language-models-to-follow">as described in the InstructGPT paper</a>. This approach enables you to train your model to better understand and respond to your instructions, whether asking it to solve an equation, summarize a text, generate ideas, or perform other tasks.</p>
+<p>With instruction fine-tuning, the model can be guided to prioritize answering questions over simply executing completion. This approach functions by adjusting the likelihood of responses to questions. For this method to be effective, the model must possess a probable and correct answer to the question; we are just nudging it to value that answer more likely than other non-answer completions.</p>
+<p>However, this is still not enough. For widespread use, you need a model willing to reject problematic instructions, friendly, and committed to providing factual and accurate information. The desired responses should align with user preferences and maintain a respectful and non-discriminatory tone, using generally informal yet polite language. In other words, you need a model that is knowledgeable (pretrained in the whole internet), helpful (can follow instructions), and&nbsp;<em>nice</em>. This is where reinforcement learning with human feedback (RLHF) comes into play, also presented in this paper.</p>
+</section>
+<section id="dont-be-evil-please" class="level3">
+<h3 class="anchored" data-anchor-id="dont-be-evil-please">Don’t be evil… please?</h3>
+<p>In RLHF, we take an instruction fine-tuned model and further adjust it to score better answers that align with user preferences —such as being more or less concise, using more or less formal language, or choosing to answer specific topics. This cannot be accomplished with supervised training because the range of possible human preferences is extensive and challenging to model in a dataset.</p>
+<p>Researchers tackled this problem by turning to reinforcement learning. In this approach, we allow the model to provide multiple responses to a prompt rather than showing the model examples of good answers. A human evaluator then ranks and scores these responses based on their preferences for factuality, relevance, length and depth, language style, non-discrimination, etc. This ranking process encodes the human values we desire in a model but cannot program explicitly.</p>
+<p>RLHF thus involves teaching the language model to rank its answers based on human preferences. The ranking model is then used to further train the language model, resulting in answers more aligned with user preferences.</p>
+<p>From an engineering standpoint, this final puzzle piece transformed language models into usable applications. Just like, we had all the components leading to the iPhone, but the genius move was to put them together in a commercially viable and user-friendly format. ChatGPT is the iPhone of the AI revolution because it embodies several innovations in a commercially plausible manner, making it accessible and valuable to all users, not just experts or researchers.</p>
+<p>And that’s the very brief story of how we got to ChatGPT. But that’s only the beginning. In the last year since ChatGPT was released, a new industry has grown around large language models. Let’s review some of the most interesting trends that make 2023 the year of artificial intelligence.</p>
+</section>
+</section>
+<section id="the-rise-of-ai" class="level2">
+<h2 class="anchored" data-anchor-id="the-rise-of-ai">The Rise of AI</h2>
+<p>Following ChatGPT, models have significantly diversified, with big players like Google, Meta, Apple, Twitter/X, Amazon, and many more training their large models. This competition has driven innovation: AI is now where the Big Tech giants fight each other.</p>
+<p>Various open-source models have also emerged, stemming from Facebook Llama 1 and spinning off into a full Llamaverse. This has led to developing more specialized models, fine-tuned for specific domains and purposes, such as code generation, question-answering from databases, and more.</p>
+<p>The open-source and closed-source models offer a wide range of trade-offs, and projects and wrappers are in place to seamlessly switch between these models, allowing for greater transparency and flexibility. This mirrors the trend in open source of creating diverse infrastructure and tools, as well as the emergence of frameworks that support various technologies. Just as we now have numerous options for databases, programming languages, and web frameworks, the field of language models is experiencing a similar surge in diversity and innovation.</p>
+<p>The second major trend is multimodality. Although we focus on language models here, we must recognize the incredible development in visual and audio models. These models can recognize and analyze images, generate images and videos, and create audio outputs based on text prompts. Combining these separate models into multidomain models can solve problems requiring multiple modalities simultaneously. For instance, giving it a picture, asking questions about the image, modifying it, and generating new images based on it.</p>
+<p>A third major trend is the rise of language models as application platforms. This means interfacing LLMs with plugins and applications and connecting with external code. ChatGPT introduced the idea of plugins that let you interact with external services such as knowledge bases, search engines, or APIs for specific products like a store website or booking service.</p>
+<p>This concept has since evolved into&nbsp;<em>language chains</em>, where you can connect a linguistic interface with non-linguistic tools or services. This involves using a large language model to link with databases, retrieve relevant information, call APIs, perform actions, and compute results. With this setup, you can build applications, known as agents, that are language-driven and capable of interacting with the Internet to carry out tasks on your behalf. These agents go beyond just processing language; they can manage finances, build websites, and more, functioning closer to real assistants.</p>
+<p>A final trend I want to highlight is the emergence of a new field: prompt engineering. It started as an informal practice due to the need for writing effective prompts, but has since evolved into a semi-formal discipline. Since these models aren’t perfect and don’t understand everything perfectly yet, the way you ask for information can affect the results you get. As a result, folks are working on figuring out best practices for crafting good prompts as these models continue to evolve.</p>
+<p>Some experts are skeptical about the long-term future of prompt engineering, believing that as models get better at understanding, it won’t matter how you prompt them. Others think prompt engineering will always be necessary, in the same sense that design patterns, naming and style conventions, and other programming practices remain relevant regardless of how powerful programming languages get.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link" aria-label="Preface">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./road-to-agi.html" class="pagination-link" aria-label="The Road to AGI">
+        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Road to AGI</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

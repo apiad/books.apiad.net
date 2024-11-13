@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>1&nbsp; The Road to AGI – Mostly Harmless AI</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./coding-is-dead.html" rel="next">
+<link href="./prologue.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./road-to-agi.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Road to AGI</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Mostly Harmless AI</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prologue.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prologue: The Age of Artificial Intelligence</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./road-to-agi.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Road to AGI</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./coding-is-dead.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Coding is Dead; Long Live Coding!</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./education.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The AI Revolution We Don’t Need</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./beyond-chatbot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Beyond the Chatbot Revolution</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ai-kill-us.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Will AI Kill Us All?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./risks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The Actual Risks of AI</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./hallucinations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Reliable AI needs a New Paradigm</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./reasoning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Large Language Models Cannot Reason</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./alignment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Why AI Alignment is So Hard</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./open-source.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">The Future of AI is Open Source</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./epilogue.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Epilogue: The Road Ahead</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#general-ai-is-not-just-scaled-up-narrow-ais" id="toc-general-ai-is-not-just-scaled-up-narrow-ais" class="nav-link active" data-scroll-target="#general-ai-is-not-just-scaled-up-narrow-ais">General AI is not (just) scaled-up narrow AIs</a></li>
+  <li><a href="#emergent-abilities-in-llms" id="toc-emergent-abilities-in-llms" class="nav-link" data-scroll-target="#emergent-abilities-in-llms">Emergent abilities in LLMs</a>
+  <ul class="collapse">
+  <li><a href="#what-is-emergence" id="toc-what-is-emergence" class="nav-link" data-scroll-target="#what-is-emergence">What is emergence?</a></li>
+  <li><a href="#emergence-in-language-models" id="toc-emergence-in-language-models" class="nav-link" data-scroll-target="#emergence-in-language-models">Emergence in language models</a></li>
+  <li><a href="#can-llms-reason" id="toc-can-llms-reason" class="nav-link" data-scroll-target="#can-llms-reason">Can LLMs reason?</a></li>
+  </ul></li>
+  <li><a href="#the-road-to-general-purpose-ai" id="toc-the-road-to-general-purpose-ai" class="nav-link" data-scroll-target="#the-road-to-general-purpose-ai">The road to general-purpose AI</a>
+  <ul class="collapse">
+  <li><a href="#towards-program-synthesis" id="toc-towards-program-synthesis" class="nav-link" data-scroll-target="#towards-program-synthesis">Towards program synthesis…</a></li>
+  <li><a href="#and-beyond" id="toc-and-beyond" class="nav-link" data-scroll-target="#and-beyond">…and beyond</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Road to AGI</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Artificial General Intelligence (AGI) has been one of the ultimate goals of Artificial Intelligence since its inception, starting with Alan Turing and the Turing test. In the 60s and 70s, the primary aim was to create something as intelligent as humans. However, for a while, this objective took a backseat as researchers grappled with the immense challenges of developing even the simplest AI systems.</p>
+<p>Recently, with the emergence of large language models that are nearly capable of passing the Turing test, discussions about AGI have resurfaced. Many people believe we are on the cusp of a major breakthrough that will lead us to AGI, and some even think that GPT-4 is already an AGI.</p>
+<p>In this essay, I want to challenge this notion by exploring what Artificial Intelligence and Artificial General Intelligence truly entail. I will discuss what generalization means in the context of AI and explain why achieving AGI is so difficult. Ultimately, I will argue that everything we currently have and know how to create falls short of true General Intelligence, and what we have to do instead to get there.</p>
+<section id="general-ai-is-not-just-scaled-up-narrow-ais" class="level2">
+<h2 class="anchored" data-anchor-id="general-ai-is-not-just-scaled-up-narrow-ais">General AI is not (just) scaled-up narrow AIs</h2>
+<p>Let’s begin by quickly reviewing what we mean when we say “narrow” and “general” AI, and then I’ll tell you why I think narrow times x for any x is not equivalent to general.</p>
+<p>AI is cognitive automation. It’s about building computer programs that solve tasks we humans rely on our cognitive abilities —from puzzles to perception to reasoning to planning and anything else where humans employ their intelligence to solve problems.</p>
+<p>Narrow AI is just AI within a concrete, well-defined domain. Playing chess at the world-champion level is narrow AI. Playing Go like freaking gods is narrow AI. Self-driving cars are narrow AI. And yes, ChatGPT is narrow AI. I’ll tell you in a moment why.</p>
+<p>In contrast, general AI is AI that works across all domains in which human intelligence can be effectively deployed. This includes, crucially, domains that we don’t even know exist today, but when we find them, we will function there just as effectively as in everything else —just like modern physics didn’t exist in Aristotle’s time, but there’s no cognitive difference between Einstein and Aristotle. Raise an Aristotle in 1900, and he would master relativity just fine.</p>
+<p>The difference between narrow and general AI is in the level of&nbsp;<em>generalization</em>. I will borrow a bit from Francois Chollet in his paper&nbsp;<em><a href="https://arxiv.org/abs/1911.01547">On the measure of intelligence</a>,</em>&nbsp;which I truly recommend, although I’ll rephrase things in my terms.</p>
+<p>The notion of generalization in AI, and more specifically machine learning, is the ability of a model to perform effectively outside the conditions in which it was designed —or trained— to work.</p>
+<p>In its simplest form, we expect at least&nbsp;<strong>out-of-training</strong>&nbsp;generalization, i.e., that models perform well in instances they didn’t see during training. The opposite of that is called overfitting —performing well in training instances but terrible in everything else. The only thing we need for out-of-training generalization is our model to&nbsp;<em>interpolate</em>&nbsp;correctly between training samples. Any sensible model that doesn’t over or underfit the training set will exhibit this mediocre level of generalization.</p>
+<p>The next step is&nbsp;<strong>out-of-distribution</strong>&nbsp;generalization, i.e., models that not only work for unseen instances that are pretty similar to training instances but also instances that are quite different. Of course, “quite” is doing much of the work in that sentence. Technically, you want the model to&nbsp;<em>extrapolate</em>&nbsp;beyond the training examples. For that, you need sensible priors that capture what you expect the data distribution to be outside the training convex hull. Most of us think of this level of generalization when we say that a model generalizes well to unknown inputs.</p>
+<p>And finally, the ultimate step is&nbsp;<strong>out-of-domain</strong>&nbsp;generalization, i.e., models that can be applied to new types of problems in completely new domains without retraining. And we still have no idea what it takes to get there.</p>
+<p>So this is the line that separates narrow from general AI. Up until out-of-distribution generalization,&nbsp;<em>all we currently have is narrow AI</em>.</p>
+<p>The reason is that this type of generalization is&nbsp;<strong>developer-aware</strong>, to put it in Chollet’s terms. This means that even if the test instances are unknown&nbsp;<em>to the model,</em>&nbsp;they are known&nbsp;<em>to the developer</em>. That’s why we can find sensible priors and inductive biases that extrapolate effectively. Because we know beforehand how the test instances will look, we can design models that will perform well on those instances, even if the models are not exposed to those exact instances during training.</p>
+<p>Extreme generalization —as out-of-domain generalization is also called— is a completely different beast. To get a narrow AI in any given domain, our model has to master&nbsp;<em>one skill</em>: playing chess, identifying pedestrians, or folding molecules. But crucially, in each of these cases,&nbsp;<em>the actual learning algorithm is designed ad-hoc.</em></p>
+<p>But to get to general AI, our models must master&nbsp;<em>skill acquisition</em>. That is, they have to&nbsp;<em>learn to learn</em>. In a sense, a general AI is an AI researcher, automated. And yes, there is research in this direction —the field is aptly called&nbsp;<em>meta-learning—</em>&nbsp;but we’re far from even automatically discovering the most basic learning algorithms we have already designed.</p>
+<p>Thus, back to my initial claim:&nbsp;<em>no amount of scaling-up narrow AIs will lead us to general AI.</em>&nbsp;There is no point where learning disparate skills —object detection, speech synthesis, chess playing; you name it— suddenly leads us to&nbsp;<em>learn how to learn</em>. There’s a qualitative jump there, in the same sense as making ever higher skyscrapers won’t lead us to the moon. It’s not just a matter of scaling what has worked so far. You need a completely different theory.</p>
+<p><em>But wait</em>&nbsp;—I hear you say—&nbsp;<em>aren’t you making some gross generalization when you gloss over the term “concrete skill”? Isn’t “actually learning” just another concrete skill?</em></p>
+<p>Yes, it is. But it is not a skill that can be learned via the typical machine learning framework. No amount of data in any specific domain will lead a model to find a hypothesis&nbsp;<em>outside</em>&nbsp;its hypothesis space. And in any specific domain, at least for any machine learning approach we currently have, the hypothesis space only contains hypotheses about the entities in that domain. It doesn’t contain&nbsp;<em>hypotheses about the hypothesis space itself</em>.</p>
+<p><em>But what about LLMs? —</em>&nbsp;you ask—&nbsp;<em>Don’t they display generalization to many unseen tasks with very few examples? Isn’t in-context learning an instance of learning to learn?</em></p>
+<p>Well, kind of. To be clear, LLMs are the most general models we currently have. They generalize past what we expected at this point of technological development and exhibit an uncanny ability to adapt to new tasks&nbsp;<em>as long as we frame them in an appropriate linguistic framework</em>. Thus, I claim LLMs are, while super exciting and impressive, still just narrow AI.</p>
+<p>In short, while I believe NLP to be AI-complete —meaning that actually solving NLP entails solving all of AI— I strongly believe the stochastic language modeling paradigm we currently use in all LLMs, is <strong>not</strong> NLP-complete. That means there are unsolved problems in NLP that no amount of data and computing power will solve until we find something better than LLMs.</p>
+<p>Let’s go there, then.</p>
+</section>
+<section id="emergent-abilities-in-llms" class="level2">
+<h2 class="anchored" data-anchor-id="emergent-abilities-in-llms">Emergent abilities in LLMs</h2>
+<p>We already agree that narrow or domain-specific AI can’t simply scale to general-purpose AI with more data and computing power. The gist of the argument is that&nbsp;<em>learning to learn</em>&nbsp;—which is what is required for general AI—&nbsp;is a completely different beast than learning any other domain skill.</p>
+<p>But one thing we left hanging in the previous section was the discussion of whether current large language models are something “above” narrow AI, even if not still completely general. One argument often made in favor of their generality is that these models exhibit surprising abilities they were not explicitly trained for, so-called&nbsp;<em>emergent abilities.</em></p>
+<p>So let’s briefly analyze emergent abilities, where they come from, and how significant they are in discussing narrow vs.&nbsp;general AI. As I usually do, instead of simply giving you my opinionated views, I will try to lay out a framework for thinking and talking about emergent abilities in computational systems that help you reach your conclusions —though I will also tell you my conclusions.</p>
+<p>As an appetizer, I sincerely recommend you read&nbsp;<a href="https://twitter.com/fchollet/status/1689700406824419334?s=20">this Twitter/X thread from Francois Chollet</a>, one of my all-time favorite level-headed voices in AI.</p>
+<section id="what-is-emergence" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-emergence">What is emergence?</h3>
+<p>If you read Chollet’s thread you’ll notice he uses a particularly loose definition of “emergent”, taken as some surprising ability or property you didn’t plan explicitly.&nbsp;The problem with this definition is that it is very subjective: different people looking at the same system will see emergence or not depending on their expectations.</p>
+<p>If we’re going to have a serious discussion about emergence, we need a more objective definition. I will propose a slightly better definition, although it won’t be without issues.</p>
+<blockquote class="blockquote">
+<p>A property or ability in a system is&nbsp;<em>emergent</em>&nbsp;if it is displayed at the system level but not at any component’s lower level.</p>
+</blockquote>
+<p>Now that we have a working definition let’s run a sanity check. The least you want from a definition is that it is nontrivial. A trivial definition is always true or false. A nontrivial one will apply to some cases but not all. So let’s see if we can find sensible examples of both emergent and non-emergent properties.</p>
+<p>I’m focusing on&nbsp;<em>computational</em>&nbsp;systems in this post, although this discussion extends to all sorts of systems. But let’s keep it simple and focused.</p>
+<p>A straightforward example of a non-emergent property in computational systems is&nbsp;<em>error tolerance</em>. Find any error-tolerant system —e.g., a highly distributed database— and you can almost certainly pinpoint which components confer that property to the system, e.g., redundant storage, consensus algorithms, etc. The point is you don’t get error tolerance for free; rather, it is often baked into the system in the form of some explicit component implementing that functionality.</p>
+<p>In contrast, a nontrivial emergent property in a computational system is Turing completeness, the ability to perform any possible computation. The simplest Turing-complete system —the basic Turing machine— is a smart wiring between a plain and simple finite state machine with a plain and simple read-write memory tape. Neither the state machine nor the tape themselves are Turing-complete. It is only their interaction that makes the system as capable.</p>
+<p>These two examples highlight an alternative definition for “emergent” that aligns more with Chollet’s intuition and the&nbsp;<a href="https://en.wikipedia.org/wiki/Emergence">common definition</a>&nbsp;—that an emergent ability is something you discover in your system rather than explicitly designing for it.</p>
+<blockquote class="blockquote">
+<p>A property or ability in a system is&nbsp;<em>emergent</em>&nbsp;if it is caused by the interaction between components and not by any of the components sole function.</p>
+</blockquote>
+<p>There is one final distinction to be made between&nbsp;<em>weak</em>&nbsp;and&nbsp;<em>strong emergence</em>. Weak emergence is when an emergent property can be reductively explained by looking at the relationships between system components. Strong emergence is when that’s not the case: no matter how you decompose the system into components, no reductive theory explains —i.e., predicts— the emergent property from those components.</p>
+<p>In the above sense, Turing-completeness is a weakly emergent property, because we can explain how the interaction between a finite state machine and an infinite memory, neither of which is Turing-complete by itself, suddenly gives rise to this property.</p>
+<p>So far, we don’t know if there are strongly emergent properties in the world, let alone computational systems, but a good candidate is&nbsp;<em>consciousness</em>. If materialists are right and consciousness is just an emergent property of matter, i.e., all mental states correspond to some physical states of the brain, then one possible solution to the hard problem is claiming that consciousness is a strongly emergent property in sufficiently complex information processing systems; thus, it cannot be reductively explained.</p>
+</section>
+<section id="emergence-in-language-models" class="level3">
+<h3 class="anchored" data-anchor-id="emergence-in-language-models">Emergence in language models</h3>
+<p>Now that we have non-trivial examples of emergent and non-emergent properties in computational systems, let’s turn to the specifics of machine learning.</p>
+<p>Chollet uses a simple example of emergence in language models in his thread: encoding semantic properties in word embeddings. When we train a word embedding model, like&nbsp;<em>word2vec</em>, we don’t explicitly design it so that specific directions in the embedding correspond to semantic properties like gender, time, location, or relations like synonyms, meronyms, or antonyms.</p>
+<p>We train the model so that word embeddings are useful for predicting a word’s context distribution. It just happens that the best way to encode a word’s context in a fixed-length real-valued vector is such that words with similar semantic relations end up having similar geometric relations. Thus, this is an emergent property.</p>
+<p>However, from the previous discussion, I hope you agree this is a weakly emergent property. We understand pretty well why certain directions in the embedding space tend to approximately encode certain semantic properties. It is surprising but explainable, as much research has been published on the explanation. Crucially, we now know how to train word embeddings such that certain directions encode specific semantic properties, so we can design for this ability.</p>
+<p>Now, the most interesting emergent ability in machine learning, this time in large language models like GPT-3, is, of course,&nbsp;<em>in-context learning</em>. This is the ability to prime a language model to solve a seemingly novel task via carefully constructed prompts without fine-tuning the weights. Most, if not all, of the surprising use cases of LLMs, are ultimately reducible to particular cases of in-context learning.</p>
+<p>But is in-context learning a weak or strongly emergent ability? We still don’t have a precise explanation for why it happens. Specifically, we still cannot say, “these are the exact interactions between these components that make in-context learning appear.” However, this doesn’t mean there isn’t an explanation; it just means we still haven’t found it. I personally believe that in-context learning is weakly emergent and that we will find a convincing explanation sooner rather than later.</p>
+</section>
+<section id="can-llms-reason" class="level3">
+<h3 class="anchored" data-anchor-id="can-llms-reason">Can LLMs reason?</h3>
+<p>One especially exciting thing about in-context learning is that, for some tasks, it implies LLMs need to construct internal world models. The canonical example, which appears in the famous “<a href="https://arxiv.org/abs/2303.12712">GPT-4 sparks of general intelligence</a>” paper, is the ability to solve Otello puzzles. After analyzing the weight activations on certain Otello prompts, researchers discovered what seemed like a pretty explicit representation of the Otello board, together with correct topological relations between the pieces and their locations.</p>
+<p>A&nbsp;<a href="https://www.preprints.org/manuscript/202308.0148/">recent preprint</a>&nbsp;argues that, after a thorough evaluation, <em>GPT-4 cannot reason</em>. According to the author, the conclusion rests on a set of carefully designed reasoning problems with more sophisticated qualitative analysis. We must remember that this paper is not peer-reviewed, so take it with a grain of sand, but after its publication, there have been many more examples showing catastrophic reasoning failures in GPT-4. At the moment, no one serious would claim any of the existing models actually reasons at a level similar to most humans.</p>
+<p>However, beyond empirical evaluations, we can make a couple of formal arguments to highlight why the current “pure” language modeling paradigm has to be incapable of fully-fledged reasoning. It’s a classic argument in computability theory, and it goes like this.</p>
+<p>If any computational model can reason —to the full extent of the meaning of this word in the context of artificial intelligence—, it must be able to perform Turing-complete computations, for if a model is not Turing-complete, that means there are decidable problems it cannot solve. One key aspect of Turing completeness is that it requires potentially unbounded computation. That is, there are some problems for which, in some inputs at least, the model must be able to spend an arbitrary amount of computation.</p>
+<p>A simple example is answering an open math question, like, “What is the smallest odd&nbsp;<a href="https://en.wikipedia.org/wiki/Perfect_number">perfect number</a>?” We don’t know, first, if there are infinite perfect numbers; second, how far between they are; and third, if there is an odd one. However, we can write a simple program that tries every number in order and stops when it finds an odd perfect number. The program will either never stop or find the smallest one.</p>
+<p>Now, by design, GPT-4, or any pure language model, cannot “think forever.” The amount of computation spent in answering any prompt is proportional to the input length in a very determinate way, which depends only on the model size. Thus, by a simple counterargument, LLMs cannot reason, at least to the extent of answering semi-decidable questions.</p>
+<p>Now, you can claim, “GPT-4 can reply that this question is unknown; and that is true.” And yes, it can. But you don’t need reasoning to give me that reply. You only need to repeat the Wikipedia entry on perfect numbers. We expect more from fully-fledged reasoning systems.</p>
+<p>There is a way out, however. GPT-4 could generate the necessary code to answer this question and run it. And that is precisely what the newest iteration of ChatGPT does with Code Interpreter. Tying a language model with a code interpreter gives you, potentially, a system capable of Turing-complete reasoning —and trivially so because the code interpreter is already Turing-complete. However, it remains to be seen if the language model can generate the correct programs.</p>
+<p>This is what gets more excited about LLMs in the near term. Wiring them with formal systems can lead to qualitatively superior functionality. The cloud on the horizon is that last caveat: we don’t know if language models trained on existing code will be capable of generalizing to generate new, unseen code for novel problems. And we will never know for sure because&nbsp;<a href="https://en.wikipedia.org/wiki/Rice%27s_theorem">proving that any given program has a non-trivial semantic property is generally undecidable</a>.</p>
+<p>However, humans are also bounded by this formal limitation —unless you believe in magic, which I don’t— and we get along with programming pretty well. Thus, we don’t need magical LLMs that can solve undecidable problems. We need LLMs that, in practice, can solve the same problems we can, just faster and slightly more reliably. That would already be a massive transformation of the entire field of Computer Science.</p>
+</section>
+</section>
+<section id="the-road-to-general-purpose-ai" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-to-general-purpose-ai">The road to general-purpose AI</h2>
+<p>LLMs —and most, if not all, practical machine learning models— are computationally bounded. That means they perform a fixed amount of computation for any given input that can be quantified solely on the size of the model and the input, irrespective of the content of the input.</p>
+<p>This immediately restricts the class of problems these models can solve because, intuitively, two prompts of similar size can encode problems of widely different complexity. Formally, we can say that a computational system, to be Turing-complete, must have inputs in which you cannot predict beforehand the amount of computation necessary. It can even be an infinite amount. Thus, any computational system that performs a fixed amount of computation for all inputs is bound to be less than Turing-complete. There are questions it simply cannot answer correctly.</p>
+<p>However, this previous description only applies to the “pure” language modeling paradigm in which the input and output are natural language text. We can attempt to bypass it by allowing the language model to output computer code and, crucially,&nbsp;<strong>execute that code before answering</strong>.</p>
+<p>This makes the whole system Turing-complete, and trivially so because the language model could generate the correct code to answer any semi-decidable question and execute it. You get Turing completeness because one of the components of the system is already Turing-complete. So it’s not even an emergent ability in the sense in which we defined it in the last issue.</p>
+<p>But… that an AI system is, in principle, Turing-complete only tells us a part of the story. There’s no guarantee that by hooking a language model with a code interpreter, you can suddenly solve all solvable problems. For that, we need the model actually to output the correct code for a given prompt, and this is where things turn interesting.</p>
+<section id="towards-program-synthesis" class="level3">
+<h3 class="anchored" data-anchor-id="towards-program-synthesis">Towards program synthesis…</h3>
+<p>This is the problem of&nbsp;<strong>program synthesis</strong>. On the surface, program synthesis looks like just one specific domain of generative AI. Instead of generating natural language text, or beautiful images of cats, the model is asked to generate code for a given problem. However,&nbsp;<strong>this problem is AI-complete.</strong></p>
+<p>The reason is simple. If a computer can generate a correct program for any given question, it can definitely answer any given question. Thus, you can reduce all of AI to program synthesis. Image generation? Generate a program that tells Photoshop what to do. Self-driving cars? Generate a program that tells the car how to move. Passing the Turing test? Generate a program that is a perfect chatbot.</p>
+<p>I’m stretching this to an extreme to show that, since all a computer can do is run programs, if an AI system can always generate the correct program for any given question, it can do anything that any other computational system can do. This is, by definition, AGI.</p>
+<p>Put another way. Suppose there exists some task T that a computer program P can do. Now take our program synthesis AI and ask it to solve that task T. Doesn’t know how to do it? Never mind, it can just generate and run the exact code of program P.</p>
+<p>In fact,&nbsp;<strong>program synthesis is exactly what programming is about</strong>. We take a problem description and write code that solves it. We don’t need to know how to play chess best, the correct trajectory for a rocket to land on Mars, or anything else. We just need to be sufficiently smart to be able to code a program to solve that problem.</p>
+</section>
+<section id="and-beyond" class="level3">
+<h3 class="anchored" data-anchor-id="and-beyond">…and beyond</h3>
+<p>Does this mean ChatGPT with Code Interpreter is a step closer to AGI? Well, kinda, but we’re still far, far away. What current LLMs can do is a very restricted form of program synthesis. If you’ve used Copilot or any other AI code generator, you surely understand this. For all the impressive it is, it still makes enough mistakes at anything but the most trivial prompts that it requires constant supervision by someone who can actually code.</p>
+<p>We should expect this to improve, though. The question is whether the current LLM paradigm (self-supervised pretraining+ instruction fine-tuning+ RLHF) can get us all the way to full program synthesis from natural language.</p>
+<p>As usual, we have reasons to suspect this problem is not entirely solvable. A formal argument against perfect program synthesis is Rice’s theorem. In short, determining whether a given program satisfies some arbitrary semantic properties (such as never going into an infinite loop or never de-referencing a null pointer) is generally undecidable.</p>
+<p>However, unless you believe human brains are qualitatively superior to Turing machines, we are also limited by this argument, and we consider ourselves general-purpose programmers —at least I do!</p>
+<p>Thus, general-purpose program synthesis need not be perfect. It just needs to be good enough, at the level of the best human programmers. Can we get there?</p>
+<p>I believe we can, but we need some paradigm shifts. A quick comparison between how humans learn to and actually do program synthesis will show the vast chasm between humans and LLMs concerning coding skills.</p>
+<p>First, humans don’t have a training mode or an inference mode. We are never-ending learners, always improving our own understanding of every action we take. Second, humans don’t write working code at once. We write it, test it, debug it, improve it, refactor it, and start over. Furthermore, we don’t interact with code sequentially, one token after the other. We insert, delete, and move things around as necessary. And finally, we don’t just take natural language prompts as input. We formulate follow-up questions, develop counter-examples, and generally maintain a natural language conversation parallel to the code evolution.</p>
+<p>None of this is, I believe, outside the reach of machine learning. But we need a new paradigm. An agent that can write and tweak a codebase arbitrarily, interspersed with a natural language conversation about it, and frequently executing that code and observing its behavior, all that while being able to update itself —not necessarily through gradient descent— to learn continuously from the whole process.</p>
+<p>General purpose program synthesis from natural language is the hardest problem of Artificial Intelligence, if only because it subsumes all the other problems. And we have made significant steps already but are still at the earliest stages in this race.</p>
+<p>The road to AGI necessarily goes through program synthesis. But we can’t stop there. Useful and safe AGI must be able to reason and act while respecting human values if it will help us reach our greatest potential as species. However, making sure a sufficiently smart AI is safe —and not just <em>pretending</em> to be safe— may very well be the hardest engineering problem we’ve ever faced!</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./prologue.html" class="pagination-link" aria-label="Prologue: The Age of Artificial Intelligence">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Prologue: The Age of Artificial Intelligence</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./coding-is-dead.html" class="pagination-link" aria-label="Coding is Dead; Long Live Coding!">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Coding is Dead; Long Live Coding!</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

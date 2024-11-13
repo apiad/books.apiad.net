@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>2&nbsp; Coding is Dead; Long Live Coding! – Mostly Harmless AI</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./education.html" rel="next">
+<link href="./road-to-agi.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./coding-is-dead.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Coding is Dead; Long Live Coding!</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Mostly Harmless AI</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prologue.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prologue: The Age of Artificial Intelligence</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./road-to-agi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Road to AGI</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./coding-is-dead.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Coding is Dead; Long Live Coding!</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./education.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The AI Revolution We Don’t Need</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./beyond-chatbot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Beyond the Chatbot Revolution</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ai-kill-us.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Will AI Kill Us All?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./risks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The Actual Risks of AI</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./hallucinations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Reliable AI needs a New Paradigm</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./reasoning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Large Language Models Cannot Reason</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./alignment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Why AI Alignment is So Hard</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./open-source.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">The Future of AI is Open Source</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./epilogue.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Epilogue: The Road Ahead</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#building-an-llm-for-code-generation" id="toc-building-an-llm-for-code-generation" class="nav-link active" data-scroll-target="#building-an-llm-for-code-generation">Building an LLM for code generation</a></li>
+  <li><a href="#what-can-code-generators-do" id="toc-what-can-code-generators-do" class="nav-link" data-scroll-target="#what-can-code-generators-do">What can code generators do</a>
+  <ul class="collapse">
+  <li><a href="#code-explanations" id="toc-code-explanations" class="nav-link" data-scroll-target="#code-explanations">Code explanations</a></li>
+  <li><a href="#code-translation" id="toc-code-translation" class="nav-link" data-scroll-target="#code-translation">Code translation</a></li>
+  <li><a href="#api-documentation" id="toc-api-documentation" class="nav-link" data-scroll-target="#api-documentation">API documentation</a></li>
+  </ul></li>
+  <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations</a>
+  <ul class="collapse">
+  <li><a href="#what-do-code-hallucinations-look-like" id="toc-what-do-code-hallucinations-look-like" class="nav-link" data-scroll-target="#what-do-code-hallucinations-look-like">What do code hallucinations look like?</a></li>
+  <li><a href="#can-we-fix-this" id="toc-can-we-fix-this" class="nav-link" data-scroll-target="#can-we-fix-this">Can we fix this?</a></li>
+  </ul></li>
+  <li><a href="#so-is-coding-dead" id="toc-so-is-coding-dead" class="nav-link" data-scroll-target="#so-is-coding-dead">So, is coding dead?</a>
+  <ul class="collapse">
+  <li><a href="#but-what-about-the-average-software-engineer" id="toc-but-what-about-the-average-software-engineer" class="nav-link" data-scroll-target="#but-what-about-the-average-software-engineer">But what about the average software engineer?</a></li>
+  <li><a href="#why-would-everybody-write-code" id="toc-why-would-everybody-write-code" class="nav-link" data-scroll-target="#why-would-everybody-write-code">Why would everybody write code?</a></li>
+  <li><a href="#is-making-software-really-about-coding" id="toc-is-making-software-really-about-coding" class="nav-link" data-scroll-target="#is-making-software-really-about-coding">Is making software really about coding?</a></li>
+  </ul></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Coding is Dead; Long Live Coding!</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Few developments in the generative AI space have been as exciting lately as the rise of code generators.</p>
+<p>Code generators are machine learning models that can take a natural language prompt and some contextual code and produce new code that mostly aligns with the prompt’s intention. The simplest case involves defining a function, its arguments, and comments describing how it works; the code generator will then provide the function’s body. For example, you can input a function signature and a comment saying, “This function finds the minimum of an unsorted list”. The generated code would fit these specifications.</p>
+<p>GitHub Copilot was one of the first major breakthroughs (or at least public breakthroughs) in this space, sparking both praise and controversy due to its impressive accuracy in many situations while also sometimes producing verbatim code from private or open-source repositories with proper licensing information included. Code generators work similarly to language models, with an uncanny ability to comprehend and generate code based on human communication, but they also need some special considerations., because code is not natural language.</p>
+<p>In this first edition of Mostly Harmless, we’ll dive into this topic and examine how these systems work, their potential applications and limitations, and answer a fundamental question regarding whether or not they signal an end to coding:&nbsp;<em>does anybody ever need to learn how to program again?</em></p>
+<section id="building-an-llm-for-code-generation" class="level2">
+<h2 class="anchored" data-anchor-id="building-an-llm-for-code-generation">Building an LLM for code generation</h2>
+<p>Code generators are essentially large language models, like GPT, trained on vast amounts of code. For that reason alone, we should code generators to learn to generate code based on the previous context, i.e., the variables, methods, classes, and generally the structure of existing code.</p>
+<p>For example, if you have variables declared in the context, it is more likely that the code you generate will contain references to those same variables because, in training code, you refer to existing variables more often than you define a new identifier.</p>
+<p>Now, if you train on data with code interspersed with other language comments, like function documentation or inline comments inside the code, it is natural that this comment will refer to the semantics of the surrounding code. Thus, it is also somewhat natural that language models can learn to generate code from a natural language description.</p>
+<p>Up to this point, all we have discussed is plain, unsupervised training of language models, but on code data. As we know, models like ChatGPT are trained this way, fine-tuned on instructions, and then reinforced with human feedback.</p>
+<p>And you can do the same thing with code. You can compile a set of instruction pairs that say, in natural language, “modify the previous code so that there are no bugs”, or “in the previous code change this variable for this other variable”. These examples will not appear naturally in training code taken from Github, so you need to bake them in with an instruction fine-tune.</p>
+<p>And finally, you can do reinforcement learning with human feedback, evaluating different versions of the same code. Some of these will have better style or naming conventions that more closely adhere to established standards in developers. Using RLHF, you can steer a model to not only generate syntactically correct code, but also respect some desired style. The same methodological approach leading to a world-class text-based chatbot can also lead you to a world-class code generator.</p>
+<p>However, there are still limitations since code is a formal language with stricter syntactic rules than natural language. Therefore, certain aspects may not work as well as they could. For instance, you cannot have unbalanced parentheses or ill-formed arithmetic expressions. And while these limitations may be harder to learn from data, we can bake these rules into our code generator in at least two different ways.</p>
+<p>One of the simplest but most effective ways is to use trial and error. You can have a prompt, make your code generator produce a bunch of continuations, and then you lint those continuations with, say, the Python linter, and reject the ones with parsing errors. You cannot do this with natural language, because checking that natural language is well-formed is as hard as generating natural language.</p>
+<p>You can also reject the generated snippets with easy-to-see semantic errors, like referencing an unexisting variable. You can even run them in a sandbox and reject the ones with some trivial easy runtime error, like a null dereference, or a division by zero. You can do this during the inference phase, of course, but also during the training phase so that some of these rules bleed into the probabilistic learning and make the model less likely even to sample ill-formed code.</p>
+<p>Another way of forcing syntactic rules is to pre-process the code so what the language model generates cannot, by definition, be incorrect. For example, you need your code generator to generate a loop with a variable and use the variable internally, and those two mentions of the same variable have to match the variable name.</p>
+<p>This is the case of a context-sensitive restriction. One way to solve cases like this is to have the language model operate at a syntactic level where variables are all called&nbsp;<code>var0</code>,&nbsp;<code>var1</code>, etc. This makes it much easier for the language model to learn to refer to existing variables, since the number of distinct tokens it must handle is far less. During training, you can rename all variables, function names, and symbols in general to this restricted format. Then, during inference, you run a post-processing step that renames symbols back into their actual names in the given context.</p>
+<p>In general, there are many tricks you can use to leverage the fact that you are dealing with a very restricted syntax and, at the same time, make it easier for the language model to learn those syntactic rules.</p>
+</section>
+<section id="what-can-code-generators-do" class="level2">
+<h2 class="anchored" data-anchor-id="what-can-code-generators-do">What can code generators do</h2>
+<p>Now that we know broadly how these code-generators work, we can ask ourselves in what way they can help us programmers.</p>
+<p>The most basic use case is, of course, code generation. This was the first use case highlighted by Github Copilot, where you can ask the model to generate a snippet of text. You can generate a complete short method or a code fragment, like a loop or a snippet that uses an API. So it’s basically code completion on steroids.</p>
+<p>You can also ask for small modifications to the code. For example, you can say, “In the following code, change the inner loop so that it doesn’t use this variable twice”. This way, you can make small code refactorings via natural language.</p>
+<p>That’s the simplest use case, but it’s not nearly the most interesting one. When you extend natural language to programming code translation to its full extent, you realize this can be bidirectional. You don’t need to go from natural language to code; you can also go from code to natural language.</p>
+<section id="code-explanations" class="level3">
+<h3 class="anchored" data-anchor-id="code-explanations">Code explanations</h3>
+<p>The code-to-language direction allows, for example, automatic documentation of functions, as well as getting some explanations for a fragment of code. Suddenly, you can ask questions about your code to a language model and get a natural language description of what the code is doing. It may not be exactly accurate, though, and maybe it couldn’t be as high level as it could.</p>
+<p>For example, if you have a somewhat complex algorithm —like a sorting algorithm— the description you get could be something like “this variable is changed to this array position”, and it probably won’t get what you really want from the code, which is something like “in the internal loop, we are guaranteeing that the first part of the array is always sorted and the second part contains only elements larger than the first half”.</p>
+<p>That’s what you would want in a sorting algorithm for the explanation. And it’s going to be hard to get this from a language model because it has to understand not the syntax of the code –what the code is saying– but the semantics of the code –what the code is doing in execution– and that’s not something that you can at least naturally learn from data on code and comments. Actually, even for humans, this is hard to do. You have to debug the code and prove a theorem of what the code is doing in your head.</p>
+</section>
+<section id="code-translation" class="level3">
+<h3 class="anchored" data-anchor-id="code-translation">Code translation</h3>
+<p>The next thing that you can do is code translation. You can ask the model to translate code from one programming language to another programming language. Of course, we can train the model for this —e.g., translate from Python to Rust—, but you can also use natural language as an&nbsp;<em>intermediate language</em>.</p>
+<p>If you have a language model that can generate back and forth between natural language and several programming languages, it already implicitly knows how to translate. Thus, you can say, “take this code to a high-level natural language description and then produce a code implementation in another language”.</p>
+<p>Again, this comes with the caveat that maybe the model isn’t getting the exact semantics of the code, but it can get pretty close to be good enough for most practical purposes.</p>
+</section>
+<section id="api-documentation" class="level3">
+<h3 class="anchored" data-anchor-id="api-documentation">API documentation</h3>
+<p>But perhaps one of the most interesting use cases I’m finding people are doing a lot is to document APIs automatically. Instead of interacting with your code base, imagine you have some library you’re using —like Python bindings for Elasticsearch. That library will have documentation with code examples and snippets interspersed with natural language.</p>
+<p>A very simple use case is to do retrieval-augmented language modeling. This means we index the documentation in a vector store, and then we can ask questions about the documentation. You can say, “How do I log in and I make a query that says this and this?”</p>
+<p>It doesn’t matter if the language model has no training data from that specific library doing something you want to do. You can go to documentation, find relevant examples, feed them to the language model with their natural language description and code, and then ask a question.</p>
+<p>Because of how in-context learning works, you can expect the language model to respond with new code and more or less answer the intended semantics you want by copying and pasting, refactoring, and combining things from the documentation.</p>
+<p>This is, by far, the most interesting use case that I’m seeing right now. The reason is that this is one of the biggest pain points in software development. Programmers aren’t usually wasting much time doing basic coding, like inserting a variable in a list or creating a dictionary with some format. If you’ve programmed for a while, these tasks are so ingrained in your muscle memory that you know how to do them automatically. I don’t need anybody to remind me how to open a file in Python.</p>
+<p>But 90% of the code you write for a consumer application is interface code with some external API or library. And a large part of that code is code you don’t know how to write because it’s maybe the first or one of the few times you interact with that specific library.</p>
+<p>So now you can have a coding assistant that doesn’t really need to be that good at getting the complex semantics of code. You need to be able to go to documentation, find the relevant examples, and give you a snippet of code that is 80% extracted from relevant examples but using your variables and contextualized in the piece of code that you are writing. And that already is a huge boost to productivity.</p>
+</section>
+</section>
+<section id="limitations" class="level2">
+<h2 class="anchored" data-anchor-id="limitations">Limitations</h2>
+<p>The most important limitation in language modeling, in general, has been called the problem of&nbsp;<em>hallucinations</em>. Broadly speaking, it is very hard to get these models grounded in factual information because distilling from training natural language what is syntactic knowledge versus factual knowledge about the world is very hard.</p>
+<p>A typical example is when you ask something to Chat-GPT, and it invents dates or people’s names and locations. To alleviate this, we can use retrieval-augmented models to extract relevant factual information from Wikipedia and then use the language model to summarize that. But, at least until now, there is no principled way to guarantee that the model won’t simply generate some weird, incorrect factual claim because the model doesn’t know what part of its knowledge is syntactic and what part is factual.</p>
+<p>I personally think this problem is ultimately unsolvable using the language modeling paradigm, where you generate text based on probabilistically picking the most likely continuation.</p>
+<section id="what-do-code-hallucinations-look-like" class="level3">
+<h3 class="anchored" data-anchor-id="what-do-code-hallucinations-look-like">What do code hallucinations look like?</h3>
+<p>If you’re going from natural language to code, the simplest way you can see hallucinations is when you get a code that uses a new variable or method that doesn’t exist anywhere in your codebase or uses a new method that doesn’t exist anywhere.</p>
+<p>However, unlike natural language, if you hallucinate a wrong variable or function name, you can often detect it using a linter, so many of the more harmless hallucinations are not relevant in the code generation case, as they won’t introduce subtle bugs.</p>
+<p>A slightly more difficult hallucination is using a wrong variable or a wrong function name that does exist in your codebase. In this case, you will not get a linter or a compiler error because you’re using an existing symbol, but you will get the wrong behavior. This will be a lot harder to find because it has the same problem as most hallucinations: you have to review the code, so you have to be sufficiently knowledgeable to have been able to generate that code yourself.</p>
+<p>Then you have a third level in which your code doesn’t do anything obviously wrong. It uses the right variables and function names, and it looks more or less OK, but it has some subtle logical mistake that leads you to a bug. For example, looking at a double nested loop and finding out that a variable is not updated at the right moment in the internal loop is a tricky question even for human experts, so these kinds of mistakes will introduce subtle bugs.</p>
+<p>However, even if, in many cases, the bugs that they will introduce are not worse than the bugs a human would introduce, this does pose an important threat because of&nbsp;<em>automation bias</em>.</p>
+<p>When you check code written by humans, you expect bugs in that code, and you expect the code to be wrong&nbsp;<em>in specific ways</em>&nbsp;in which humans make mistakes because you’ve been looking at humanly written code forever.</p>
+<p>But when you’re looking at machine-generated code, the only way programmers have ever interacted with it has been with rule-based machine-generated code —compiler- and template-generated code— and that is basically code that has no mistakes.</p>
+<p>So even if the language model would make errors that are, on average, not worse than what a regular average programmer would make, they can still be harder to get because these will not be the exact same mistakes that a human would make; so we could be less on guard.</p>
+</section>
+<section id="can-we-fix-this" class="level3">
+<h3 class="anchored" data-anchor-id="can-we-fix-this">Can we fix this?</h3>
+<p>We can try to fix hallucinations in code with better training data, post-processing, and many techniques that we still haven’t figured out exactly but will come out in the next few months. But there is a fundamental limitation to what we can do automatically,&nbsp;<a href="https://en.wikipedia.org/wiki/Rice%27s_theorem">Rice’s theorem</a>.</p>
+<p>In short, there is no high-level non-trivial semantic property of programs that an algorithm can automatically check. This is a very important limiting theorem in theoretical computer science, which means there is no way to get an informal semantic description of the intended behavior and automatically verify that the generated code fits that behavior.</p>
+<p>However, this doesn’t mean it cannot be done sufficiently well in practice so that it already provides an incredible performance and productivity boost. It just says that, in general, we will never be able to formally guarantee with a proven theorem that a code generator produces code that does exactly what you tell it in natural language. That problem is&nbsp;<em>unsolvable</em>.</p>
+<p>This highlights the theoretical impossibility of perfect natural language to code generation, but engineering isn’t about perfection. Engineering is about solving the average case in the best possible way and the most important edge cases fairly well.</p>
+<p>I think that we can get pretty pretty far with code generation technology. We already have made a huge leap, and I think these theoretical limitations, even if they show that we will never be able to have a perfect programming companion, they don’t tell in practice how far we can get in more or less well-known domains with more or less well-defined rules. If 90% of the code that is written today for consumer applications can be offloaded to computers and then you can spend 10% of the time reviewing that code instead, and you have some sensible unit testing in place and some sensible quality assurance, this could be an incredible boost in productivity.</p>
+<p>Even if for mission-critical code you will still need a very thorough formal verification procedure and careful review, that’s only mission-critical code. The vast majority of the code we write today is not mission-critical; it doesn’t matter if it has a bug and somebody gets annoyed. That is already happening. We are shipping tons of buggy lines of code, making tons of users annoyed, and wasting a lot of money on shitty code today.</p>
+<p>And still, the software industry has brought us here. It has brought us to a place where we have social media, YouTube, machine learning, and rockets going to the Moon and Mars.</p>
+<p>So yeah, if you have a code assistant that gets you 90% there and you have to put an extra 10%, that automation is solving the larger, easier part of the problem and letting the human expert to solve the smaller, harder part of the problem.</p>
+</section>
+</section>
+<section id="so-is-coding-dead" class="level2">
+<h2 class="anchored" data-anchor-id="so-is-coding-dead">So, is coding dead?</h2>
+<p>The final question I want to tackle is whether this will spell an end to software development as we know it –and you can hint by the way I’ve been talking about this that my answer is, of course, no, it won’t.</p>
+<p>The first argument is that we are not, and we probably will never be in a place where you can ask in natural language for a complete application, and you will get something deployed to the cloud. But when we get there, that will most likely work only for most of the easy application domains where everything is more or less already done –and that’s a good thing. But there will always be a gap between what a team of humans using the best available technology and software engineering practices can achieve and what the AI alone can achieve.</p>
+<p>But this is, again, a very broad idea. Yes, maybe the best software engineers in the world will always have a job because there will always be difficult problems.</p>
+<section id="but-what-about-the-average-software-engineer" class="level3">
+<h3 class="anchored" data-anchor-id="but-what-about-the-average-software-engineer">But what about the average software engineer?</h3>
+<p>Will the average programmer get outworked by a slightly better-than-average programmer with an AI compiler? If now I can write 90% of the code in 10% of the time, does that mean that nine out of 10 programmers get out of the job because I can do the work of nine of my colleagues?</p>
+<p>That is a real concern, and it’s a concern that is not so easy to dismiss with sweeping arguments like the previous one. Every time automation reaches some industry, some jobs are destroyed, and some people are taken out of the picture because their skills become irrelevant.</p>
+<p>One optimistic point of view is that software is an industry that is nowhere near the saturation point where consumer demand meets offer. We have way, way more need for software out there than the amount of people who are currently writing software can do.</p>
+<p>So, there is still a lot of space for increased productivity, and we will have enough demand to meet that increased productivity. Thus, in the near term, I only expect that if we increase the amount and quality of the code we are writing, i.e., the number of problems we are solving, this will mean that more users will be satisfied.</p>
+<p>The other optimistic view I can give is that any time we’ve had a leap in software productivity –and this hasn’t been the case in other industries– that has translated into a massive barrier lowering. For example, when we went from programming in assembly code to compilers or from programming in C to using OOP frameworks, every time we had something that lowered the entry barrier, we got more people into programming.</p>
+<p>Today, we have maybe 10 million programmers in the world, and we have almost 8,000 million people. So there are a lot of people that aren’t programming yet, and they could get into this.</p>
+<p>You’ll probably ask, but why would everybody get into programming?</p>
+</section>
+<section id="why-would-everybody-write-code" class="level3">
+<h3 class="anchored" data-anchor-id="why-would-everybody-write-code">Why would everybody write code?</h3>
+<p>Well, here’s an argument. The vast majority of people in the world have at least a basic understanding of math, so that when they go to the supermarket and they have to, I don’t know, buy two things, they don’t need to hire a professional mathematician to add for them. That is, the vast majority of people know enough math to get by daily, and then we have professional people who do professional math in problems that are sufficiently hard so that the average person doesn’t know what to do. And that’s because the modern world runs on math.</p>
+<p>Well, I think programming will become more or less the same. The modern world also runs on software, and our society will become even more software-dependent. In that future, everybody will know a little bit of programming, sufficiently enough to say to their home computer, “When I get home, I want you to turn my lights on, but only if it’s night and the electric bill is not above the average that I pay in the last three months.” You will learn basic coding in school, and anywhere, you will have interfaces with computers that you talk to, and they generate some code and do something for you.</p>
+</section>
+<section id="is-making-software-really-about-coding" class="level3">
+<h3 class="anchored" data-anchor-id="is-making-software-really-about-coding">Is making software really about coding?</h3>
+<p>Here is one final argument for optimism. So far, we’ve been talking about how massive the boost in productivity of code generators is, but this boost in productivity is limited to one specific part of software development, which is actually writing code. Anybody who’s done software development at some scale in the industry knows that writing code is by far neither the hardest nor the most time-consuming or even the most important part of software development.</p>
+<p>If you increase productivity a hundredfold in a part of the process that represents 10% of the overall, you, at best, reduce that 10% close to zero but still have to deal with the remaining 90%.</p>
+<p>And what else do we have in software development that is super hard to get? We must understand requirements or specifications, talk with customers, understand what they want, and guide them through designing a software product, knowing the user base, and finding a sustainable business model.</p>
+<p>Yes, we can also improve some of that using language models because we could, e.g., get transcriptions of user interviews and produce a summary of all the bugs we have in Google Play comments.</p>
+<p>But a fundamental threshold there is the human part of the process. We need to get some humans to use our application enough to discover whether our application is fulfilling their needs. And we need those humans to report it back. And that’s a massive part of software development, testing your code with real users.</p>
+<p>And you cannot simply replace that other human with a language model because your end user is a human. You want that human to interact with your code. You can replace the person listening to the human with a language model and maybe get a boost in productivity there, but you cannot replace the user with a language model. You’ll still have a human user, and human users are slow. They get angry easily, don’t understand your application, and don’t know what it is they don’t like about it.</p>
+<p>Software development is not about writing code but about making useful software for somebody in the real world. And while code generators are making and will continue to produce massive improvements in the code writing part –and maybe in the code reviewing and debugging part–, all of that improvement is mostly isolated in the part of creating the software in the first place.</p>
+<p>But there is so much more going on in software development beyond coding, from marketing to product development to talking to users to a lot of things that are still unscathed by language models –and some of them are probably always going to be outside of the realm of the language modeling paradigm because they involve interacting with real users in real-time and seeing them use your app and work through your app.</p>
+<p>So this enormous productivity will be huge in one part of the pipeline, but it’s contained to a part that is not by far the most important part of the pipeline.</p>
+<p>And this is something that we’ve been seeing for a long time. We’ve always had enormous boosts in productivity before. We used to need to write assembly, C, or C++ code, and now we can write Rust or Python. These languages are extremely more productive than C and C++ for writing code that works out of the box, and we still don’t see that software gets done 100x faster than 50 years ago.</p>
+<p>The biggest progress in the software creation process has been because of innovation in the people process. Innovation in software engineering, management, and how you get people to work together and collaborate. And this will continue to be the most important part of the software pipeline for a long time.</p>
+</section>
+</section>
+<section id="conclusions" class="level2">
+<h2 class="anchored" data-anchor-id="conclusions">Conclusions</h2>
+<p>So, should you learn to code? Definitely, there’s going to be orders of magnitude more code written in the next few years than everything we’ve written in history.</p>
+<p>So if you learn to code the traditional way, even if you never end up writing a single line of code unaided by AI –like I’ve never written a single line of production code unaided by syntax highlight, a linter, or a type verifier– knowing how code works, how algorithms work, why a specific programming construction works the way it works is the same as knowing basic math. Coding changes how your brain is wired, makes you think clearer, and increases your creativity.</p>
+<p>Furthermore, even if you are not working in the software industry, learning to code is an enjoyable experience. Being able to create something that keeps working on its own, I think, is the ultimate toy. So I think learning to code is good if only for thinking through these puzzles and these problems and learning to do something new.</p>
+<p>But if you want to make a dent in the software industry, to work at a software company, and you’re wondering if AI will get you out of the picture, don’t worry. That won’t happen anytime soon.</p>
+<p>Learn to code, learn the fundamentals, but also learn how to use these new tools, how to leverage these new tools the same way we programmers of the previous decade learned how to use linters and intellisense and all of the super cool tools that didn’t exist 20 years before. Learn to use all that and become the best programmer you can, using the best available technology to improve your work. As in every moment in human history, if you apply yourself and do your best, you will be at the top of the league, and there will be a spot for you.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./road-to-agi.html" class="pagination-link" aria-label="The Road to AGI">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Road to AGI</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./education.html" class="pagination-link" aria-label="The AI Revolution We Don't Need">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The AI Revolution We Don’t Need</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
