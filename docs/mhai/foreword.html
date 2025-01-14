@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>The Road Ahead – Mostly Harmless AI</title>
+<title>Beyond Optimism and Doom: Finding a Third Path in AI Discourse – Mostly Harmless AI</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./road-to-agi.html" rel="prev">
+<link href="./prologue.html" rel="next">
+<link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -80,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./epilogue.html">The Road Ahead</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./foreword.html">Beyond Optimism and Doom: Finding a Third Path in AI Discourse</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -113,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./foreword.html" class="sidebar-item-text sidebar-link">
+  <a href="./foreword.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Beyond Optimism and Doom: Finding a Third Path in AI Discourse</span></a>
   </div>
 </li>
@@ -185,7 +186,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./epilogue.html" class="sidebar-item-text sidebar-link active">
+  <a href="./epilogue.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">The Road Ahead</span></a>
   </div>
 </li>
@@ -194,24 +195,15 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Epilogue</h2>
-   
-  <ul>
-  <li><a href="#hallucinations" id="toc-hallucinations" class="nav-link active" data-scroll-target="#hallucinations">Hallucinations</a></li>
-  <li><a href="#biases" id="toc-biases" class="nav-link" data-scroll-target="#biases">Biases</a></li>
-  <li><a href="#understanding" id="toc-understanding" class="nav-link" data-scroll-target="#understanding">Understanding</a></li>
-  <li><a href="#moving-forward" id="toc-moving-forward" class="nav-link" data-scroll-target="#moving-forward">Moving forward</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">The Road Ahead</h1>
+<h1 class="title">Beyond Optimism and Doom: Finding a Third Path in AI Discourse</h1>
 </div>
 
 
@@ -228,39 +220,33 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>We began this book with a quick overview of how we got here and where we stand. We’ve highlighted the potential capabilities of large language models and generative AI systems in general. In this final chapter, let’s talk about the fundamental challenges we’ve encountered over the past couple of years and what we can expect to solve in the near future.</p>
-<section id="hallucinations" class="level2">
-<h2 class="anchored" data-anchor-id="hallucinations">Hallucinations</h2>
-<p>The first major challenge is the issue of hallucinations. Despite the models’ remarkable ability to produce coherent text aligned with user preferences, they can still veer off course into a response sequence that strays from the conversation. This randomness in sampling makes it impossible to guarantee that a model won’t generate text that deviates from what’s expected, no matter how finely tuned it gets. These deviations range from factual inaccuracies to more complex issues like promoting racism or discrimination. This phenomenon, often called “jail-breaking mode,” poses a significant obstacle to the model’s reliability.</p>
-<p>Addressing hallucinations becomes even more critical when using these models for tasks beyond writing or editing text. For instance, the model is used for tasks like booking flights or hotels, where the user may not have full visibility into the prompt used to generate the model’s response, making it difficult to detect any hallucinations in the model’s output.</p>
-<p>These hallucinations are the primary roadblock to scaling language models for practical applications beyond simple conversational agents, presenting the most pressing issue for the widespread use of generative AI and large language models today.</p>
-</section>
-<section id="biases" class="level2">
-<h2 class="anchored" data-anchor-id="biases">Biases</h2>
-<p>Dealing with biases is another major challenge in making these models work in real-world applications. These models are trained on huge amounts of data, and as a result, they inevitably contain discriminatory and harmful biases inherited from the training data. When combined with the issues of hallucinations and jailbreak, it’s always possible, whether intentionally or unintentionally, for these models to exhibit biased behavior.</p>
-<p>Furthermore, as we use reinforcement learning and human feedback to encourage these models to behave fairly and unbiasedly, they lose their original effectiveness. They may refuse to answer slightly biased questions, some dubbed the “wokeness problem of AI.” That is, striving to make them as harmless and unbiased as possible can make them less responsive in situations where bias or discrimination isn’t a concern.</p>
-<p>Determining the precise boundary between a biased or discriminatory response and one that isn’t is challenging when using reinforcement learning, which has a low sample density. As a result, the boundary of these two sets is likely to be quite jagged and hard to define. Consequently, we currently don’t have a solution to unbias these models effectively. We don’t yet know how to remove biases from a dataset or model without significantly harming performance.</p>
-<p>This issue will continue to manifest in any situation where these models are employed to make or assist with decisions that involve people and ethical considerations regarding their data. Thus, as AI regulation becomes more prevalent, ensuring fairness is a major challenge in the widespread adoption of LLM-driven applications.</p>
-</section>
-<section id="understanding" class="level2">
-<h2 class="anchored" data-anchor-id="understanding">Understanding</h2>
-<p>Finally, let’s consider a more fundamental limitation: whether language models can develop accurate internal world models solely from linguistic interaction.</p>
-<p><a href="https://arxiv.org/abs/2303.12712">The GPT-4 paper</a>, along with many anecdotal claims, suggests that sufficiently complex language models do form internal world models, enabling them to engage in something resembling actual general-purpose reasoning during next token prediction. However, skeptics from various fields question the ability to learn to build a world model purely from linguistic interactions, arguing that grounding in experiential reality is necessary.</p>
-<p>An internal world model refers to an internal representation of the domain in which the language or machine learning model operates, allowing it to make predictions and plans. This is the first step to truly understanding some task or domain.</p>
-<p>Long-term planning is a fundamental problem in AI that must be addressed for agents to effectively interact with the world and make decisions. The notion that accurate world models can be developed purely from language interactions suggests that these models could learn how processes work and perform inference, all from learning about the world through language alone.</p>
-<p>Many researchers claim that large language models do not have internal representations. When prompted with complex sequences of instructions, these models can miss the intended meaning altogether. In contrast, humans can simulate these instructions in their minds, keeping track of the final outcome without remembering the entire sequence. This ability allows humans to accurately answer questions about the scenario in real-time.</p>
-<p>An argument against LLMs’ internal models is that their error rates seem to increase with the length of prompts. As an example to understand this argument, consider a game of chess. In the game played mentally, one only needs to track the current board state to answer questions, regardless of the conversation’s length. So, unless memory is faulty or one gets tired, there is no reason why the probability of making a mistake (like forgetting how a piece moves) would increase as the game gets longer if one has an internal model of the game.</p>
-<p>However, without internal world representations, LLMs might only learn correlations between sequences of instructions and end states, leading to a higher likelihood of mistakes with longer prompts. This limitation is significant because if these language models are to be used for tasks beyond linguistic manipulation, such as planning, problem-solving, or decision-making, they must be able to simulate and predict outcomes for extended sequences. Without the ability to learn a model of the world, these models will be severely limited in the complexity of problems they can solve.</p>
-<p>Furthermore, building internal models from linguistic interaction alone may be fundamentally impossible. If true, then we will need a qualitative improvement in our AI systems, a new approach that surpasses the capabilities of large language models.</p>
-</section>
-<section id="moving-forward" class="level2">
-<h2 class="anchored" data-anchor-id="moving-forward">Moving forward</h2>
-<p>As we welcome AI into our lives, we can contemplate what has undoubtedly been the some of the most impactful years of Artificial Intelligence since the birth of the field around the 1960s. The next few years will be about cristalizing the many potential applications of AI into actual, useful products that might usher a new era of abundance like we’ve never seen before. Even if we hit a major theoretical barrier, and there is now new scientific development that has led to AGI for decades, we still have years ahead to harvest what’s already possible with current AI technology.</p>
-<p>But the future is never certain. Artificial intelligence is the most powerful technology we have, and as such, it is also the most dangerous. There are deeply troubling problems and challenges in the short and medium term, for which we have little guarantee we can solve them. Only with the collective effort of researchers, engineers, lawmakers, creators, and the general public can we stand a chance to overcome them.</p>
-<p>In any case, if you feel like the year has passed and you got left behind, worry not;&nbsp;<strong>today is the best moment to get into AI</strong>. Whatever your profession and your interests, there is something in the field of AI for you. If you care about fundamental theory, AI questions are some of the most challenging open questions in math and logic. If you care about engineering, some of the most interesting pragmatic problems are about scaling AI. If you care about ethics and society, one of the most critical questions ahead is how to deal with this tech’s massive impact on our lives. And if you just want to have fun, you now have one of the most powerful technologies ever made at your fingertips.</p>
+<blockquote class="blockquote">
+<p>A Foreword to Mostly Harmless AI by Nicolas Potkalitsky, Ph.D.</p>
+</blockquote>
+<p>We are truly living through a moment of incredible change in the sciences and technology. As an educator, scholar of narrative and literature, and parent of two young children, I find myself uniquely positioned to witness these transformations, particularly in how they reshape our understanding of learning and knowledge creation.</p>
+<p>I wake up each day with an incredible sense of gratitude. The human capacity to adapt to AI disruption is evident in my work every day with students, colleagues, administrators, and researchers. Major challenges, such as the AI efficiency-accountability paradox where we struggle to balance the speed of AI tools against our need for verifiable student learning, can become real learning opportunities in the hands of skillful instructional designers and experienced classroom teachers. And yet, this gratitude mingles with both anxiety and anticipation – anxiety about the potential loss of fundamental skills in the face of new systems, and anticipation knowing that today’s systems, around which we plan curriculum and interventions, will transform before we fully grasp them.</p>
+<p>When ChatGPT 3.5 dropped in November, 2022, most educators had only an incipient understanding of artificial intelligence and its potential impact on pedagogy, instruction, and assessment. Here I number myself amongst this group. We knew that artificial intelligence was operative in our phones’ mapping systems and voice messaging tools. We had seen it at work in the previous decade’s rise of individualized test preparation and assessment, particularly in large initiatives surrounding data-driven decision making. We witnessed AI’s advancement across grammar and spell checking software as Grammarly became more and more adept at transforming student work. But when GPT 3.5 ripped out its first cogent essay, we knew something fundamental had changed. I personally felt devastated. I just knew I couldn’t continue to do things the way I was, and to be honest, I didn’t really know if I wanted to change everything at that moment.</p>
+<p>After working through my initial denial and anger, I got to work, orienting myself to AI disruption as if it were a graduate-level research project. I spent the entirety of the summer of 2023 reading, reflecting, and writing, composing a school-response plan that helped guide its first steps out of AI denialism and into AI proactivism. It was at this point that I decided to start up a Substack, Educating AI, to chronicle my investigations and transformations in my own classroom and school. I knew little about Substack, except that my division director Dr.&nbsp;Blair Munhofen read several of them on obscure topics, loved the intimacy and intellectual depth of these inquiries, and highly recommended I start one up whenever the spirit moved me—knowing of my own love for obscure topics like object-oriented ontology, Augustinian volitional theory, modal logic, 21st-century ethical realism, ancient epigraphy, and more.</p>
+<p>Beginning a weekly practice of writing has been life-transforming, not just because of the way it has pushed me to engage more deeply and reflectively with our schools’ response to AI disruption, but because it has affirmed to me—in a way that I did not even experience when completing my dissertation—that we write (and by extension, think) best in communities. Within several weeks of being on Substack, I came in contact with several amazing writers including Nat of The AI Observer, Michael Woudenberg of Polymathic Being, and Alejandro Piad Morffis of Mostly Harmless Ideas.</p>
+<p>At the time, Morffis was running a digest of Tech Writers and invited me to join. This invitation led me to learning more about him: a beloved computer science instructor in Cuba, a skillful applications and tools designer, a highly gifted writer on technical topics, and a connector of people towards common goals. While at time the two predominant modes of discourse surrounding AI were self-described as “techno-optimist” and “doomerist,” Morffis and the small but influential community that gravitated around him were seeking out a third path—one rooted in a deep understanding of both human cognition and the developing nature of AI and LLMs.</p>
+<p>In many ways, I have Morffis and other guides like Daniel Bashir and his wonderful podcast The Gradient to thank for transforming Educating AI from a newsletter of to-do lists and tool endorsements to something much richer and deeper. As a perennial student of the nature of thought, I came to recognize when surrounded by similarly oriented scholars in the machine-learning community that every technological disruption—every advancement in tool-being—every expansion of the tool-oriented social-actor network—sparks an opportunity to reassess what thinking is. But such work needs a theoretical container. Ideally, the container would emerge from the substance of inquiry. And yet, history always plays such a powerful role in our analytical process.</p>
+<p>And so, Morffis and I, inspired greatly by the writings of Rob Nelson, who in a piece, “On Techno-pragmatism” redeploys William James’s pragmatism in the AI-infused contemporary, dusted off the aged mantle of pragmatism and used it to frame our shared and individual movements forward. Morffis wrote a beautiful piece, not included in this collection, but available on his Substack, called “The Techno-Optimist’s Manifesto” that captures the feeling of “our” moment at the end of 2023, as LLM development appeared to be slowing down and as techno-optimist and doomerist AI discourse was gradually becoming replaced by something more akin to AI frustration and resignation.</p>
+<p>The core of pragmatism in Morffis’s work hinges on his commitment to human agency to find solutions to problems within limits prescribed by larger (formal or material) systems and processes. Here note how he shapes one of his tenets in the Manifesto: “Techno-pragmatism is accepting that the future is not predetermined. That we have the power to decide among many potential futures and the responsibility to make that choice based on reason and evidence, respecting the plurality of interests of all our fellow humans and being thoughtful about our planet and future generations.” The word “decision” is one of great impact for Morffis. Decisions of the kind described primarily operate in open-ended contexts and thus rely on the highest level of reason to be enacted skillfully and toward the benefit of others.</p>
+<p>In the following, I will offer a short overview of “Mostly Harmless AI: Essays on Artificial Intelligence and its Impact in our Society.” When sending me the manuscript, Morffis described it simply as “a short collection of essays from my blog” implying something sporadic or serial in nature. But when read in the current sequence, as I recommend readers do, something of a deeper logic emerges. Each essay prepares the way for the conversation in the next—laying down essential terminology and concepts—that later are developed, redeployed, and expanded.</p>
+<p>In the manuscript’s early essays, Morffis provides his own novel and pointed definitions of artificial intelligence rooted in a concise unfolding of the history of not only this technology but the human preoccupation with “cognitive automation.” His writing style is a hybrid between extremely personable, comprehensible real-world examples and the rigor of a mathematical logician. Indeed, Morffis’s bent toward logical precision is one of his greatest assets as he engages with foundational questions about the possibility of artificial general intelligence and automated reasoning–the most insistent conceptual thematics of the manuscript.</p>
+<p>In the manuscript’s first essay, “The Road to AGI,” Morffis argues that current AI is capable of out-of-training generalization, out-of-distribution generalization, but not out-of-domain generalization. Importantly, these modes of generalization can be mapped somewhat stably onto Margaret Boden’s three types of creativity—combinatorial, exploratory, and transformational—the third type which many, including Boden herself, regard as beyond the capacity of machines. The rest of the manuscript in part is an effort to show along primarily logical and computational lines why “out of distribution generalization” will remain a remote possibility (remember, he is a pragmatist) for AI systems in the near future.</p>
+<p>To understand Morffis’s argument, you have to understand something about the nature of formal systems. Luckily in Morffis, we have an expert guide who is also a skillful communicator. Setting the question of LLMs aside, Morffis advises that “if any computational model can reason–to the full extent of the meaning of this word in the context of artificial intelligence–, it must be able to perform Turing-complete computations, for if a model is not Turing-complete, that means there are decibel problems it cannot solve.” Then Morffis adds the pragmatic and practical kicker or follow-up: “One key aspect of Turing completeness is that it requires potentially unbounded computation.”</p>
+<p>As a builder of machines, Morffis then shifts into solutions-mode: How do we get around this limit? “Now, by design, GPT-4, or any pure language model, cannot think forever….There is a way out, however. GPT-4 can generate the necessary code to answer [semi-decidable] question[s] and run [them]. And that is precisely what the newest iteration of ChatGPT does with Code interpreter.” But Morffis adds that this technology is still very much in rudimentary form and may only result in a kind of surface-level Turing completeness.</p>
+<p>The incredible work that Morffis does in passages like these is to shift the conversation about artificial general intelligence away from value-laden, culturally-bound idealization of what it means to be human to something more clear and precise, and yet extraordinarily beautiful in its simplicity and exactitude. As Morffis adds, “human beings are also bound by this formal limitation”–meaning the limitation of the nature of formal systems–and yet by a variety of different metrics are regarded as capable of reasoning even when confronted with numerous semi-decidable problems simultaneously. Or do humans just appear to reason in these cases? This becomes a deeper preoccupation of the manuscript in its later chapter, “Large Language Models Cannot Reason,” which readers should know sparked off an internet firestorm when first published on Substack after the release of OpenAI’s ChatGPT o1 models.</p>
+<p>So what does Morffis mean by reason? Here again, we encounter his characteristic clarity and precision. For him: “When we AI folks claim LLMs cannot reason, we are not talking about any abstract philosophical sense of the word”reason”, nor any of the many psychological and sociological nuances it may entail. No, we have a very specific, quantifiable, simplified notion of reasoning that comes straight out of math. Reasoning is simply put, the capacity to draw logically sound conclusions from a given premise.”</p>
+<p>The fundamental grounds for Morffis’s argument that “LLMs cannot reason” lies in their constituent nature: “their stochastic nature.” Morffis is not among the camp that perhaps includes Turing himself that the mere performance of reasonable steps, or as in the case of advanced LLMs like OpenAI’s most recent ChatGPT o1 and o3, the detailed description of chain of thought processes including detailed explanations for each step in the chain of thought, constitutes reasoning in the above sense. Let’s see how he proceeds.</p>
+<p>First, Morffis further extrapolates on the nature of LLMs: “These models generate outputs based on probabilistic predictions rather than deterministic logical rules.” Here, the terms “deterministic” and “logical” do a lot of work. Even as we improve on accuracy through RHLF, we cannot completely limit the occurrence of spontaneous incorrect conclusions: “An LLM might arrive at a wrong purely by chance, learning of inconsistencies in reasoning.”</p>
+<p>Second, Morffis doubles down on his early thoughts about practical limits regarding computational time. “Large language models spend a fixed amount of computation per token processed.” Here we might recall that inside formal systems there are problems where it is difficult if not impossible in advance to figure out compute time: “Crucially, we can always find instances of NP-complete problems that require, even in principles, a sufficiently large of amount of computation to surpass the computational capacity of any LLM, no matter how big.”</p>
+<p>Here, the work is as impressive as it is rigorous. For some, we may be drifting too far away from what we think of as everyday reasoning. Do we really mean the grappling with NP-complete problems when we ask questions like “Do LLMs reason?” The ARC Prize formulated by François Challot seems like a step down in complexity in comparison to Morffis’s framework, but in the slippage of current AI discourse around reasoning, the risks are great if we simply concede that probabilistic processes or what Morffis calls “very large finite automata” operate at a level of efficiency, accuracy, and logical precision—absolute equivalence—with their makers. Not only is the nature of language itself at stake, but so much that we hold dear as humans.</p>
+<p>In the remaining chapters of Morffis’s book, he explores offshoots from these foundational questions and conclusions, focusing on the all-too-human situations and conundrums that result. If an LLM can code, should we learn to code too? Yes, Morffis answers emphatically. Are Chatbots a conduit or obstacle to critical thinking? How will AI change the classroom? Should we be worried about AI’s taking over the world? What would it mean for an AI to share human values? What should the future of AI industry and development look like? In each case, Morffis proceeds with a careful, nuanced, and pragmatic eye to the multi-dimensional nature of each of these questions.</p>
+<p>What makes this collection particularly valuable is how it bridges the gap between technical rigor and humanitarian concerns. As an educator who began this journey from a place of trepidation, I find Morffis’s measured approach both reassuring and intellectually invigorating. He demonstrates that we can embrace technological advancement while maintaining a clear-eyed view of its limitations. In doing so, he provides a framework not just for understanding AI, but for teaching and learning in an AI-transformed world. This is not just a collection of essays; it is a roadmap for educators, technologists, and thinkers who seek to navigate the complex intersection of artificial and human intelligence with both wisdom and hope.</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -685,11 +671,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./road-to-agi.html" class="pagination-link" aria-label="The Road to AGI">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">The Road to AGI</span></span>
+      <a href="./index.html" class="pagination-link" aria-label="Preface">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./prologue.html" class="pagination-link" aria-label="The Age of Artificial Intelligence">
+        <span class="nav-page-text">The Age of Artificial Intelligence</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

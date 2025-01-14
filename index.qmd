@@ -20,13 +20,19 @@ The legend for **Status** is as follows:
 - **🟣 Epsilon:** Second round of revision (content) is done. Book content is locked in, only aesthetic changes and formatting remain.
 - **🟢 Omega:** Final version of the book is ready and published.
 
+My books are written for three kind of audiences:
+
+- **😄 General:** A book that can be read by anyone, regardless of their background.
+- **😎 Technical:** A book for technical audiences, not necessarily with formal education on math or computer science, but with working knowledge in programming.
+- **🧐 Expert:** A book for experts, mostly requiring formal education in math and/or computer science or a deep understanding of the underlying theory.
+
 Getting an early access copy to any of my books is the best way to support my work. It allows me to invest time and resources into writing, editing, and formatting the book(s), and it signals there is an interested audience. Also, early access copies are significantly cheaper than any future finished copy.
 
 ### The Science of Computation
 
 | | |
 |-|-|
-| Audience  | General |
+| Audience  | 😄 General |
 | Status    | Alpha   |
 | Progress  | 🔴🔴🔴⚪⚪⚪⚪⚪⚪⚪ |
 | Pages     | 53 (of +300) |
@@ -40,7 +46,7 @@ This is my opus magna, a grand view of the whole field of computer science, from
 
 | | |
 |-|-|
-| Audience  | General |
+| Audience  | 😄 General |
 | Status    | Beta   |
 | Progress  | 🟠⚪⚪⚪⚪⚪⚪⚪⚪⚪ |
 | Pages     | 92 |
@@ -52,7 +58,7 @@ This is a collection of essays on Artificial Intelligence and its impact on soci
 
 | | |
 |-|-|
-| Audience  | Technical |
+| Audience  | 😎 Technical |
 | Status    | Alpha   |
 | Progress  | 🔴🔴⚪⚪⚪⚪⚪⚪⚪⚪ |
 | Pages     | 54 (of +300) |
@@ -67,7 +73,7 @@ This is a book about graphs, from theory to algorithms to practical applications
 
 | | |
 |-|-|
-| Audience  | General & Technical |
+| Audience  | 😃 General & 😎 Technical |
 | Status    | Alpha   |
 | Progress  | 🔴🔴🔴🔴🔴🔴🔴⚪⚪⚪ |
 | Pages     | 183 (of ~250) |
@@ -81,6 +87,13 @@ This is a very hands-on book on building applications with large language models
 ## ❤️‍🔥 Backburner
 
 These are ideas for books I'm currently considering. Most are based on courses I'm currently teaching or have taught in the recent past, so some of the material is already there. There are no dates for these as some may never see the light. Also, all titles are temporary.
+
+### Beautiful Algorithms
+
+|-|-|
+| Intended audience | 😃 General |
+
+A book on the ten most beautiful algorithms ever created (according to me). This book is intended to introduce audiences to the beautiful world of algorithm design without any technical baggage. It will cover algorithms from all areas of computer science, from simple ideas like search and graph algorithms to fundamental fields like crytography to concrete applications like neural networks, compression, and 3D rendering.
 
 ### Mostly Harmless Algorithms
 
