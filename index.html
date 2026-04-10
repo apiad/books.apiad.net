@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QNXS0D46FW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-QNXS0D46FW');
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Computist Library</title>
@@ -133,7 +142,7 @@
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
     }
-    
+
     /* Custom line clamp with exact line boundaries */
     .custom-clamp {
       overflow: hidden;
@@ -145,7 +154,7 @@
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
     }
-    
+
     /* Book Detail Modal */
     .book-modal {
       display: flex;
@@ -163,12 +172,12 @@
       visibility: hidden;
       transition: opacity 0.3s ease, visibility 0.3s ease;
     }
-    
+
     .book-modal.active {
       opacity: 1;
       visibility: visible;
     }
-    
+
     .book-modal-content {
       position: relative;
       width: 95%;
@@ -182,11 +191,11 @@
       transition: transform 0.3s ease;
       overflow-y: auto;
     }
-    
+
     .book-modal.active .book-modal-content {
       transform: scale(1);
     }
-    
+
     .book-modal-close {
       position: absolute;
       top: 16px;
@@ -204,18 +213,18 @@
       background: rgba(255, 255, 255, 0.05);
       transition: all 0.2s ease;
     }
-    
+
     .book-modal-close:hover {
       color: #fff;
       background: rgba(255, 255, 255, 0.1);
     }
-    
+
     .book-modal-body {
       display: flex;
       flex-direction: column;
       padding: 24px;
     }
-    
+
     @media (min-width: 768px) {
       .book-modal-body {
         flex-direction: row;
@@ -223,7 +232,7 @@
         padding: 32px;
       }
     }
-    
+
     .book-modal-cover {
       width: 100%;
       max-width: 300px;
@@ -232,14 +241,14 @@
       border-radius: 12px;
       margin: 0 auto 24px;
     }
-    
+
     @media (min-width: 768px) {
       .book-modal-cover {
         margin: 0;
         flex-shrink: 0;
       }
     }
-    
+
     .book-modal-info {
       flex-grow: 1;
     }
@@ -411,13 +420,13 @@
           ? `<a href="#" data-gumroad-url="${book.gumroadUrl}" class="gumroad-buy-btn" style="display: block; width: 100%; padding: 16px 24px; font-size: 16px; background-color: #f97316; color: white; border: 2px solid #f97316; border-radius: 12px; text-align: center; font-weight: 600; cursor: pointer; text-decoration: none;">💳 Buy - $${(book.price / 100).toFixed(2)}</a>
               <a href="${book.readUrl}" style="display: block; width: 100%; padding: 16px 24px; font-size: 16px; background-color: transparent; color: #a78bfa; border: 2px solid #a78bfa; border-radius: 12px; text-align: center; font-weight: 600; cursor: pointer; text-decoration: none;">📖 Read Online</a>`
           : '<span class="text-zinc-500 text-sm">Coming Eventually</span>');
-      
+
       // Compendium footer CTA - shows for ALL books (both planned and normal), at the very bottom of modal
       const isPlanned = book.status === 'Planned';
       const compendiumFooter = !isCompendium
         ? `<div class="mt-4 pt-4 border-t border-zinc-700 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <p class="text-zinc-500 text-sm">
-              ${isPlanned 
+              ${isPlanned
                 ? `This book is planned. Get the Compendium and you'll get this + ALL future books free.`
                 : `Get the Compendium instead — you'll get this book + ALL other books (current + future), save 40%+, and all future books included forever.`
               }
@@ -427,7 +436,7 @@
             </button>
           </div>`
         : '';
-      
+
       document.getElementById('book-modal-buttons').innerHTML = buttonsHtml;
       document.getElementById('book-modal-footer').innerHTML = compendiumFooter;
 
