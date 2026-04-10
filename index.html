@@ -274,13 +274,14 @@
           <div id="book-modal-buttons" class="flex gap-4 mt-6"></div>
         </div>
       </div>
+      <div id="book-modal-footer" class="pb-6 px-6 md:px-8"></div>
     </div>
   </div>
 
   <!-- Load data first -->
-  <script src="data.js?v=202404101800"></script>
+  <script src="data.js?v=202404110100"></script>
   <!-- Then app logic -->
-  <script src="app.js?v=202404101800"></script>
+  <script src="app.js?v=202404110100"></script>
 
   <script>
     // Emoji spinner cycling
@@ -410,7 +411,25 @@
           ? `<a href="#" data-gumroad-url="${book.gumroadUrl}" class="gumroad-buy-btn" style="display: block; width: 100%; padding: 16px 24px; font-size: 16px; background-color: #f97316; color: white; border: 2px solid #f97316; border-radius: 12px; text-align: center; font-weight: 600; cursor: pointer; text-decoration: none;">💳 Buy</a>
              <a href="${book.readUrl}" style="display: block; width: 100%; padding: 16px 24px; font-size: 16px; background-color: transparent; color: #a78bfa; border: 2px solid #a78bfa; border-radius: 12px; text-align: center; font-weight: 600; cursor: pointer; text-decoration: none;">📖 Read Online</a>`
           : '<span class="text-zinc-500 text-sm">Coming Eventually</span>');
+      
+      // Compendium footer CTA - shows for ALL books (both planned and normal), at the very bottom of modal
+      const isPlanned = book.status === 'Planned';
+      const compendiumFooter = !isCompendium
+        ? `<div class="mt-4 pt-4 border-t border-zinc-700 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <p class="text-zinc-500 text-sm">
+              ${isPlanned 
+                ? `This book is planned. Get the Compendium and you'll get this + ALL future books free.`
+                : `Get the Compendium instead — you'll get this book + ALL other books (current + future), save 40%+, and all future books included forever.`
+              }
+            </p>
+            <button onclick="closeBookModal(); openBookModal('compendium');" style="flex-shrink: 0; padding: 10px 16px; font-size: 14px; background: linear-gradient(to right, #8b5cf6, #9333ea); color: white; border: none; border-radius: 10px; text-align: center; font-weight: 500; cursor: pointer; white-space: nowrap;">
+              🎁 View Compendium Deal
+            </button>
+          </div>`
+        : '';
+      
       document.getElementById('book-modal-buttons').innerHTML = buttonsHtml;
+      document.getElementById('book-modal-footer').innerHTML = compendiumFooter;
 
       // Add click handlers for gumroad buttons in modal
       document.querySelectorAll('#book-modal-buttons .gumroad-buy-btn').forEach(btn => {

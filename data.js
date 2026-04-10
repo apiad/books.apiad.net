@@ -11,7 +11,7 @@ window.catalogData = {
     {
       id: "early-access",
       name: "📚 Early Access",
-      description: "Books I'm currently writing. Every chapter releases as a blog post first, then PDF/EPUB on Gumroad at reduced price. Buy once, get all future versions forever.",
+      description: "Books I'm currently writing. Every chapter releases as a blog post first, then PDF/EPUB on Gumroad. Buy once, get all future versions forever. Plus potentially 6+ future books in the Compendium.",
       items: [
         {
           id: "tsoc",
@@ -24,7 +24,7 @@ window.catalogData = {
           progress: 18,
           pages: 53,
           targetPages: 300,
-          price: 1500,
+          price: 2900,
           gumroadUrl: "https://apiad.gumroad.com/l/tsoc",
           readUrl: "/books/tsoc",
           coverUrl: "/books/tsoc/cover.jpg"
@@ -40,7 +40,7 @@ window.catalogData = {
           progress: 31,
           pages: 92,
           targetPages: 300,
-          price: 1500,
+          price: 2900,
           gumroadUrl: "https://apiad.gumroad.com/l/mhai",
           readUrl: "/books/mhai",
           coverUrl: "/books/mhai/cover.jpg"
@@ -56,7 +56,7 @@ window.catalogData = {
           progress: 73,
           pages: 183,
           targetPages: 250,
-          price: 2500,
+          price: 2900,
           gumroadUrl: "https://apiad.gumroad.com/l/chatbots",
           readUrl: "/books/chatbots",
           coverUrl: "/books/chatbots/cover.jpg"
@@ -72,7 +72,7 @@ window.catalogData = {
           progress: 18,
           pages: 54,
           targetPages: 300,
-          price: 1500,
+          price: 2900,
           gumroadUrl: "https://apiad.gumroad.com/l/graphs",
           readUrl: "/books/graphs",
           coverUrl: "/books/graphs/cover.jpg"
