@@ -404,12 +404,12 @@
           : renderProgressBarModal(book.progress) + `<div class="text-xs text-zinc-500 mt-1">${book.pages} of ~${book.targetPages} pages</div>`);
       document.getElementById('book-modal-progress').innerHTML = progressHtml;
 
-      // Set buttons (side by side) - compendium has buy button but no read
+// Set buttons (side by side) - compendium has buy button but no read
       const buttonsHtml = isCompendium
-        ? `<a href="#" data-gumroad-url="${book.gumroadUrl}" class="gumroad-buy-btn" style="display: block; width: 100%; padding: 16px 24px; font-size: 16px; background: linear-gradient(to right, #8b5cf6, #9333ea); color: white; border: none; border-radius: 12px; text-align: center; font-weight: 600; cursor: pointer; text-decoration: none;">🎁 Buy Bundle - $${(book.price / 100).toFixed(2)}</a>`
+        ? `<a href="#" data-gumroad-url="${book.gumroadUrl}" class="gumroad-buy-btn" style="display: block; width: 100%; padding: 18px 24px; font-size: 20px; background: linear-gradient(to right, #8b5cf6, #9333ea); color: white; border: none; border-radius: 12px; text-align: center; font-weight: 600; cursor: pointer; text-decoration: none;">🎁 Buy Bundle - $${(book.price / 100).toFixed(2)}</a>`
         : (book.price
-          ? `<a href="#" data-gumroad-url="${book.gumroadUrl}" class="gumroad-buy-btn" style="display: block; width: 100%; padding: 16px 24px; font-size: 16px; background-color: #f97316; color: white; border: 2px solid #f97316; border-radius: 12px; text-align: center; font-weight: 600; cursor: pointer; text-decoration: none;">💳 Buy</a>
-             <a href="${book.readUrl}" style="display: block; width: 100%; padding: 16px 24px; font-size: 16px; background-color: transparent; color: #a78bfa; border: 2px solid #a78bfa; border-radius: 12px; text-align: center; font-weight: 600; cursor: pointer; text-decoration: none;">📖 Read Online</a>`
+          ? `<a href="#" data-gumroad-url="${book.gumroadUrl}" class="gumroad-buy-btn" style="display: block; width: 100%; padding: 16px 24px; font-size: 16px; background-color: #f97316; color: white; border: 2px solid #f97316; border-radius: 12px; text-align: center; font-weight: 600; cursor: pointer; text-decoration: none;">💳 Buy - $${(book.price / 100).toFixed(2)}</a>
+              <a href="${book.readUrl}" style="display: block; width: 100%; padding: 16px 24px; font-size: 16px; background-color: transparent; color: #a78bfa; border: 2px solid #a78bfa; border-radius: 12px; text-align: center; font-weight: 600; cursor: pointer; text-decoration: none;">📖 Read Online</a>`
           : '<span class="text-zinc-500 text-sm">Coming Eventually</span>');
       
       // Compendium footer CTA - shows for ALL books (both planned and normal), at the very bottom of modal

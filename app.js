@@ -80,7 +80,7 @@ function renderBookCard(book) {
 
   const buttonsHtml = isPlanned
     ? ''
-    : `<div class="mt-auto pt-4 space-y-3">${renderButton(book.gumroadUrl, 'Buy', 'primary', '💳', true)}${renderButton(book.readUrl, 'Read Online', 'secondary', '📖', true)}</div>`;
+    : `<div class="mt-auto pt-4 space-y-3">${renderButton(book.gumroadUrl, 'Buy - $' + (book.price / 100).toFixed(2), 'primary', '💳', true)}${renderButton(book.readUrl, 'Read Online', 'secondary', '📖', true)}</div>`;
 
   const compendiumCardCta = isPlanned
     ? ''
@@ -125,7 +125,6 @@ function renderCategory(category) {
 }
 
 function renderCompendium(compendium) {
-  // Calculate savings
   const earlyAccess = window.catalogData.categories.find(c => c.id === 'early-access');
   const backburner = window.catalogData.categories.find(c => c.id === 'backburner');
   const totalPrice = earlyAccess.items.reduce((sum, book) => sum + (book.price || 0), 0);
@@ -136,27 +135,27 @@ function renderCompendium(compendium) {
 
   return `
     <section class="mb-16">
-      <div class="relative rounded-2xl p-8 bg-gradient-to-r from-violet-500/10 via-card to-orange-500/10 border border-zinc-800 overflow-hidden">
+      <div class="relative rounded-2xl p-6 md:p-8 bg-gradient-to-r from-violet-500/10 via-card to-orange-500/10 border border-zinc-800 overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-r from-violet-500/5 to-orange-500/5"></div>
-        <div class="relative">
-          <span class="inline-block px-3 py-1 bg-gradient-to-r from-violet-500 to-purple-600 rounded-full text-xs font-semibold text-white mb-4">✨ Best Value</span>
-          <h2 class="text-3xl md:text-4xl font-bold font-serif text-zinc-100 mb-3">${compendium.title}</h2>
-          <p class="text-zinc-400 mb-4 max-w-xl">${compendium.description}</p>
-          
-          <div class="bg-zinc-800/50 rounded-lg p-3 mb-4 max-w-lg">
-            <p class="text-zinc-400 text-sm">
-              <span class="line-through opacity-60">$${(totalPrice / 100).toFixed(2)}</span> 
-              <span class="text-zinc-300 ml-2">for ${bookCount} books</span>
-              <span class="text-green-400 font-semibold ml-3">Save ${savingsPercent}%</span>
-            </p>
-            <p class="text-violet-400 text-xs mt-1">
-              ✨ Plus ${futureCount} more future books included forever (worth $${((futureCount * 29)).toFixed(0)}+)
-            </p>
+        <div class="relative grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          <div class="md:col-span-2">
+            <span class="inline-block px-3 py-1 bg-gradient-to-r from-violet-500 to-purple-600 rounded-full text-xs font-semibold text-white mb-4">✨ Best Value</span>
+            <h2 class="text-3xl md:text-4xl font-bold font-serif text-zinc-100 mb-3">${compendium.title}</h2>
+            <p class="text-zinc-400 mb-4">${compendium.description}</p>
+            <div class="bg-zinc-800/50 rounded-lg p-3 max-w-lg">
+              <p class="text-zinc-400 text-sm">
+                <span class="line-through opacity-60">$${(totalPrice / 100).toFixed(2)}</span>
+                <span class="text-zinc-300 ml-2">for ${bookCount} books</span>
+                <span class="text-green-400 font-semibold ml-3">Save ${savingsPercent}%</span>
+              </p>
+              <p class="text-violet-400 text-xs mt-1">
+                ✨ Plus ${futureCount} more future books included forever (worth $${((futureCount * 29)).toFixed(0)}+)
+              </p>
+            </div>
           </div>
-          
-          <div class="flex flex-wrap items-center gap-4">
-            <span class="text-3xl font-bold text-orange-400">${formatPrice(compendium.price)}</span>
-            <a href="#" data-gumroad-url="${compendium.gumroadUrl}" class="gumroad-buy-btn bg-gradient-to-r from-violet-500 to-purple-600 hover:from-violet-600 hover:to-purple-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-[1.02] shadow-lg shadow-violet-500/25">🎁 Buy Bundle</a>
+          <div class="flex flex-col justify-center items-start md:items-end">
+            <span class="text-5xl font-bold text-orange-400 mb-4">${formatPrice(compendium.price)}</span>
+            <a href="#" data-gumroad-url="${compendium.gumroadUrl}" class="gumroad-buy-btn bg-gradient-to-r from-violet-500 to-purple-600 hover:from-violet-600 hover:to-purple-700 text-white px-10 py-5 rounded-xl font-semibold text-xl transition-all duration-200 hover:scale-[1.02] shadow-lg shadow-violet-500/25 w-full md:w-auto text-center">🎁 Buy Bundle</a>
           </div>
         </div>
       </div>
@@ -177,30 +176,33 @@ function renderLayout() {
       <header class="text-center mb-16">
         <h1 class="text-4xl md:text-5xl font-bold font-serif text-zinc-100 mb-4">Master Computer Science & AI</h1>
         <p class="text-zinc-400 text-lg max-w-2xl mx-auto mb-4">
-          Deep, conceptual books on computation, algorithms, and AI. 
+          Deep, conceptual books on computation, algorithms, and AI.
           Zero formulas, zero code. Written for curious minds.
         </p>
         <p class="text-zinc-500 text-sm">
-          📚 ${bookCount} books in progress • 
+          📚 ${bookCount} books in progress •
           <a href="https://blog.apiad.net/subscribe" class="text-violet-400 hover:text-violet-300 transition-colors">Subscribe for updates →</a>
         </p>
       </header>
 
       ${compendiumHtml}
-      
+
       <!-- How it works -->
-      <div class="flex justify-center gap-8 mb-16 text-center flex-wrap">
-        <div class="max-w-[180px]">
-          <div class="text-3xl mb-2">📖</div>
-          <p class="text-zinc-400 text-sm">Read free online<br/>or buy PDF/EPUB</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        <div class="text-center">
+          <div class="text-5xl mb-3">📖</div>
+          <h3 class="text-zinc-100 font-semibold mb-2">Read Instantly Online</h3>
+          <p class="text-zinc-400 text-sm">Read free in your browser, or buy PDF & EPUB. Your forever copy.</p>
         </div>
-        <div class="max-w-[180px]">
-          <div class="text-3xl mb-2">🔄</div>
-          <p class="text-zinc-400 text-sm">Buy once, get<br/>all future updates</p>
+        <div class="text-center">
+          <div class="text-5xl mb-3">🔄</div>
+          <h3 class="text-zinc-100 font-semibold mb-2">One Purchase, Forever</h3>
+          <p class="text-zinc-400 text-sm">Buy once, get all future updates, forever - no extra cost, ever.</p>
         </div>
-        <div class="max-w-[180px]">
-          <div class="text-3xl mb-2">🎁</div>
-          <p class="text-zinc-400 text-sm">Get Compendium for<br/>all future books</p>
+        <div class="text-center">
+          <div class="text-5xl mb-3">🎁</div>
+          <h3 class="text-zinc-100 font-semibold mb-2">All Future Books Included</h3>
+          <p class="text-zinc-400 text-sm">Compendium bundle includes every book I ever write - infinite value.</p>
         </div>
       </div>
 
@@ -209,7 +211,7 @@ function renderLayout() {
       </main>
 
       <footer class="mt-20 pt-8 border-t border-zinc-800 text-center text-zinc-500 text-sm">
-        <p>© 2025 <a href="https://books.apiad.net" class="hover:text-zinc-300 transition-colors">The Computist Bookshelf</a> - All rights reserved.</p>
+        <p>© 2025 <a href="https://books.apiad.net" class="hover:text-zinc-300 transition-colors">The Computist Library</a> - All rights reserved.</p>
         <p class="mt-2">
           <a href="https://blog.apiad.net" class="hover:text-zinc-300 transition-colors">Blog</a> ·
           <a href="https://store.apiad.net" class="hover:text-zinc-300 transition-colors">Store</a> ·
