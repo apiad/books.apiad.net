@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Computist Library</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          },
+          colors: {
+            bg: '#0f0f0f',
+            card: '#1a1a1a',
+            'card-hover': '#222222',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #0f0f0f; color: #fafafa; }
+    .progress-bar { transition: width 0.3s ease; }
+
+    /* Modal base - hidden by default */
+    .gumroad-modal {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    /* Modal active state - fade in */
+    .gumroad-modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .gumroad-modal-content {
+      position: relative;
+      width: 95%;
+      max-width: 900px;
+      background: #1a1a1a;
+      border-radius: 16px;
+      border: 1px solid #27272a;
+      box-shadow: 0 0 60px rgba(249, 115, 22, 0.15), 0 0 40px rgba(139, 92, 246, 0.1);
+      transform: scale(0.95);
+      transition: transform 0.3s ease;
+      overflow: hidden;
+    }
+
+    .gumroad-modal iframe {
+      width: 100%;
+      height: 700px;
+      border: none;
+      border-radius: 16px;
+      display: block;
+    }
+
+    .gumroad-modal.active .gumroad-modal-content {
+      transform: scale(1);
+    }
+
+    .gumroad-modal-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #a1a1aa;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 10;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      transition: all 0.2s ease;
+    }
+
+    .gumroad-modal-close:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Loading spinner */
+    .gumroad-spinner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #1a1a1a;
+      z-index: 5;
+    }
+
+    .gumroad-spinner-emoji {
+      font-size: 48px;
+      animation: bounce 0.6s ease-in-out infinite;
+    }
+
+    .gumroad-spinner-text {
+      margin-top: 16px;
+      color: #71717a;
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    /* Custom line clamp with exact line boundaries */
+    .custom-clamp {
+      overflow: hidden;
+      max-height: 4.5em;
+      line-height: 1.5;
+      text-overflow: ellipsis;
+      white-space: normal;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    }
+    
+    /* Book Detail Modal */
+    .book-modal {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      z-index: 9998;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    
+    .book-modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .book-modal-content {
+      position: relative;
+      width: 95%;
+      max-width: 800px;
+      max-height: 90vh;
+      background: #1a1a1a;
+      border-radius: 16px;
+      border: 1px solid #27272a;
+      box-shadow: 0 0 60px rgba(249, 115, 22, 0.15), 0 0 40px rgba(139, 92, 246, 0.1);
+      transform: scale(0.95);
+      transition: transform 0.3s ease;
+      overflow-y: auto;
+    }
+    
+    .book-modal.active .book-modal-content {
+      transform: scale(1);
+    }
+    
+    .book-modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #a1a1aa;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 10;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      transition: all 0.2s ease;
+    }
+    
+    .book-modal-close:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.1);
+    }
+    
+    .book-modal-body {
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+    }
+    
+    @media (min-width: 768px) {
+      .book-modal-body {
+        flex-direction: row;
+        gap: 32px;
+        padding: 32px;
+      }
+    }
+    
+    .book-modal-cover {
+      width: 100%;
+      max-width: 300px;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin: 0 auto 24px;
+    }
+    
+    @media (min-width: 768px) {
+      .book-modal-cover {
+        margin: 0;
+        flex-shrink: 0;
+      }
+    }
+    
+    .book-modal-info {
+      flex-grow: 1;
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+  <div id="catalog-root"></div>
+
+  <!-- Custom Gumroad Modal -->
+  <div id="gumroad-modal" class="gumroad-modal">
+    <div class="gumroad-modal-content">
+      <span class="gumroad-modal-close" onclick="closeGumroadModal()">✕</span>
+      <div id="gumroad-spinner" class="gumroad-spinner">
+        <span id="spinner-emoji" class="gumroad-spinner-emoji">💻</span>
+        <span class="gumroad-spinner-text">Loading...</span>
+      </div>
+      <iframe id="gumroad-iframe" src="" allow="payment"></iframe>
+    </div>
+  </div>
+
+  <!-- Book Detail Modal -->
+  <div id="book-detail-modal" class="book-modal">
+    <div class="book-modal-content">
+      <span class="book-modal-close" onclick="closeBookModal()">✕</span>
+      <div class="book-modal-body">
+        <img id="book-modal-cover" class="book-modal-cover" src="" alt="">
+        <div class="book-modal-info">
+          <h2 id="book-modal-title" class="text-2xl font-bold font-serif text-zinc-100 mb-2"></h2>
+          <div id="book-modal-badges" class="flex flex-wrap gap-2 mb-4"></div>
+          <p id="book-modal-description" class="text-zinc-400 mb-4"></p>
+          <div id="book-modal-progress" class="mb-4"></div>
+          <div id="book-modal-buttons" class="flex gap-4 mt-6"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Load data first -->
+  <script src="data.js?v=202404101800"></script>
+  <!-- Then app logic -->
+  <script src="app.js?v=202404101800"></script>
+
+  <script>
+    // Emoji spinner cycling
+    const spinnerEmojis = ['💻', '📚', '🤖', '🖱️', '⌨️', '💾', '🧠', '💡', '🔌'];
+    let spinnerInterval = null;
+    let currentEmojiIndex = 0;
+
+    function startSpinner() {
+      const emojiEl = document.getElementById('spinner-emoji');
+      spinnerInterval = setInterval(() => {
+        currentEmojiIndex = (currentEmojiIndex + 1) % spinnerEmojis.length;
+        emojiEl.textContent = spinnerEmojis[currentEmojiIndex];
+      }, 200);
+    }
+
+    function stopSpinner() {
+      if (spinnerInterval) {
+        clearInterval(spinnerInterval);
+        spinnerInterval = null;
+      }
+    }
+
+    function openGumroadModal(url) {
+      // Show modal first
+      document.getElementById('gumroad-modal').classList.add('active');
+
+      // Start spinner
+      document.getElementById('gumroad-spinner').style.display = 'flex';
+      startSpinner();
+
+      // Load iframe
+      const iframe = document.getElementById('gumroad-iframe');
+      iframe.onload = function() {
+        document.getElementById('gumroad-spinner').style.display = 'none';
+        stopSpinner();
+      };
+      iframe.src = url;
+    }
+
+    function closeGumroadModal() {
+      document.getElementById('gumroad-modal').classList.remove('active');
+      document.getElementById('gumroad-iframe').src = '';
+      stopSpinner();
+    }
+
+    // Close on background click
+    document.getElementById('gumroad-modal').addEventListener('click', function(e) {
+      if (e.target === this) closeGumroadModal();
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeGumroadModal();
+        closeBookModal();
+      }
+    });
+
+    // Book Detail Modal Functions
+    function findBookById(bookId) {
+      // Check for compendium first
+      if (bookId === 'compendium') {
+        return window.catalogData.compendium;
+      }
+      const categories = window.catalogData.categories;
+      for (const cat of categories) {
+        for (const book of cat.items) {
+          if (book.id === bookId) return book;
+        }
+      }
+      return null;
+    }
+
+    function renderProgressBarModal(progress) {
+      return `
+        <div class="flex items-center gap-3">
+          <div class="flex-1 h-2 bg-zinc-800 rounded-full overflow-hidden">
+            <div class="h-full bg-gradient-to-r from-orange-500 to-violet-500 rounded-full"
+                 style="width: ${progress}%"></div>
+          </div>
+          <span class="text-xs text-zinc-400 font-mono">${progress}%</span>
+        </div>
+      `;
+    }
+
+    function openBookModal(bookId) {
+      const book = findBookById(bookId);
+      if (!book) return;
+
+      const isCompendium = bookId === 'compendium';
+
+      // Set cover - compendium has no cover
+      const coverEl = document.getElementById('book-modal-cover');
+      if (book.coverUrl) {
+        coverEl.src = book.coverUrl;
+        coverEl.style.display = 'block';
+      } else {
+        coverEl.style.display = 'none';
+      }
+
+      // Set title
+      document.getElementById('book-modal-title').textContent = book.title;
+
+      // Set badges - compendium doesn't have badges
+      const badgesHtml = isCompendium
+        ? '<span class="inline-flex items-center gap-1 px-2 py-1 bg-gradient-to-r from-violet-500 to-purple-600 rounded-lg text-xs text-white">✨ Best Value</span>'
+        : `<span class="inline-flex items-center gap-1 px-2 py-1 bg-zinc-700/50 rounded-lg text-xs text-zinc-300">${book.audience}</span>
+           <span class="inline-flex items-center gap-1 px-2 py-1 bg-zinc-700/50 rounded-lg text-xs text-zinc-300">${book.statusEmoji} ${book.status}</span>`;
+      document.getElementById('book-modal-badges').innerHTML = badgesHtml;
+
+      // Set description - use fullDescription if available
+      const desc = book.fullDescription || book.description;
+      document.getElementById('book-modal-description').textContent = desc;
+
+      // Set progress - compendium doesn't have progress
+      const progressHtml = isCompendium
+        ? '<span class="text-zinc-500 text-sm">All current and future books included</span>'
+        : (book.status === 'Planned'
+          ? '<span class="text-zinc-500 text-sm">Status: Planned</span>'
+          : renderProgressBarModal(book.progress) + `<div class="text-xs text-zinc-500 mt-1">${book.pages} of ~${book.targetPages} pages</div>`);
+      document.getElementById('book-modal-progress').innerHTML = progressHtml;
+
+      // Set buttons (side by side) - compendium has buy button but no read
+      const buttonsHtml = isCompendium
+        ? `<a href="#" data-gumroad-url="${book.gumroadUrl}" class="gumroad-buy-btn" style="display: block; width: 100%; padding: 16px 24px; font-size: 16px; background: linear-gradient(to right, #8b5cf6, #9333ea); color: white; border: none; border-radius: 12px; text-align: center; font-weight: 600; cursor: pointer; text-decoration: none;">🎁 Buy Bundle - $${(book.price / 100).toFixed(2)}</a>`
+        : (book.price
+          ? `<a href="#" data-gumroad-url="${book.gumroadUrl}" class="gumroad-buy-btn" style="display: block; width: 100%; padding: 16px 24px; font-size: 16px; background-color: #f97316; color: white; border: 2px solid #f97316; border-radius: 12px; text-align: center; font-weight: 600; cursor: pointer; text-decoration: none;">💳 Buy</a>
+             <a href="${book.readUrl}" style="display: block; width: 100%; padding: 16px 24px; font-size: 16px; background-color: transparent; color: #a78bfa; border: 2px solid #a78bfa; border-radius: 12px; text-align: center; font-weight: 600; cursor: pointer; text-decoration: none;">📖 Read Online</a>`
+          : '<span class="text-zinc-500 text-sm">Coming Eventually</span>');
+      document.getElementById('book-modal-buttons').innerHTML = buttonsHtml;
+
+      // Add click handlers for gumroad buttons in modal
+      document.querySelectorAll('#book-modal-buttons .gumroad-buy-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const url = btn.dataset.gumroadUrl + '?wanted=true';
+          openGumroadModal(url);
+        });
+      });
+
+      // Show modal
+      document.getElementById('book-detail-modal').classList.add('active');
+    }
+
+    function closeBookModal() {
+      document.getElementById('book-detail-modal').classList.remove('active');
+    }
+
+    // Close on background click
+    document.getElementById('book-detail-modal').addEventListener('click', function(e) {
+      if (e.target === this) closeBookModal();
+    });
+  </script>
+</body>
+</html>
