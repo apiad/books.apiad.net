@@ -174,7 +174,8 @@ function renderLayout() {
   return `
     <div class="max-w-6xl mx-auto px-4 py-12">
       <header class="text-center mb-16">
-        <h1 class="text-4xl md:text-5xl font-bold font-serif text-zinc-100 mb-4">Master Computer Science & AI</h1>
+        <h1 class="text-4xl md:text-5xl font-bold font-serif text-zinc-100 mb-4">The Computist Library</h1>
+        <h2 class="text-2xl md:text-2xl font-bold font-serif text-zinc-100 mb-4">Master Computer Science & Artificial Intelligence</h1>
         <p class="text-zinc-400 text-lg max-w-2xl mx-auto mb-4">
           Deep, conceptual books on computation, algorithms, and AI.
           Zero formulas, zero code. Written for curious minds.
