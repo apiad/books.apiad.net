@@ -1,0 +1,388 @@
+/* =====================================================
+   Kindle-like Reading Experience for The Computist
+   ===================================================== */
+
+/* Google Fonts import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&family=Fira+Code:wght@400;500&display=swap');
+
+/* ========== CSS VARIABLES (Light/Dark Themes) ========== */
+:root {
+  /* Light theme (default - warm paper-like) */
+  --bg-primary: #faf9f6;
+  --bg-secondary: #f0ede6;
+  --bg-content: #faf9f6;
+  --text-primary: #2c2c2c;
+  --text-secondary: #5a5a5a;
+  --text-muted: #888;
+  --link-color: #8b5cf6;
+  --link-hover: #7c3aed;
+  --border-color: #e5e5e5;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --sidebar-bg: #ffffff;
+  --btn-bg: #2c2c2c;
+  --btn-text: #ffffff;
+  
+  /* Typography - match landing page */
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-title: 'Playfair Display', Georgia, serif;
+  --font-mono: 'Fira Code', 'JetBrains Mono', monospace;
+  --font-size-base: 18px;
+  --font-size-mobile: 16px;
+  --line-height: 1.75;
+  --content-max-width: 680px;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #252525;
+  --bg-content: #1a1a1a;
+  --text-primary: #e5e5e5;
+  --text-secondary: #a0a0a0;
+  --text-muted: #666;
+  --link-color: #a78bfa;
+  --link-hover: #c4b5fd;
+  --border-color: #333;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --sidebar-bg: #222;
+  --btn-bg: #e5e5e5;
+  --btn-text: #1a1a1a;
+}
+
+/* ========== BASE STYLES ========== */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--font-size-base);
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: var(--line-height);
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.15s ease-out, color 0.15s ease-out;
+}
+
+/* ========== HIDE QUARTO CHROME ========== */
+#quarto-header,
+#quarto-sidebar,
+#quarto-sidebar-glass,
+#quarto-margin-sidebar,
+quarto-header,
+.margin-sidebar,
+.sidebar-collapse-container {
+  display: none !important;
+}
+
+/* ========== MAIN CONTENT AREA ========== */
+#quarto-content {
+  padding: 0 !important;
+  margin-left: 0 !important;
+}
+
+main.content {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  background-color: var(--bg-content);
+  transition: background-color 0.15s ease-out, color 0.15s ease-out;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  main.content {
+    max-width: 100%;
+    padding: 1.5rem 1.5rem;
+    font-size: var(--font-size-mobile);
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+
+/* Ensure no extra margins on any parent */
+#quarto-content,
+.quarto-container,
+.page-columns,
+.page-rows-contents,
+.page-layout-article {
+  margin-left: 0 !important;
+}
+
+/* ========== TYPOGRAPHY ========== */
+main.content h1 {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+main.content h2 {
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 1.75rem;
+  line-height: 1.3;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+main.content h3 {
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 1.35rem;
+  line-height: 1.4;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+}
+
+main.content p {
+  margin-bottom: 1.25rem;
+  text-align: justify;
+  hyphens: auto;
+}
+
+main.content a {
+  color: var(--link-color);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+main.content a:hover {
+  color: var(--link-hover);
+  border-bottom-color: var(--link-hover);
+}
+
+/* Blockquotes */
+main.content blockquote {
+  margin: 1.5rem 0;
+  padding: 1rem 1.5rem;
+  border-left: 4px solid var(--link-color);
+  background-color: var(--bg-secondary);
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+}
+
+main.content blockquote p {
+  margin-bottom: 0;
+}
+
+/* Lists */
+main.content ul,
+main.content ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+
+main.content li {
+  margin-bottom: 0.5rem;
+}
+
+/* Code */
+main.content code {
+  font-family: 'Fira Code', 'JetBrains Mono', monospace;
+  font-size: 0.85em;
+  background-color: var(--bg-secondary);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+}
+
+main.content pre {
+  background-color: var(--bg-secondary);
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+main.content pre code {
+  background: none;
+  padding: 0;
+}
+
+/* Images */
+main.content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+/* Horizontal Rule */
+main.content hr {
+  border: none;
+  height: 1px;
+  background-color: var(--border-color);
+  margin: 2rem 0;
+}
+
+/* Tables */
+main.content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.9em;
+}
+
+main.content th,
+main.content td {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+  text-align: left;
+}
+
+main.content th {
+  background-color: var(--bg-secondary);
+  font-weight: 600;
+}
+
+main.content tr:nth-child(even) {
+  background-color: var(--bg-secondary);
+}
+
+/* ========== FLOATING BUTTONS ========== */
+.reader-controls {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  z-index: 10000;
+}
+
+.reader-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  z-index: 10001;
+}
+
+.reader-btn:hover {
+  transform: scale(1.1);
+}
+
+.reader-btn:active {
+  transform: scale(0.95);
+}
+
+/* Make sure buttons are always visible */
+.reader-controls,
+.reader-btn {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* ========== LOADING STATE ========== */
+body.loading {
+  opacity: 0.7;
+}
+
+body.loading .reader-controls {
+  display: none;
+}
+
+/* ========== FOOTER ========== */
+footer.footer,
+footer .nav-footer {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-secondary) !important;
+  border-top: 1px solid var(--border-color);
+}
+
+footer.footer a,
+footer .nav-footer a {
+  color: var(--link-color) !important;
+}
+
+footer .nav-footer p,
+footer .nav-footer span {
+  color: var(--text-secondary) !important;
+}
+
+/* ========== CODE IMPROVEMENTS ========== */
+main.content code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-primary);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+}
+
+main.content pre {
+  background-color: var(--bg-secondary) !important;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  border: 1px solid var(--border-color);
+}
+
+main.content pre code {
+  background: none;
+  padding: 0;
+  color: var(--text-primary);
+}
+
+/* ========== PRINT STYLES ========== */
+@media print {
+  .reader-controls {
+    display: none !important;
+  }
+  
+  main.content {
+    max-width: 100%;
+    padding: 0;
+  }
+}
+
+/* ========== SCROLLBAR STYLING ========== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* ========== SELECTION ========== */
+::selection {
+  background-color: var(--link-color);
+  color: white;
+}

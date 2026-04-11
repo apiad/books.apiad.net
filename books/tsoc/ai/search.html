@@ -41,6 +41,11 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+  <link href="../reader.css" rel="stylesheet">
+  <link href="../reader.css" rel="stylesheet">
+  <link href="../reader.css" rel="stylesheet">
+  <link href="../reader.css" rel="stylesheet">
+  <link href="../reader.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -718,5 +723,38 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
+
+     <!-- Reader Controls -->
+  <div class="reader-controls">
+    <button class="reader-btn" id="theme-btn" title="Toggle theme">🌙</button>
+  </div>
+  
+  <script>
+    (function() {
+      // Theme management
+      const themeBtn = document.getElementById("theme-btn");
+      const savedTheme = localStorage.getItem("reader-theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+      themeBtn.textContent = savedTheme === "dark" ? "☀️" : "🌙";
+
+      themeBtn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        const current = document.documentElement.getAttribute("data-theme");
+        const next = current === "dark" ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", next);
+        localStorage.setItem("reader-theme", next);
+        themeBtn.textContent = next === "dark" ? "☀️" : "🌙";
+      });
+
+      // T for theme toggle
+      document.addEventListener("keydown", function(e) {
+        if (e.key === "t" || e.key === "T") {
+          themeBtn.click();
+        }
+      });
+      
+      console.log("Reader controls initialized");
+    })();
+  </script>
 
 </body></html>
