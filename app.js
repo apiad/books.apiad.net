@@ -59,7 +59,7 @@ function renderButton(url, text, variant = 'primary', icon = '', fullWidth = fal
     ? 'data-gumroad-url="' + url + '" class="gumroad-buy-btn"'
     : '';
 
-  const button = `<a href="${url}" ${attrs} style="${display} ${padding} ${fontSize} ${borderRadius} ${colors} text-align: center; font-weight: 600; cursor: pointer; text-decoration: none;">${icon} ${text}</a>`;
+  const button = `<a href="${url}" ${attrs} style="${display} ${padding} ${fontSize} ${borderRadius} ${colors} text-align: center; font-weight: 600; cursor: pointer; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='scale(1.02)';this.style.boxShadow='0 8px 20px rgba(0,0,0,0.3)';" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='none';">${icon} ${text}</a>`;
 
   if (hint) {
     return `<div class="relative group">
@@ -105,7 +105,7 @@ function renderBookCard(book) {
   const cardHeight = isPlanned ? '' : 'min-h-[520px]';
 
   return `
-    <div class="bg-card rounded-2xl border border-zinc-800 overflow-visible hover:border-orange-500/30 hover:bg-card-hover transition-all duration-200 shadow-lg shadow-black/20 flex flex-col ${cardHeight} cursor-pointer book-card" data-book-id="${book.id}">
+    <div class="bg-card rounded-2xl border border-zinc-800 overflow-visible hover:border-orange-500/50 hover:bg-card-hover transition-all duration-200 hover:scale-[1.02] hover:shadow-xl hover:shadow-orange-500/20 shadow-lg shadow-black/20 flex flex-col ${cardHeight} cursor-pointer book-card" data-book-id="${book.id}">
       ${coverHtml}
       <div class="p-5 flex flex-col flex-grow">
         <div class="flex flex-wrap gap-2 mb-2">
@@ -153,7 +153,7 @@ function renderCompendium(compendium) {
 
   return `
     <section class="mb-16">
-      <div class="relative rounded-2xl p-6 md:p-8 bg-gradient-to-r from-violet-500/10 via-card to-orange-500/10 border border-zinc-800 overflow-hidden">
+      <div class="relative rounded-2xl p-6 md:p-8 bg-gradient-to-r from-violet-500/10 via-card to-orange-500/10 border border-zinc-800 overflow-hidden cursor-pointer group transition-all duration-300 hover:scale-[1.01] hover:shadow-2xl hover:shadow-violet-500/20" onclick="openBookModal('compendium')">
         <div class="absolute inset-0 bg-gradient-to-r from-violet-500/5 to-orange-500/5"></div>
         <div class="relative grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           <div class="md:col-span-2">
@@ -173,13 +173,7 @@ function renderCompendium(compendium) {
           </div>
           <div class="flex flex-col justify-center items-start md:items-end">
             <span class="text-5xl font-bold text-orange-400 mb-6">${formatPrice(compendium.price)}</span>
-            <div class="relative group">
-              <a href="#" data-gumroad-url="${compendium.gumroadUrl}" class="gumroad-buy-btn bg-gradient-to-r from-violet-500 to-purple-600 hover:from-violet-600 hover:to-purple-700 text-white px-10 py-5 rounded-xl font-semibold text-xl transition-all duration-200 hover:scale-[1.02] shadow-lg shadow-violet-500/25 w-full md:w-auto text-center">🎁 Buy Bundle</a>
-              <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-violet-500/90 text-white text-xs rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50">
-                💡 Use FIFTYOFF for 50% off this bundle too!
-                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-violet-500/90"></div>
-              </div>
-            </div>
+            <a href="#" data-gumroad-url="${compendium.gumroadUrl}" class="gumroad-buy-btn bg-gradient-to-r from-violet-500 to-purple-600 hover:from-violet-600 hover:to-purple-700 text-white px-10 py-5 rounded-xl font-semibold text-xl transition-all duration-200 hover:scale-[1.02] shadow-lg shadow-violet-500/25 w-full md:w-auto text-center" onclick="event.stopPropagation();">🎁 Buy Bundle</a>
           </div>
         </div>
       </div>
