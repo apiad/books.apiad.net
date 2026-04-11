@@ -40,7 +40,7 @@ function renderBadge(text, emoji, isPlanned = false, tooltip = '') {
   return `<span class="relative inline-flex items-center gap-1 px-2 py-1 ${bgColor} rounded-lg text-xs text-zinc-300 group cursor-help">${emoji} ${text}${tooltipHtml}</span>`;
 }
 
-function renderButton(url, text, variant = 'primary', icon = '', fullWidth = false) {
+function renderButton(url, text, variant = 'primary', icon = '', fullWidth = false, hint = '') {
   if (!url) {
     return `<span class="text-zinc-500 text-sm">Coming Eventually</span>`;
   }
@@ -59,7 +59,19 @@ function renderButton(url, text, variant = 'primary', icon = '', fullWidth = fal
     ? 'data-gumroad-url="' + url + '" class="gumroad-buy-btn"'
     : '';
 
-  return `<a href="${url}" ${attrs} style="${display} ${padding} ${fontSize} ${borderRadius} ${colors} text-align: center; font-weight: 600; cursor: pointer; text-decoration: none;">${icon} ${text}</a>`;
+  const button = `<a href="${url}" ${attrs} style="${display} ${padding} ${fontSize} ${borderRadius} ${colors} text-align: center; font-weight: 600; cursor: pointer; text-decoration: none;">${icon} ${text}</a>`;
+
+  if (hint) {
+    return `<div class="relative group">
+      ${button}
+      <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-orange-500/90 text-white text-xs rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50">
+        💡 ${hint}
+        <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-orange-500/90"></div>
+      </div>
+    </div>`;
+  }
+
+  return button;
 }
 
 function renderBookCard(book) {
@@ -80,7 +92,7 @@ function renderBookCard(book) {
 
   const buttonsHtml = isPlanned
     ? ''
-    : `<div class="mt-auto pt-4 space-y-3">${renderButton(book.gumroadUrl, 'Buy - $' + (book.price / 100).toFixed(2), 'primary', '💳', true)}${renderButton(book.readUrl, 'Read Online', 'secondary', '📖', true)}</div>`;
+    : `<div class="mt-auto pt-4 space-y-3">${renderButton(book.gumroadUrl, 'Buy - $' + (book.price / 100).toFixed(2), 'primary', '💳', true, book.hint || '')}${renderButton(book.readUrl, 'Read Online', 'secondary', '📖', true)}</div>`;
 
   const compendiumCardCta = isPlanned
     ? ''
@@ -113,10 +125,16 @@ function renderBookCard(book) {
 
 function renderCategory(category) {
   const cardsHtml = category.items.map(book => renderBookCard(book)).join('');
+  const bannerHtml = category.banner ? `
+    <div class="rounded-lg p-4 bg-gradient-to-r ${category.banner.bgGradient} border ${category.banner.borderColor} mb-6">
+      <p class="text-orange-300 text-center font-medium">${category.banner.text}</p>
+    </div>
+  ` : '';
   return `
     <section class="mb-16">
       <h2 class="text-3xl font-bold font-serif mb-3 text-zinc-100">${category.name}</h2>
       <p class="text-zinc-400 mb-8 max-w-2xl">${category.description}</p>
+      ${bannerHtml}
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         ${cardsHtml}
       </div>
@@ -154,8 +172,14 @@ function renderCompendium(compendium) {
             </div>
           </div>
           <div class="flex flex-col justify-center items-start md:items-end">
-            <span class="text-5xl font-bold text-orange-400 mb-4">${formatPrice(compendium.price)}</span>
-            <a href="#" data-gumroad-url="${compendium.gumroadUrl}" class="gumroad-buy-btn bg-gradient-to-r from-violet-500 to-purple-600 hover:from-violet-600 hover:to-purple-700 text-white px-10 py-5 rounded-xl font-semibold text-xl transition-all duration-200 hover:scale-[1.02] shadow-lg shadow-violet-500/25 w-full md:w-auto text-center">🎁 Buy Bundle</a>
+            <span class="text-5xl font-bold text-orange-400 mb-6">${formatPrice(compendium.price)}</span>
+            <div class="relative group">
+              <a href="#" data-gumroad-url="${compendium.gumroadUrl}" class="gumroad-buy-btn bg-gradient-to-r from-violet-500 to-purple-600 hover:from-violet-600 hover:to-purple-700 text-white px-10 py-5 rounded-xl font-semibold text-xl transition-all duration-200 hover:scale-[1.02] shadow-lg shadow-violet-500/25 w-full md:w-auto text-center">🎁 Buy Bundle</a>
+              <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-violet-500/90 text-white text-xs rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50">
+                💡 Use FIFTYOFF for 50% off this bundle too!
+                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-violet-500/90"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

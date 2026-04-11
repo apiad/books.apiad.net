@@ -25,15 +25,5 @@
     if (e.key === 't' || e.key === 'T') {
       if (themeBtn) themeBtn.click();
     }
-    // Ctrl+P / Cmd+P to block print
-    if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
-      e.preventDefault();
-      alert('Printing disabled. ' + blockMessage);
-    }
-    // Ctrl+S / Cmd+S to block save
-    if ((e.ctrlKey || e.metaKey) && e.key === 's') {
-      e.preventDefault();
-      alert('Save disabled. ' + blockMessage);
-    }
   });
 })();

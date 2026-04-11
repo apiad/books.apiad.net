@@ -12,6 +12,11 @@ window.catalogData = {
       id: "early-access",
       name: "📚 Early Access",
       description: "Books I'm currently writing. Every chapter releases as a blog post first, then PDF/EPUB on Gumroad. Buy once, get all future versions forever. Plus potentially 6+ future books in the Compendium.",
+      banner: {
+        text: "Especial Sale: Use FIFTYOFF discount code for a 50% discount on any early access book",
+        bgGradient: "from-orange-500/20 to-red-500/20",
+        borderColor: "border-orange-800/50"
+      },
       items: [
         {
           id: "tsoc",
@@ -27,7 +32,8 @@ window.catalogData = {
           price: 2900,
           gumroadUrl: "https://apiad.gumroad.com/l/tsoc",
           readUrl: "/books/tsoc",
-          coverUrl: "/books/tsoc/cover.jpg"
+          coverUrl: "/books/tsoc/cover.jpg",
+          hint: "Use FIFTYOFF discount code for a 50% discount!"
         },
         {
           id: "mhai",
@@ -43,7 +49,8 @@ window.catalogData = {
           price: 2900,
           gumroadUrl: "https://apiad.gumroad.com/l/mhai",
           readUrl: "/books/mhai",
-          coverUrl: "/books/mhai/cover.jpg"
+          coverUrl: "/books/mhai/cover.jpg",
+          hint: "Use FIFTYOFF discount code for a 50% discount!"
         },
         {
           id: "chatbots",
@@ -59,7 +66,8 @@ window.catalogData = {
           price: 2900,
           gumroadUrl: "https://apiad.gumroad.com/l/chatbots",
           readUrl: "/books/chatbots",
-          coverUrl: "/books/chatbots/cover.jpg"
+          coverUrl: "/books/chatbots/cover.jpg",
+          hint: "Use FIFTYOFF discount code for a 50% discount!"
         },
         {
           id: "graphs",
@@ -75,7 +83,8 @@ window.catalogData = {
           price: 2900,
           gumroadUrl: "https://apiad.gumroad.com/l/graphs",
           readUrl: "/books/graphs",
-          coverUrl: "/books/graphs/cover.jpg"
+          coverUrl: "/books/graphs/cover.jpg",
+          hint: "Use FIFTYOFF discount code for a 50% discount!"
         }
       ]
     },
