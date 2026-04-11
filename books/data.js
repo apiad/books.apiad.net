@@ -1,0 +1,214 @@
+window.readerConfig = {
+  upsell: {
+    enabled: true,
+    thresholds: [10, 30, 60, 120, 240, 480]
+  }
+};
+
+// Developer console message
+console.log('%c👋 Hey there, developer!', 'font-size: 18px; font-weight: bold; color: #f97316;');
+console.log('%cLooks like you\'re peeking behind the curtains — I respect that.', 'color: #a1a1aa;');
+console.log('%cIf you enjoy deep dives into CS, AI, and software engineering,', 'color: #71717a;');
+console.log('%cI send out free weekly articles on my blog: 📧 https://blog.apiad.net/subscribe', 'color: #8b5cf6; font-weight: bold;');
+console.log('%cHappy reading! 🚀', 'color: #71717a;');
+
+window.catalogData = {
+  compendium: {
+    id: "compendium",
+    title: "The Computist Compendium",
+    description: "A bundle of all current and future educational projects at a reduced price. Get access in perpetuity to all books and future work.",
+    fullDescription: "This is my opus magna, a grand view of the whole field of computer science, from foundational theory to systems to applications. The compendium includes all current books (The Science of Computation, Mostly Harmless AI, How to Train your Chatbot, Mostly Harmless Graphs) plus all future books I write. Every chapter comes out as a blog post first, then PDF and EPUB versions are updated on Gumroad at a reduced price. Getting it today grants you access in perpetuity to all my digital educational work.",
+    price: 6900,
+    gumroadUrl: "https://apiad.gumroad.com/l/compendium",
+    salesCount: 138
+  },
+  categories: [
+    {
+      id: "early-access",
+      name: "📚 Early Access",
+      description: "Books I'm currently writing. Every chapter releases as a blog post first, then PDF/EPUB on Gumroad. Buy once, get all future versions forever. Plus potentially 6+ future books in the Compendium.",
+      banner: {
+        text: "Especial Sale: Use FIFTYOFF discount code for a 50% discount on any early access book",
+        bgGradient: "from-orange-500/20 to-red-500/20",
+        borderColor: "border-orange-800/50"
+      },
+      items: [
+        {
+          id: "tsoc",
+          title: "The Science of Computation",
+          audience: "😄 General",
+          description: "A grand view of computer science, from foundations to AI. Zero formulas or code. Four parts: foundations, systems, software engineering, AI.",
+          fullDescription: "This is my opus magna, a grand view of the whole field of computer science, from foundational theory to systems to applications. The book is divided into four main parts: foundations of computer science, computational systems, software engineering, and artificial intelligence. Each part is a broad discipline in computer science. The book has zero mathematical formulas or computer code.",
+          status: "Alpha",
+          statusEmoji: "🔴",
+          progress: 18,
+          pages: 53,
+          targetPages: 300,
+          price: 2900,
+          gumroadUrl: "https://apiad.gumroad.com/l/tsoc",
+          readUrl: "/books/tsoc",
+          coverUrl: "/books/tsoc/cover.jpg",
+          hint: "Use FIFTYOFF discount code for a 50% discount!",
+          salesCount: 28
+        },
+        {
+          id: "mhai",
+          title: "Mostly Harmless AI",
+          audience: "😄 General",
+          description: "Essays on AI and its impact on society. Revised and formatted from newsletter issues. Covers AI in software, education, existential risks, limitations, and future.",
+          fullDescription: "This is a collection of essays on Artificial Intelligence and its impact on society. These appeared first as independent issues in my newsletter (Mostly Harmless Ideas). In this book, they have been revised and formatted to make for a more or less coherent narrative. The essays range from the impact of AI in software development and education, to existential risks of AI, to inherent limitations of current AI systems, to potential future developments.",
+          status: "Beta",
+          statusEmoji: "🟠",
+          progress: 31,
+          pages: 92,
+          targetPages: 300,
+          price: 2900,
+          gumroadUrl: "https://apiad.gumroad.com/l/ai",
+          readUrl: "/books/mhai",
+          coverUrl: "/books/mhai/cover.jpg",
+          hint: "Use FIFTYOFF discount code for a 50% discount!",
+          salesCount: 90
+        },
+        {
+          id: "chatbots",
+          title: "How to Train your Chatbot",
+          audience: "😎 Technical",
+          description: "Hands-on guide to building LLM applications. Covers prompt engineering, RAG, code interpreter, tools, agents, and how LLMs work.",
+          fullDescription: "This is a very hands-on book on building applications with large language models. It presents the main strategies to integrate LLMs into software applications from prompt engineering and retrieval augmented generation to code interpreter, tools, and agents. It also gives a solid foundation on how LLMs work and key insights on their capabilities and limitations.",
+          status: "Alpha",
+          statusEmoji: "🔴",
+          progress: 73,
+          pages: 183,
+          targetPages: 250,
+          price: 2900,
+          gumroadUrl: "https://apiad.gumroad.com/l/chatbots",
+          readUrl: "/books/chatbots",
+          coverUrl: "/books/chatbots/cover.jpg",
+          hint: "Use FIFTYOFF discount code for a 50% discount!",
+          salesCount: 71
+        },
+        {
+          id: "graphs",
+          title: "Mostly Harmless Graphs",
+          audience: "😎 Technical",
+          description: "Graphs from theory to algorithms to applications. Focuses on practical problems and builds theory as needed. Each chapter starts with a concrete problem.",
+          fullDescription: "This is a book about graphs, from theory to algorithms to practical applications. Contrary to most textbooks on graphs, this book is not meant to cover all the definitions and theory. Instead, it focuses directly on applications and builds the theory as necessary. Each chapter starts with a concrete, practical problem (even if fictionalized) and gives a solution in the form of one or more algorithms. It also provides key theorems whenever suitable.",
+          status: "Alpha",
+          statusEmoji: "🔴",
+          progress: 18,
+          pages: 54,
+          targetPages: 300,
+          price: 2900,
+          gumroadUrl: "https://apiad.gumroad.com/l/graphs",
+          readUrl: "/books/graphs",
+          coverUrl: "/books/graphs/cover.jpg",
+          hint: "Use FIFTYOFF discount code for a 50% discount!",
+          salesCount: 49
+        }
+      ]
+    },
+    {
+      id: "backburner",
+      name: "❤️‍🔥 Backburner",
+      description: "Ideas for books based on courses I've taught. No release dates—some may never ship.",
+      items: [
+        {
+          id: "algorithms",
+          title: "Mostly Harmless Algorithms",
+          audience: "😄 General",
+          description: "Algorithm design and analysis. Each chapter presents a problem, designs an algorithm, proves correctness, analyzes performance.",
+          fullDescription: "This is a book on algorithm design and analysis. It is not a book on coding but on problem-solving using algorithms. Each chapter will present a problem and we will design an algorithm, prove its correctness, and analyze its performance. It covers from basic algorithms like searching and sorting to advanced techniques like greedy algorithms, dynamic programming, and backtracking, as well as approximate and randomized algorithms.",
+          status: "Planned",
+          statusEmoji: "🎯",
+          progress: 0,
+          pages: 0,
+          targetPages: 300,
+          price: null,
+          gumroadUrl: null,
+          readUrl: null,
+          coverUrl: null
+        },
+        {
+          id: "compilers",
+          title: "Mostly Harmless Compilers",
+          audience: "😎 Technical",
+          description: "Build a compiler from scratch while designing a small but powerful programming language.",
+          fullDescription: "A book to learn how compilers work. We will build a compiler from scratch at the same time we design a small but fairly powerful programming language. We will learn how to build a parser, implement a reasonable level of semantic analysis, and generate code that runs on an actual computer. It's a very opinionated book that shows how to build a practical compiler using modern techniques, and at the same time, will teach you the underlying formal language theory.",
+          status: "Planned",
+          statusEmoji: "🎯",
+          progress: 0,
+          pages: 0,
+          targetPages: 350,
+          price: null,
+          gumroadUrl: null,
+          readUrl: null,
+          coverUrl: null
+        },
+        {
+          id: "think-like-cs",
+          title: "How to Think Like a Computer Scientist",
+          audience: "😄 General",
+          description: "Computational thinking for everyone. Teach rigorous problem-solving using CS techniques.",
+          fullDescription: "A book on computational thinking for all readers who want to incorporate computational thinking into their daily life. The purpose is to teach you how to think rigorously and deeply about problems, applying well-known techniques from computer science to come up with clever, effective solutions to these problems.",
+          status: "Planned",
+          statusEmoji: "🎯",
+          progress: 0,
+          pages: 0,
+          targetPages: 250,
+          price: null,
+          gumroadUrl: null,
+          readUrl: null,
+          coverUrl: null
+        },
+        {
+          id: "beautiful-algos",
+          title: "Beautiful Algorithms",
+          audience: "😄 General",
+          description: "A book on the ten most beautiful algorithms ever created. Introduces the beautiful world of algorithm design without technical baggage.",
+          fullDescription: "A book on the ten most beautiful algorithms ever created (according to me). This book is intended to introduce audiences to the beautiful world of algorithm design without any technical baggage. It covers algorithms from all areas of computer science, from simple ideas like search and graph algorithms to fundamental fields like cryptography to concrete applications like neural networks, compression, and 3D rendering.",
+          status: "Planned",
+          statusEmoji: "🎯",
+          progress: 0,
+          pages: 0,
+          targetPages: 200,
+          price: null,
+          gumroadUrl: null,
+          readUrl: null,
+          coverUrl: null
+        },
+        {
+          id: "hacker-guide",
+          title: "The Hacker Guide to Coding",
+          audience: "😄 General",
+          description: "Project-based book to learn coding. Each chapter solves a concrete problem with code.",
+          fullDescription: "A book to learn how to code, based on Python, but different to most coding books. It's a project-based book where each chapter we solve a concrete problem with code. So instead of going through the programming language feature and seeing artificial and isolated examples, every new concept is introduced in the context of a major problem we want to solve.",
+          status: "Planned",
+          statusEmoji: "🎯",
+          progress: 0,
+          pages: 0,
+          targetPages: 280,
+          price: null,
+          gumroadUrl: null,
+          readUrl: null,
+          coverUrl: null
+        },
+        {
+          id: "lang-comp",
+          title: "Languages and Computation",
+          audience: "😎 Technical",
+          description: "Technical book on computability theory, formal languages, and complexity.",
+          fullDescription: "A technical book on theoretical aspects of computer science, from computability theory to formal languages and complexity. It's a book suitable for an undergrad-level course on computability and formal languages. The central idea is the duality between languages and computation, how a language defines a problem and a machine defines an algorithm. Weaving this narrative we'll build the theory of computability and complexity on top of formal languages and automata.",
+          status: "Planned",
+          statusEmoji: "🎯",
+          progress: 0,
+          pages: 0,
+          targetPages: 320,
+          price: null,
+          gumroadUrl: null,
+          readUrl: null,
+          coverUrl: null
+        }
+      ]
+    }
+  ]
+};

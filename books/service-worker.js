@@ -1,10 +1,10 @@
 const CACHE_NAME = 'computist-v1';
 const MAX_ENTRIES = 50;
 
-// Only cache /books/{book}/ URLs (book content chapters), not landing page
-// Matches patterns like: /books/tsoc/intro.html, /books/mhai/chapter1.html, etc.
-// Excludes: /books (landing page), /books/ (landing page)
-const BOOK_CHAPTER_PATTERN = /^\/books\/[^\/]+\/[^/]+\.html$/;
+// Only cache /books/ pages (PWA index + book chapters), not the main landing page
+// Matches: /books/index.html, /books/tsoc/intro.html, /books/mhai/chapter1.html
+// Excludes: /books (main landing page at root), /books/tsoc (folder without file)
+const BOOK_CHAPTER_PATTERN = /^\/books\/([^/]*\/)?([^/]+\.html)?$/;
 
 self.addEventListener('install', event => {
   self.skipWaiting();
@@ -30,10 +30,14 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // Only cache book chapter pages in /books/{book}/ directory
-  // Must match: /books/tsoc/intro.html
-  // Must NOT match: /books, /books/, /books/tsoc
-  if (!BOOK_CHAPTER_PATTERN.test(url.pathname)) {
+  // Only cache book chapter pages AND PWA index in /books/ directory
+  // Must match: /books/index.html, /books/tsoc/intro.html, /books/mhai/chapter1.html
+  // Must NOT match: /books (main landing page), /books/ (same), /books/tsoc (folder)
+  const pathname = url.pathname;
+  const isBookChapter = /^\/books\/[^\/]+\/[^/]+\.html$/.test(pathname);
+  const isPwaIndex = pathname === '/books/index.html';
+  
+  if (!isBookChapter && !isPwaIndex) {
     return;
   }
 
