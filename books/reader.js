@@ -2,13 +2,32 @@
   // Message for blocked actions
   var blockMessage = "This free version is for web reading only. If you want an offline PDF and ePUB version to read, please support the author on https://books.apiad.net";
 
-  // Theme toggle
-  var themeBtn = document.getElementById('theme-btn');
-  if (themeBtn) {
+  // Get book ID from URL
+  var pathMatch = window.location.pathname.match(/\/books\/([^/]+)/);
+  var bookId = pathMatch ? pathMatch[1] : null;
+
+  // ========== DRAWER CONTROLS ==========
+  (function() {
+    if (!bookId) return;
+    
+    // Create drawer
+    var drawer = document.createElement('div');
+    drawer.id = 'reader-drawer';
+    drawer.innerHTML = 
+      '<div id="reader-drawer-handle">▲</div>' +
+      '<div id="reader-drawer-controls">' +
+        '<button id="font-smaller" title="Smaller text">A-</button>' +
+        '<button id="font-larger" title="Larger text">A+</button>' +
+        '<button id="theme-btn" title="Toggle theme">🌙</button>' +
+      '</div>';
+    document.body.appendChild(drawer);
+    
+    // Theme toggle
+    var themeBtn = document.getElementById('theme-btn');
     var savedTheme = localStorage.getItem('reader-theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
     themeBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
-
+    
     themeBtn.addEventListener('click', function(e) {
       e.stopPropagation();
       var current = document.documentElement.getAttribute('data-theme');
@@ -17,15 +36,188 @@
       localStorage.setItem('reader-theme', next);
       themeBtn.textContent = next === 'dark' ? '☀️' : '🌙';
     });
-  }
+    
+    // Drawer toggle
+    var handle = document.getElementById('reader-drawer-handle');
+    handle.onclick = function(e) {
+      e.stopPropagation();
+      drawer.classList.toggle('expanded');
+      handle.textContent = drawer.classList.contains('expanded') ? '▼' : '▲';
+    };
+    
+    // Close on scroll
+    var lastScroll = 0;
+    window.addEventListener('scroll', function() {
+      var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      if (Math.abs(currentScroll - lastScroll) > 30) {
+        if (drawer.classList.contains('expanded')) {
+          drawer.classList.remove('expanded');
+          handle.textContent = '▲';
+        }
+        lastScroll = currentScroll;
+      }
+    });
+  })();
 
-  // Keyboard shortcuts
+  // ========== FONT SIZE CONTROLS ==========
+  (function() {
+    var fontSizes = [14, 16, 18, 20, 22, 24, 28, 32];
+    var fontSizeKey = 'reader_fontsize_' + bookId;
+    var savedSize = parseInt(localStorage.getItem(fontSizeKey));
+    var currentSize = fontSizes.indexOf(savedSize) !== -1 ? savedSize : 18;
+    var sizeIndex = fontSizes.indexOf(currentSize);
+    if (sizeIndex === -1) sizeIndex = 2;
+    
+    // Apply saved size
+    document.documentElement.style.setProperty('--font-size-base', currentSize + 'px');
+    
+    function applyFontSize(size) {
+      localStorage.setItem(fontSizeKey, size);
+      document.documentElement.style.setProperty('--font-size-base', size + 'px');
+    }
+    
+    document.getElementById('font-smaller').onclick = function(e) {
+      e.stopPropagation();
+      sizeIndex = Math.max(0, sizeIndex - 1);
+      applyFontSize(fontSizes[sizeIndex]);
+    };
+    
+    document.getElementById('font-larger').onclick = function(e) {
+      e.stopPropagation();
+      sizeIndex = Math.min(fontSizes.length - 1, sizeIndex + 1);
+      applyFontSize(fontSizes[sizeIndex]);
+    };
+    
+    // Keyboard shortcuts for font size
+    document.addEventListener('keydown', function(e) {
+      if (e.key === '-' || e.key === '_') {
+        document.getElementById('font-smaller').click();
+      } else if (e.key === '=' || e.key === '+') {
+        document.getElementById('font-larger').click();
+      }
+    });
+  })();
+
+  // ========== KEYBOARD SHORTCUTS ==========
   document.addEventListener('keydown', function(e) {
     // T key to toggle theme
     if (e.key === 't' || e.key === 'T') {
-      if (themeBtn) themeBtn.click();
+      document.getElementById('theme-btn').click();
     }
   });
+
+  // ========== REMEMBER POSITION ==========
+  (function() {
+    var pathMatch = window.location.pathname.match(/\/books\/([^/]+)/);
+    if (!pathMatch) return;
+    var bookId = pathMatch[1];
+    
+    var posKey = 'reader_pos_' + bookId;
+    var savedPos = JSON.parse(localStorage.getItem(posKey));
+    
+    // Restore position on load
+    if (savedPos && savedPos.path === window.location.pathname) {
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          window.scrollTo(0, savedPos.scroll);
+        }, 100);
+      });
+    }
+    
+    // Save position on scroll
+    var scrollTimeout;
+    window.addEventListener('scroll', function() {
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(function() {
+        localStorage.setItem(posKey, JSON.stringify({
+          path: window.location.pathname,
+          scroll: window.pageYOffset || document.documentElement.scrollTop
+        }));
+      }, 500);
+    });
+  })();
+
+  // ========== PROGRESS BAR ==========
+  (function() {
+    // Find content area - prioritize specific IDs first, then fallbacks
+    var content = document.querySelector('#quarto-document-content') || 
+                  document.querySelector('main.content') ||
+                  document.querySelector('article') || 
+                  document.querySelector('main#main-content') ||
+                  document.querySelector('main') || 
+                  document.querySelector('.quarto-body-content') ||
+                  document.querySelector('.page-content') ||
+                  document.querySelector('.content');
+    
+    if (!content) {
+      console.log('Reader progress: no content element found');
+      return;
+    }
+    
+    // Debug: log content details
+    console.log('Reader progress: found content', {
+      tag: content.tagName,
+      id: content.id,
+      className: content.className,
+      textLength: (content.innerText || '').length,
+      wordCount: (content.innerText || '').split(/\s+/).filter(function(w) { return w.length > 0; }).length,
+      offsetHeight: content.offsetHeight
+    });
+    
+    // Word count for this chapter
+    var totalWords = (content.innerText || '').split(/\s+/).filter(function(w) { return w.length > 0; }).length;
+    if (totalWords < 50) {
+      console.log('Reader progress: too few words', totalWords);
+      return;
+    }
+    
+    console.log('Reader progress: words:', totalWords, 'expected time:', Math.ceil(totalWords / 120), 'minutes');
+    
+    // Create progress bar
+    var progressBar = document.createElement('div');
+    progressBar.id = 'reader-progress';
+    progressBar.innerHTML = 
+      '<div class="reader-progress-bar"><div class="reader-progress-fill"></div></div>' +
+      '<span class="reader-progress-time"></span>';
+    document.body.appendChild(progressBar);
+    
+    var fill = progressBar.querySelector('.reader-progress-fill');
+    var timeLabel = progressBar.querySelector('.reader-progress-time');
+    
+    function updateProgress() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      var docHeight = content.offsetHeight;
+      var winHeight = window.innerHeight;
+      var scrollPercent = scrollTop / (docHeight - winHeight);
+      scrollPercent = Math.min(1, Math.max(0, scrollPercent));
+      
+      // Update bar
+      fill.style.width = (scrollPercent * 100) + '%';
+      
+    // Update time remaining
+    var wordsRemaining = totalWords * (1 - scrollPercent);
+    // 120 words per minute = 2 words per second
+    var secondsRemaining = Math.ceil(wordsRemaining / 2);
+      
+      var timeText;
+      if (secondsRemaining < 60) {
+        timeText = secondsRemaining + 's left';
+      } else {
+        timeText = Math.ceil(secondsRemaining / 60) + 'm left';
+      }
+      timeLabel.textContent = timeText;
+    }
+    
+    // Throttled scroll listener
+    var scrollTimeout;
+    window.addEventListener('scroll', function() {
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(updateProgress, 100);
+    });
+    
+    // Initial update
+    updateProgress();
+  })();
 
   // ========== UPSELL MODAL ==========
   (function() {

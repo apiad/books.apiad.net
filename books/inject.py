@@ -23,31 +23,30 @@ def inject():
             
             body = soup.find('body')
             if body:
-                # REMOVE any existing reader-controls and reader.js first
+                # REMOVE any existing reader-controls, reader.js, and duplicate data.js first
                 for div in body.find_all('div', class_='reader-controls'):
                     div.decompose()
-                for script in body.find_all('script'):
-                    if script.get('src') == '/books/reader.js':
-                        script.decompose()
                 
-                # Create new elements
-                controls = soup.new_tag('div', **{'class': 'reader-controls'})
-                btn = soup.new_tag('button', **{'class': 'reader-btn', 'id': 'theme-btn', 'title': 'Toggle theme'})
-                btn.string = '🌙'
-                controls.append(btn)
+                # Remove all scripts we added previously (reader.js and data.js)
+                scripts_to_remove = []
+                for script in body.find_all('script'):
+                    src = script.get('src', '')
+                    if src == '/books/reader.js' or src == '/data.js':
+                        scripts_to_remove.append(script)
+                for script in scripts_to_remove:
+                    script.decompose()
                 
                 # Add data.js first (so window.catalogData is available)
                 data_script = soup.new_tag('script', src='/data.js')
                 
-                # Add reader.js
+                # Add reader.js (drawer is created by reader.js)
                 reader_script = soup.new_tag('script', src='/books/reader.js')
                 
                 # Insert AFTER footer (or at end of body if no footer)
                 footer = body.find('footer')
                 if footer:
-                    footer.insert_after(controls, data_script, reader_script)
+                    footer.insert_after(data_script, reader_script)
                 else:
-                    body.append(controls)
                     body.append(data_script)
                     body.append(reader_script)
             
