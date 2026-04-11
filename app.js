@@ -218,7 +218,7 @@ function renderLayout() {
             📖 All books are free to read online
           </h2>
           <p class="text-zinc-400 max-w-xl mb-4">
-            I built a custom web reader that feels like a native experience — 100% free. You can buy the EPUB/PDF later if you want to support the author.
+            I built a custom web reader that feels like a native experience — install it on mobile, works offline, 100% free. You can buy the EPUB/PDF later if you want to support the author.
           </p>
           <div class="flex flex-wrap justify-center md:justify-start gap-2">
             <span class="px-3 py-1.5 bg-zinc-800/60 text-zinc-400 text-xs rounded-full flex items-center gap-1.5 hover:bg-zinc-700/60 hover:text-zinc-300 transition-colors cursor-default">
@@ -238,6 +238,12 @@ function renderLayout() {
             </span>
             <span class="px-3 py-1.5 bg-zinc-800/60 text-zinc-400 text-xs rounded-full flex items-center gap-1.5 hover:bg-zinc-700/60 hover:text-zinc-300 transition-colors cursor-default">
               ⬅️➡️ Chapter arrows
+            </span>
+            <span class="px-3 py-1.5 bg-zinc-800/60 text-zinc-400 text-xs rounded-full flex items-center gap-1.5 hover:bg-zinc-700/60 hover:text-zinc-300 transition-colors cursor-default">
+              📱 Add to Home Screen
+            </span>
+            <span class="px-3 py-1.5 bg-zinc-800/60 text-zinc-400 text-xs rounded-full flex items-center gap-1.5 hover:bg-zinc-700/60 hover:text-zinc-300 transition-colors cursor-default">
+              📥 Works offline
             </span>
           </div>
         </div>
