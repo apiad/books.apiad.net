@@ -1,13 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-<meta name="author" content="Alejandro Piad Morffis">
-
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><head>
+<link href="/books/reader.css" rel="stylesheet"/>
+<meta charset="utf-8"/>
+<meta content="quarto-1.5.57" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport"/>
+<meta content="Alejandro Piad Morffis" name="author"/>
 <title>The Science of Computation</title>
 <style>
 code{white-space: pre-wrap;}
@@ -22,30 +19,22 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 </style>
-
-
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./intro.html" rel="next">
+<meta content="./" name="quarto:offset"/>
+<link href="./intro.html" rel="next"/>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet"/>
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" id="quarto-text-highlighting-styles" rel="stylesheet"/>
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-  <link href="reader.css" rel="stylesheet">
-  <link href="reader.css" rel="stylesheet">
-  <link href="reader.css" rel="stylesheet">
-  <link href="reader.css" rel="stylesheet">
-  <link href="reader.css" rel="stylesheet">
+<link data-mode="light" href="site_libs/bootstrap/bootstrap-icons.css" id="quarto-bootstrap" rel="stylesheet"/>
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -69,236 +58,211 @@ ul.task-list li input[type="checkbox"] {
     "search-clear-button-title": "Clear",
     "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
-  }
-}</script>
-
-
+    "search-submit-button-title": "Submit",}</script>
 </head>
-
 <body class="nav-sidebar floating">
-
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
+<header class="headroom fixed-top" id="quarto-header">
+<nav class="quarto-secondary-nav">
+<div class="container-fluid d-flex">
+<button aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="quarto-btn-toggle btn" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="button" type="button">
+<i class="bi bi-layout-text-sidebar-reverse"></i>
+</button>
+<nav aria-label="breadcrumb" class="quarto-page-breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+<a aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="flex-grow-1" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="navigation">
+</a>
+<button aria-label="Search" class="btn quarto-search-button" onclick="window.quartoOpenSearch();" type="button">
+<i class="bi bi-search"></i>
+</button>
+</div>
+</nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div class="quarto-container page-columns page-rows-contents page-layout-article" id="quarto-content">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">The Science of Computation</a> 
-        <div class="sidebar-tools-main">
-    <a href="https://store.apiad.net/l/tsoc" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-book"></i></a>
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
+<nav class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" id="quarto-sidebar">
+<div class="pt-lg-2 mt-2 text-left sidebar-header">
+<div class="sidebar-title mb-0 py-0">
+<a href="./">The Science of Computation</a>
+<div class="sidebar-tools-main">
+<a aria-label="" class="quarto-navigation-tool px-1" href="https://store.apiad.net/l/tsoc" title=""><i class="bi bi-book"></i></a>
+<a class="quarto-reader-toggle quarto-navigation-tool px-1" href="" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+<div class="quarto-reader-toggle-btn">
+<i class="bi"></i>
+</div>
 </a>
 </div>
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Preface</span></a>
-  </div>
+</div>
+</div>
+<div class="mt-2 flex-shrink-0 align-items-center">
+<div class="sidebar-search">
+<div class="" id="quarto-search" title="Search"></div>
+</div>
+</div>
+<div class="sidebar-menu-container">
+<ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link active" href="./index.html">
+<span class="menu-text">Preface</span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Prologue: The Quest to Answer all Questions</span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./intro.html">
+<span class="menu-text">Prologue: The Quest to Answer all Questions</span></a>
+</div>
 </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="./theory/intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Foundations of Computer Science</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./theory/turing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What is Computation?</span></span></a>
-  </div>
+<li class="sidebar-item sidebar-item-section">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./theory/intro.html">
+<span class="menu-text">Foundations of Computer Science</span></a>
+<a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-1" data-bs-toggle="collapse" role="navigation">
+<i class="bi bi-chevron-right ms-2"></i>
+</a>
+</div>
+<ul class="collapse list-unstyled sidebar-section depth1 show" id="quarto-sidebar-section-1">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./theory/turing.html">
+<span class="menu-text"><span class="chapter-number">1</span>  <span class="chapter-title">What is Computation?</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./theory/algorithms.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Algorithms, Lots of Algorithms</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./theory/algorithms.html">
+<span class="menu-text"><span class="chapter-number">2</span>  <span class="chapter-title">Algorithms, Lots of Algorithms</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./theory/languages.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Languages and Computation</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./theory/languages.html">
+<span class="menu-text"><span class="chapter-number">3</span>  <span class="chapter-title">Languages and Computation</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./theory/complexity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Easy and Hard Problems</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./theory/complexity.html">
+<span class="menu-text"><span class="chapter-number">4</span>  <span class="chapter-title">Easy and Hard Problems</span></span></a>
+</div>
 </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">systems/intro.qmd - systems/cpus.qmd - systems/os.qmd - systems/networking.qmd - systems/internet.qmd - systems/security.qmd</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Software Engineering</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="./ai/intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Artificial Intelligence</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./ai/ai.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Why we need Artificial Intelligence</span></span></a>
-  </div>
+</ul>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./ai/search.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Search</span></span></a>
-  </div>
+<li class="sidebar-item sidebar-item-section">
+<span class="sidebar-item-text sidebar-link text-start">
+<span class="menu-text">systems/intro.qmd - systems/cpus.qmd - systems/os.qmd - systems/networking.qmd - systems/internet.qmd - systems/security.qmd</span></span>
 </li>
-      </ul>
-  </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./epilogue.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The Road Ahead</span></a>
-  </div>
+<li class="sidebar-item sidebar-item-section">
+<span class="sidebar-item-text sidebar-link text-start">
+<span class="menu-text">Software Engineering</span></span>
 </li>
-    </ul>
-    </div>
+<li class="sidebar-item sidebar-item-section">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./ai/intro.html">
+<span class="menu-text">Artificial Intelligence</span></a>
+<a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-4" data-bs-toggle="collapse" role="navigation">
+<i class="bi bi-chevron-right ms-2"></i>
+</a>
+</div>
+<ul class="collapse list-unstyled sidebar-section depth1 show" id="quarto-sidebar-section-4">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./ai/ai.html">
+<span class="menu-text"><span class="chapter-number">5</span>  <span class="chapter-title">Why we need Artificial Intelligence</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./ai/search.html">
+<span class="menu-text"><span class="chapter-number">6</span>  <span class="chapter-title">Search</span></span></a>
+</div>
+</li>
+</ul>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./epilogue.html">
+<span class="menu-text">The Road Ahead</span></a>
+</div>
+</li>
+</ul>
+</div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div class="quarto-sidebar-collapse-item" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" id="quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a>
-  <ul class="collapse">
-  <li><a href="#what-youll-find-in-this-book" id="toc-what-youll-find-in-this-book" class="nav-link" data-scroll-target="#what-youll-find-in-this-book">What you’ll find in this book</a>
-  <ul class="collapse">
-  <li><a href="#foundations-of-computation" id="toc-foundations-of-computation" class="nav-link" data-scroll-target="#foundations-of-computation">Foundations of Computation</a></li>
-  <li><a href="#computational-systems" id="toc-computational-systems" class="nav-link" data-scroll-target="#computational-systems">Computational Systems</a></li>
-  <li><a href="#software-engineering" id="toc-software-engineering" class="nav-link" data-scroll-target="#software-engineering">Software Engineering</a></li>
-  <li><a href="#artificial-intelligence" id="toc-artificial-intelligence" class="nav-link" data-scroll-target="#artificial-intelligence">Artificial Intelligence</a></li>
-  </ul></li>
-  <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next">What’s next?</a></li>
-  </ul></li>
-  </ul>
+<div class="sidebar margin-sidebar" id="quarto-margin-sidebar">
+<nav class="toc-active" id="TOC" role="doc-toc">
+<h2 id="toc-title">Table of contents</h2>
+<ul>
+<li><a class="nav-link active" data-scroll-target="#preface" href="#preface" id="toc-preface">Preface</a>
+<ul class="collapse">
+<li><a class="nav-link" data-scroll-target="#what-youll-find-in-this-book" href="#what-youll-find-in-this-book" id="toc-what-youll-find-in-this-book">What you’ll find in this book</a>
+<ul class="collapse">
+<li><a class="nav-link" data-scroll-target="#foundations-of-computation" href="#foundations-of-computation" id="toc-foundations-of-computation">Foundations of Computation</a></li>
+<li><a class="nav-link" data-scroll-target="#computational-systems" href="#computational-systems" id="toc-computational-systems">Computational Systems</a></li>
+<li><a class="nav-link" data-scroll-target="#software-engineering" href="#software-engineering" id="toc-software-engineering">Software Engineering</a></li>
+<li><a class="nav-link" data-scroll-target="#artificial-intelligence" href="#artificial-intelligence" id="toc-artificial-intelligence">Artificial Intelligence</a></li>
+</ul></li>
+<li><a class="nav-link" data-scroll-target="#whats-next" href="#whats-next" id="toc-whats-next">What’s next?</a></li>
+</ul></li>
+</ul>
 </nav>
-    </div>
+</div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
+<header class="quarto-title-block default" id="title-block-header">
 <div class="quarto-title">
 <h1 class="title">The Science of Computation</h1>
 <p class="subtitle lead">A journey through the field of Computer Science</p>
 </div>
-
-
-
 <div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Alejandro Piad Morffis <a href="mailto:apiad@apiad.net" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
-          </div>
-  </div>
-    
-  
-    
-  </div>
-  
-
-
+<div>
+<div class="quarto-title-meta-heading">Author</div>
+<div class="quarto-title-meta-contents">
+<p>Alejandro Piad Morffis <a class="quarto-title-author-email" href="mailto:apiad@apiad.net"><i class="bi bi-envelope"></i></a> </p>
+</div>
+</div>
+</div>
 </header>
-
-
-
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1><p><img src="cover.jpg" title="The Science of Computation" class="quarto-cover-image img-fluid"></p>
+<section class="level1 unnumbered" id="preface">
+<h1 class="unnumbered">Preface</h1><p><img class="quarto-cover-image img-fluid" src="cover.jpg" title="The Science of Computation"/></p>
 <p><em>What is an algorithm? How does a computer work? Can computers do anything, or do they have inherent limitations? What is the Internet, and how can you stream videos from one side of the world to the other in almost real time? How is software made? What is artificial intelligence, and will it ever surpass us?</em></p>
-<hr>
+<hr/>
 <p>This book tries to answer these and many other, related questions. In the next few hundred pages, I’ll take you through a journey across the most important topics and themes in Computer Science. We will meet many of its most significant figures –from Alan Turing, Edger Djikstra, and Donald Knuth, to Geoffrey Hinton and Yann LeCunn– and see how they came up with some of the most brilliant ideas in the science of computation.</p>
 <p>We will dive into some of the most fascinating discoveries in Computer Science, from the neural networks that power large language models, to the packet switching protocols that make the Internet possible. We will learn how computers work, in and out, why are they so powerful, but also what are their intrinsic limitations. In the end, you will gain a big-picture understanding of the whole field of Computer Science.</p>
 <p>This book contains no complicated math or code. There are absolutely no prerequisites to read it, although it is perhaps better suited for high school-level students or older, because some concepts in Computer Science are somewhat sophisticated and rely on intuitions that students form around that age. It is also a perfect companion for a Computer Science major, as it complements the more theoretically- or technically-oriented bibliography you will encounter in college textbooks.</p>
-<section id="what-youll-find-in-this-book" class="level2">
+<section class="level2" id="what-youll-find-in-this-book">
 <h2 class="anchored" data-anchor-id="what-youll-find-in-this-book">What you’ll find in this book</h2>
 <p>Computer Science is a relatively new field that emerged in the early 20th century from a massive effort to formalize Mathematics. However, it wasn’t until the mid-60s and early 70s that it gained recognition as a distinct and unique scientific field. This was achieved by establishing the theoretical grounds of computability and complexity theory, which proved there were many interesting, novel, and challenging scientific questions involving computation.</p>
 <p>Despite its short time, Computer Science is an extensive field that encompasses a wide range of knowledge and skills. It goes from the most abstract concepts related to the nature of computable problems to the most practical considerations for developing useful software. To solve problems in this field, one must navigate through various levels of abstraction, making it challenging to provide a concise summary that the average reader can easily understand.</p>
 <p>The fundamental concepts in Computer Science spread over a vast range of subjects, incorporating multiple areas of math and engineering. Thus it is impossible to divide this field objectively into subfields or separate areas with precise borders. In this book, I will attempt to categorize it into somewhat cohesive disciplines, but keep in mind there is considerable interconnectedness between them.</p>
 <p>This book is divided into four parts, each subsequently divided into several chapters, encompassing all of Computer Science. The following sections will give you a taste of what you can find in each section and chapter. While the book is best read top-to-bottom—as some of the later ideas rely on earlier content—if you want to learn about a particular subject, feel free to hop and shop around. Whenever some earlier idea is important to understand what your reading, you will find useful links.</p>
-<section id="foundations-of-computation" class="level3">
+<section class="level3" id="foundations-of-computation">
 <h3 class="anchored" data-anchor-id="foundations-of-computation">Foundations of Computation</h3>
-<p>We’ll start our journey by looking at the foundations of Computer Science. The fundamental question of Computer Science is something akin to&nbsp;<em>“What kinds of problems can be solved with algorithms.”</em>&nbsp;To understand this question, we will look at fundamental concepts that underpin the whole field of Computer Science. Moreover, solving a concrete Computer Science problem will often require using one or more&nbsp;algorithms. Hence, studying which specific algorithm can solve which concrete problem is a big part of Computer Science. While a comprehensive study of the most important algorithms in Computer Science is out of the scope of this book, in the final chapter of this first part, we will look at the basic ideas for designing and evaluating common algorithms.</p>
+<p>We’ll start our journey by looking at the foundations of Computer Science. The fundamental question of Computer Science is something akin to <em>“What kinds of problems can be solved with algorithms.”</em> To understand this question, we will look at fundamental concepts that underpin the whole field of Computer Science. Moreover, solving a concrete Computer Science problem will often require using one or more algorithms. Hence, studying which specific algorithm can solve which concrete problem is a big part of Computer Science. While a comprehensive study of the most important algorithms in Computer Science is out of the scope of this book, in the final chapter of this first part, we will look at the basic ideas for designing and evaluating common algorithms.</p>
 </section>
-<section id="computational-systems" class="level3">
+<section class="level3" id="computational-systems">
 <h3 class="anchored" data-anchor-id="computational-systems">Computational Systems</h3>
 <p>Mastering the foundations is not enough, though. Ultimately, we need a physical device that can run those algorithms and give us a result at a reasonable cost. Real computers are the physical embodiment of Turing machines, but the devil is in the details. Building a real computer is far more involved than just wiring some cables. Even assuming, as we do in CS, that electronic components always work as expected, the design of resilient computational systems is a whole discipline.</p>
 </section>
-<section id="software-engineering" class="level3">
+<section class="level3" id="software-engineering">
 <h3 class="anchored" data-anchor-id="software-engineering">Software Engineering</h3>
-<p>Building software that works is extremely hard. It’s not enough to master all the algorithms, data structures, theorems, and protocols. Software products have unique qualities among all other engineering products, especially regarding flexibility and adaptability requirements. Any software that lives long enough will have to be changed in ways that weren’t predictable when the software was first conceived. This poses unique challenges to the engineering process of making software, the domain of&nbsp;Software Engineering. In the fourth part of the book, we will look at all the intricate components that participate in the process of getting an app ready for you to use.</p>
+<p>Building software that works is extremely hard. It’s not enough to master all the algorithms, data structures, theorems, and protocols. Software products have unique qualities among all other engineering products, especially regarding flexibility and adaptability requirements. Any software that lives long enough will have to be changed in ways that weren’t predictable when the software was first conceived. This poses unique challenges to the engineering process of making software, the domain of Software Engineering. In the fourth part of the book, we will look at all the intricate components that participate in the process of getting an app ready for you to use.</p>
 </section>
-<section id="artificial-intelligence" class="level3">
+<section class="level3" id="artificial-intelligence">
 <h3 class="anchored" data-anchor-id="artificial-intelligence">Artificial Intelligence</h3>
-<p>Our final stop in this broad exploration of Computer Science, we will look at the amazing field of Artificial Intelligence.&nbsp;AI is a broad and loosely defined umbrella term encompassing different disciplines and approaches to designing and building computational systems that exhibit some form of intelligence. Examples of machines exhibiting intelligent behavior range from automatically proving new theorems to playing expert-level chess to self-driving cars to modern chatbots. We can cluster the different approaches in AI into three broad areas:&nbsp;<em>knowledge</em>,&nbsp;<em>search</em>, and&nbsp;<em>learning.</em></p>
+<p>Our final stop in this broad exploration of Computer Science, we will look at the amazing field of Artificial Intelligence. AI is a broad and loosely defined umbrella term encompassing different disciplines and approaches to designing and building computational systems that exhibit some form of intelligence. Examples of machines exhibiting intelligent behavior range from automatically proving new theorems to playing expert-level chess to self-driving cars to modern chatbots. We can cluster the different approaches in AI into three broad areas: <em>knowledge</em>, <em>search</em>, and <em>learning.</em></p>
 </section>
 </section>
-<section id="whats-next" class="level2">
+<section class="level2" id="whats-next">
 <h2 class="anchored" data-anchor-id="whats-next">What’s next?</h2>
 <p>Computer science is a vast field encompassing both theoretical and practical aspects. It goes from the most abstract computational concepts grounded in logic and mathematics to the most pragmatic applications based on solid engineering principles to frontier research like building intelligent systems. Working in CS also involves navigating complex social interactions between developers, users, and society and requires awareness of the many ethical issues that automation and computation pose.</p>
 <p>Mastering computer science is a significant challenge, making it one of the most demanding academic pursuits. However, this discipline offers immense fulfillment since computation lies at the heart of our modern world. Software pervades all sectors and industries. Those proficient in computer science can find work across various disciplines and not only by creating commercial software. Across all scientific disciplines, from understanding the frontiers of space to solving climate change, designing new materials, and extending human life, every challenging problem in every scientific field has computational aspects that require collaboration between computer scientists and experts from that domain.</p>
 <p>This book <em>will not</em> make you a computer scientist overnight. No book can. That requires years of learning and training. My purpose is much more humble. All I want is to light up your curiosity about these topics, and perhaps, motivate you to, one day, become a computer scientist yourself. At the very least, I hope that this book serves you to understand the where fundamental ideas in Computer Science come from, and how they permeate the technology you use every day, and shape the world you live in.</p>
 <p>Once you finish this book, you will have an intuitive but solidly grounded understanding of the most important ideas in the vast field of Computer Science. But before we finish, we’ll have one final meetup. In the Epilogue, we will talk about what the near and not-so-near future holds for Computer Science, how we expect technology to change our society, and what can be your role in this future.</p>
 <p>If any of that sounds intriguing, then read on!</p>
-
-
 </section>
 </section>
-
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -721,70 +685,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 <nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./intro.html" class="pagination-link" aria-label="Prologue: The Quest to Answer all Questions">
-        <span class="nav-page-text">Prologue: The Quest to Answer all Questions</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
+<div class="nav-page nav-page-previous">
+</div>
+<div class="nav-page nav-page-next">
+<a aria-label="Prologue: The Quest to Answer all Questions" class="pagination-link" href="./intro.html">
+<span class="nav-page-text">Prologue: The Quest to Answer all Questions</span> <i class="bi bi-arrow-right-short"></i>
+</a>
+</div>
 </nav>
 </div> <!-- /content -->
 <footer class="footer">
-  <div class="nav-footer">
-    <div class="nav-footer-left">
+<div class="nav-footer">
+<div class="nav-footer-left">
 <p>Copyright 2024 - The Authors</p>
-</div>   
-    <div class="nav-footer-center">
-      &nbsp;
+</div>
+<div class="nav-footer-center">
+       
     </div>
-    <div class="nav-footer-right">
-      <ul class="footer-items list-unstyled">
-    <li class="nav-item compact">
-    <a class="nav-link active" href="https://store.apiad.net/l/tsoc" aria-current="page">
-      <i class="bi bi-book" role="img">
-</i> 
-    </a>
-  </li>  
+<div class="nav-footer-right">
+<ul class="footer-items list-unstyled">
+<li class="nav-item compact">
+<a aria-current="page" class="nav-link active" href="https://store.apiad.net/l/tsoc">
+<i class="bi bi-book" role="img">
+</i>
+</a>
+</li>
 </ul>
-    </div>
-  </div>
-</footer>
+</div>
 
 
-
-
-    <!-- Reader Controls -->
-  <div class="reader-controls">
-    <button class="reader-btn" id="theme-btn" title="Toggle theme">🌙</button>
-  </div>
-  
-  <script>
-    (function() {
-      // Theme management
-      const themeBtn = document.getElementById("theme-btn");
-      const savedTheme = localStorage.getItem("reader-theme") || "light";
-      document.documentElement.setAttribute("data-theme", savedTheme);
-      themeBtn.textContent = savedTheme === "dark" ? "☀️" : "🌙";
-
-      themeBtn.addEventListener("click", function(e) {
-        e.stopPropagation();
-        const current = document.documentElement.getAttribute("data-theme");
-        const next = current === "dark" ? "light" : "dark";
-        document.documentElement.setAttribute("data-theme", next);
-        localStorage.setItem("reader-theme", next);
-        themeBtn.textContent = next === "dark" ? "☀️" : "🌙";
-      });
-
-      // T for theme toggle
-      document.addEventListener("keydown", function(e) {
-        if (e.key === "t" || e.key === "T") {
-          themeBtn.click();
-        }
-      });
-      
-      console.log("Reader controls initialized");
-    })();
-  </script>
-
-</body></html>
+</div></footer><div class="reader-controls"><button class="reader-btn" id="theme-btn" title="Toggle theme">🌙</button></div><script src="/books/reader.js"></script></body></html>

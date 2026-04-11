@@ -1,13 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
-<title>2&nbsp; How do LLMs work? – How to Train your Chatbot</title>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><head>
+<link href="/books/reader.css" rel="stylesheet"/>
+<meta charset="utf-8"/>
+<meta content="quarto-1.5.57" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport"/>
+<title>2  How do LLMs work? – How to Train your Chatbot</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,28 +18,24 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 </style>
-
-
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../part1/capabilities.html" rel="next">
-<link href="../part1/intro.html" rel="prev">
+<meta content="../" name="quarto:offset"/>
+<link href="../part1/capabilities.html" rel="next"/>
+<link href="../part1/intro.html" rel="prev"/>
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet"/>
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" id="quarto-text-highlighting-styles" rel="stylesheet"/>
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+<link data-mode="light" href="site_libs/bootstrap/bootstrap-icons.css" id="quarto-bootstrap" rel="stylesheet"/>
+<script id="quarto-search-options" type="application/json">,
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "start",
@@ -64,263 +57,242 @@ ul.task-list li input[type="checkbox"] {
     "search-clear-button-title": "Clear",
     "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
-  }
-}</script>
-
-
+    "search-submit-button-title": "Submit",}</script>
 </head>
-
 <body class="nav-sidebar floating">
-
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../part1/index.html">Principles</a></li><li class="breadcrumb-item"><a href="../part1/training.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">How do LLMs work?</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
+<header class="headroom fixed-top" id="quarto-header">
+<nav class="quarto-secondary-nav">
+<div class="container-fluid d-flex">
+<button aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="quarto-btn-toggle btn" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="button" type="button">
+<i class="bi bi-layout-text-sidebar-reverse"></i>
+</button>
+<nav aria-label="breadcrumb" class="quarto-page-breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../part1/index.html">Principles</a></li><li class="breadcrumb-item"><a href="../part1/training.html"><span class="chapter-number">2</span>  <span class="chapter-title">How do LLMs work?</span></a></li></ol></nav>
+<a aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="flex-grow-1" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="navigation">
+</a>
+<button aria-label="Search" class="btn quarto-search-button" onclick="window.quartoOpenSearch();" type="button">
+<i class="bi bi-search"></i>
+</button>
+</div>
+</nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div class="quarto-container page-columns page-rows-contents page-layout-article" id="quarto-content">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="../">How to Train your Chatbot</a> 
-        <div class="sidebar-tools-main">
-    <a href="https://store.apiad.net/l/chatbots" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-book"></i></a>
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
+<nav class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" id="quarto-sidebar">
+<div class="pt-lg-2 mt-2 text-left sidebar-header">
+<div class="sidebar-title mb-0 py-0">
+<a href="../">How to Train your Chatbot</a>
+<div class="sidebar-tools-main">
+<a aria-label="" class="quarto-navigation-tool px-1" href="https://store.apiad.net/l/chatbots" title=""><i class="bi bi-book"></i></a>
+<a class="quarto-reader-toggle quarto-navigation-tool px-1" href="" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+<div class="quarto-reader-toggle-btn">
+<i class="bi"></i>
+</div>
 </a>
 </div>
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
-  </div>
+</div>
+</div>
+<div class="mt-2 flex-shrink-0 align-items-center">
+<div class="sidebar-search">
+<div class="" id="quarto-search" title="Search"></div>
+</div>
+</div>
+<div class="sidebar-menu-container">
+<ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../index.html">
+<span class="menu-text">Preface</span></a>
+</div>
 </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../part1/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Principles</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part1/intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What is a language model?</span></span></a>
-  </div>
+<li class="sidebar-item sidebar-item-section">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part1/index.html">
+<span class="menu-text">Principles</span></a>
+<a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-1" data-bs-toggle="collapse" role="navigation">
+<i class="bi bi-chevron-right ms-2"></i>
+</a>
+</div>
+<ul class="collapse list-unstyled sidebar-section depth1 show" id="quarto-sidebar-section-1">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part1/intro.html">
+<span class="menu-text"><span class="chapter-number">1</span>  <span class="chapter-title">What is a language model?</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part1/training.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">How do LLMs work?</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link active" href="../part1/training.html">
+<span class="menu-text"><span class="chapter-number">2</span>  <span class="chapter-title">How do LLMs work?</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part1/capabilities.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What can LLMs do?</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part1/capabilities.html">
+<span class="menu-text"><span class="chapter-number">3</span>  <span class="chapter-title">What can LLMs do?</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part1/limitations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The limits of language models</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part1/limitations.html">
+<span class="menu-text"><span class="chapter-number">4</span>  <span class="chapter-title">The limits of language models</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part1/evaluation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Evaluating LLMs</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part1/evaluation.html">
+<span class="menu-text"><span class="chapter-number">5</span>  <span class="chapter-title">Evaluating LLMs</span></span></a>
+</div>
 </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../part2/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Techniques</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part2/prompting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Prompt engineering</span></span></a>
-  </div>
+</ul>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part2/rag.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Retrieval augmented generation</span></span></a>
-  </div>
+<li class="sidebar-item sidebar-item-section">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part2/index.html">
+<span class="menu-text">Techniques</span></a>
+<a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-2" data-bs-toggle="collapse" role="navigation">
+<i class="bi bi-chevron-right ms-2"></i>
+</a>
+</div>
+<ul class="collapse list-unstyled sidebar-section depth1 show" id="quarto-sidebar-section-2">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part2/prompting.html">
+<span class="menu-text"><span class="chapter-number">6</span>  <span class="chapter-title">Prompt engineering</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part2/functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Function calling</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part2/rag.html">
+<span class="menu-text"><span class="chapter-number">7</span>  <span class="chapter-title">Retrieval augmented generation</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part2/code.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Code generation</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part2/functions.html">
+<span class="menu-text"><span class="chapter-number">8</span>  <span class="chapter-title">Function calling</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part2/agents.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Agents</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part2/code.html">
+<span class="menu-text"><span class="chapter-number">9</span>  <span class="chapter-title">Code generation</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part2/finetune.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Fine-tuning</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part2/agents.html">
+<span class="menu-text"><span class="chapter-number">10</span>  <span class="chapter-title">Agents</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part2/optimization.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Optimization of LLMs</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part2/finetune.html">
+<span class="menu-text"><span class="chapter-number">11</span>  <span class="chapter-title">Fine-tuning</span></span></a>
+</div>
 </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../part3/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Applications</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part3/01_chatbot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The Chatbot</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part2/optimization.html">
+<span class="menu-text"><span class="chapter-number">12</span>  <span class="chapter-title">Optimization of LLMs</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part3/02_pdfbot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">The PDF Reader</span></span></a>
-  </div>
+</ul>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part3/03_search.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The Answer Engine</span></span></a>
-  </div>
+<li class="sidebar-item sidebar-item-section">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part3/index.html">
+<span class="menu-text">Applications</span></a>
+<a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-3" data-bs-toggle="collapse" role="navigation">
+<i class="bi bi-chevron-right ms-2"></i>
+</a>
+</div>
+<ul class="collapse list-unstyled sidebar-section depth1 show" id="quarto-sidebar-section-3">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part3/01_chatbot.html">
+<span class="menu-text"><span class="chapter-number">13</span>  <span class="chapter-title">The Chatbot</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part3/04_shoping.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The Salesbot</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part3/02_pdfbot.html">
+<span class="menu-text"><span class="chapter-number">14</span>  <span class="chapter-title">The PDF Reader</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part3/05_analyst.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">The Data Analyst</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part3/03_search.html">
+<span class="menu-text"><span class="chapter-number">15</span>  <span class="chapter-title">The Answer Engine</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part3/06_cli.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">The Hackerbot</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part3/04_shoping.html">
+<span class="menu-text"><span class="chapter-number">16</span>  <span class="chapter-title">The Salesbot</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part3/07_writer.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">The Writer</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part3/05_analyst.html">
+<span class="menu-text"><span class="chapter-number">17</span>  <span class="chapter-title">The Data Analyst</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part3/08_coder.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">The Coder</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part3/06_cli.html">
+<span class="menu-text"><span class="chapter-number">18</span>  <span class="chapter-title">The Hackerbot</span></span></a>
+</div>
 </li>
-      </ul>
-  </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../conclusion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The Future of Language Modeling</span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part3/07_writer.html">
+<span class="menu-text"><span class="chapter-number">19</span>  <span class="chapter-title">The Writer</span></span></a>
+</div>
 </li>
-    </ul>
-    </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part3/08_coder.html">
+<span class="menu-text"><span class="chapter-number">20</span>  <span class="chapter-title">The Coder</span></span></a>
+</div>
+</li>
+</ul>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../conclusion.html">
+<span class="menu-text">The Future of Language Modeling</span></a>
+</div>
+</li>
+</ul>
+</div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div class="quarto-sidebar-collapse-item" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" id="quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#how-to-make-an-llm" id="toc-how-to-make-an-llm" class="nav-link active" data-scroll-target="#how-to-make-an-llm">How to make an LLM</a>
-  <ul class="collapse">
-  <li><a href="#pre-training" id="toc-pre-training" class="nav-link" data-scroll-target="#pre-training">Pre-training</a></li>
-  <li><a href="#instruction-tuning" id="toc-instruction-tuning" class="nav-link" data-scroll-target="#instruction-tuning">Instruction tuning</a></li>
-  <li><a href="#preference-tuning" id="toc-preference-tuning" class="nav-link" data-scroll-target="#preference-tuning">Preference tuning</a></li>
-  </ul></li>
-  <li><a href="#beyond-pure-language-modeling" id="toc-beyond-pure-language-modeling" class="nav-link" data-scroll-target="#beyond-pure-language-modeling">Beyond pure language modeling</a></li>
-  </ul>
+<div class="sidebar margin-sidebar" id="quarto-margin-sidebar">
+<nav class="toc-active" id="TOC" role="doc-toc">
+<h2 id="toc-title">Table of contents</h2>
+<ul>
+<li><a class="nav-link active" data-scroll-target="#how-to-make-an-llm" href="#how-to-make-an-llm" id="toc-how-to-make-an-llm">How to make an LLM</a>
+<ul class="collapse">
+<li><a class="nav-link" data-scroll-target="#pre-training" href="#pre-training" id="toc-pre-training">Pre-training</a></li>
+<li><a class="nav-link" data-scroll-target="#instruction-tuning" href="#instruction-tuning" id="toc-instruction-tuning">Instruction tuning</a></li>
+<li><a class="nav-link" data-scroll-target="#preference-tuning" href="#preference-tuning" id="toc-preference-tuning">Preference tuning</a></li>
+</ul></li>
+<li><a class="nav-link" data-scroll-target="#beyond-pure-language-modeling" href="#beyond-pure-language-modeling" id="toc-beyond-pure-language-modeling">Beyond pure language modeling</a></li>
+</ul>
 </nav>
-    </div>
+</div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../part1/index.html">Principles</a></li><li class="breadcrumb-item"><a href="../part1/training.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">How do LLMs work?</span></a></li></ol></nav>
+<header class="quarto-title-block default" id="title-block-header"><nav aria-label="breadcrumb" class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../part1/index.html">Principles</a></li><li class="breadcrumb-item"><a href="../part1/training.html"><span class="chapter-number">2</span>  <span class="chapter-title">How do LLMs work?</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-training" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">How do LLMs work?</span></span></h1>
+<h1 class="title"><span class="quarto-section-identifier" id="sec-training"><span class="chapter-number">2</span>  <span class="chapter-title">How do LLMs work?</span></span></h1>
 </div>
-
-
-
 <div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
+</div>
 </header>
-
-
 <p>A generative language model, at its core, is just a statistical machine learning model trained to predict the continuation of a text sequence. Essentially, it’s a prediction machine. You input a text prefix, run it through the model, and receive the most likely next token–a token is more or less a word or component of a word.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -358,10 +330,10 @@ Note
 <p>This is why techniques like chain-of-thought–and basically anything that makes a model “talk more”–tend to improve their performance at some tasks. They have more compute available to do whatever reasoning they can do. If you ask a model a quick question and instruct them to give a one-word answer, the amount of compute spent producing that answer is proportional to just the input size. But if you ask the model to produce a step-by-step reasoning of the answer before the final answer, there is a higher chance you’ll get a better answer just by virtue of spending more computation.</p>
 <p>At the risk of anthropomorfizing too much, I like to summarize this insight as follows: <em>LLMs only think out loud.</em> If you want them to “think” better, get them to “talk” more.</p>
 <p>So, this is how a language model works from a user perspective. Let’s see how you build one.</p>
-<section id="how-to-make-an-llm" class="level2">
+<section class="level2" id="how-to-make-an-llm">
 <h2 class="anchored" data-anchor-id="how-to-make-an-llm">How to make an LLM</h2>
 <p>How do you make your language model work? There are three main steps.</p>
-<section id="pre-training" class="level3">
+<section class="level3" id="pre-training">
 <h3 class="anchored" data-anchor-id="pre-training">Pre-training</h3>
 <p>The first step is called self-supervised pretraining. In this step, you take a raw transformer architecture with uninitialized weights and train it on a massive amount of data to predict the next token. You use a large corpus of data, such as news, internet blog posts, articles, and books, and train the model on trillions of words.</p>
 <p>The simplest training method is next token prediction. You show the model a random text and ask it what the next token is. Take a random substring from the dataset, remove the last token, show the prefix to the model, and ask for likely continuations. Compute a loss function to determine how mistaken the model was in its predictions and adjust it slightly to improve future predictions.</p>
@@ -370,7 +342,7 @@ Note
 <p>Once pre-training is completed, you have what is called a “base model”, a language model that can continue any sentence in a way that closely resembles existing text. This model is already extremely powerful. Give it any prefix of text with any content whatsoever and the model will complete it with a mostly coherent continuation. It’s really autocompletion on steroids!</p>
 <p>However, these base models, as powerful as they are, are still very hard to prompt. Crucially, they do not understand precise instructions, mostly because their training data doesn’t contain a lot of examples of instructions. They are just stochastic parrots, in a sense. The next step is to get tame them.</p>
 </section>
-<section id="instruction-tuning" class="level3">
+<section class="level3" id="instruction-tuning">
 <h3 class="anchored" data-anchor-id="instruction-tuning">Instruction tuning</h3>
 <p>At this point the LLM already has all the knowledge in the world somewhere hidden in its weights–metaphorically speaking–but it is very hard to locate any concrete piece of knowledge. You must juggle with transforming questions into the right prompts to find a pattern that matches what the model has seen.</p>
 <p>The way to solve this problem is to include another training phase, but this time much shorter and focused on a very well-curated dataset of instructions and responses. Here, the quality is crucial, much more than the quantity. You won’t teach the model anything new, you will just tune it to expect instruction-like inputs and produce answer-like outputs.</p>
@@ -378,7 +350,7 @@ Note
 <p>Instruction-tuned models are still not suitable for publicly-facing products for one crucial reason: they can be coerced into answering anything at all, including producing biased, discriminatory, or hate speech and instructions on how to build bombs and deadly poisons.</p>
 <p>Given base models are trained on the whole Internet, they are full of all the good and bad you can read online–although some effort is put into cleaning the pretraining dataset, but it’s never enough. We must teach the model that some questions are better left unanswered.</p>
 </section>
-<section id="preference-tuning" class="level3">
+<section class="level3" id="preference-tuning">
 <h3 class="anchored" data-anchor-id="preference-tuning">Preference tuning</h3>
 <p>The final step is to fine-tune the model to produce answers that are more closely aligned with user preferences. This can and is primarily used to avoid biased or hate speech, and to reject any questions that are deemed unethical by the developers training the model. However, it also has the effect of making the model more polite in general, if you wish so.</p>
 <p>The way this process works is to turn the problem from supervised learning into the real of reinforcement learning. In short, the main difference is that, while in supervised learning we give the model the correct answers (as in instruction tuning), in reinforcement learning we don’t have access to ground truth answers.</p>
@@ -387,16 +359,13 @@ Note
 <p>And finally, we have now something that works like GPT-4. The process was long and expensive: a massive pretraining following by a carefully curated instruction tuning and a human-backed preference tuning. This is the reason why so few organizations have the resources to train a state-of-the-art large language model.</p>
 </section>
 </section>
-<section id="beyond-pure-language-modeling" class="level2">
+<section class="level2" id="beyond-pure-language-modeling">
 <h2 class="anchored" data-anchor-id="beyond-pure-language-modeling">Beyond pure language modeling</h2>
 <p>Once a model is deployed into production, the most basic application you can implement is a ChatGPT-clone: a chat interface where you can interact with a powerful model and get it to work for you. But this is far from the limit of what current models can do.</p>
 <p>With careful prompting and some augmentation techniques, you can get integrate an LLM intro more traditional applications to work either as a powerful natural language frontend, or as a backend tool for language understanding. This is where LLMs can really shine, beyond the basic chatbot application.</p>
 <p>You have to be careful, though. There are many common pitfals to using these models, including some inherent limitations like the dreaded hallucinations, which, although can be mitigated to a certain extent, are probably impossible to solve altogether without a paradigm shift, as we’ll see in the next chapter.</p>
 <p>However, despite their many limitations, large language models are one of the most transformative computational tools we’ve ever invented. Learning to harness their power will supercharge your skills, in whatever field you are working.</p>
-
-
 </section>
-
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -819,40 +788,37 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 <nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../part1/intro.html" class="pagination-link" aria-label="What is a language model?">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What is a language model?</span></span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../part1/capabilities.html" class="pagination-link" aria-label="What can LLMs do?">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What can LLMs do?</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
+<div class="nav-page nav-page-previous">
+<a aria-label="What is a language model?" class="pagination-link" href="../part1/intro.html">
+<i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>  <span class="chapter-title">What is a language model?</span></span>
+</a>
+</div>
+<div class="nav-page nav-page-next">
+<a aria-label="What can LLMs do?" class="pagination-link" href="../part1/capabilities.html">
+<span class="nav-page-text"><span class="chapter-number">3</span>  <span class="chapter-title">What can LLMs do?</span></span> <i class="bi bi-arrow-right-short"></i>
+</a>
+</div>
 </nav>
 </div> <!-- /content -->
 <footer class="footer">
-  <div class="nav-footer">
-    <div class="nav-footer-left">
+<div class="nav-footer">
+<div class="nav-footer-left">
 <p>Copyright 2024 - The Authors</p>
-</div>   
-    <div class="nav-footer-center">
-      &nbsp;
+</div>
+<div class="nav-footer-center">
+       
     </div>
-    <div class="nav-footer-right">
-      <ul class="footer-items list-unstyled">
-    <li class="nav-item compact">
-    <a class="nav-link active" href="https://store.apiad.net/l/chatbots" aria-current="page">
-      <i class="bi bi-book" role="img">
-</i> 
-    </a>
-  </li>  
+<div class="nav-footer-right">
+<ul class="footer-items list-unstyled">
+<li class="nav-item compact">
+<a aria-current="page" class="nav-link active" href="https://store.apiad.net/l/chatbots">
+<i class="bi bi-book" role="img">
+</i>
+</a>
+</li>
 </ul>
-    </div>
-  </div>
-</footer>
+</div>
+</div>
 
 
-
-
-</body></html>
+</footer><div class="reader-controls"><button class="reader-btn" id="theme-btn" title="Toggle theme">🌙</button></div><script src="/books/reader.js"></script></body></html>

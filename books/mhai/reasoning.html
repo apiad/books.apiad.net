@@ -1,13 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
-<title>7&nbsp; Large Language Models Cannot Reason – Mostly Harmless AI</title>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><head>
+<link href="/books/reader.css" rel="stylesheet"/>
+<meta charset="utf-8"/>
+<meta content="quarto-1.5.57" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport"/>
+<title>7  Large Language Models Cannot Reason – Mostly Harmless AI</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,28 +18,24 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 </style>
-
-
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./alignment.html" rel="next">
-<link href="./hallucinations.html" rel="prev">
+<meta content="./" name="quarto:offset"/>
+<link href="./alignment.html" rel="next"/>
+<link href="./hallucinations.html" rel="prev"/>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet"/>
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" id="quarto-text-highlighting-styles" rel="stylesheet"/>
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+<link data-mode="light" href="site_libs/bootstrap/bootstrap-icons.css" id="quarto-bootstrap" rel="stylesheet"/>
+<script id="quarto-search-options" type="application/json">,
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "start",
@@ -64,194 +57,173 @@ ul.task-list li input[type="checkbox"] {
     "search-clear-button-title": "Clear",
     "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
-  }
-}</script>
-
-
+    "search-submit-button-title": "Submit",}</script>
 </head>
-
 <body class="nav-sidebar floating">
-
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./reasoning.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Large Language Models Cannot Reason</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
+<header class="headroom fixed-top" id="quarto-header">
+<nav class="quarto-secondary-nav">
+<div class="container-fluid d-flex">
+<button aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="quarto-btn-toggle btn" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="button" type="button">
+<i class="bi bi-layout-text-sidebar-reverse"></i>
+</button>
+<nav aria-label="breadcrumb" class="quarto-page-breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./reasoning.html"><span class="chapter-number">7</span>  <span class="chapter-title">Large Language Models Cannot Reason</span></a></li></ol></nav>
+<a aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="flex-grow-1" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="navigation">
+</a>
+<button aria-label="Search" class="btn quarto-search-button" onclick="window.quartoOpenSearch();" type="button">
+<i class="bi bi-search"></i>
+</button>
+</div>
+</nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div class="quarto-container page-columns page-rows-contents page-layout-article" id="quarto-content">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">Mostly Harmless AI</a> 
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
-  </div>
+<nav class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" id="quarto-sidebar">
+<div class="pt-lg-2 mt-2 text-left sidebar-header">
+<div class="sidebar-title mb-0 py-0">
+<a href="./">Mostly Harmless AI</a>
+</div>
+</div>
+<div class="mt-2 flex-shrink-0 align-items-center">
+<div class="sidebar-search">
+<div class="" id="quarto-search" title="Search"></div>
+</div>
+</div>
+<div class="sidebar-menu-container">
+<ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./index.html">
+<span class="menu-text">Preface</span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./foreword.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Beyond Optimism and Doom: Finding a Third Path in AI Discourse</span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./foreword.html">
+<span class="menu-text">Beyond Optimism and Doom: Finding a Third Path in AI Discourse</span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./prologue.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The Age of Artificial Intelligence</span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./prologue.html">
+<span class="menu-text">The Age of Artificial Intelligence</span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./coding-is-dead.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Coding is Dead; Long Live Coding!</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./coding-is-dead.html">
+<span class="menu-text"><span class="chapter-number">1</span>  <span class="chapter-title">Coding is Dead; Long Live Coding!</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./education.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The AI Revolution We Don’t Need</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./education.html">
+<span class="menu-text"><span class="chapter-number">2</span>  <span class="chapter-title">The AI Revolution We Don’t Need</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./beyond-chatbot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Beyond the Chatbot Revolution</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./beyond-chatbot.html">
+<span class="menu-text"><span class="chapter-number">3</span>  <span class="chapter-title">Beyond the Chatbot Revolution</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./ai-kill-us.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Will AI Kill Us All?</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./ai-kill-us.html">
+<span class="menu-text"><span class="chapter-number">4</span>  <span class="chapter-title">Will AI Kill Us All?</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./risks.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The Actual Risks of AI</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./risks.html">
+<span class="menu-text"><span class="chapter-number">5</span>  <span class="chapter-title">The Actual Risks of AI</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./hallucinations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Reliable AI needs a New Paradigm</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./hallucinations.html">
+<span class="menu-text"><span class="chapter-number">6</span>  <span class="chapter-title">Reliable AI needs a New Paradigm</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./reasoning.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Large Language Models Cannot Reason</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link active" href="./reasoning.html">
+<span class="menu-text"><span class="chapter-number">7</span>  <span class="chapter-title">Large Language Models Cannot Reason</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./alignment.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Why AI Alignment is So Hard</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./alignment.html">
+<span class="menu-text"><span class="chapter-number">8</span>  <span class="chapter-title">Why AI Alignment is So Hard</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./open-source.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">The Future of AI is Open Source</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./open-source.html">
+<span class="menu-text"><span class="chapter-number">9</span>  <span class="chapter-title">The Future of AI is Open Source</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./road-to-agi.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">The Road to AGI</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./road-to-agi.html">
+<span class="menu-text"><span class="chapter-number">10</span>  <span class="chapter-title">The Road to AGI</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./epilogue.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The Road Ahead</span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./epilogue.html">
+<span class="menu-text">The Road Ahead</span></a>
+</div>
 </li>
-    </ul>
-    </div>
+</ul>
+</div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div class="quarto-sidebar-collapse-item" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" id="quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#what-is-reasoning-in-ai" id="toc-what-is-reasoning-in-ai" class="nav-link active" data-scroll-target="#what-is-reasoning-in-ai">What is reasoning (in AI)?</a></li>
-  <li><a href="#why-llms-cant-reason" id="toc-why-llms-cant-reason" class="nav-link" data-scroll-target="#why-llms-cant-reason">Why LLMs can’t reason</a></li>
-  <li><a href="#counterarguments" id="toc-counterarguments" class="nav-link" data-scroll-target="#counterarguments">Counterarguments</a>
-  <ul class="collapse">
-  <li><a href="#argument-1-humans-also-have-these-limitations" id="toc-argument-1-humans-also-have-these-limitations" class="nav-link" data-scroll-target="#argument-1-humans-also-have-these-limitations">Argument 1: Humans Also Have these Limitations</a></li>
-  <li><a href="#argument-2-randomness-is-a-feature-not-a-bug" id="toc-argument-2-randomness-is-a-feature-not-a-bug" class="nav-link" data-scroll-target="#argument-2-randomness-is-a-feature-not-a-bug">Argument 2: Randomness is a Feature, Not a Bug</a></li>
-  <li><a href="#argument-3-llms-can-be-turing-complete" id="toc-argument-3-llms-can-be-turing-complete" class="nav-link" data-scroll-target="#argument-3-llms-can-be-turing-complete">Argument 3: LLMs Can Be Turing-Complete</a></li>
-  </ul></li>
-  <li><a href="#improving-llm-reasoning-skills" id="toc-improving-llm-reasoning-skills" class="nav-link" data-scroll-target="#improving-llm-reasoning-skills">Improving LLM reasoning skills</a>
-  <ul class="collapse">
-  <li><a href="#chain-of-thought" id="toc-chain-of-thought" class="nav-link" data-scroll-target="#chain-of-thought">Chain of Thought</a></li>
-  <li><a href="#self-critique" id="toc-self-critique" class="nav-link" data-scroll-target="#self-critique">Self-critique</a></li>
-  <li><a href="#external-tools" id="toc-external-tools" class="nav-link" data-scroll-target="#external-tools">External tools</a></li>
-  </ul></li>
-  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
-  </ul>
+<div class="sidebar margin-sidebar" id="quarto-margin-sidebar">
+<nav class="toc-active" id="TOC" role="doc-toc">
+<h2 id="toc-title">Table of contents</h2>
+<ul>
+<li><a class="nav-link active" data-scroll-target="#what-is-reasoning-in-ai" href="#what-is-reasoning-in-ai" id="toc-what-is-reasoning-in-ai">What is reasoning (in AI)?</a></li>
+<li><a class="nav-link" data-scroll-target="#why-llms-cant-reason" href="#why-llms-cant-reason" id="toc-why-llms-cant-reason">Why LLMs can’t reason</a></li>
+<li><a class="nav-link" data-scroll-target="#counterarguments" href="#counterarguments" id="toc-counterarguments">Counterarguments</a>
+<ul class="collapse">
+<li><a class="nav-link" data-scroll-target="#argument-1-humans-also-have-these-limitations" href="#argument-1-humans-also-have-these-limitations" id="toc-argument-1-humans-also-have-these-limitations">Argument 1: Humans Also Have these Limitations</a></li>
+<li><a class="nav-link" data-scroll-target="#argument-2-randomness-is-a-feature-not-a-bug" href="#argument-2-randomness-is-a-feature-not-a-bug" id="toc-argument-2-randomness-is-a-feature-not-a-bug">Argument 2: Randomness is a Feature, Not a Bug</a></li>
+<li><a class="nav-link" data-scroll-target="#argument-3-llms-can-be-turing-complete" href="#argument-3-llms-can-be-turing-complete" id="toc-argument-3-llms-can-be-turing-complete">Argument 3: LLMs Can Be Turing-Complete</a></li>
+</ul></li>
+<li><a class="nav-link" data-scroll-target="#improving-llm-reasoning-skills" href="#improving-llm-reasoning-skills" id="toc-improving-llm-reasoning-skills">Improving LLM reasoning skills</a>
+<ul class="collapse">
+<li><a class="nav-link" data-scroll-target="#chain-of-thought" href="#chain-of-thought" id="toc-chain-of-thought">Chain of Thought</a></li>
+<li><a class="nav-link" data-scroll-target="#self-critique" href="#self-critique" id="toc-self-critique">Self-critique</a></li>
+<li><a class="nav-link" data-scroll-target="#external-tools" href="#external-tools" id="toc-external-tools">External tools</a></li>
+</ul></li>
+<li><a class="nav-link" data-scroll-target="#conclusions" href="#conclusions" id="toc-conclusions">Conclusions</a></li>
+</ul>
 </nav>
-    </div>
+</div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
+<header class="quarto-title-block default" id="title-block-header">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Large Language Models Cannot Reason</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>  <span class="chapter-title">Large Language Models Cannot Reason</span></h1>
 </div>
-
-
-
 <div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
+</div>
 </header>
-
-
 <p>Large language models often seem to be able to reason effectively. They can generate coherent and contextually relevant responses that resemble human reasoning. However, this apparent capability can be misleading.</p>
 <p>LLMs frequently make mistakes when faced with complex problems requiring extensive reasoning chains. Their responses may seem logical initially, but they often lack the depth and accuracy for sound reasoning. This is particularly evident in tasks that involve multiple steps or intricate logical deductions, where the model may falter and produce incorrect conclusions.</p>
 <p>This article explores the fundamental limitations of large language models (LLMs) in reasoning — highlighting the difference between their advanced outputs and their evident inability to perform logical deductions. By examining the stochastic nature of these models, their computational constraints, and their lack of complete computational capabilities, we will uncover the reasons behind their failures in complex reasoning tasks.</p>
 <p>Additionally, we will discuss current strategies to enhance LLMs’ reasoning capabilities, including chain of thought prompting and self-critique mechanisms, while critically assessing their effectiveness and underlying challenges. This article aims to foster a deeper understanding of what LLMs can and cannot achieve, urging caution in interpreting their seemingly intelligent responses.</p>
-<section id="what-is-reasoning-in-ai" class="level2">
+<section class="level2" id="what-is-reasoning-in-ai">
 <h2 class="anchored" data-anchor-id="what-is-reasoning-in-ai">What is reasoning (in AI)?</h2>
 <p>When we AI folks claim LLMs cannot reason, we are not talking about any abstract, philosophical sense of the word “reason”, nor any of the many psychological and sociological nuances it may entail. No, we have a very specific, quantifiable, simplified notion of reasoning that comes straight out of math.</p>
 <p>Reasoning is, simply put, the capacity to draw logically sound conclusions from a given premise. In math, there are two main reasoning types or modes: deduction and induction. Induction is somewhat problematic because it involves generalizing claims from specific instances, and thus, it requires some pretty strong assumptions. In contrast, deduction is very straightforward. It is about applying a finite set of logical inference rules to obtain new provably true claims from existing true claims. It is the type of reasoning that mathematicians do all day long when proving new theorems.</p>
 <p>Thus, when I say LLMs cannot reason, I’m simply saying there are—sometimes pretty simple—deduction problems they inherently cannot solve. It is not a value judgement, or an opinion based on experience. It is a straightforward claim provable from the definition of reasoning—understood as deductive reasoning—and the inherent limitations of LLMs given their architecture and functionality.</p>
 <p>If this is clear, let’s move on to the counterarguments to this claim.</p>
 </section>
-<section id="why-llms-cant-reason" class="level2">
+<section class="level2" id="why-llms-cant-reason">
 <h2 class="anchored" data-anchor-id="why-llms-cant-reason">Why LLMs can’t reason</h2>
 <p>One significant limitation of language models regarding reasoning is their stochastic nature. These models generate outputs based on probabilistic predictions rather than deterministic logical rules. This means that even a well-structured prompt can yield different responses on different occasions due to the randomness in their decision-making process.</p>
 <p>Consequently, an LLM might arrive at a wrong conclusion purely by chance, leading to inconsistencies in reasoning. For example, when asked to solve a mathematical problem or make a logical inference, the model’s response may vary significantly depending on the random seed used during generation, undermining trust in its reasoning capabilities.</p>
@@ -267,9 +239,9 @@ ul.task-list li input[type="checkbox"] {
 <p>And this is the final nail in the coffin. LLMs, by definition, are computationally bounded. No matter their size, there will always be problem instances—which we may not be able to identify beforehand—that require more computation than is available in the huge chain of matrix multiplications inside the LLM.</p>
 <p>Thus, when LLMs seem to tackle complex reasoning problems, they often solve specific instances of those problems rather than demonstrating general problem-solving capabilities. This might just be enough for practical purposes—we may never need to tackle the larger instances—but, in principle, LLMs are incapable of truly open-ended computation, which means they are incapable of true reasoning. Case closed.</p>
 </section>
-<section id="counterarguments" class="level2">
+<section class="level2" id="counterarguments">
 <h2 class="anchored" data-anchor-id="counterarguments">Counterarguments</h2>
-<section id="argument-1-humans-also-have-these-limitations" class="level3">
+<section class="level3" id="argument-1-humans-also-have-these-limitations">
 <h3 class="anchored" data-anchor-id="argument-1-humans-also-have-these-limitations">Argument 1: Humans Also Have these Limitations</h3>
 <p>The most common criticism I received against the assertion that LLMs cannot reason is that, sure, LLMs cannot reason, but neither can humans, right? I mean, humans can be stupendously irrational. But this argument is flawed on many levels, so let’s unpack it.</p>
 <p>First, while it is true that humans can make errors in reasoning, the human brain definitely possesses the capacity for open-ended reasoning, as evidenced by the more than 2000 years of solid math we have collectively built. Moreover, all college students—at least in quant fields—at some point have to solve structured problem-solving exercises that require them to apply logical reasoning to arrive at correct conclusions, such as proving theorems. So, while humans can be pretty stupid at times, we are certainly capable of the most rigorous reasoning when trained to do so.</p>
@@ -278,7 +250,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Granted, we often compare AI capabilities to human capabilities, but this is only because humans are the gold standard for the types of problems we often want AI systems to solve. So we compare LLM’s capacity to generate creative stories with our best writers, and we compare LLMs’ capacity for open-ended dialogue or for emphatic customer assistance with humans because there is nothing out there better than humans at these tasks.</p>
 <p>However, there are well-established systems—such as traditional SAT solvers—that excel in structured logical deduction and reasoning tasks. These systems are designed with rigorous validation mechanisms that ensure correctness and reliability in their outputs. They are basically flawless and incredibly fast. So, instead of comparing LLMs to humans in deductive reasoning, let’s compare them with the best solution we currently have for this problem. And there, LLMs definitely suck.</p>
 </section>
-<section id="argument-2-randomness-is-a-feature-not-a-bug" class="level3">
+<section class="level3" id="argument-2-randomness-is-a-feature-not-a-bug">
 <h3 class="anchored" data-anchor-id="argument-2-randomness-is-a-feature-not-a-bug">Argument 2: Randomness is a Feature, Not a Bug</h3>
 <p>The second most common criticism I received was regarding the stochastic nature of language models. To recap, I claim that since LLMs generate tokens in a probabilistic fashion—which is a fundamental feature of the paradigm—, their output is inherently unreliable when you require absolute accuracy instead of versatility.</p>
 <p>A lot of people correctly argued that, in fact, randomness is essential in problem-solving and a crucial feature of many of the same SAT solvers against I pretend to compare LLMs. How hypocritical of me, they claim, to posit randomness as a limitation when the most effective deductive reasoning algorithms we have are essentially random. And this is true, but only partially, and it makes all the difference. So let me explain.</p>
@@ -291,7 +263,7 @@ ul.task-list li input[type="checkbox"] {
 <p>However, in stark contrast to traditional problem-solving systems like SAT solvers, LLMs lack a robust validation mechanism. While they can generate coherent and contextually relevant responses based on probabilistic reasoning, some of which may be correct reasoning chains, they do not possess a reliable method for verifying the accuracy of those outputs. The verification process is also stochastic and subject to hallucinations, rendering it utterly unreliable.</p>
 <p>So, since LLMs evaluate their own outputs using the same probabilistic reasoning they employ for generating them in the first place, there is an unavoidable risk that incorrect conclusions will be propagated as valid responses. The monkeys are the also the editors.</p>
 </section>
-<section id="argument-3-llms-can-be-turing-complete" class="level3">
+<section class="level3" id="argument-3-llms-can-be-turing-complete">
 <h3 class="anchored" data-anchor-id="argument-3-llms-can-be-turing-complete">Argument 3: LLMs Can Be Turing-Complete</h3>
 <p>The final argument I want to address is the notion that LLMs can be made Turing-complete by duct-taping them with some Turing-complete gadget. Here’s a brief recap of what this means.</p>
 <p>LLMs have a fixed computational budget—a fixed number of matrix multiplications they perform per input token. This means there are problems that are inherently outside the realm of what they can solve. These problems fall into two categories.</p>
@@ -307,12 +279,12 @@ ul.task-list li input[type="checkbox"] {
 <p>And that’s the claim: LLMs are incapable, by design, of sound reasoning.</p>
 </section>
 </section>
-<section id="improving-llm-reasoning-skills" class="level2">
+<section class="level2" id="improving-llm-reasoning-skills">
 <h2 class="anchored" data-anchor-id="improving-llm-reasoning-skills">Improving LLM reasoning skills</h2>
 <p>However, we need not throw the hat here. Researchers and practitioners have explored several innovative strategies, including Chain of Thought prompting, self-critique mechanisms, and integrating external tools to improve the reasoning skills of large language models.</p>
 <p>CoT prompting encourages LLMs to articulate their thought processes, allowing them to break complex problems into manageable steps and improve their accuracy in reasoning tasks. On the other hand, self-critique aims to refine outputs through an internal evaluation process, yet it has shown mixed effectiveness in meaningfully correcting errors. Additionally, incorporating external tools such as reasoning engines and code generation systems can significantly augment the LLMs’ capabilities by providing structured logic and formal verification.</p>
 <p>However, each approach has its own set of challenges, and their potential and limitations in fostering true reasoning abilities within LLMs need to be carefully examined.</p>
-<section id="chain-of-thought" class="level3">
+<section class="level3" id="chain-of-thought">
 <h3 class="anchored" data-anchor-id="chain-of-thought">Chain of Thought</h3>
 <p>Chain-of-thought prompting has emerged as a promising technique for enhancing the reasoning capabilities of large language models. By guiding models to articulate intermediate reasoning steps before arriving at a final answer, CoT prompting helps decompose complex problems into manageable parts. This method has improved performance across various reasoning tasks, such as arithmetic and commonsense reasoning.</p>
 <p>CoT prompting instructs LLMs to break down complex problems into simpler, sequential steps and then tackle each step independently. This structured approach enables the model to tackle each component individually, improving response accuracy and precision. Studies have shown that this technique can significantly boost performance on reasoning tasks, particularly when the model has a sufficient number of parameters (around 100 billion) to use the benefits of CoT prompting effectively.</p>
@@ -323,14 +295,14 @@ ul.task-list li input[type="checkbox"] {
 <p>And again, the stochastic nature of LLMs means that even with CoT prompting, outputs can vary significantly across different runs due to randomness in generation processes. This variability can lead to inconsistent reasoning outcomes, undermining the reliability of the model’s responses.</p>
 <p>Ultimately, CoT extends the computation budget by a finite amount. Unless we try some cyclic scheme where the LLM is prompted to continue thinking, potentially indefinitely, until satisfied, their fundamental limitation on Turing incompleteness remains.</p>
 </section>
-<section id="self-critique" class="level3">
+<section class="level3" id="self-critique">
 <h3 class="anchored" data-anchor-id="self-critique">Self-critique</h3>
 <p>Another intuitive approach to improving reasoning is self-critique, which involves evaluating and refining an LLM’s responses with the same model, using prompts that instruct the model to read its previous output, highlight potential errors, and try to correct them. A form of after-the-fact chain-of-thought, if you might. However, recent research has highlighted significant limitations in the effectiveness of this self-critique capability.</p>
 <p>While LLMs can generate multiple ideas and attempt to critique their initial outputs, studies indicate that they cannot often meaningfully self-correct. The assumption that verification of correctness should be easier than generation—a fundamental idea in computational complexity theory—does not seem to hold true, in general, for LLMs. This is particularly problematic in reasoning tasks where the model struggles to adequately assess its outputs’ accuracy. For example, if an LLM generates a flawed answer, its attempt to critique and revise it can lead to further errors rather than improvements.</p>
 <p>Research shows that self-correction techniques in LLMs are heavily contingent on the availability of external feedback. In many cases, LLMs perform better when they have access to an external verifier or additional context rather than relying solely on their internal reasoning capabilities. For example, when solving complex problems, such as graph coloring or planning tasks, LLMs often fail to produce reliable solutions without external guidance.</p>
 <p>Interestingly, attempts at self-critique can sometimes degrade performance rather than enhance it. Studies have shown that when LLMs engage in self-critique without external validation, they may generate false positives or incorrect conclusions. If you push harder, you can easily fall into a cycle of self-reinforcement of invalid or erroneous arguments, making the LLM increasingly more certain despite it getting worse and worse.</p>
 </section>
-<section id="external-tools" class="level3">
+<section class="level3" id="external-tools">
 <h3 class="anchored" data-anchor-id="external-tools">External tools</h3>
 <p>Integrating external tools, such as reasoning engines or code generation systems, into large language models represents a promising—and, for me, the only really viable—approach to enhancing their reasoning capabilities.</p>
 <p>Connecting LLMs to external reasoning engines or logical inference tools makes it possible to augment their reasoning capabilities significantly. These tools can handle complex logical deductions, mathematical computations, or even domain-specific knowledge that the LLM might not possess inherently. This integration allows for more accurate and reliable outputs, as the external tools can apply formal logic and structured reasoning that LLMs typically struggle with.</p>
@@ -343,7 +315,7 @@ ul.task-list li input[type="checkbox"] {
 <p>While external tools can, in principle, improve the reasoning capabilities of an LLM by providing structured logic and formal verification, they cannot compensate for LLMs’ basic limitations in generating precise inputs. Therefore, there is no formal guarantee that the outputs from this integration will be logically sound or appropriate for the context, simply because of the age-old adage: garbage in, garbage out.</p>
 </section>
 </section>
-<section id="conclusions" class="level2">
+<section class="level2" id="conclusions">
 <h2 class="anchored" data-anchor-id="conclusions">Conclusions</h2>
 <p>The purpose of this article is to convince you of two claims:</p>
 <ol type="1">
@@ -357,10 +329,7 @@ ul.task-list li input[type="checkbox"] {
 <p>The emergence of models like OpenAI’s o1, which boasts impressive reasoning abilities, may seem like a significant step forward. However, this approach does not represent a fundamentally new paradigm in logical reasoning with LLMs. Deep down, this is “just” a way to explicitly incorporate chain of thought prompting in a fine-tuning phase and teach the model via reinforcement learning to select mostly coherent paths of deduction.</p>
 <p>Thus, while definitely an impressive technical and engineering feat, o1 (terrible name) —and any future models based on the same paradigm— will continue to share the same core limitations inherent to all LLMs, only mitigated using some clever tricks. While they may excel in certain contexts, caution must be exercised in interpreting their outputs as definitive reasoning.</p>
 <p>If LLMs are to fulfill even some of our highly unrealistic expectations for them, we must prioritize solving the challenge of provably correct reasoning. Until then, all we have is a stochastic parrot—a fun toy with some interesting use cases but not a truly transformative technology.</p>
-
-
 </section>
-
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -783,20 +752,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 <nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./hallucinations.html" class="pagination-link" aria-label="Reliable AI needs a New Paradigm">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Reliable AI needs a New Paradigm</span></span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./alignment.html" class="pagination-link" aria-label="Why AI Alignment is So Hard">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Why AI Alignment is So Hard</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
+<div class="nav-page nav-page-previous">
+<a aria-label="Reliable AI needs a New Paradigm" class="pagination-link" href="./hallucinations.html">
+<i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>  <span class="chapter-title">Reliable AI needs a New Paradigm</span></span>
+</a>
+</div>
+<div class="nav-page nav-page-next">
+<a aria-label="Why AI Alignment is So Hard" class="pagination-link" href="./alignment.html">
+<span class="nav-page-text"><span class="chapter-number">8</span>  <span class="chapter-title">Why AI Alignment is So Hard</span></span> <i class="bi bi-arrow-right-short"></i>
+</a>
+</div>
 </nav>
 </div> <!-- /content -->
 
 
-
-
-</body></html>
+<div class="reader-controls"><button class="reader-btn" id="theme-btn" title="Toggle theme">🌙</button></div><script src="/books/reader.js"></script></body></html>

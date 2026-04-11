@@ -1,13 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
-<title>1&nbsp; What is Computation? – The Science of Computation</title>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><head>
+<link href="/books/reader.css" rel="stylesheet"/>
+<meta charset="utf-8"/>
+<meta content="quarto-1.5.57" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport"/>
+<title>1  What is Computation? – The Science of Computation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,33 +18,24 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 </style>
-
-
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../theory/algorithms.html" rel="next">
-<link href="../theory/intro.html" rel="prev">
+<meta content="../" name="quarto:offset"/>
+<link href="../theory/algorithms.html" rel="next"/>
+<link href="../theory/intro.html" rel="prev"/>
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet"/>
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" id="quarto-text-highlighting-styles" rel="stylesheet"/>
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-  <link href="../reader.css" rel="stylesheet">
-  <link href="../reader.css" rel="stylesheet">
-  <link href="../reader.css" rel="stylesheet">
-  <link href="../reader.css" rel="stylesheet">
-  <link href="../reader.css" rel="stylesheet">
-<script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+<link data-mode="light" href="site_libs/bootstrap/bootstrap-icons.css" id="quarto-bootstrap" rel="stylesheet"/>
+<script id="quarto-search-options" type="application/json">,
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "start",
@@ -69,211 +57,190 @@ ul.task-list li input[type="checkbox"] {
     "search-clear-button-title": "Clear",
     "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
-  }
-}</script>
-
-
+    "search-submit-button-title": "Submit",}</script>
 </head>
-
 <body class="nav-sidebar floating">
-
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../theory/intro.html">Foundations of Computer Science</a></li><li class="breadcrumb-item"><a href="../theory/turing.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What is Computation?</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
+<header class="headroom fixed-top" id="quarto-header">
+<nav class="quarto-secondary-nav">
+<div class="container-fluid d-flex">
+<button aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="quarto-btn-toggle btn" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="button" type="button">
+<i class="bi bi-layout-text-sidebar-reverse"></i>
+</button>
+<nav aria-label="breadcrumb" class="quarto-page-breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../theory/intro.html">Foundations of Computer Science</a></li><li class="breadcrumb-item"><a href="../theory/turing.html"><span class="chapter-number">1</span>  <span class="chapter-title">What is Computation?</span></a></li></ol></nav>
+<a aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="flex-grow-1" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="navigation">
+</a>
+<button aria-label="Search" class="btn quarto-search-button" onclick="window.quartoOpenSearch();" type="button">
+<i class="bi bi-search"></i>
+</button>
+</div>
+</nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div class="quarto-container page-columns page-rows-contents page-layout-article" id="quarto-content">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="../">The Science of Computation</a> 
-        <div class="sidebar-tools-main">
-    <a href="https://store.apiad.net/l/tsoc" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-book"></i></a>
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
+<nav class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" id="quarto-sidebar">
+<div class="pt-lg-2 mt-2 text-left sidebar-header">
+<div class="sidebar-title mb-0 py-0">
+<a href="../">The Science of Computation</a>
+<div class="sidebar-tools-main">
+<a aria-label="" class="quarto-navigation-tool px-1" href="https://store.apiad.net/l/tsoc" title=""><i class="bi bi-book"></i></a>
+<a class="quarto-reader-toggle quarto-navigation-tool px-1" href="" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+<div class="quarto-reader-toggle-btn">
+<i class="bi"></i>
+</div>
 </a>
 </div>
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
-  </div>
+</div>
+</div>
+<div class="mt-2 flex-shrink-0 align-items-center">
+<div class="sidebar-search">
+<div class="" id="quarto-search" title="Search"></div>
+</div>
+</div>
+<div class="sidebar-menu-container">
+<ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../index.html">
+<span class="menu-text">Preface</span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Prologue: The Quest to Answer all Questions</span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../intro.html">
+<span class="menu-text">Prologue: The Quest to Answer all Questions</span></a>
+</div>
 </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../theory/intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Foundations of Computer Science</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../theory/turing.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What is Computation?</span></span></a>
-  </div>
+<li class="sidebar-item sidebar-item-section">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../theory/intro.html">
+<span class="menu-text">Foundations of Computer Science</span></a>
+<a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-1" data-bs-toggle="collapse" role="navigation">
+<i class="bi bi-chevron-right ms-2"></i>
+</a>
+</div>
+<ul class="collapse list-unstyled sidebar-section depth1 show" id="quarto-sidebar-section-1">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link active" href="../theory/turing.html">
+<span class="menu-text"><span class="chapter-number">1</span>  <span class="chapter-title">What is Computation?</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../theory/algorithms.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Algorithms, Lots of Algorithms</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../theory/algorithms.html">
+<span class="menu-text"><span class="chapter-number">2</span>  <span class="chapter-title">Algorithms, Lots of Algorithms</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../theory/languages.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Languages and Computation</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../theory/languages.html">
+<span class="menu-text"><span class="chapter-number">3</span>  <span class="chapter-title">Languages and Computation</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../theory/complexity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Easy and Hard Problems</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../theory/complexity.html">
+<span class="menu-text"><span class="chapter-number">4</span>  <span class="chapter-title">Easy and Hard Problems</span></span></a>
+</div>
 </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">systems/intro.qmd - systems/cpus.qmd - systems/os.qmd - systems/networking.qmd - systems/internet.qmd - systems/security.qmd</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Software Engineering</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../ai/intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Artificial Intelligence</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../ai/ai.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Why we need Artificial Intelligence</span></span></a>
-  </div>
+</ul>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../ai/search.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Search</span></span></a>
-  </div>
+<li class="sidebar-item sidebar-item-section">
+<span class="sidebar-item-text sidebar-link text-start">
+<span class="menu-text">systems/intro.qmd - systems/cpus.qmd - systems/os.qmd - systems/networking.qmd - systems/internet.qmd - systems/security.qmd</span></span>
 </li>
-      </ul>
-  </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../epilogue.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The Road Ahead</span></a>
-  </div>
+<li class="sidebar-item sidebar-item-section">
+<span class="sidebar-item-text sidebar-link text-start">
+<span class="menu-text">Software Engineering</span></span>
 </li>
-    </ul>
-    </div>
+<li class="sidebar-item sidebar-item-section">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../ai/intro.html">
+<span class="menu-text">Artificial Intelligence</span></a>
+<a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-4" data-bs-toggle="collapse" role="navigation">
+<i class="bi bi-chevron-right ms-2"></i>
+</a>
+</div>
+<ul class="collapse list-unstyled sidebar-section depth1 show" id="quarto-sidebar-section-4">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../ai/ai.html">
+<span class="menu-text"><span class="chapter-number">5</span>  <span class="chapter-title">Why we need Artificial Intelligence</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../ai/search.html">
+<span class="menu-text"><span class="chapter-number">6</span>  <span class="chapter-title">Search</span></span></a>
+</div>
+</li>
+</ul>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../epilogue.html">
+<span class="menu-text">The Road Ahead</span></a>
+</div>
+</li>
+</ul>
+</div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div class="quarto-sidebar-collapse-item" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" id="quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#the-turing-machine" id="toc-the-turing-machine" class="nav-link active" data-scroll-target="#the-turing-machine">The Turing machine</a></li>
-  <li><a href="#the-universal-computer" id="toc-the-universal-computer" class="nav-link" data-scroll-target="#the-universal-computer">The universal computer</a></li>
-  <li><a href="#the-answer-to-all-questions" id="toc-the-answer-to-all-questions" class="nav-link" data-scroll-target="#the-answer-to-all-questions">The answer to all questions</a></li>
-  <li><a href="#undecidable-problems" id="toc-undecidable-problems" class="nav-link" data-scroll-target="#undecidable-problems">Undecidable problems</a></li>
-  <li><a href="#why-this-matters" id="toc-why-this-matters" class="nav-link" data-scroll-target="#why-this-matters">Why this matters?</a></li>
-  </ul>
+<div class="sidebar margin-sidebar" id="quarto-margin-sidebar">
+<nav class="toc-active" id="TOC" role="doc-toc">
+<h2 id="toc-title">Table of contents</h2>
+<ul>
+<li><a class="nav-link active" data-scroll-target="#the-turing-machine" href="#the-turing-machine" id="toc-the-turing-machine">The Turing machine</a></li>
+<li><a class="nav-link" data-scroll-target="#the-universal-computer" href="#the-universal-computer" id="toc-the-universal-computer">The universal computer</a></li>
+<li><a class="nav-link" data-scroll-target="#the-answer-to-all-questions" href="#the-answer-to-all-questions" id="toc-the-answer-to-all-questions">The answer to all questions</a></li>
+<li><a class="nav-link" data-scroll-target="#undecidable-problems" href="#undecidable-problems" id="toc-undecidable-problems">Undecidable problems</a></li>
+<li><a class="nav-link" data-scroll-target="#why-this-matters" href="#why-this-matters" id="toc-why-this-matters">Why this matters?</a></li>
+</ul>
 </nav>
-    </div>
+</div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../theory/intro.html">Foundations of Computer Science</a></li><li class="breadcrumb-item"><a href="../theory/turing.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What is Computation?</span></a></li></ol></nav>
+<header class="quarto-title-block default" id="title-block-header"><nav aria-label="breadcrumb" class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../theory/intro.html">Foundations of Computer Science</a></li><li class="breadcrumb-item"><a href="../theory/turing.html"><span class="chapter-number">1</span>  <span class="chapter-title">What is Computation?</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-turing" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What is Computation?</span></span></h1>
+<h1 class="title"><span class="quarto-section-identifier" id="sec-turing"><span class="chapter-number">1</span>  <span class="chapter-title">What is Computation?</span></span></h1>
 </div>
-
-
-
 <div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
+</div>
 </header>
-
-
 <p><strong><em>What problems can be solved with computation?</em></strong></p>
 <p>In 1930, Alan Turing aimed to answer this question once and for all. At that time, computers as we know them today didn’t exist. However, the term “computer” was already used, referring to individuals –primarily women– who would perform computations in research labs and other scientific facilities, by following precise instructions given to them by physicists or mathematicians –primarily men, such was the sad state of science back then.</p>
 <p>Once a problem was theoretically solved and all the “reasoning” and “creativity” were complete, these women would receive a piece of paper containing precise instructions for the computation. Their sole duty was to follow these instructions meticulously. They would manipulate the input numbers, essentially performing the step-by-step process that modern computers carry out. By adhering to the instructions, they would ultimately arrive at the desired answer, even if they didn’t understand the underlying math or physics involved.</p>
 <p>Now, Turing is a logician living in the early 20th century, and all logicians back then sought to address a crucial question that dominated mathematical research at the time. This question pondered the existence of limitations in mathematics.</p>
 <p><em>Can purely computational and logical reasoning solve every problem? Or are there certain questions that lie beyond the realm of what math can answer?</em></p>
 <p>Such limitations were hinted at by logicians like Gödel, Russell, and Hilbert. However, Turing approached this problem from a different perspective: computational processing instead of pure logical demonstration.</p>
-<section id="the-turing-machine" class="level2">
+<section class="level2" id="the-turing-machine">
 <h2 class="anchored" data-anchor-id="the-turing-machine">The Turing machine</h2>
 <p>Turing’s initial idea was to formalize and abstract the concept of a computer. He began by studying the nature of human computers. These women computers used a sheet of paper, often divided into cells, on which they wrote various symbols, including numbers. Turing realized the two-dimensional aspect of the paper is not essential. It could be simplified into a one-dimensional tape of cells on which symbols could be placed, deleted, or added at any given moment.</p>
 <p>He then observed that these individuals followed instructions, focusing only on one specific instruction at any given time. There was no need to consider multiple instructions concurrently, as they were performed sequentially. Additionally, these instructions were finite and entirely predetermined for a given problem. Regardless of the length of the numbers being multiplied, for example, the instructions for multiplication are always the same.</p>
 <p>From these observations, Turing conceived the idea of a computation machine, which he referred to as an “alpha-machine.” He imagined this contraption as a state machine with fixed states connected by transitions. These transitions dictated actions based on the observed symbol and current state. For example, if the observed symbol was a 3 and the machine was in state 7, the instruction would specify changing the number to a 4 and transitioning to state 11.</p>
 <p>Despite its simplicity, this concept encapsulates the fundamental principle of following instructions and utilizing an external memory, such as a tape, to store intermediate computations. By uniting these concepts, Turing laid the foundation for the conception of a computation machine —an abstract device capable of performing any type of computation.</p>
-<p>The alpha-machine, now known as a&nbsp;<strong>Turing machine</strong>, is an abstract representation of a concrete algorithm. For instance, there can be a Turing machine designed explicitly for multiplying two numbers, a Turing machine for computing the derivative of a function, or even a Turing machine for translating from Spanish to English —as hard as that may seem. Each machine is a distinct algorithm akin to a specific program in Python or C++.</p>
+<p>The alpha-machine, now known as a <strong>Turing machine</strong>, is an abstract representation of a concrete algorithm. For instance, there can be a Turing machine designed explicitly for multiplying two numbers, a Turing machine for computing the derivative of a function, or even a Turing machine for translating from Spanish to English —as hard as that may seem. Each machine is a distinct algorithm akin to a specific program in Python or C++.</p>
 </section>
-<section id="the-universal-computer" class="level2">
+<section class="level2" id="the-universal-computer">
 <h2 class="anchored" data-anchor-id="the-universal-computer">The universal computer</h2>
-<p>But Turing took a further step, introducing the concept of a&nbsp;<em>universal machine</em>. This is where the brilliance of his idea shines. Turing deduced that a Turing machine’s description can be considered a form of data as well. We can take the states and transitions of a Turing machine and convert them into a long sequence of numbers, which can then be inputted into the tape of another Turing machine.</p>
+<p>But Turing took a further step, introducing the concept of a <em>universal machine</em>. This is where the brilliance of his idea shines. Turing deduced that a Turing machine’s description can be considered a form of data as well. We can take the states and transitions of a Turing machine and convert them into a long sequence of numbers, which can then be inputted into the tape of another Turing machine.</p>
 <p>A universal Turing machine is designed to receive the description of any concrete Turing machine, along with its respective inputs, on its input tape. The universal Turing machine then simulates the precise actions of the specific Turing machine, replicating its behavior with the given input. Turing demonstrated this could be done, thus inventing the modern concept of a general-purpose computer.</p>
 <p>And that’s how Alan Turing almost single-handedly invented the science of Computation —the theoretical field that explores the limits of computation and its practical implementation, now somewhat confusingly called “Computer Science.”</p>
 <p>Remarkably, Turing machines, despite their abstract nature, serve as the practical blueprints for modern computers. In modern computers, a microprocessor contains a fixed set of instructions, while random access memory provides us with a virtually unbounded tape —though not technically infinite. Hence, the concept of a universal Turing machine aligns closely with a modern computer.</p>
 <p>However, the story does not conclude here. You see, Turing had two fundamental questions in mind. First, he sought to determine the essence of an algorithm and how we can formalize the concept of computation. That’s the Turing Machine we just talked about. But, most importantly, he targeted the most crucial question regarding the limitations of mathematics and computation at the beginning of the 20th century.</p>
 </section>
-<section id="the-answer-to-all-questions" class="level2">
+<section class="level2" id="the-answer-to-all-questions">
 <h2 class="anchored" data-anchor-id="the-answer-to-all-questions">The answer to all questions</h2>
 <p>As we say in the Prologue, during this time, mathematicians were engaged in a significant undertaking to resolve mathematics altogether. They aimed to address all the remaining critical open questions in the field. David Hilbert had compiled a list of 20 questions that he regarded as the most pivotal in mathematics. While many questions on the list pertained to specific areas of mathematics, at least two questions dealt with the fundamental limits of the discipline itself.</p>
-<p>The first question asked to&nbsp;<strong>prove the completeness and consistency of mathematics</strong>. This meant establishing that&nbsp;<strong>all truths can be proven</strong>&nbsp;and that mathematics has&nbsp;<strong>no internal contradictions</strong>.</p>
+<p>The first question asked to <strong>prove the completeness and consistency of mathematics</strong>. This meant establishing that <strong>all truths can be proven</strong> and that mathematics has <strong>no internal contradictions</strong>.</p>
 <p>Initially, most mathematicians believed this to be true. However, Kurt Gödel’s incompleteness theorem dealt a major blow to this belief. Gödel demonstrated that in any sufficiently strong mathematical system, there are always truths that cannot be proven within that system. To prove them, looking outside the system and introducing new axioms was necessary. This revelation undermined the mathematicians’ quest to solve mathematics definitively.</p>
-<p>Yet, one fundamental question remained, and it was also widely expected to be possible. This question examined whether, for all provable truths, there existed a completely mechanized procedure—an algorithm—that could find and deliver a proof within a finite amount of time. In simpler terms, it asked if&nbsp;<strong>computers could prove all provable theorems</strong>.</p>
-<p>Surprisingly, the answer also turned out negative. There are problems in math and computer science that have clear answers—either true or false—yet cannot be solved algorithmically. These are known as&nbsp;<strong>undecidable problems</strong>: no algorithm can determine the truth or falsehood of these problems for all instances. And that is not a limitation of current technology.&nbsp;<em>It’s a fundamental limitation of the very notion of algorithm</em>.</p>
+<p>Yet, one fundamental question remained, and it was also widely expected to be possible. This question examined whether, for all provable truths, there existed a completely mechanized procedure—an algorithm—that could find and deliver a proof within a finite amount of time. In simpler terms, it asked if <strong>computers could prove all provable theorems</strong>.</p>
+<p>Surprisingly, the answer also turned out negative. There are problems in math and computer science that have clear answers—either true or false—yet cannot be solved algorithmically. These are known as <strong>undecidable problems</strong>: no algorithm can determine the truth or falsehood of these problems for all instances. And that is not a limitation of current technology. <em>It’s a fundamental limitation of the very notion of algorithm</em>.</p>
 </section>
-<section id="undecidable-problems" class="level2">
+<section class="level2" id="undecidable-problems">
 <h2 class="anchored" data-anchor-id="undecidable-problems">Undecidable problems</h2>
 <p>There are two arguments to understand why computer science must have undecidable problems, using two of the most powerful in logic. The first is a diagonalization argument, very similar to Cantor’s original proof that the natural numbers are less than the real numbers.</p>
 <p>Essentially, any problem in computer science can be seen as a function that takes some input and produces some output. For example, the problem of adding two numbers can be represented as a function that takes two numbers and produces their sum. The question then becomes whether there are functions that cannot be solved by any theoretical machine or algorithm.</p>
@@ -281,21 +248,18 @@ ul.task-list li input[type="checkbox"] {
 <p>So, the number of problems corresponds to the cardinality of real numbers, while the number of programs corresponds to natural numbers. Consequently, there must be infinitely many mathematical problems that cannot be solved by an algorithm.</p>
 <p>However, even if this is true, it is conceivable that we may not care about most of these unsolvable problems. They might be unusual or random functions that we do not find significant because for almost every problem we can think of, we can devise an algorithm to solve it. So, while there may be many solvable problems, their importance is subjective. Turing thus aimed to find one specific problem that was both important and unsolvable, and for that, he used the second most powerful tool in the logician’s arsenal.</p>
 <p>Consider a Turing machine and a specific input. The Turing machine can either run indefinitely in a loop or eventually halt. If the machine halts after a certain number of steps when given that input, we can determine this after a finite amount of time. However, if the machine never halts, we might never be able to tell whether it will halt. It may always be that it has not yet stopped but will do so at some point in the future. Therefore, running a Turing machine that never halts on a given input cannot tell us that it will not halt.</p>
-<p>Turing’s question, then, is whether it is possible to determine, by examining only the code and input of a Turing machine, whether it will halt or not,&nbsp;<em>without actually running the machine</em>. This is known as the&nbsp;<strong>halting problem</strong>.</p>
-<p>To establish the undecidability of the halting problem, Turing employs a negated self-reference, a powerful method pioneered by&nbsp;Bertrand Russell with his barber’s paradox. The formal proof is somewhat involved, but the basic idea is pretty straightforward.</p>
-<p>Following Russell’s template, Turing presents a thought experiment assuming the existence of a “magical” Turing machine that can determine if any other Turing machine will halt without executing it. To show this is impossible, Turing pulls a Russell and creates a new Turing machine, using that magical halting machine, that halts when another arbitrary Turing machine doesn’t. By running the new machine on itself, Turing builds an explicit contradiction:&nbsp;<em>the machine must halt if and only if it doesn’t halt</em>. This contradiction proves that the existence of the magical Turing machine for the halting problem is inherently self-contradictory and, therefore, impossible.</p>
+<p>Turing’s question, then, is whether it is possible to determine, by examining only the code and input of a Turing machine, whether it will halt or not, <em>without actually running the machine</em>. This is known as the <strong>halting problem</strong>.</p>
+<p>To establish the undecidability of the halting problem, Turing employs a negated self-reference, a powerful method pioneered by Bertrand Russell with his barber’s paradox. The formal proof is somewhat involved, but the basic idea is pretty straightforward.</p>
+<p>Following Russell’s template, Turing presents a thought experiment assuming the existence of a “magical” Turing machine that can determine if any other Turing machine will halt without executing it. To show this is impossible, Turing pulls a Russell and creates a new Turing machine, using that magical halting machine, that halts when another arbitrary Turing machine doesn’t. By running the new machine on itself, Turing builds an explicit contradiction: <em>the machine must halt if and only if it doesn’t halt</em>. This contradiction proves that the existence of the magical Turing machine for the halting problem is inherently self-contradictory and, therefore, impossible.</p>
 </section>
-<section id="why-this-matters" class="level2">
+<section class="level2" id="why-this-matters">
 <h2 class="anchored" data-anchor-id="why-this-matters">Why this matters?</h2>
 <p>What is the significance of the halting problem? For starters, with this result, Turing not only kickstarted computer science but also established its core limitations on day one: the existence of well-defined problems that cannot be solved by algorithms.</p>
 <p>However, although the halting problem may seem abstract, it can be interpreted practically as a fundamental limitation of the kind of software we can build. When writing complex code, we often want a compiler, or linter, to determine if our code is error-free before executing it. For instance, a modern compiler for a statically typed programming language can detect and notify developers of potential type errors before runtime, like using undefined variables or calling unexisting methods.</p>
 <p>Ideally, we would want a super smart compiler that could answer questions like: Will this program ever result in a null reference error? Is there a possibility of infinite recursion? Can this program cause an index-out-of-range exception? Unfortunately, these questions all trace back to the fundamental nature of the halting problem; they are, in general, undecidable.</p>
 <p>Therefore, the undecidability of the halting problem implies that most of the problems we could expect compilers to solve are fundamentally unsolvable. Consequently, automated program verification —the process wherein programs are checked for intended functionality by other programs— is generally undoable. We must find heuristics and approximate solutions to particular cases because no single algorithm will work on all possible such problems.</p>
-<p>This limitation extends to the realm of artificial intelligence as well. These findings tell us that there are fundamental tasks computers will never be able to accomplish. Maybe this means AGI is impossible, but maybe it doesn’t. Perhaps humans are also fundamentally limited in this same way. Many believe human brains are just very powerful computers, and if we are ultimately something beyond fancy Turing machines,&nbsp;<em>we might never be able to know</em>.</p>
-
-
+<p>This limitation extends to the realm of artificial intelligence as well. These findings tell us that there are fundamental tasks computers will never be able to accomplish. Maybe this means AGI is impossible, but maybe it doesn’t. Perhaps humans are also fundamentally limited in this same way. Many believe human brains are just very powerful computers, and if we are ultimately something beyond fancy Turing machines, <em>we might never be able to know</em>.</p>
 </section>
-
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -718,73 +682,37 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 <nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../theory/intro.html" class="pagination-link" aria-label="Foundations of Computer Science">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Foundations of Computer Science</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../theory/algorithms.html" class="pagination-link" aria-label="Algorithms, Lots of Algorithms">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Algorithms, Lots of Algorithms</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
+<div class="nav-page nav-page-previous">
+<a aria-label="Foundations of Computer Science" class="pagination-link" href="../theory/intro.html">
+<i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Foundations of Computer Science</span>
+</a>
+</div>
+<div class="nav-page nav-page-next">
+<a aria-label="Algorithms, Lots of Algorithms" class="pagination-link" href="../theory/algorithms.html">
+<span class="nav-page-text"><span class="chapter-number">2</span>  <span class="chapter-title">Algorithms, Lots of Algorithms</span></span> <i class="bi bi-arrow-right-short"></i>
+</a>
+</div>
 </nav>
 </div> <!-- /content -->
 <footer class="footer">
-  <div class="nav-footer">
-    <div class="nav-footer-left">
+<div class="nav-footer">
+<div class="nav-footer-left">
 <p>Copyright 2024 - The Authors</p>
-</div>   
-    <div class="nav-footer-center">
-      &nbsp;
+</div>
+<div class="nav-footer-center">
+       
     </div>
-    <div class="nav-footer-right">
-      <ul class="footer-items list-unstyled">
-    <li class="nav-item compact">
-    <a class="nav-link active" href="https://store.apiad.net/l/tsoc" aria-current="page">
-      <i class="bi bi-book" role="img">
-</i> 
-    </a>
-  </li>  
+<div class="nav-footer-right">
+<ul class="footer-items list-unstyled">
+<li class="nav-item compact">
+<a aria-current="page" class="nav-link active" href="https://store.apiad.net/l/tsoc">
+<i class="bi bi-book" role="img">
+</i>
+</a>
+</li>
 </ul>
-    </div>
-  </div>
-</footer>
+</div>
+</div>
 
 
-
-
-     <!-- Reader Controls -->
-  <div class="reader-controls">
-    <button class="reader-btn" id="theme-btn" title="Toggle theme">🌙</button>
-  </div>
-  
-  <script>
-    (function() {
-      // Theme management
-      const themeBtn = document.getElementById("theme-btn");
-      const savedTheme = localStorage.getItem("reader-theme") || "light";
-      document.documentElement.setAttribute("data-theme", savedTheme);
-      themeBtn.textContent = savedTheme === "dark" ? "☀️" : "🌙";
-
-      themeBtn.addEventListener("click", function(e) {
-        e.stopPropagation();
-        const current = document.documentElement.getAttribute("data-theme");
-        const next = current === "dark" ? "light" : "dark";
-        document.documentElement.setAttribute("data-theme", next);
-        localStorage.setItem("reader-theme", next);
-        themeBtn.textContent = next === "dark" ? "☀️" : "🌙";
-      });
-
-      // T for theme toggle
-      document.addEventListener("keydown", function(e) {
-        if (e.key === "t" || e.key === "T") {
-          themeBtn.click();
-        }
-      });
-      
-      console.log("Reader controls initialized");
-    })();
-  </script>
-
-</body></html>
+</footer><div class="reader-controls"><button class="reader-btn" id="theme-btn" title="Toggle theme">🌙</button></div><script src="/books/reader.js"></script></body></html>

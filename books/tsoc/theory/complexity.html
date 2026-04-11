@@ -1,13 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
-<title>4&nbsp; Easy and Hard Problems – The Science of Computation</title>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><head>
+<link href="/books/reader.css" rel="stylesheet"/>
+<meta charset="utf-8"/>
+<meta content="quarto-1.5.57" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport"/>
+<title>4  Easy and Hard Problems – The Science of Computation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,33 +18,24 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 </style>
-
-
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../software/intro.html" rel="next">
-<link href="../theory/languages.html" rel="prev">
+<meta content="../" name="quarto:offset"/>
+<link href="../software/intro.html" rel="next"/>
+<link href="../theory/languages.html" rel="prev"/>
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet"/>
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" id="quarto-text-highlighting-styles" rel="stylesheet"/>
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-  <link href="../reader.css" rel="stylesheet">
-  <link href="../reader.css" rel="stylesheet">
-  <link href="../reader.css" rel="stylesheet">
-  <link href="../reader.css" rel="stylesheet">
-  <link href="../reader.css" rel="stylesheet">
-<script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+<link data-mode="light" href="site_libs/bootstrap/bootstrap-icons.css" id="quarto-bootstrap" rel="stylesheet"/>
+<script id="quarto-search-options" type="application/json">,
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "start",
@@ -69,187 +57,166 @@ ul.task-list li input[type="checkbox"] {
     "search-clear-button-title": "Clear",
     "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
-  }
-}</script>
-
-
+    "search-submit-button-title": "Submit",}</script>
 </head>
-
 <body class="nav-sidebar floating">
-
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../theory/intro.html">Foundations of Computer Science</a></li><li class="breadcrumb-item"><a href="../theory/complexity.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Easy and Hard Problems</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
+<header class="headroom fixed-top" id="quarto-header">
+<nav class="quarto-secondary-nav">
+<div class="container-fluid d-flex">
+<button aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="quarto-btn-toggle btn" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="button" type="button">
+<i class="bi bi-layout-text-sidebar-reverse"></i>
+</button>
+<nav aria-label="breadcrumb" class="quarto-page-breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../theory/intro.html">Foundations of Computer Science</a></li><li class="breadcrumb-item"><a href="../theory/complexity.html"><span class="chapter-number">4</span>  <span class="chapter-title">Easy and Hard Problems</span></a></li></ol></nav>
+<a aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="flex-grow-1" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="navigation">
+</a>
+<button aria-label="Search" class="btn quarto-search-button" onclick="window.quartoOpenSearch();" type="button">
+<i class="bi bi-search"></i>
+</button>
+</div>
+</nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div class="quarto-container page-columns page-rows-contents page-layout-article" id="quarto-content">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="../">The Science of Computation</a> 
-        <div class="sidebar-tools-main">
-    <a href="https://store.apiad.net/l/tsoc" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-book"></i></a>
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
+<nav class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" id="quarto-sidebar">
+<div class="pt-lg-2 mt-2 text-left sidebar-header">
+<div class="sidebar-title mb-0 py-0">
+<a href="../">The Science of Computation</a>
+<div class="sidebar-tools-main">
+<a aria-label="" class="quarto-navigation-tool px-1" href="https://store.apiad.net/l/tsoc" title=""><i class="bi bi-book"></i></a>
+<a class="quarto-reader-toggle quarto-navigation-tool px-1" href="" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+<div class="quarto-reader-toggle-btn">
+<i class="bi"></i>
+</div>
 </a>
 </div>
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
-  </div>
+</div>
+</div>
+<div class="mt-2 flex-shrink-0 align-items-center">
+<div class="sidebar-search">
+<div class="" id="quarto-search" title="Search"></div>
+</div>
+</div>
+<div class="sidebar-menu-container">
+<ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../index.html">
+<span class="menu-text">Preface</span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Prologue: The Quest to Answer all Questions</span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../intro.html">
+<span class="menu-text">Prologue: The Quest to Answer all Questions</span></a>
+</div>
 </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../theory/intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Foundations of Computer Science</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../theory/turing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What is Computation?</span></span></a>
-  </div>
+<li class="sidebar-item sidebar-item-section">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../theory/intro.html">
+<span class="menu-text">Foundations of Computer Science</span></a>
+<a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-1" data-bs-toggle="collapse" role="navigation">
+<i class="bi bi-chevron-right ms-2"></i>
+</a>
+</div>
+<ul class="collapse list-unstyled sidebar-section depth1 show" id="quarto-sidebar-section-1">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../theory/turing.html">
+<span class="menu-text"><span class="chapter-number">1</span>  <span class="chapter-title">What is Computation?</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../theory/algorithms.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Algorithms, Lots of Algorithms</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../theory/algorithms.html">
+<span class="menu-text"><span class="chapter-number">2</span>  <span class="chapter-title">Algorithms, Lots of Algorithms</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../theory/languages.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Languages and Computation</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../theory/languages.html">
+<span class="menu-text"><span class="chapter-number">3</span>  <span class="chapter-title">Languages and Computation</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../theory/complexity.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Easy and Hard Problems</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link active" href="../theory/complexity.html">
+<span class="menu-text"><span class="chapter-number">4</span>  <span class="chapter-title">Easy and Hard Problems</span></span></a>
+</div>
 </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">systems/intro.qmd - systems/cpus.qmd - systems/os.qmd - systems/networking.qmd - systems/internet.qmd - systems/security.qmd</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Software Engineering</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../ai/intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Artificial Intelligence</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../ai/ai.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Why we need Artificial Intelligence</span></span></a>
-  </div>
+</ul>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../ai/search.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Search</span></span></a>
-  </div>
+<li class="sidebar-item sidebar-item-section">
+<span class="sidebar-item-text sidebar-link text-start">
+<span class="menu-text">systems/intro.qmd - systems/cpus.qmd - systems/os.qmd - systems/networking.qmd - systems/internet.qmd - systems/security.qmd</span></span>
 </li>
-      </ul>
-  </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../epilogue.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The Road Ahead</span></a>
-  </div>
+<li class="sidebar-item sidebar-item-section">
+<span class="sidebar-item-text sidebar-link text-start">
+<span class="menu-text">Software Engineering</span></span>
 </li>
-    </ul>
-    </div>
+<li class="sidebar-item sidebar-item-section">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../ai/intro.html">
+<span class="menu-text">Artificial Intelligence</span></a>
+<a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-4" data-bs-toggle="collapse" role="navigation">
+<i class="bi bi-chevron-right ms-2"></i>
+</a>
+</div>
+<ul class="collapse list-unstyled sidebar-section depth1 show" id="quarto-sidebar-section-4">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../ai/ai.html">
+<span class="menu-text"><span class="chapter-number">5</span>  <span class="chapter-title">Why we need Artificial Intelligence</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../ai/search.html">
+<span class="menu-text"><span class="chapter-number">6</span>  <span class="chapter-title">Search</span></span></a>
+</div>
+</li>
+</ul>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../epilogue.html">
+<span class="menu-text">The Road Ahead</span></a>
+</div>
+</li>
+</ul>
+</div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div class="quarto-sidebar-collapse-item" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" id="quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#when-is-algorithm-better" id="toc-when-is-algorithm-better" class="nav-link active" data-scroll-target="#when-is-algorithm-better">When is algorithm better?</a></li>
-  <li><a href="#the-hardest-problems" id="toc-the-hardest-problems" class="nav-link" data-scroll-target="#the-hardest-problems">The Hardest Problems</a></li>
-  <li><a href="#p-and-np-problems" id="toc-p-and-np-problems" class="nav-link" data-scroll-target="#p-and-np-problems">P and NP problems</a></li>
-  <li><a href="#are-there-really-hard-problems" id="toc-are-there-really-hard-problems" class="nav-link" data-scroll-target="#are-there-really-hard-problems">Are there really hard problems?</a></li>
-  <li><a href="#one-problem-to-rule-them-all" id="toc-one-problem-to-rule-them-all" class="nav-link" data-scroll-target="#one-problem-to-rule-them-all">One problem to rule them all</a></li>
-  <li><a href="#problems-harder-than-np-complete" id="toc-problems-harder-than-np-complete" class="nav-link" data-scroll-target="#problems-harder-than-np-complete">Problems harder than NP-Complete</a></li>
-  <li><a href="#what-if-pnp" id="toc-what-if-pnp" class="nav-link" data-scroll-target="#what-if-pnp">What if P=NP?</a></li>
-  </ul>
+<div class="sidebar margin-sidebar" id="quarto-margin-sidebar">
+<nav class="toc-active" id="TOC" role="doc-toc">
+<h2 id="toc-title">Table of contents</h2>
+<ul>
+<li><a class="nav-link active" data-scroll-target="#when-is-algorithm-better" href="#when-is-algorithm-better" id="toc-when-is-algorithm-better">When is algorithm better?</a></li>
+<li><a class="nav-link" data-scroll-target="#the-hardest-problems" href="#the-hardest-problems" id="toc-the-hardest-problems">The Hardest Problems</a></li>
+<li><a class="nav-link" data-scroll-target="#p-and-np-problems" href="#p-and-np-problems" id="toc-p-and-np-problems">P and NP problems</a></li>
+<li><a class="nav-link" data-scroll-target="#are-there-really-hard-problems" href="#are-there-really-hard-problems" id="toc-are-there-really-hard-problems">Are there really hard problems?</a></li>
+<li><a class="nav-link" data-scroll-target="#one-problem-to-rule-them-all" href="#one-problem-to-rule-them-all" id="toc-one-problem-to-rule-them-all">One problem to rule them all</a></li>
+<li><a class="nav-link" data-scroll-target="#problems-harder-than-np-complete" href="#problems-harder-than-np-complete" id="toc-problems-harder-than-np-complete">Problems harder than NP-Complete</a></li>
+<li><a class="nav-link" data-scroll-target="#what-if-pnp" href="#what-if-pnp" id="toc-what-if-pnp">What if P=NP?</a></li>
+</ul>
 </nav>
-    </div>
+</div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../theory/intro.html">Foundations of Computer Science</a></li><li class="breadcrumb-item"><a href="../theory/complexity.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Easy and Hard Problems</span></a></li></ol></nav>
+<header class="quarto-title-block default" id="title-block-header"><nav aria-label="breadcrumb" class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../theory/intro.html">Foundations of Computer Science</a></li><li class="breadcrumb-item"><a href="../theory/complexity.html"><span class="chapter-number">4</span>  <span class="chapter-title">Easy and Hard Problems</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-complexity" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Easy and Hard Problems</span></span></h1>
+<h1 class="title"><span class="quarto-section-identifier" id="sec-complexity"><span class="chapter-number">4</span>  <span class="chapter-title">Easy and Hard Problems</span></span></h1>
 </div>
-
-
-
 <div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
+</div>
 </header>
-
-
 <p>While computability theory answers what can be done with a computer at all, complexity theory deals with how efficiently can any given problem be solved. Knowing a problem is solvable –that is, there exists a Turing machine, or, equivalently, an algorithm that can answer it, – is only the begining. If a problem is solvable at all, there are probably many solutions –many different algorithms–, some of which will be better than others in at least one important dimension: how much does it cost us to get the answer.</p>
 <p>Computational complexity is the branch of theoretical Computer Science that aims to answer this, and several related question. The first step is to define exactly what are we talking when we say a solution is “more efficient” than another. Efficient with respect to what, you may ask.</p>
 <p>There are two major concerns when solving problems with a computer: time and memory. Time is easy to understand: a faster algorithm will almost always be preferable to a slower one, provided they are equivalent in all other aspects. Memory cost, on the other hand, measures of how much information we need to store during the solution to a problem. If one algorithm requires considerably more memory than another, we might need to buy a more expensive computer.</p>
 <p>These two magnitudes are often intrinsically interrelated, in the sense that we can trade of time for memory, by using a faster algorithm that consumes more memory. And the other way around also works, we can often make an algorithm more efficient in terms of memory if we are willing to spend more time recomputing things we already know, instead of storing them.</p>
-<section id="when-is-algorithm-better" class="level2">
+<section class="level2" id="when-is-algorithm-better">
 <h2 class="anchored" data-anchor-id="when-is-algorithm-better">When is algorithm better?</h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -265,7 +232,7 @@ Note
 </div>
 </div>
 </section>
-<section id="the-hardest-problems" class="level2">
+<section class="level2" id="the-hardest-problems">
 <h2 class="anchored" data-anchor-id="the-hardest-problems">The Hardest Problems</h2>
 <p>There are many problems in computer science for which, even though they seem complicated at first, if we think hard enough, we can come up with clever algorithms that solve them pretty fast.</p>
 <p>A very good example is the shortest path problem. This is basically the problem of finding the shortest path between two given points in any type of network. For example, you have a map with millions of places and intersections in your city, and you have to go between one point at one extreme of the map and another point at the other end of the map.</p>
@@ -278,20 +245,20 @@ Note
 <p>If you have 20 cities, all possible tours amount to something close to 20 factorial, which is … (checks numbers) … well, huge. Not only that, if you have a computer today that can solve the problem for, let’s say, 20 cities in one second, then 22 cities will take nearly 8 minutes, 25 cities will take 73 days, and 30 cities will take you… 3 and a half million years!</p>
 <p>This is an exponential solution, and they become bad really fast. But for many problems, like the traveling salesman, we have nothing better —that always works.</p>
 </section>
-<section id="p-and-np-problems" class="level2">
+<section class="level2" id="p-and-np-problems">
 <h2 class="anchored" data-anchor-id="p-and-np-problems">P and NP problems</h2>
 <p>The first type of problem, like the shortest path, are called P-problems —technically, <em>polynomial time complexity</em>, but don’t worry about that. P basically means <strong>problems that are easy to solve.</strong></p>
 <p>Now, for the second type of problem, we don’t really know whether they are P-problems, but there is a subset of these that has an intriguing characteristic.</p>
 <p>If I ask you to find me a cycle with, say, less than 100 km in total, that will be extremely hard. However, if I tell you, “here is a cycle that takes less than 100 km” you can easily verify it —just add up the length of each road.</p>
 <p>These types of problems are called NP problems —technically, <em>non-deterministic polynomial time complexity</em>, but again, forget about that. NP basically means <strong>problems that are easy to verify.</strong></p>
 <p>So, the most fundamental question in computer science, P versus NP, ultimately is the following:</p>
-<hr>
+<hr/>
 <p><strong>P vs NP:</strong> <em>Are all problems that are easy to verify also easy to solve? Or are there problems that are intrinsically harder to solve than to verify?</em></p>
-<hr>
+<hr/>
 <p>Intuitively, for many, it seems it must be the latter. Think about what it would mean to be able to solve easily any problem that is also easy to verify. In a sense, it would be as if recognizing a masterpiece would be the same difficulty as creating the masterpiece in the first place. Being a great critic would be the same as being a great artist.</p>
 <p>This seems false, but intuitions in math and computer science are often wrong. We cannot use this kind of analogy to reach any sort of informed conclusion.</p>
 </section>
-<section id="are-there-really-hard-problems" class="level2">
+<section class="level2" id="are-there-really-hard-problems">
 <h2 class="anchored" data-anchor-id="are-there-really-hard-problems">Are there really hard problems?</h2>
 <p>However, theoretical reasons hint at the possibility that P is indeed distinct from NP —that there are some truly, fundamentally difficult problems. The strongest one is the existence of so-called NP-complete problems. Problems, like the traveling salesman, so difficult to solve efficiently that if you could solve one of them, you would solve all the other NP problems at the same time.</p>
 <p>When we say a problem is difficult, we mean that it is exponentially easier to verify a solution’s correctness than it is to find the solution in the first place. This concept is crucial because, for most problems in computer science, such as sorting, searching for elements in an array, or solving equations, the effort required to solve the problem is roughly the same as the effort needed to verify the solution.</p>
@@ -302,7 +269,7 @@ Note
 <p>What we need is a more principled way of answering this question. When mathematicians are faced with an existential problem —in the sense of, does there exist an object with these properties, not in the sense of, you know, God is dead and all—what they do is try and find extreme cases that can represent the whole spectrum of objects to analyze.</p>
 <p>In this case, we are dealing with finding problems that are difficult to solve. So it makes sense to ask, “What is the most difficult problem possible?” A problem so hard that if we crack it, we crack them all.</p>
 </section>
-<section id="one-problem-to-rule-them-all" class="level2">
+<section class="level2" id="one-problem-to-rule-them-all">
 <h2 class="anchored" data-anchor-id="one-problem-to-rule-them-all">One problem to rule them all</h2>
 <p>That’s the idea behind NP-completeness. Let’s focus on these super tricky problems – the toughest ones in this field. If there are problems so tough that solving just one of them would also solve all the others, that would seriously challenge the idea of P equals NP.</p>
 <p>These really tough problems are called <strong>NP-complete</strong> problems, a concept defined by Stephen Cook in the 1970s. An NP-complete problem is basically a problem that is NP —that is, easy to verify—, and a solution to it in polynomial time would also give us a solution to any other problem in NP. So, in a way, these are the only problems we need to look at. If we solve one of these, we’ve proven P equals NP. And if we can’t solve just one, we’ve proven P not equal to NP.</p>
@@ -318,7 +285,7 @@ Note
 <p>These NP-complete problems aren’t just theoretical issues, either. They are practical problems that we encounter regularly in logistics, optimization, and scheduling. After Karp proved his 21 original NP-complete problems, a wave of people started proving that nearly any problem in computer science involving combinatorics could be classified as NP-complete. As a result, there are now over 4,000 papers proving different NP-complete problems, ranging from determining the best move in Tetris to folding proteins.</p>
 <p>This compelling evidence has led many computer scientists to believe that P != NP and that there are, indeed, problems that are fundamentally harder to solve, not just because we lack some understanding about them but because, by their very nature, they just cannot be solved efficiently.</p>
 </section>
-<section id="problems-harder-than-np-complete" class="level2">
+<section class="level2" id="problems-harder-than-np-complete">
 <h2 class="anchored" data-anchor-id="problems-harder-than-np-complete">Problems harder than NP-Complete</h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -334,16 +301,13 @@ Note
 </div>
 </div>
 </section>
-<section id="what-if-pnp" class="level2">
+<section class="level2" id="what-if-pnp">
 <h2 class="anchored" data-anchor-id="what-if-pnp">What if P=NP?</h2>
 <p>If P=NP, the world would be a very weird place. It would be just as easy to understand a solution to a hard problem than finding it in the first place. In a sense, the critic and the artist would be the same. Many people find this unacceptable, but intuition is not enough to convince us about something as profound as a fundamental limit to general intelligence.</p>
 <p>If it turns out that if P != NP, then there are some fundamental limits to how fast a computer can solve the majority of the most important problems in logistics, planning, simulation, etc. While we have many heuristics to solve either some cases perfectly or most cases approximately, all these problems may ultimately be unsolvable quickly. And by “computer” we don’t mean just the run-of-the-mill electronic computer you have at home. We mean, any device that can compute things like a Turing machine does.</p>
 <p>Many believe brains are just pretty complex computers, but computers after all. If that’s the case, then no intelligent being in the Universe, no matter how smart, can outsmart NP-Hard problems. Crucially, not even a superadvanced alien —or computer— could be exponentially faster than us. Thus, P vs NP might be our best weapon to stop a self-improving AGI from reaching superhuman capacity.</p>
 <p>Even gods can’t escape complexity theory.</p>
-
-
 </section>
-
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -766,73 +730,37 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 <nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../theory/languages.html" class="pagination-link" aria-label="Languages and Computation">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Languages and Computation</span></span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../software/intro.html" class="pagination-link" aria-label="Software Engineering">
-        <span class="nav-page-text">Software Engineering</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
+<div class="nav-page nav-page-previous">
+<a aria-label="Languages and Computation" class="pagination-link" href="../theory/languages.html">
+<i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>  <span class="chapter-title">Languages and Computation</span></span>
+</a>
+</div>
+<div class="nav-page nav-page-next">
+<a aria-label="Software Engineering" class="pagination-link" href="../software/intro.html">
+<span class="nav-page-text">Software Engineering</span> <i class="bi bi-arrow-right-short"></i>
+</a>
+</div>
 </nav>
 </div> <!-- /content -->
 <footer class="footer">
-  <div class="nav-footer">
-    <div class="nav-footer-left">
+<div class="nav-footer">
+<div class="nav-footer-left">
 <p>Copyright 2024 - The Authors</p>
-</div>   
-    <div class="nav-footer-center">
-      &nbsp;
+</div>
+<div class="nav-footer-center">
+       
     </div>
-    <div class="nav-footer-right">
-      <ul class="footer-items list-unstyled">
-    <li class="nav-item compact">
-    <a class="nav-link active" href="https://store.apiad.net/l/tsoc" aria-current="page">
-      <i class="bi bi-book" role="img">
-</i> 
-    </a>
-  </li>  
+<div class="nav-footer-right">
+<ul class="footer-items list-unstyled">
+<li class="nav-item compact">
+<a aria-current="page" class="nav-link active" href="https://store.apiad.net/l/tsoc">
+<i class="bi bi-book" role="img">
+</i>
+</a>
+</li>
 </ul>
-    </div>
-  </div>
-</footer>
+</div>
+</div>
 
 
-
-
-     <!-- Reader Controls -->
-  <div class="reader-controls">
-    <button class="reader-btn" id="theme-btn" title="Toggle theme">🌙</button>
-  </div>
-  
-  <script>
-    (function() {
-      // Theme management
-      const themeBtn = document.getElementById("theme-btn");
-      const savedTheme = localStorage.getItem("reader-theme") || "light";
-      document.documentElement.setAttribute("data-theme", savedTheme);
-      themeBtn.textContent = savedTheme === "dark" ? "☀️" : "🌙";
-
-      themeBtn.addEventListener("click", function(e) {
-        e.stopPropagation();
-        const current = document.documentElement.getAttribute("data-theme");
-        const next = current === "dark" ? "light" : "dark";
-        document.documentElement.setAttribute("data-theme", next);
-        localStorage.setItem("reader-theme", next);
-        themeBtn.textContent = next === "dark" ? "☀️" : "🌙";
-      });
-
-      // T for theme toggle
-      document.addEventListener("keydown", function(e) {
-        if (e.key === "t" || e.key === "T") {
-          themeBtn.click();
-        }
-      });
-      
-      console.log("Reader controls initialized");
-    })();
-  </script>
-
-</body></html>
+</footer><div class="reader-controls"><button class="reader-btn" id="theme-btn" title="Toggle theme">🌙</button></div><script src="/books/reader.js"></script></body></html>

@@ -1,13 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
-<title>5&nbsp; The Actual Risks of AI – Mostly Harmless AI</title>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><head>
+<link href="/books/reader.css" rel="stylesheet"/>
+<meta charset="utf-8"/>
+<meta content="quarto-1.5.57" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport"/>
+<title>5  The Actual Risks of AI – Mostly Harmless AI</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,28 +18,24 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 </style>
-
-
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./hallucinations.html" rel="next">
-<link href="./ai-kill-us.html" rel="prev">
+<meta content="./" name="quarto:offset"/>
+<link href="./hallucinations.html" rel="next"/>
+<link href="./ai-kill-us.html" rel="prev"/>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet"/>
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" id="quarto-text-highlighting-styles" rel="stylesheet"/>
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+<link data-mode="light" href="site_libs/bootstrap/bootstrap-icons.css" id="quarto-bootstrap" rel="stylesheet"/>
+<script id="quarto-search-options" type="application/json">,
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "start",
@@ -64,172 +57,151 @@ ul.task-list li input[type="checkbox"] {
     "search-clear-button-title": "Clear",
     "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
-  }
-}</script>
-
-
+    "search-submit-button-title": "Submit",}</script>
 </head>
-
 <body class="nav-sidebar floating">
-
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./risks.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The Actual Risks of AI</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
+<header class="headroom fixed-top" id="quarto-header">
+<nav class="quarto-secondary-nav">
+<div class="container-fluid d-flex">
+<button aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="quarto-btn-toggle btn" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="button" type="button">
+<i class="bi bi-layout-text-sidebar-reverse"></i>
+</button>
+<nav aria-label="breadcrumb" class="quarto-page-breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./risks.html"><span class="chapter-number">5</span>  <span class="chapter-title">The Actual Risks of AI</span></a></li></ol></nav>
+<a aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="flex-grow-1" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="navigation">
+</a>
+<button aria-label="Search" class="btn quarto-search-button" onclick="window.quartoOpenSearch();" type="button">
+<i class="bi bi-search"></i>
+</button>
+</div>
+</nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div class="quarto-container page-columns page-rows-contents page-layout-article" id="quarto-content">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">Mostly Harmless AI</a> 
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
-  </div>
+<nav class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" id="quarto-sidebar">
+<div class="pt-lg-2 mt-2 text-left sidebar-header">
+<div class="sidebar-title mb-0 py-0">
+<a href="./">Mostly Harmless AI</a>
+</div>
+</div>
+<div class="mt-2 flex-shrink-0 align-items-center">
+<div class="sidebar-search">
+<div class="" id="quarto-search" title="Search"></div>
+</div>
+</div>
+<div class="sidebar-menu-container">
+<ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./index.html">
+<span class="menu-text">Preface</span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./foreword.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Beyond Optimism and Doom: Finding a Third Path in AI Discourse</span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./foreword.html">
+<span class="menu-text">Beyond Optimism and Doom: Finding a Third Path in AI Discourse</span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./prologue.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The Age of Artificial Intelligence</span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./prologue.html">
+<span class="menu-text">The Age of Artificial Intelligence</span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./coding-is-dead.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Coding is Dead; Long Live Coding!</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./coding-is-dead.html">
+<span class="menu-text"><span class="chapter-number">1</span>  <span class="chapter-title">Coding is Dead; Long Live Coding!</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./education.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The AI Revolution We Don’t Need</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./education.html">
+<span class="menu-text"><span class="chapter-number">2</span>  <span class="chapter-title">The AI Revolution We Don’t Need</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./beyond-chatbot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Beyond the Chatbot Revolution</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./beyond-chatbot.html">
+<span class="menu-text"><span class="chapter-number">3</span>  <span class="chapter-title">Beyond the Chatbot Revolution</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./ai-kill-us.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Will AI Kill Us All?</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./ai-kill-us.html">
+<span class="menu-text"><span class="chapter-number">4</span>  <span class="chapter-title">Will AI Kill Us All?</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./risks.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The Actual Risks of AI</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link active" href="./risks.html">
+<span class="menu-text"><span class="chapter-number">5</span>  <span class="chapter-title">The Actual Risks of AI</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./hallucinations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Reliable AI needs a New Paradigm</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./hallucinations.html">
+<span class="menu-text"><span class="chapter-number">6</span>  <span class="chapter-title">Reliable AI needs a New Paradigm</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./reasoning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Large Language Models Cannot Reason</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./reasoning.html">
+<span class="menu-text"><span class="chapter-number">7</span>  <span class="chapter-title">Large Language Models Cannot Reason</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./alignment.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Why AI Alignment is So Hard</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./alignment.html">
+<span class="menu-text"><span class="chapter-number">8</span>  <span class="chapter-title">Why AI Alignment is So Hard</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./open-source.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">The Future of AI is Open Source</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./open-source.html">
+<span class="menu-text"><span class="chapter-number">9</span>  <span class="chapter-title">The Future of AI is Open Source</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./road-to-agi.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">The Road to AGI</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./road-to-agi.html">
+<span class="menu-text"><span class="chapter-number">10</span>  <span class="chapter-title">The Road to AGI</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./epilogue.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The Road Ahead</span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./epilogue.html">
+<span class="menu-text">The Road Ahead</span></a>
+</div>
 </li>
-    </ul>
-    </div>
+</ul>
+</div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div class="quarto-sidebar-collapse-item" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" id="quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#autonomous-weaponry" id="toc-autonomous-weaponry" class="nav-link active" data-scroll-target="#autonomous-weaponry">Autonomous weaponry</a></li>
-  <li><a href="#massive-workplace-disruptions" id="toc-massive-workplace-disruptions" class="nav-link" data-scroll-target="#massive-workplace-disruptions">Massive workplace disruptions</a></li>
-  <li><a href="#informational-hazards" id="toc-informational-hazards" class="nav-link" data-scroll-target="#informational-hazards">Informational hazards</a></li>
-  <li><a href="#exacerbating-and-perpetuating-harmful-biases" id="toc-exacerbating-and-perpetuating-harmful-biases" class="nav-link" data-scroll-target="#exacerbating-and-perpetuating-harmful-biases">Exacerbating and perpetuating harmful biases</a></li>
-  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
-  </ul>
+<div class="sidebar margin-sidebar" id="quarto-margin-sidebar">
+<nav class="toc-active" id="TOC" role="doc-toc">
+<h2 id="toc-title">Table of contents</h2>
+<ul>
+<li><a class="nav-link active" data-scroll-target="#autonomous-weaponry" href="#autonomous-weaponry" id="toc-autonomous-weaponry">Autonomous weaponry</a></li>
+<li><a class="nav-link" data-scroll-target="#massive-workplace-disruptions" href="#massive-workplace-disruptions" id="toc-massive-workplace-disruptions">Massive workplace disruptions</a></li>
+<li><a class="nav-link" data-scroll-target="#informational-hazards" href="#informational-hazards" id="toc-informational-hazards">Informational hazards</a></li>
+<li><a class="nav-link" data-scroll-target="#exacerbating-and-perpetuating-harmful-biases" href="#exacerbating-and-perpetuating-harmful-biases" id="toc-exacerbating-and-perpetuating-harmful-biases">Exacerbating and perpetuating harmful biases</a></li>
+<li><a class="nav-link" data-scroll-target="#conclusions" href="#conclusions" id="toc-conclusions">Conclusions</a></li>
+</ul>
 </nav>
-    </div>
+</div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
+<header class="quarto-title-block default" id="title-block-header">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The Actual Risks of AI</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>  <span class="chapter-title">The Actual Risks of AI</span></h1>
 </div>
-
-
-
 <div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
+</div>
 </header>
-
-
 <p>The most prominent news in the AI world recently has been the removal of Sam Altman and his subsequent re-appointment as CEO at OpenAI. Reports suggest that a non-profit branch of OpenAI, overseen by a board that included Altman, was established to ensure that the organization pursued the mission of creating safe AGI for humanity. Meanwhile, the commercial branch of OpenAI appeared to be advancing rapidly without adequate attention to safety, leading the board to take action to redirect its trajectory.</p>
 <p>Ironically, the mechanism put in place to safeguard OpenAI from excessive commercialization and mission drift may have unintentionally accelerated its move towards commercial interests following the ousting of Altman. This decision faced resistance from business partners such as Microsoft, and almost 90% of OpenAI’s employees reportedly contemplated leaving in response.</p>
 <p>The outcome of this upheaval appears to have steered OpenAI toward even greater commercialization, raising questions about whether this trajectory was accidental or a deliberate strategic move by those within OpenAI focused on commercial interests. Regardless of how the story concludes, the prevailing sentiment is that safe AI development cannot coexist with commercial incentives. Many argue that capitalism will inevitably prevail, leading to the development of commercial AI systems regardless of safety concerns.</p>
@@ -238,10 +210,10 @@ ul.task-list li input[type="checkbox"] {
 <p>However, it’s important to note that I do not identify with other types of optimists, such as the techno-optimism commonly associated with the Silicon Valley techbros. I believe that the kind of unwarranted optimism these individuals espouse is just as dangerous as the most coward pessimism. This brand of optimism is often disingenuous and hypocritical, coming from individuals who know the system works in their favor and they are the ultimate beneficents of technological wealth.</p>
 <p>(I actually prefer to label myself as a <em>techno-pragmatist</em>, a concept that I can delve into further in a different essay. But enough of a tangent already.)</p>
 <p>So, in this edition of the Mostly Harmless newsletter, I aim to revisit the topic of AI safety. Previously, I talked extensively about existential risks and I strongly encourage you to review that content if you haven’t already. In doing so, I aimed to dispel the notion that existential risks should the sole or even the main focus of our attention. While I acknowledge the presence of long-term existential risks from AI that cannot be ignored, I believe that the short-term, non-existential, yet impactful risks stemming from the mishandling and careless development of AI today deserve equal if not greater attention.</p>
-<hr>
+<hr/>
 <p>AI safety encompasses several important topics. To categorize the various ways in which technology can have a negative impact on society, we can examine several different categories. One such category is existential risk, which revolves around the concern that AI technology may become so powerful that it poses a threat to the continued existence of civilization. This could occur through intentional actions, where the technology develops the motivation and ability to destroy us, or inadvertently, such as attempting to address climate change and unintentionally causing harm to humanity.</p>
 <p>Setting aside existential risk for the moment, there are numerous other ways in which technology, including AI, can negatively impact society, either accidentally or by the purposeful action of malicious individuals. Let’s review what I consider the most relevant types of AI dangers.</p>
-<section id="autonomous-weaponry" class="level2">
+<section class="level2" id="autonomous-weaponry">
 <h2 class="anchored" data-anchor-id="autonomous-weaponry">Autonomous weaponry</h2>
 <p>Autonomous weaponry, a long-term and abstract concern related to existential risks. While debating the possibility of AI leading to SkyNet scenarios, it’s essential not to overlook the potential for catastrophic military use of weapons in various aspects. The first issue arises from autonomous weapons; drones or even traditional ones like assault rifles or misguided missiles can be entirely automated using AI technology. Such fully-automated weaponry is horrifying because all forms of technology employed to kill human beings are deplorable and terrible. Even in conventional warfare, where humans kill other humans, there still exists some room for empathy and consideration despite being barbaric practices in this age. At least in such traditional warfare, an individual remains behind the trigger of a weapon which provides some space for respecting human rights, refraining from harming civilians, or innocent people.</p>
 <p>In a fully autonomous weaponry case, where warfare can be completely dehumanized, there is still the possibility of preserving some level of humanity. However, if autonomous drones are deployed in battlefields without human operators, it could lead to total dissolution of the distinction between innocent and active military enemy. While semi-autonomous weapons like drones operated by humans have already shown how being behind a screen resembling a video game can cause dehumanization leading to an increase in civilian casualties, imagine the consequences when such weapons become fully automated. This extreme use case compares to that in movies like Terminator, but what’s more concerning is the current reality of AI for biochemical warfare.</p>
@@ -250,7 +222,7 @@ ul.task-list li input[type="checkbox"] {
 <p>In the future, it will be possible to download and print custom-designed proteins at home using a chemical printer. This technology could potentially allow small terrorist organizations to design deadly viruses and release them in crowded places like subways. While this scenario is alarming, there are currently no technical solutions to prevent it from happening, as anyone with a computer may have access to these capabilities. Unlike nuclear weapons that only superpowers can possess, bioweapons pose a greater threat because they don’t require extensive resources or expertise.</p>
 <p>There’s no way to act, as if you could. The only action is banning certain things through international treaties upheld by countries and governments. Terrorist organizations won’t abide by agreements against producing chemical weapons or nuclear arms, making it an intractable dilemma for which I can see no solution.</p>
 </section>
-<section id="massive-workplace-disruptions" class="level2">
+<section class="level2" id="massive-workplace-disruptions">
 <h2 class="anchored" data-anchor-id="massive-workplace-disruptions">Massive workplace disruptions</h2>
 <p>One of the ways in which technology can negatively impact society is by causing significant economic upheaval that is challenging for a large portion of society to adapt to. This issue is particularly evident in the widespread job displacement resulting from increased automation across various industries.</p>
 <p>In the next decade, artificial intelligence is expected to reach a level where it can potentially surpass or match human capabilities in many economically viable occupations, including agriculture, manufacturing, white-collar jobs, education, science, research, and entertainment. If this scenario unfolds as projected, it is natural to experience concern about the fate of the millions of individuals whose jobs will be replaced by automation.</p>
@@ -263,7 +235,7 @@ ul.task-list li input[type="checkbox"] {
 <p>However, there are many, myself included, who are skeptic of the feasibility of UBI in a purely capitalistic society due to the way markets incentives work. You can argue that certain well-developed countries already produce enough value to guarantee a minimum income for everyone, yet income inequality has either persisted or worsened over the last few decades in many of these nations.</p>
 <p>While Universal Basic Income is seen as a progressive and promising concept for an increasingly industrialized and automated society, I don’t think it is obviously the natural progression of our current social and economic structures. Implementing UBI would require significant social restructuring and government intervention, which may not be embraced by many, often due to valid concerns.</p>
 </section>
-<section id="informational-hazards" class="level2">
+<section class="level2" id="informational-hazards">
 <h2 class="anchored" data-anchor-id="informational-hazards">Informational hazards</h2>
 <p>The first informational risk associated with AI is disinformation or fake news that can be created through generative AI’s capacity to produce almost indistinguishable content. This technology can be used for malicious purposes such as spreading false information and convincing people of scandals related to political candidates through manipulated evidence like pictures, videos, audio recordings, and transcriptions.</p>
 <p>So one use of this information is to make people think someone else did something they didn’t do. But another way it can be used is just to make people doubt whether anything is true at all. This erodes trust in institutions, including news, government, science, and other organizations. If people stop believing everything because anyone could create convincing fake content with AI, democracy will fail. It requires informed citizens who can tell truth from falsehood. Too much disinformation can lead to chaos.</p>
@@ -275,7 +247,7 @@ ul.task-list li input[type="checkbox"] {
 <p>In the future, a technologically advanced version of George Orwell’s 1984 dystopia is possible. With enough data, information and computing power, law enforcement can implement a “thug police” in its most sophisticated form without screens or microphones. No longer do they need to monitor what people say or type through screens or microphones; instead, they have access to personal devices like smartphones that capture everything individuals do, say, or write. This goes beyond just recorded statements as it enables authorities to predict thoughts based on behavior patterns. The worst kind of dystopia arises where nothing remains private anymore since all actions are public or available for analysis by government agencies. As one thinks, their ideas manifest themselves in conduct online, making it impossible not to express them. Consumption habits such as movies watched and length spent reading online reveal insights into hidden musings.</p>
 <p>Think of this in the most creative or smart way you can. For example, while browsing a legal website with no issues, if I’m the surveyor, I can add a hidden feature that shows two images quickly for only your subconscious to see. Then, by tracking how long you look at each image or read small texts, I already have enough information to predict any unusual thoughts you might be having.</p>
 </section>
-<section id="exacerbating-and-perpetuating-harmful-biases" class="level2">
+<section class="level2" id="exacerbating-and-perpetuating-harmful-biases">
 <h2 class="anchored" data-anchor-id="exacerbating-and-perpetuating-harmful-biases">Exacerbating and perpetuating harmful biases</h2>
 <p>Automation, particularly through artificial intelligence, poses a significant risk in that it stands to automate the majority of tasks that involve human judgment. One notable example is in the realm of crime, where stories have emerged of dystopic crime rating systems attempting to predict the likelihood of re-offense and the probability of bail or committing a crime again.</p>
 <p>Another area heavily reliant on human judgment is job applications, where efforts have been made – though largely unsuccessful – to replace human recruiters with AI for hiring a range of positions, from white-collar roles to other job categories. Similarly, credit rating, a crucial element of the developed world’s financial system, has seen attempts to automate the system and related financial services, using AI to determine who qualifies for a loan or certain credit thresholds based on a complex web of historical data and predictive models.</p>
@@ -292,16 +264,13 @@ ul.task-list li input[type="checkbox"] {
 <p>It is crucial to address these issues and prevent AI from exacerbating existing biases and discrimination. Unfortunately, bias exists within systems, and it is crucial to address and rectify this issue. It is essential to be mindful of the presence of bias and take necessary measures to prevent its unchecked proliferation.</p>
 <p>The problem lies not in the technical aspect, but rather in its adoption. Making this a priority is imperative because a system that is fairer may not perform as well as one that isn’t, all other factors being equal. For example, in the context of developing systems for hiring applicants, a fairer system may yield lower performance compared to a less just one. In a purely market-driven economy, there are no inherent incentives to prioritize fairness, hence the need to inject such incentives externally, possibly through government regulation.</p>
 </section>
-<section id="conclusions" class="level2">
+<section class="level2" id="conclusions">
 <h2 class="anchored" data-anchor-id="conclusions">Conclusions</h2>
 <p>From a pragmatic perspective, it is essential to address the problems in artificial intelligence that warrant our focus. In particular, I am concerned about the for-profit military-industrial complex’s inability and lack of incentives to solve these issues. I firmly believe that government regulation and societal oversight are necessary to implement safeguards that enable us to harness the potential of artificial intelligence for the greater good, rather than for the profit of a select few, or as a tool for the benefit of the technocratic elites.</p>
 <p>I strongly advocate for a balanced approach to AI regulation that does not stifle innovation and development but rather complements these endeavors with safeguards to ensure responsible and ethical AI advancements. It is pivotal that we prioritize the societal implications and ethical considerations of AI, and take proactive measures to steer its development in a direction that benefits humanity as a whole.</p>
 <p>I believe we need not fear a sensible government regulation in the case of AI adoption, by regulating the commercial applications of AI rather than the basic research. This type of regulation is in place for many consumer products, from food to electronics to pharmaceuticals. In general, new products —whether GMOs, cars, or drugs— cannot be introduced into the market without demonstrated safety and efficacy. Similarly, AI systems should not be allowed to operate commercially if they demonstratively harm some individuals.</p>
 <p>This post is my attempt to shed light into the many ways in which AI can be misused, either accidentally or on purpose, to harm some individuals or populations. The looming question remaining is of course, what can we do, technically and otherwise, to solve these issues? If you’re interested, I can dive into the active research in mitigating AI harms in a future issue.</p>
-
-
 </section>
-
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -724,20 +693,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 <nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./ai-kill-us.html" class="pagination-link" aria-label="Will AI Kill Us All?">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Will AI Kill Us All?</span></span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./hallucinations.html" class="pagination-link" aria-label="Reliable AI needs a New Paradigm">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Reliable AI needs a New Paradigm</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
+<div class="nav-page nav-page-previous">
+<a aria-label="Will AI Kill Us All?" class="pagination-link" href="./ai-kill-us.html">
+<i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>  <span class="chapter-title">Will AI Kill Us All?</span></span>
+</a>
+</div>
+<div class="nav-page nav-page-next">
+<a aria-label="Reliable AI needs a New Paradigm" class="pagination-link" href="./hallucinations.html">
+<span class="nav-page-text"><span class="chapter-number">6</span>  <span class="chapter-title">Reliable AI needs a New Paradigm</span></span> <i class="bi bi-arrow-right-short"></i>
+</a>
+</div>
 </nav>
 </div> <!-- /content -->
 
 
-
-
-</body></html>
+<div class="reader-controls"><button class="reader-btn" id="theme-btn" title="Toggle theme">🌙</button></div><script src="/books/reader.js"></script></body></html>

@@ -1,13 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
-<title>9&nbsp; The Future of AI is Open Source – Mostly Harmless AI</title>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><head>
+<link href="/books/reader.css" rel="stylesheet"/>
+<meta charset="utf-8"/>
+<meta content="quarto-1.5.57" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport"/>
+<title>9  The Future of AI is Open Source – Mostly Harmless AI</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,28 +18,24 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 </style>
-
-
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./road-to-agi.html" rel="next">
-<link href="./alignment.html" rel="prev">
+<meta content="./" name="quarto:offset"/>
+<link href="./road-to-agi.html" rel="next"/>
+<link href="./alignment.html" rel="prev"/>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet"/>
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" id="quarto-text-highlighting-styles" rel="stylesheet"/>
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+<link data-mode="light" href="site_libs/bootstrap/bootstrap-icons.css" id="quarto-bootstrap" rel="stylesheet"/>
+<script id="quarto-search-options" type="application/json">,
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "start",
@@ -64,171 +57,150 @@ ul.task-list li input[type="checkbox"] {
     "search-clear-button-title": "Clear",
     "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
-  }
-}</script>
-
-
+    "search-submit-button-title": "Submit",}</script>
 </head>
-
 <body class="nav-sidebar floating">
-
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./open-source.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">The Future of AI is Open Source</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
+<header class="headroom fixed-top" id="quarto-header">
+<nav class="quarto-secondary-nav">
+<div class="container-fluid d-flex">
+<button aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="quarto-btn-toggle btn" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="button" type="button">
+<i class="bi bi-layout-text-sidebar-reverse"></i>
+</button>
+<nav aria-label="breadcrumb" class="quarto-page-breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./open-source.html"><span class="chapter-number">9</span>  <span class="chapter-title">The Future of AI is Open Source</span></a></li></ol></nav>
+<a aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="flex-grow-1" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="navigation">
+</a>
+<button aria-label="Search" class="btn quarto-search-button" onclick="window.quartoOpenSearch();" type="button">
+<i class="bi bi-search"></i>
+</button>
+</div>
+</nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div class="quarto-container page-columns page-rows-contents page-layout-article" id="quarto-content">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">Mostly Harmless AI</a> 
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
-  </div>
+<nav class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" id="quarto-sidebar">
+<div class="pt-lg-2 mt-2 text-left sidebar-header">
+<div class="sidebar-title mb-0 py-0">
+<a href="./">Mostly Harmless AI</a>
+</div>
+</div>
+<div class="mt-2 flex-shrink-0 align-items-center">
+<div class="sidebar-search">
+<div class="" id="quarto-search" title="Search"></div>
+</div>
+</div>
+<div class="sidebar-menu-container">
+<ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./index.html">
+<span class="menu-text">Preface</span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./foreword.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Beyond Optimism and Doom: Finding a Third Path in AI Discourse</span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./foreword.html">
+<span class="menu-text">Beyond Optimism and Doom: Finding a Third Path in AI Discourse</span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./prologue.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The Age of Artificial Intelligence</span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./prologue.html">
+<span class="menu-text">The Age of Artificial Intelligence</span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./coding-is-dead.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Coding is Dead; Long Live Coding!</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./coding-is-dead.html">
+<span class="menu-text"><span class="chapter-number">1</span>  <span class="chapter-title">Coding is Dead; Long Live Coding!</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./education.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The AI Revolution We Don’t Need</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./education.html">
+<span class="menu-text"><span class="chapter-number">2</span>  <span class="chapter-title">The AI Revolution We Don’t Need</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./beyond-chatbot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Beyond the Chatbot Revolution</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./beyond-chatbot.html">
+<span class="menu-text"><span class="chapter-number">3</span>  <span class="chapter-title">Beyond the Chatbot Revolution</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./ai-kill-us.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Will AI Kill Us All?</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./ai-kill-us.html">
+<span class="menu-text"><span class="chapter-number">4</span>  <span class="chapter-title">Will AI Kill Us All?</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./risks.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The Actual Risks of AI</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./risks.html">
+<span class="menu-text"><span class="chapter-number">5</span>  <span class="chapter-title">The Actual Risks of AI</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./hallucinations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Reliable AI needs a New Paradigm</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./hallucinations.html">
+<span class="menu-text"><span class="chapter-number">6</span>  <span class="chapter-title">Reliable AI needs a New Paradigm</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./reasoning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Large Language Models Cannot Reason</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./reasoning.html">
+<span class="menu-text"><span class="chapter-number">7</span>  <span class="chapter-title">Large Language Models Cannot Reason</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./alignment.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Why AI Alignment is So Hard</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./alignment.html">
+<span class="menu-text"><span class="chapter-number">8</span>  <span class="chapter-title">Why AI Alignment is So Hard</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./open-source.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">The Future of AI is Open Source</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link active" href="./open-source.html">
+<span class="menu-text"><span class="chapter-number">9</span>  <span class="chapter-title">The Future of AI is Open Source</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./road-to-agi.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">The Road to AGI</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./road-to-agi.html">
+<span class="menu-text"><span class="chapter-number">10</span>  <span class="chapter-title">The Road to AGI</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./epilogue.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The Road Ahead</span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./epilogue.html">
+<span class="menu-text">The Road Ahead</span></a>
+</div>
 </li>
-    </ul>
-    </div>
+</ul>
+</div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div class="quarto-sidebar-collapse-item" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" id="quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#what-does-open-source-ai-look-like" id="toc-what-does-open-source-ai-look-like" class="nav-link active" data-scroll-target="#what-does-open-source-ai-look-like">What does open-source AI look like?</a></li>
-  <li><a href="#to-open-source-or-not-to-open-source" id="toc-to-open-source-or-not-to-open-source" class="nav-link" data-scroll-target="#to-open-source-or-not-to-open-source">To open-source or not to open-source</a></li>
-  <li><a href="#the-advantage-of-open-sourcing" id="toc-the-advantage-of-open-sourcing" class="nav-link" data-scroll-target="#the-advantage-of-open-sourcing">The advantage of open-sourcing</a></li>
-  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
-  </ul>
+<div class="sidebar margin-sidebar" id="quarto-margin-sidebar">
+<nav class="toc-active" id="TOC" role="doc-toc">
+<h2 id="toc-title">Table of contents</h2>
+<ul>
+<li><a class="nav-link active" data-scroll-target="#what-does-open-source-ai-look-like" href="#what-does-open-source-ai-look-like" id="toc-what-does-open-source-ai-look-like">What does open-source AI look like?</a></li>
+<li><a class="nav-link" data-scroll-target="#to-open-source-or-not-to-open-source" href="#to-open-source-or-not-to-open-source" id="toc-to-open-source-or-not-to-open-source">To open-source or not to open-source</a></li>
+<li><a class="nav-link" data-scroll-target="#the-advantage-of-open-sourcing" href="#the-advantage-of-open-sourcing" id="toc-the-advantage-of-open-sourcing">The advantage of open-sourcing</a></li>
+<li><a class="nav-link" data-scroll-target="#conclusions" href="#conclusions" id="toc-conclusions">Conclusions</a></li>
+</ul>
 </nav>
-    </div>
+</div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
+<header class="quarto-title-block default" id="title-block-header">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">The Future of AI is Open Source</span></h1>
+<h1 class="title"><span class="chapter-number">9</span>  <span class="chapter-title">The Future of AI is Open Source</span></h1>
 </div>
-
-
-
 <div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
+</div>
 </header>
-
-
 <p>I strongly believe in the potential of open source. Open source software offers numerous benefits over closed source. Over the past 30 years, we have witnessed the growth of this movement from being a fringe ideology to becoming a widely embraced mindset, even by the world’s leading companies.</p>
 <p>Nevertheless, not everything can be open source. Building a business around software requires having some proprietary elements that can be monetized for profit. However, many successful business models involve a hybrid approach, where certain portions of your codebase are open-sourced while others remain closed-source.</p>
 <p>One effective approach to capitalize on open source is releasing your codebase as an open-source project, allowing you to leverage the community effect. In addition, you can offer premium services such as cloud hosting and enterprise solutions, including single sign-on and customer service. This is particularly advantageous for those who prefer not to self-host.</p>
@@ -237,7 +209,7 @@ ul.task-list li input[type="checkbox"] {
 <p>On the other hand, maintaining a closed part of your application has its benefits. For instance, you can close your user interface while releasing the backend and core functionality. By offering a cloud-hosted user interface, along with advanced features like drag-and-drop interfaces and logging administration, you can cater to enterprise users willing to pay for these services. Furthermore, you can also provide customer service, on-premise deployment, and develop client-specific plugins or components.</p>
 <p>As AI becomes the foundation of the new Software 2.0 paradigm, the discussion between open- and closed-source software becomes central issue. What does open-source AI look like? Are there clear benefits to open-sourcing at least some part of your AI stack? Can you gain more by giving away more?</p>
 <p>In this issue, I want to explore these questions, focusing on the rise of large language models as the backbone infrastructure for a significant part of the AI applications of the near future.</p>
-<section id="what-does-open-source-ai-look-like" class="level2">
+<section class="level2" id="what-does-open-source-ai-look-like">
 <h2 class="anchored" data-anchor-id="what-does-open-source-ai-look-like">What does open-source AI look like?</h2>
 <p>Open source is progressively dominating the realm of software, starting from the core layers and expanding towards the infrastructure layers of computing. The primary type of software likely to be open source is infrastructure software. For instance, operating systems, virtualization software, and many drivers are open source. Moving up the hierarchy, development tools also fall within the realm of open source, as they form a slightly higher infrastructure level.</p>
 <p>However, regarding consumer applications, open source does not excel similarly. Open-source compilers tend to be superior, but image, video, and audio editors are not competitive compared to closed-source alternatives such as Photoshop or other Adobe products. Similarly, open-source video games are far behind their closed-source counterparts regarding entertainment value. The closer the software is to lower-level implementation details, the more beneficial it becomes to adopt an open-source approach.</p>
@@ -247,7 +219,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Moreover, there is an opportunity to sell fine-tuned versions of models for commercializable domains. For instance, I take an open-source model trained on large data. I then fine-tuned it on a small amount of data specifically for, say, the market valuation domain. This model can be used for generating business models, business plans, enterprise emails, quarterly reports, etc.</p>
 <p>Essentially, you can take one of these infrastructure-like, foundational models, fine-tune it for a specific domain using your collected data and computational and human resources, and it would make sense for you to sell it. Thus, as we get closer to the application layer, it becomes more sensible to keep things closed.</p>
 </section>
-<section id="to-open-source-or-not-to-open-source" class="level2">
+<section class="level2" id="to-open-source-or-not-to-open-source">
 <h2 class="anchored" data-anchor-id="to-open-source-or-not-to-open-source">To open-source or not to open-source</h2>
 <p>Then why don’t companies like Google or OpenAI open source their foundation models? This question is worth pondering because not all companies are keen on open-sourcing AI. Currently, only Meta is trying to open-source very large models. The remaining open-source models are typically smaller and built upon existing open-source foundation models. The large-scale models are generally kept closed source.</p>
 <p>So, what is preventing companies like Google and OpenAI from joining the open-sourcing trend? Baring some extreme views, the fundamental argument these companies have to choose open or closed source is, of course, an economic one. What is the strategy that will provide the most profit? Call me a cynic, but I don’t get fooled by their appeal to safety or privacy principles. These are for-profit companies, so their incentives are aligned with their investors —and there’s nothing inherently wrong about that, if you ask me.</p>
@@ -263,12 +235,12 @@ ul.task-list li input[type="checkbox"] {
 <p>Consequently, they are not bothered by granting these smaller companies a more convenient life by releasing their models. Their primary concern is making it harder for Google, Amazon, Microsoft, and Apple to outpace them. Hence, by outmaneuvering these four entities, they can benefit fully from the clout of being open-source friendly without any of the business drawbacks.</p>
 <p>The reasoning behind Meta’s decision to open source Llama, I think, is to strengthen their status as a cool company while safeguarding their tech from its real competitors. Despite not sharing Meta’s ethos, I agree with their choice to open-source AI. This move benefits the community, advances scientific research, and enhances business prospects when embraced by all.</p>
 </section>
-<section id="the-advantage-of-open-sourcing" class="level2">
+<section class="level2" id="the-advantage-of-open-sourcing">
 <h2 class="anchored" data-anchor-id="the-advantage-of-open-sourcing">The advantage of open-sourcing</h2>
 <p>However, doesn’t open-sourcing your model put you at a disadvantage in a world where no one else is doing it? Aren’t companies like Google, Microsoft, Amazon, and Apple, by building foundation models but not open-sourcing them, still beating you to the punch?</p>
 <p>I believe not. Open sourcing a foundation model and allowing a vast community of researchers, hobbyists, entrepreneurs, start-ups, and students worldwide to contribute offers numerous advantages. The extensive collaboration from these groups enables the development of innovative ideas and products on top of the foundation model. I argue this far outweighs any potential drawbacks of keeping the model closed and restricting product development solely to the company.</p>
 <p>In the future, all our creations will rely either on closed services like ChatGPT or open-source models like Llama. The considerable brand recognition gained from having a community of users of your foundation model is an invaluable asset. However, it is not the sole or most significant benefit of open-sourcing your foundation models.</p>
-<p>That is collaboration. You see, the most significant issue that needs to be addressed in language models if they are to have lasting value and not be just a passing trend is&nbsp;<em>reliability</em>. The challenges of hallucinations, prompt reproducibility, and biases can all hinder the progress of language model technology and even bring a new AI winter. To truly become more than mere entertainment tools and instead serve as foundational infrastructure that can be relied upon for building applications, language models must tackle these fundamental problems.</p>
+<p>That is collaboration. You see, the most significant issue that needs to be addressed in language models if they are to have lasting value and not be just a passing trend is <em>reliability</em>. The challenges of hallucinations, prompt reproducibility, and biases can all hinder the progress of language model technology and even bring a new AI winter. To truly become more than mere entertainment tools and instead serve as foundational infrastructure that can be relied upon for building applications, language models must tackle these fundamental problems.</p>
 <p>However, solving these problems requires going beyond the API layer. Any solution to hallucinations requires modifying the model —adjusting the weights, altering the architecture, or refining the sampling process. These changes must be implemented at the model level rather than relying solely on API access.</p>
 <p>With open-source models, anyone can contribute to addressing hallucinations, grounding the model, improving biased language, enhancing adherence to prompting, and increasing reliability. The availability of model weights and access to the source allows for a seamless combination of efforts. This approach allows for the multiple benefits of a distributed community of researchers and developers addressing the core issues, in the same sense that reliability issues of traditional software are often solved by open collaboration.</p>
 <p>In contrast, if you operate on a closed-source basis and keep the model internally within your company, even if you have the power to invest as much money as you desire, the resource that remains most restricted is the availability of sufficiently skilled individuals who can tackle these challenges effectively.</p>
@@ -277,7 +249,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Open source is the key to scaling in human resources. This model promises unlimited and mostly free access to a vast pool of talented individuals eager to work with you. In contrast, closed source restricts your access to only those individuals you can persuade to work for you, often depending on the salary you offer. No matter the amount you pay, there will always be exceptionally bright individuals who choose to work for your competitors instead of you.</p>
 <p>Open-source language models, such as Llama, have the leading edge here. Unlike GPT, the community will develop and improve Llama and its successors. This means they can become more reliable, customizable, and practical compared to closed-source models. As open-source OSes, compilers, databases, and development tools have demonstrated before, I think open-source language models will eventually become more robust and generally superior to anything you can develop in closed source.</p>
 </section>
-<section id="conclusions" class="level2">
+<section class="level2" id="conclusions">
 <h2 class="anchored" data-anchor-id="conclusions">Conclusions</h2>
 <p>The current state of open-source language models versus closed-source models is far from the ideal I just painted. Today, closed-source models far exceed open-source models regarding reliability and robustness. Anyone who has attempted to build applications using GPT through OpenAI’s API and then transitioned to Llama or other open-source models has witnessed their unreliability and general lack of robustness.</p>
 <p>However, this situation is not unique to language models. This unreliability is expected in initial open-source projects, as the first generation of any open-source software is typically subpar.</p>
@@ -285,10 +257,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Nevertheless, we witness open-source scalability in infrastructure-oriented software. This is because the potential of open source is nearly limitless, tapping into a vast pool of human contributors. In contrast, closed-source tools remain constrained by the number of individuals they can hire. As a result, open source holds the advantage in the long run, at least at the foundational level.</p>
 <p>Currently, open-source machine learning and language models are in their early stages. Therefore, you should expect closed-source models to outperform open-source models for the next few iterations, perhaps even a few years. However, as history has demonstrated, open source will eventually catch up and become the optimal solution. Closed-source AI companies will gradually transition to open-source and contribute to the community. Eventually, the infrastructure layer of AI will become open-source, like most software infrastructure has.</p>
 <p>For developers today, I advise continuing to use closed-source models for production but keeping tabs on the open-source landscape. Become an early adopter and contributor, and help enhance the robustness and accessibility of AI for future generations. Computer Science is undergoing a massive revolution akin to the 60s and 70s. This time, you can be one of the pioneers.</p>
-
-
 </section>
-
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -711,20 +680,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 <nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./alignment.html" class="pagination-link" aria-label="Why AI Alignment is So Hard">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Why AI Alignment is So Hard</span></span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./road-to-agi.html" class="pagination-link" aria-label="The Road to AGI">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">The Road to AGI</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
+<div class="nav-page nav-page-previous">
+<a aria-label="Why AI Alignment is So Hard" class="pagination-link" href="./alignment.html">
+<i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>  <span class="chapter-title">Why AI Alignment is So Hard</span></span>
+</a>
+</div>
+<div class="nav-page nav-page-next">
+<a aria-label="The Road to AGI" class="pagination-link" href="./road-to-agi.html">
+<span class="nav-page-text"><span class="chapter-number">10</span>  <span class="chapter-title">The Road to AGI</span></span> <i class="bi bi-arrow-right-short"></i>
+</a>
+</div>
 </nav>
 </div> <!-- /content -->
 
 
-
-
-</body></html>
+<div class="reader-controls"><button class="reader-btn" id="theme-btn" title="Toggle theme">🌙</button></div><script src="/books/reader.js"></script></body></html>

@@ -1,13 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
-<title>8&nbsp; Why AI Alignment is So Hard – Mostly Harmless AI</title>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><head>
+<link href="/books/reader.css" rel="stylesheet"/>
+<meta charset="utf-8"/>
+<meta content="quarto-1.5.57" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport"/>
+<title>8  Why AI Alignment is So Hard – Mostly Harmless AI</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,28 +18,24 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 </style>
-
-
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./open-source.html" rel="next">
-<link href="./reasoning.html" rel="prev">
+<meta content="./" name="quarto:offset"/>
+<link href="./open-source.html" rel="next"/>
+<link href="./reasoning.html" rel="prev"/>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet"/>
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" id="quarto-text-highlighting-styles" rel="stylesheet"/>
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+<link data-mode="light" href="site_libs/bootstrap/bootstrap-icons.css" id="quarto-bootstrap" rel="stylesheet"/>
+<script id="quarto-search-options" type="application/json">,
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "start",
@@ -64,195 +57,174 @@ ul.task-list li input[type="checkbox"] {
     "search-clear-button-title": "Clear",
     "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
-  }
-}</script>
-
-
+    "search-submit-button-title": "Submit",}</script>
 </head>
-
 <body class="nav-sidebar floating">
-
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./alignment.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Why AI Alignment is So Hard</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
+<header class="headroom fixed-top" id="quarto-header">
+<nav class="quarto-secondary-nav">
+<div class="container-fluid d-flex">
+<button aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="quarto-btn-toggle btn" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="button" type="button">
+<i class="bi bi-layout-text-sidebar-reverse"></i>
+</button>
+<nav aria-label="breadcrumb" class="quarto-page-breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./alignment.html"><span class="chapter-number">8</span>  <span class="chapter-title">Why AI Alignment is So Hard</span></a></li></ol></nav>
+<a aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="flex-grow-1" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="navigation">
+</a>
+<button aria-label="Search" class="btn quarto-search-button" onclick="window.quartoOpenSearch();" type="button">
+<i class="bi bi-search"></i>
+</button>
+</div>
+</nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div class="quarto-container page-columns page-rows-contents page-layout-article" id="quarto-content">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">Mostly Harmless AI</a> 
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
-  </div>
+<nav class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" id="quarto-sidebar">
+<div class="pt-lg-2 mt-2 text-left sidebar-header">
+<div class="sidebar-title mb-0 py-0">
+<a href="./">Mostly Harmless AI</a>
+</div>
+</div>
+<div class="mt-2 flex-shrink-0 align-items-center">
+<div class="sidebar-search">
+<div class="" id="quarto-search" title="Search"></div>
+</div>
+</div>
+<div class="sidebar-menu-container">
+<ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./index.html">
+<span class="menu-text">Preface</span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./foreword.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Beyond Optimism and Doom: Finding a Third Path in AI Discourse</span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./foreword.html">
+<span class="menu-text">Beyond Optimism and Doom: Finding a Third Path in AI Discourse</span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./prologue.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The Age of Artificial Intelligence</span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./prologue.html">
+<span class="menu-text">The Age of Artificial Intelligence</span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./coding-is-dead.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Coding is Dead; Long Live Coding!</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./coding-is-dead.html">
+<span class="menu-text"><span class="chapter-number">1</span>  <span class="chapter-title">Coding is Dead; Long Live Coding!</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./education.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The AI Revolution We Don’t Need</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./education.html">
+<span class="menu-text"><span class="chapter-number">2</span>  <span class="chapter-title">The AI Revolution We Don’t Need</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./beyond-chatbot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Beyond the Chatbot Revolution</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./beyond-chatbot.html">
+<span class="menu-text"><span class="chapter-number">3</span>  <span class="chapter-title">Beyond the Chatbot Revolution</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./ai-kill-us.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Will AI Kill Us All?</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./ai-kill-us.html">
+<span class="menu-text"><span class="chapter-number">4</span>  <span class="chapter-title">Will AI Kill Us All?</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./risks.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The Actual Risks of AI</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./risks.html">
+<span class="menu-text"><span class="chapter-number">5</span>  <span class="chapter-title">The Actual Risks of AI</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./hallucinations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Reliable AI needs a New Paradigm</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./hallucinations.html">
+<span class="menu-text"><span class="chapter-number">6</span>  <span class="chapter-title">Reliable AI needs a New Paradigm</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./reasoning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Large Language Models Cannot Reason</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./reasoning.html">
+<span class="menu-text"><span class="chapter-number">7</span>  <span class="chapter-title">Large Language Models Cannot Reason</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./alignment.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Why AI Alignment is So Hard</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link active" href="./alignment.html">
+<span class="menu-text"><span class="chapter-number">8</span>  <span class="chapter-title">Why AI Alignment is So Hard</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./open-source.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">The Future of AI is Open Source</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./open-source.html">
+<span class="menu-text"><span class="chapter-number">9</span>  <span class="chapter-title">The Future of AI is Open Source</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./road-to-agi.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">The Road to AGI</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./road-to-agi.html">
+<span class="menu-text"><span class="chapter-number">10</span>  <span class="chapter-title">The Road to AGI</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./epilogue.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The Road Ahead</span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./epilogue.html">
+<span class="menu-text">The Road Ahead</span></a>
+</div>
 </li>
-    </ul>
-    </div>
+</ul>
+</div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div class="quarto-sidebar-collapse-item" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" id="quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#the-ai-alignment-problem" id="toc-the-ai-alignment-problem" class="nav-link active" data-scroll-target="#the-ai-alignment-problem">The AI alignment problem</a>
-  <ul class="collapse">
-  <li><a href="#defining-ai-alignment" id="toc-defining-ai-alignment" class="nav-link" data-scroll-target="#defining-ai-alignment">Defining AI alignment</a></li>
-  <li><a href="#the-need-for-alignment-in-artificial-intelligence" id="toc-the-need-for-alignment-in-artificial-intelligence" class="nav-link" data-scroll-target="#the-need-for-alignment-in-artificial-intelligence">The need for alignment in Artificial Intelligence</a></li>
-  </ul></li>
-  <li><a href="#why-ai-alignment-is-hard" id="toc-why-ai-alignment-is-hard" class="nav-link" data-scroll-target="#why-ai-alignment-is-hard">Why AI alignment is hard</a>
-  <ul class="collapse">
-  <li><a href="#implicit-contexts" id="toc-implicit-contexts" class="nav-link" data-scroll-target="#implicit-contexts">Implicit contexts</a></li>
-  <li><a href="#unclear-trade-offs" id="toc-unclear-trade-offs" class="nav-link" data-scroll-target="#unclear-trade-offs">Unclear trade-offs</a></li>
-  <li><a href="#imperfect-metrics" id="toc-imperfect-metrics" class="nav-link" data-scroll-target="#imperfect-metrics">Imperfect metrics</a></li>
-  <li><a href="#reward-hacking" id="toc-reward-hacking" class="nav-link" data-scroll-target="#reward-hacking">Reward hacking</a></li>
-  <li><a href="#internal-objectives" id="toc-internal-objectives" class="nav-link" data-scroll-target="#internal-objectives">Internal objectives</a></li>
-  </ul></li>
-  <li><a href="#is-it-all-lost" id="toc-is-it-all-lost" class="nav-link" data-scroll-target="#is-it-all-lost">Is it all lost?</a></li>
-  </ul>
+<div class="sidebar margin-sidebar" id="quarto-margin-sidebar">
+<nav class="toc-active" id="TOC" role="doc-toc">
+<h2 id="toc-title">Table of contents</h2>
+<ul>
+<li><a class="nav-link active" data-scroll-target="#the-ai-alignment-problem" href="#the-ai-alignment-problem" id="toc-the-ai-alignment-problem">The AI alignment problem</a>
+<ul class="collapse">
+<li><a class="nav-link" data-scroll-target="#defining-ai-alignment" href="#defining-ai-alignment" id="toc-defining-ai-alignment">Defining AI alignment</a></li>
+<li><a class="nav-link" data-scroll-target="#the-need-for-alignment-in-artificial-intelligence" href="#the-need-for-alignment-in-artificial-intelligence" id="toc-the-need-for-alignment-in-artificial-intelligence">The need for alignment in Artificial Intelligence</a></li>
+</ul></li>
+<li><a class="nav-link" data-scroll-target="#why-ai-alignment-is-hard" href="#why-ai-alignment-is-hard" id="toc-why-ai-alignment-is-hard">Why AI alignment is hard</a>
+<ul class="collapse">
+<li><a class="nav-link" data-scroll-target="#implicit-contexts" href="#implicit-contexts" id="toc-implicit-contexts">Implicit contexts</a></li>
+<li><a class="nav-link" data-scroll-target="#unclear-trade-offs" href="#unclear-trade-offs" id="toc-unclear-trade-offs">Unclear trade-offs</a></li>
+<li><a class="nav-link" data-scroll-target="#imperfect-metrics" href="#imperfect-metrics" id="toc-imperfect-metrics">Imperfect metrics</a></li>
+<li><a class="nav-link" data-scroll-target="#reward-hacking" href="#reward-hacking" id="toc-reward-hacking">Reward hacking</a></li>
+<li><a class="nav-link" data-scroll-target="#internal-objectives" href="#internal-objectives" id="toc-internal-objectives">Internal objectives</a></li>
+</ul></li>
+<li><a class="nav-link" data-scroll-target="#is-it-all-lost" href="#is-it-all-lost" id="toc-is-it-all-lost">Is it all lost?</a></li>
+</ul>
 </nav>
-    </div>
+</div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
+<header class="quarto-title-block default" id="title-block-header">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Why AI Alignment is So Hard</span></h1>
+<h1 class="title"><span class="chapter-number">8</span>  <span class="chapter-title">Why AI Alignment is So Hard</span></h1>
 </div>
-
-
-
 <div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
+</div>
 </header>
-
-
 <p>In the AI safety community, concerns range from existential risks, where some believe super intelligent AI will inevitably harm us, to those focused on present issues like misuse of AI, perpetuating biases, discrimination, and spreading disinformation. However, most solutions to these problems rely on addressing the AI alignment problem.</p>
 <p>AI alignment ensures that an artificial intelligence system’s output aligns with user preferences beyond superficial optimization metrics. The goal is for the AI to genuinely solve the problem we care about, rather than just what we told it to do. This challenge arises because describing user preferences is incredibly difficult. Often, what we tell the AI we want is only a rough approximation of our true desires. Alignment aims to bridge that gap by helping AI understand our genuine intentions from our limited explanations.</p>
 <p>Now let’s explore why AI alignment may be the most difficult problem in computer science. In this article, we’ll examine why AI safety, specifically alignment, could be the hardest engineering challenge. We’ll start by defining AI alignment as ensuring an artificial intelligence system behaves according to user expectations, preferences, or values in various ways.</p>
-<section id="the-ai-alignment-problem" class="level2">
+<section class="level2" id="the-ai-alignment-problem">
 <h2 class="anchored" data-anchor-id="the-ai-alignment-problem">The AI alignment problem</h2>
 <p>Why Is AI Alignment the Hardest Problem in Computer Science? In this section, we will explore why AI safety, specifically AI alignment, is potentially the most difficult challenge in engineering.</p>
-<section id="defining-ai-alignment" class="level3">
+<section class="level3" id="defining-ai-alignment">
 <h3 class="anchored" data-anchor-id="defining-ai-alignment">Defining AI alignment</h3>
 <p>AI alignment involves ensuring that an artificial intelligence system behaves according to a user’s expectations, preferences, or values. The interpretations can vary depending on context, but in general, the expectation is that a system will perform <em>aligned with</em> the user interests, that is, in a way that satisfies the user <em>actual needs and wants</em>, and not just some superficial approximation of them.</p>
 </section>
-<section id="the-need-for-alignment-in-artificial-intelligence" class="level3">
+<section class="level3" id="the-need-for-alignment-in-artificial-intelligence">
 <h3 class="anchored" data-anchor-id="the-need-for-alignment-in-artificial-intelligence">The need for alignment in Artificial Intelligence</h3>
 <p>First, lets question why alignment is necessary in artificial intelligence but not in other high-tech products engineering tools such as cars, planes, or rockets. The primary reason lies in the level of complexity and the nature of the interfacing when dealing AI systems compared to other engineering tools.</p>
-<section id="what-makes-ai-different-from-other-high-end-technologies-we-have" class="level4">
+<section class="level4" id="what-makes-ai-different-from-other-high-end-technologies-we-have">
 <h4 class="anchored" data-anchor-id="what-makes-ai-different-from-other-high-end-technologies-we-have">What makes AI different from other high-end technologies we have?</h4>
 <p>The more advanced a tool, the more you can focus on telling it what you want to do instead of how to do it. For example, with simple tools like a hammer, you control every action. With complex tools like cars, you still don’t say “reach the destination” –at least not yet. Instead, you perform some mid-level actions like steering and accelerating, which in turn translate to lower-level actions like moving pistons.</p>
 <p>That is, as the tool becomes more advanced, the way you use it becomes closer that what you want and farther from what the tool must do to achieve that objective. Artificial intelligence lies in the declarative end, the point where you only tell the tool your end goal and let it figure out all the steps to achieve that. Actually, we could make the case that AI <em>can be defined</em> precisely as the field dedicated to making tools that do what you want.</p>
@@ -268,18 +240,18 @@ ul.task-list li input[type="checkbox"] {
 </section>
 </section>
 </section>
-<section id="why-ai-alignment-is-hard" class="level2">
+<section class="level2" id="why-ai-alignment-is-hard">
 <h2 class="anchored" data-anchor-id="why-ai-alignment-is-hard">Why AI alignment is hard</h2>
 <p>Many reasons make AI alignment one of the hardest problem a system designer can face. Some of those reasons involve our incapability to produce a robust enough description of the task we want to solve –that is, we cannot fully describe the context and all the implicit assumptions and restrictions that apply in that context. These reasons are related to <strong>the nature of the problem</strong> itself –getting any intelligence agent to do <em>what you want</em> is intrinsically hard; if you’re a parent, you know exactly what I mean. Other reasons are related with <strong>the nature of the solution</strong> we currently have, that is, systems built with machine learning, trained on imperfect datasets to maximize imperfect proxy metrics.</p>
 <p>These are interrelated but separate challenges, so let’s take them one at a time.</p>
-<section id="implicit-contexts" class="level3">
+<section class="level3" id="implicit-contexts">
 <h3 class="anchored" data-anchor-id="implicit-contexts">Implicit contexts</h3>
 <p>When using a regular tool –like a hammer, a calculator, or Excel– you have an end goal in mind, but the tool doesn’t need to understand that goal; it just needs to follow your precise instructions. However, when working with AI, there are many assumptions about how the world works that aren’t explicitly described in your instructions.</p>
 <p>For instance, if you tell an advanced AI to make coffee, there are numerous implicit restrictions: don’t destroy the coffee machine, don’t harm any animals, don’t walk through walls, etc. Humans generally understand these unstated rules because we share a common understanding of the world. So there is a significant difference between systems that require specific instructions on how to perform tasks and those that simply need to be told what tasks to accomplish.</p>
 <p>When you want to tell a system <em>what</em> to do instead of <em>how</em> to do it, you must be very precise in specifying everything it needs to know. In a restricted domain, the constraints may be simple enough to be explicitly encoded or learned from data. For example, in a factory setting, a robotic arm is simply physically incapable of destroying the world, so it doesn’t need to know much about anything outside the narrow task of car painting.</p>
 <p>However, training systems for open-ended decision-making in the real world is far more complex. It’s hard to imagine a training scenario that is as intricate as real life. Gaining all the necessary experience to understand the human world like humans do would require something like raising a child from scratch. And the majority of assumptions in those contexts can’t be learned from data, because we simply don’t have training data for “how to be a human”.</p>
 </section>
-<section id="unclear-trade-offs" class="level3">
+<section class="level3" id="unclear-trade-offs">
 <h3 class="anchored" data-anchor-id="unclear-trade-offs">Unclear trade-offs</h3>
 <p>However, the implicit context problem carries an even bigger challenge. While many of the things an AI must care about implicitly are <em>restrictions</em> –e.g., do not kill the passenger– the hardest problem is when they involve <em>tradeoffs</em> instead.</p>
 <p>This is a fundamental issue built into most optimization problems in the real world. On one hand, you want a system to achieve its objective as effectively as possible. On the other hand, you want it to do so with minimal side effects. These two goals are often contradictory – for example, driving fast versus driving safely.</p>
@@ -290,7 +262,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Furthermore, for any value you fail to quantify, your AI will be compelled to prioritize performance over that factor, since there’s no penalty for it. So, it’s crucial to quantify all critical side effects. If you don’t specify a crucial dimension –like car damage–, you’re in big trouble. To save time, an AI system might trade off any arbitrarily high amount of car damage for a small reduction in time.</p>
 <p>Since saving even minute of time has some positive value, and no amount of car damage has any negative value, as long as the car reaches the destination –i.e., it is not absolutely destroyed– the AI is free to choose a marginally better route regardless of how much more damage the car takes. You’ll end up with a system that reaches the destination as fast as possible but considers every car disposable.</p>
 </section>
-<section id="imperfect-metrics" class="level3">
+<section class="level3" id="imperfect-metrics">
 <h3 class="anchored" data-anchor-id="imperfect-metrics">Imperfect metrics</h3>
 <p>It is by now well-known to every system’s designer that when a proxy metric becomes an objective, it loses its usefulness as a metric. Yet, this is the dialy job of a machine learning engineer. In machine learning, we are always turning proxy metrics into optimization objectives because, in a sense, <em>that is the only thing we can do</em>.</p>
 <p>In a typical machine learning problem, we have to turn a complex task into something measurable that our AI can optimize for. So, for the AI, the metrics <em>are</em> the actual task. This isn’t too much of a problem if systems aren’t very good at optimizing metrics, as they tend to work closely to your intended outcome. But as AI systems become better at optimizing our metrics, they can much better exploit the difference between the proxy metric and the actual desired performance.</p>
@@ -299,7 +271,7 @@ ul.task-list li input[type="checkbox"] {
 <p>This phenomenon is one of the many ways in which <em>overfitting</em> shows up in machine learning, and it’s well-known that the harder you optimize a metric the more likely your system will learn the quirks of that specific metric and fail to generalize to the actual situations where you expect it to perform.</p>
 <p>And while this can and will happen by accident, there as an even more insidious problem. The smarter the system, the more likely it will, <em>intentionally</em>, learn to game the system.</p>
 </section>
-<section id="reward-hacking" class="level3">
+<section class="level3" id="reward-hacking">
 <h3 class="anchored" data-anchor-id="reward-hacking">Reward hacking</h3>
 <p>Imperfect metrics are a problem in all machine learning scenarios, but they become even more challenging in reinforcement learning. As a quick recap, reinforcement learning is when, instead of showing an AI examples of a well-done task, you just let it try things out, and reward it when those attempts lead to progress.</p>
 <p>The reason we need reinforcement learning is because, for many complex problems, it is simply impossible to produce a sufficiently large dataset of good examples. Sometimes it’s unfeasible –e.g., collecting thousands of hours of expert drivers across many scenarios– and sometimes is, even in principle, impossible –e.g., when you’re building a system to do something you yourself can’t do, like, dunno flying a drone through a building in flames?</p>
@@ -310,7 +282,7 @@ ul.task-list li input[type="checkbox"] {
 <p>However, there are still challenges even with RLHF. Your evaluator AI can learn the wrong model from your feedback, because, again, it is being trained to optimize some imperfect metric –like minimizing the error between its predictions and yours. In the end, you’re pushing the problem of reward hacking one level up, but not getting rid of it.</p>
 <p>And finally, even if your system behaves as intended, how can you know it is actually doing so because it <em>truly understands your intentions</em>?</p>
 </section>
-<section id="internal-objectives" class="level3">
+<section class="level3" id="internal-objectives">
 <h3 class="anchored" data-anchor-id="internal-objectives">Internal objectives</h3>
 <p>The final challenge I want to address is the interplay between internal and external objectives. Today, the most powerful learning algorithms and problem-solving methods we have are all based on optimization. Optimization algorithms power machine learning, symbolic problem-solving, operations research, logistics, planning, design, etc. As AI designers, if we turn optimization to create powerful decision-making algorithms and train a highly intelligent AI, it’s likely that the AI’s internal processes will also involve optimization.</p>
 <p>What this means is, suppose you train a highly capable AI agent to solve problems in the real world. This agent would be capable of long-term planning, self-reflection, and updating its own plan as it explores the world. It is sensible to think that, whatever this agent is doing internally to plan its solution, it will use some form of optimization algorithm. Maybe the agent will rediscover reinforcement learning and use it to train in real time its own mini-agents (like tiny homunculi inside its artificial mind).</p>
@@ -320,15 +292,12 @@ ul.task-list li input[type="checkbox"] {
 <p>In essence, we can only evaluate how agents –humans or not– act, but not their true motivations. And if someone always acts as if their motivations are aligned with ours, it may be difficult to identify any misalignment that could arise in the future. Maybe they are aligned with 98% of our objectives, or maybe only while there is no solar eclipse or some other weird stuff like that. We simply can’t know for sure.</p>
 </section>
 </section>
-<section id="is-it-all-lost" class="level2">
+<section class="level2" id="is-it-all-lost">
 <h2 class="anchored" data-anchor-id="is-it-all-lost">Is it all lost?</h2>
 <p>I hope you now understand why this is a devilishly hard problem to solve. The very nature of intelligence makes this an adversarial situation. We want systems that are both highly self-sufficient but also very dependable. We need them to think and act on their own, but we need to trust them. And the smarter they become, the more blindly that trust has to be, and the more potential for catastrophe we find ourselves in.</p>
 <p>All is not lost, though. There’s an enormous body of research in the alignment problem, and while there are no silver bullets yet –and perhaps never will– we’ve made significant progress.</p>
 <p>One final thought. So far we’ve been focusing on <em>internal</em> challenges to AI alignment –challenges related to the task and the solution. But there’s an elephant in the room. AI alignment is literally having an AI <em>aligned with our values</em>. But <em>whose</em> values? We’re all different, and we all have different opinions about what’s important. So that’s a crucial conversation we need to have as these systems start to impact the daily lives of people all around the world.</p>
-
-
 </section>
-
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -751,20 +720,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 <nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./reasoning.html" class="pagination-link" aria-label="Large Language Models Cannot Reason">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Large Language Models Cannot Reason</span></span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./open-source.html" class="pagination-link" aria-label="The Future of AI is Open Source">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">The Future of AI is Open Source</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
+<div class="nav-page nav-page-previous">
+<a aria-label="Large Language Models Cannot Reason" class="pagination-link" href="./reasoning.html">
+<i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>  <span class="chapter-title">Large Language Models Cannot Reason</span></span>
+</a>
+</div>
+<div class="nav-page nav-page-next">
+<a aria-label="The Future of AI is Open Source" class="pagination-link" href="./open-source.html">
+<span class="nav-page-text"><span class="chapter-number">9</span>  <span class="chapter-title">The Future of AI is Open Source</span></span> <i class="bi bi-arrow-right-short"></i>
+</a>
+</div>
 </nav>
 </div> <!-- /content -->
 
 
-
-
-</body></html>
+<div class="reader-controls"><button class="reader-btn" id="theme-btn" title="Toggle theme">🌙</button></div><script src="/books/reader.js"></script></body></html>

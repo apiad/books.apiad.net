@@ -260,13 +260,14 @@ main.content tr:nth-child(even) {
   position: fixed;
   bottom: 1.5rem;
   right: 1.5rem;
-  display: flex;
+  display: flex !important;
   flex-direction: column;
   gap: 0.75rem;
   z-index: 10000;
 }
 
 .reader-btn {
+  display: flex !important;
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -307,22 +308,53 @@ body.loading .reader-controls {
   display: none;
 }
 
-/* ========== FOOTER ========== */
+/* ========== FOOTER & NAVIGATION ========== */
+
+/* Hide footer completely */
 footer.footer,
-footer .nav-footer {
-  background-color: var(--bg-primary) !important;
-  color: var(--text-secondary) !important;
+footer .nav-footer,
+footer .nav-footer-left,
+footer .nav-footer-center,
+footer .nav-footer-right,
+.footer-items {
+  display: none !important;
+}
+
+/* Page navigation - keep it visible but clean */
+nav.page-navigation {
+  display: flex !important;
+  justify-content: space-between;
+  padding: 1.5rem;
+  background-color: var(--bg-primary);
   border-top: 1px solid var(--border-color);
 }
 
-footer.footer a,
-footer .nav-footer a {
-  color: var(--link-color) !important;
+.nav-page {
+  padding: 0.5rem 1rem;
 }
 
-footer .nav-footer p,
-footer .nav-footer span {
-  color: var(--text-secondary) !important;
+.nav-page a,
+.pagination-link {
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  color: var(--link-color);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-page a:hover,
+.pagination-link:hover {
+  color: var(--link-hover);
+}
+
+.nav-page-previous {
+  text-align: left;
+}
+
+.nav-page-next {
+  text-align: right;
 }
 
 /* ========== CODE IMPROVEMENTS ========== */
@@ -356,9 +388,23 @@ main.content pre code {
     display: none !important;
   }
   
-  main.content {
-    max-width: 100%;
-    padding: 0;
+  main.content,
+  #quarto-content,
+  .page-layout-article,
+  .page-rows-contents {
+    display: none !important;
+  }
+  
+  body::after {
+    content: "This free version is for web reading only. If you want an offline PDF and ePUB version to read, please support the author on https://books.apiad.net";
+    display: block;
+    padding: 3rem;
+    font-size: 18px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    text-align: center;
+    color: #333;
+    line-height: 1.6;
+    white-space: pre-wrap;
   }
 }
 

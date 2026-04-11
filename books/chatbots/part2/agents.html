@@ -1,13 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
-<title>10&nbsp; Agents – How to Train your Chatbot</title>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><head>
+<link href="/books/reader.css" rel="stylesheet"/>
+<meta charset="utf-8"/>
+<meta content="quarto-1.5.57" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport"/>
+<title>10  Agents – How to Train your Chatbot</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,28 +18,24 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 </style>
-
-
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../part2/finetune.html" rel="next">
-<link href="../part2/code.html" rel="prev">
+<meta content="../" name="quarto:offset"/>
+<link href="../part2/finetune.html" rel="next"/>
+<link href="../part2/code.html" rel="prev"/>
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet"/>
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" id="quarto-text-highlighting-styles" rel="stylesheet"/>
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+<link data-mode="light" href="site_libs/bootstrap/bootstrap-icons.css" id="quarto-bootstrap" rel="stylesheet"/>
+<script id="quarto-search-options" type="application/json">,
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "start",
@@ -64,274 +57,253 @@ ul.task-list li input[type="checkbox"] {
     "search-clear-button-title": "Clear",
     "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
-  }
-}</script>
+    "search-submit-button-title": "Submit",}</script>
 <script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
 <script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
-
-
+<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet"/>
 </head>
-
 <body class="nav-sidebar floating">
-
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../part2/index.html">Techniques</a></li><li class="breadcrumb-item"><a href="../part2/agents.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Agents</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
+<header class="headroom fixed-top" id="quarto-header">
+<nav class="quarto-secondary-nav">
+<div class="container-fluid d-flex">
+<button aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="quarto-btn-toggle btn" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="button" type="button">
+<i class="bi bi-layout-text-sidebar-reverse"></i>
+</button>
+<nav aria-label="breadcrumb" class="quarto-page-breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../part2/index.html">Techniques</a></li><li class="breadcrumb-item"><a href="../part2/agents.html"><span class="chapter-number">10</span>  <span class="chapter-title">Agents</span></a></li></ol></nav>
+<a aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="flex-grow-1" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="navigation">
+</a>
+<button aria-label="Search" class="btn quarto-search-button" onclick="window.quartoOpenSearch();" type="button">
+<i class="bi bi-search"></i>
+</button>
+</div>
+</nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div class="quarto-container page-columns page-rows-contents page-layout-article" id="quarto-content">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="../">How to Train your Chatbot</a> 
-        <div class="sidebar-tools-main">
-    <a href="https://store.apiad.net/l/chatbots" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-book"></i></a>
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
+<nav class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" id="quarto-sidebar">
+<div class="pt-lg-2 mt-2 text-left sidebar-header">
+<div class="sidebar-title mb-0 py-0">
+<a href="../">How to Train your Chatbot</a>
+<div class="sidebar-tools-main">
+<a aria-label="" class="quarto-navigation-tool px-1" href="https://store.apiad.net/l/chatbots" title=""><i class="bi bi-book"></i></a>
+<a class="quarto-reader-toggle quarto-navigation-tool px-1" href="" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+<div class="quarto-reader-toggle-btn">
+<i class="bi"></i>
+</div>
 </a>
 </div>
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
-  </div>
+</div>
+</div>
+<div class="mt-2 flex-shrink-0 align-items-center">
+<div class="sidebar-search">
+<div class="" id="quarto-search" title="Search"></div>
+</div>
+</div>
+<div class="sidebar-menu-container">
+<ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../index.html">
+<span class="menu-text">Preface</span></a>
+</div>
 </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../part1/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Principles</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part1/intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What is a language model?</span></span></a>
-  </div>
+<li class="sidebar-item sidebar-item-section">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part1/index.html">
+<span class="menu-text">Principles</span></a>
+<a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-1" data-bs-toggle="collapse" role="navigation">
+<i class="bi bi-chevron-right ms-2"></i>
+</a>
+</div>
+<ul class="collapse list-unstyled sidebar-section depth1 show" id="quarto-sidebar-section-1">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part1/intro.html">
+<span class="menu-text"><span class="chapter-number">1</span>  <span class="chapter-title">What is a language model?</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part1/training.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">How do LLMs work?</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part1/training.html">
+<span class="menu-text"><span class="chapter-number">2</span>  <span class="chapter-title">How do LLMs work?</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part1/capabilities.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What can LLMs do?</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part1/capabilities.html">
+<span class="menu-text"><span class="chapter-number">3</span>  <span class="chapter-title">What can LLMs do?</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part1/limitations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The limits of language models</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part1/limitations.html">
+<span class="menu-text"><span class="chapter-number">4</span>  <span class="chapter-title">The limits of language models</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part1/evaluation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Evaluating LLMs</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part1/evaluation.html">
+<span class="menu-text"><span class="chapter-number">5</span>  <span class="chapter-title">Evaluating LLMs</span></span></a>
+</div>
 </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../part2/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Techniques</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part2/prompting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Prompt engineering</span></span></a>
-  </div>
+</ul>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part2/rag.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Retrieval augmented generation</span></span></a>
-  </div>
+<li class="sidebar-item sidebar-item-section">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part2/index.html">
+<span class="menu-text">Techniques</span></a>
+<a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-2" data-bs-toggle="collapse" role="navigation">
+<i class="bi bi-chevron-right ms-2"></i>
+</a>
+</div>
+<ul class="collapse list-unstyled sidebar-section depth1 show" id="quarto-sidebar-section-2">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part2/prompting.html">
+<span class="menu-text"><span class="chapter-number">6</span>  <span class="chapter-title">Prompt engineering</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part2/functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Function calling</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part2/rag.html">
+<span class="menu-text"><span class="chapter-number">7</span>  <span class="chapter-title">Retrieval augmented generation</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part2/code.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Code generation</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part2/functions.html">
+<span class="menu-text"><span class="chapter-number">8</span>  <span class="chapter-title">Function calling</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part2/agents.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Agents</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part2/code.html">
+<span class="menu-text"><span class="chapter-number">9</span>  <span class="chapter-title">Code generation</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part2/finetune.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Fine-tuning</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link active" href="../part2/agents.html">
+<span class="menu-text"><span class="chapter-number">10</span>  <span class="chapter-title">Agents</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part2/optimization.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Optimization of LLMs</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part2/finetune.html">
+<span class="menu-text"><span class="chapter-number">11</span>  <span class="chapter-title">Fine-tuning</span></span></a>
+</div>
 </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../part3/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Applications</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part3/01_chatbot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The Chatbot</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part2/optimization.html">
+<span class="menu-text"><span class="chapter-number">12</span>  <span class="chapter-title">Optimization of LLMs</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part3/02_pdfbot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">The PDF Reader</span></span></a>
-  </div>
+</ul>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part3/03_search.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The Answer Engine</span></span></a>
-  </div>
+<li class="sidebar-item sidebar-item-section">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part3/index.html">
+<span class="menu-text">Applications</span></a>
+<a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-3" data-bs-toggle="collapse" role="navigation">
+<i class="bi bi-chevron-right ms-2"></i>
+</a>
+</div>
+<ul class="collapse list-unstyled sidebar-section depth1 show" id="quarto-sidebar-section-3">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part3/01_chatbot.html">
+<span class="menu-text"><span class="chapter-number">13</span>  <span class="chapter-title">The Chatbot</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part3/04_shoping.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The Salesbot</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part3/02_pdfbot.html">
+<span class="menu-text"><span class="chapter-number">14</span>  <span class="chapter-title">The PDF Reader</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part3/05_analyst.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">The Data Analyst</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part3/03_search.html">
+<span class="menu-text"><span class="chapter-number">15</span>  <span class="chapter-title">The Answer Engine</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part3/06_cli.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">The Hackerbot</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part3/04_shoping.html">
+<span class="menu-text"><span class="chapter-number">16</span>  <span class="chapter-title">The Salesbot</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part3/07_writer.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">The Writer</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part3/05_analyst.html">
+<span class="menu-text"><span class="chapter-number">17</span>  <span class="chapter-title">The Data Analyst</span></span></a>
+</div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../part3/08_coder.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">The Coder</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part3/06_cli.html">
+<span class="menu-text"><span class="chapter-number">18</span>  <span class="chapter-title">The Hackerbot</span></span></a>
+</div>
 </li>
-      </ul>
-  </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../conclusion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The Future of Language Modeling</span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part3/07_writer.html">
+<span class="menu-text"><span class="chapter-number">19</span>  <span class="chapter-title">The Writer</span></span></a>
+</div>
 </li>
-    </ul>
-    </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../part3/08_coder.html">
+<span class="menu-text"><span class="chapter-number">20</span>  <span class="chapter-title">The Coder</span></span></a>
+</div>
+</li>
+</ul>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../conclusion.html">
+<span class="menu-text">The Future of Language Modeling</span></a>
+</div>
+</li>
+</ul>
+</div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div class="quarto-sidebar-collapse-item" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" id="quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#anatomy-of-an-llm-powered-agent" id="toc-anatomy-of-an-llm-powered-agent" class="nav-link active" data-scroll-target="#anatomy-of-an-llm-powered-agent">Anatomy of an LLM-powered agent</a>
-  <ul class="collapse">
-  <li><a href="#adding-natural-language" id="toc-adding-natural-language" class="nav-link" data-scroll-target="#adding-natural-language">Adding natural language</a></li>
-  </ul></li>
-  <li><a href="#use-cases-for-llm-agents" id="toc-use-cases-for-llm-agents" class="nav-link" data-scroll-target="#use-cases-for-llm-agents">Use cases for LLM agents</a>
-  <ul class="collapse">
-  <li><a href="#the-planning-agent" id="toc-the-planning-agent" class="nav-link" data-scroll-target="#the-planning-agent">The planning agent</a></li>
-  <li><a href="#the-research-agent" id="toc-the-research-agent" class="nav-link" data-scroll-target="#the-research-agent">The research agent</a></li>
-  <li><a href="#the-coding-agent" id="toc-the-coding-agent" class="nav-link" data-scroll-target="#the-coding-agent">The coding agent</a></li>
-  <li><a href="#the-gossip-agent" id="toc-the-gossip-agent" class="nav-link" data-scroll-target="#the-gossip-agent">The gossip agent</a></li>
-  </ul></li>
-  <li><a href="#beyond-the-single-agent-paradigm" id="toc-beyond-the-single-agent-paradigm" class="nav-link" data-scroll-target="#beyond-the-single-agent-paradigm">Beyond the single agent paradigm</a></li>
-  <li><a href="#symbolic-learning-in-llm-agents" id="toc-symbolic-learning-in-llm-agents" class="nav-link" data-scroll-target="#symbolic-learning-in-llm-agents">Symbolic learning in LLM agents</a></li>
-  <li><a href="#caveats-and-limitations" id="toc-caveats-and-limitations" class="nav-link" data-scroll-target="#caveats-and-limitations">Caveats and limitations</a></li>
-  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
-  </ul>
+<div class="sidebar margin-sidebar" id="quarto-margin-sidebar">
+<nav class="toc-active" id="TOC" role="doc-toc">
+<h2 id="toc-title">Table of contents</h2>
+<ul>
+<li><a class="nav-link active" data-scroll-target="#anatomy-of-an-llm-powered-agent" href="#anatomy-of-an-llm-powered-agent" id="toc-anatomy-of-an-llm-powered-agent">Anatomy of an LLM-powered agent</a>
+<ul class="collapse">
+<li><a class="nav-link" data-scroll-target="#adding-natural-language" href="#adding-natural-language" id="toc-adding-natural-language">Adding natural language</a></li>
+</ul></li>
+<li><a class="nav-link" data-scroll-target="#use-cases-for-llm-agents" href="#use-cases-for-llm-agents" id="toc-use-cases-for-llm-agents">Use cases for LLM agents</a>
+<ul class="collapse">
+<li><a class="nav-link" data-scroll-target="#the-planning-agent" href="#the-planning-agent" id="toc-the-planning-agent">The planning agent</a></li>
+<li><a class="nav-link" data-scroll-target="#the-research-agent" href="#the-research-agent" id="toc-the-research-agent">The research agent</a></li>
+<li><a class="nav-link" data-scroll-target="#the-coding-agent" href="#the-coding-agent" id="toc-the-coding-agent">The coding agent</a></li>
+<li><a class="nav-link" data-scroll-target="#the-gossip-agent" href="#the-gossip-agent" id="toc-the-gossip-agent">The gossip agent</a></li>
+</ul></li>
+<li><a class="nav-link" data-scroll-target="#beyond-the-single-agent-paradigm" href="#beyond-the-single-agent-paradigm" id="toc-beyond-the-single-agent-paradigm">Beyond the single agent paradigm</a></li>
+<li><a class="nav-link" data-scroll-target="#symbolic-learning-in-llm-agents" href="#symbolic-learning-in-llm-agents" id="toc-symbolic-learning-in-llm-agents">Symbolic learning in LLM agents</a></li>
+<li><a class="nav-link" data-scroll-target="#caveats-and-limitations" href="#caveats-and-limitations" id="toc-caveats-and-limitations">Caveats and limitations</a></li>
+<li><a class="nav-link" data-scroll-target="#conclusions" href="#conclusions" id="toc-conclusions">Conclusions</a></li>
+</ul>
 </nav>
-    </div>
+</div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../part2/index.html">Techniques</a></li><li class="breadcrumb-item"><a href="../part2/agents.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Agents</span></a></li></ol></nav>
+<header class="quarto-title-block default" id="title-block-header"><nav aria-label="breadcrumb" class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../part2/index.html">Techniques</a></li><li class="breadcrumb-item"><a href="../part2/agents.html"><span class="chapter-number">10</span>  <span class="chapter-title">Agents</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-agents" class="quarto-section-identifier"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Agents</span></span></h1>
+<h1 class="title"><span class="quarto-section-identifier" id="sec-agents"><span class="chapter-number">10</span>  <span class="chapter-title">Agents</span></span></h1>
 </div>
-
-
-
 <div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
+</div>
 </header>
-
-
 <p>Agents are our last stop in the road towards giving language models more autonomy. So far, we’ve been able to connect LLMs with other systems, extending their knowledge and enhancing their capacity to solve complicated problems by leveraging different tools. But all tasks the tasks we can solve so far are, essentially, single-shot: requiring little to no planning once the task is well understood and the right tools are selected. Regardless of how complex the tasks we’ve seen, the number of steps they require is fixed from the beginning.</p>
 <p>To handle the most complex tasks, we must give LLMs the ability to not only pick and use arbitrary tools, but to actively reason about the task <em>while</em> performing it, incorporate new insights, and change their minds during the solution process. LLMs must become active agents rather than passive tools. This is what the agent paradigm is supposed to unlock. Agents are not a new thing in AI, or computer science in general, though. In fact, it is one of the most important software design paradigms since primorial ages—back when Turing was thinking about German codes.</p>
 <p>In computational terms, a agent is just a software component that acts autonomously, interacting with an (computational) environment and constantly making choices as to further some goals. The difference between traditional software and agent-based software is that, in traditional software, all changes to a system are in response to some user input: that is, the user is the active element. In agent-based software, the software itself is active, in the sense that it is always making adjustments and producing effects on the computational system, regardless of whether there is a user at all.</p>
@@ -340,13 +312,13 @@ ul.task-list li input[type="checkbox"] {
 <p>Now, you can stretch the definition so that <em>any</em> piece of software looks like agent-based. Your operating system is always on, doing stuff, ready to ping you when there’s a problem. It has a goal—keeping the system running—and it can interact with an environment—hardware drivers, peripherals, hard drives, etc.—and exert actions to make changes to the system. But this is seldom a useful way to think about your operating system, mostly because its goals are pretty straightforward, and the actions it can perform as very restricted.</p>
 <p>Things turn interesting when you give a software agent long-term goals that have no immediately obvious steps. The agent must then observe the environment, gather information, maybe ask you for clarifications, and make a plan to further those goals. Moreover, as it discovers new information, it may refine those goals, split them into lower-level subgoals, and generally navigate around a complex decision-making process that wasn’t explicitly programmed, or even obvious to an external observer from the beginning.</p>
 <p>Adding language models to the mix unlocks exciting new possibilities, as now your agent can not only communicate with you in natural language, but also talk to other agents easily—no need to define formal communication protocols or APIs—, and even <em>reason and argue with itself</em> in natural language.</p>
-<section id="anatomy-of-an-llm-powered-agent" class="level2">
+<section class="level2" id="anatomy-of-an-llm-powered-agent">
 <h2 class="anchored" data-anchor-id="anatomy-of-an-llm-powered-agent">Anatomy of an LLM-powered agent</h2>
 <p>An LLM agent is, ultimately, just a plain-old AI agent with some linguistic capabilities. So let’s review the general definition of agent in the AI field, and explore some of the basic agent architectures that have been invented.</p>
-<p>In its simplest conception, an agent is a software component embedded within a larger computational system we call the <em>environment</em>. This environment can be anything from a computer simulation, to the whole Internet, including other agents (computational or otherwise). THe agent always has some <em>goals</em>—which can as abstract and ambiguous as you want—that it must further by performing some <em>actions</em>. For this purpose, the agent has some <em>sensors</em> by which it can obtain information from the environment, and some <em>actuators</em> that allow it to exert changes in the environment. Finally, the agent has some internal <em>reasoning</em> process to decide which actions to perform given the current environment state (see <a href="#fig-agent" class="quarto-xref">Figure&nbsp;<span>10.1</span></a>).</p>
+<p>In its simplest conception, an agent is a software component embedded within a larger computational system we call the <em>environment</em>. This environment can be anything from a computer simulation, to the whole Internet, including other agents (computational or otherwise). THe agent always has some <em>goals</em>—which can as abstract and ambiguous as you want—that it must further by performing some <em>actions</em>. For this purpose, the agent has some <em>sensors</em> by which it can obtain information from the environment, and some <em>actuators</em> that allow it to exert changes in the environment. Finally, the agent has some internal <em>reasoning</em> process to decide which actions to perform given the current environment state (see <a class="quarto-xref" href="#fig-agent">Figure <span>10.1</span></a>).</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
-<div id="fig-agent" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="quarto-float quarto-figure quarto-figure-center anchored" id="fig-agent">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-agent-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div>
@@ -361,17 +333,17 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-agent-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10.1: A basic agent architecture.
+Figure 10.1: A basic agent architecture.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>This picture is complete from the outside, but if we look inside the agent, we can further refine it. Here is where literature is—quite literally—overflown with variants of “standard” agent architectures. So I won’t attempt to cover the majority of variants or even be too formal. Rather, I’ll explain what are the main ingredients in most used agent architectures, using a casual nomenclature.</p>
-<p>The most basic agent that does some form of reasoning needs to do two separate things: keep track of the state of the world (which may include it’s own state) and then reason about that world to decide which actions to take. This reasoning can be cyclical, updating its own state with new information inferred from previous state. We can thus come up with a sensible basic agent architecture (see <a href="#fig-basic-agent" class="quarto-xref">Figure&nbsp;<span>10.2</span></a>).</p>
+<p>The most basic agent that does some form of reasoning needs to do two separate things: keep track of the state of the world (which may include it’s own state) and then reason about that world to decide which actions to take. This reasoning can be cyclical, updating its own state with new information inferred from previous state. We can thus come up with a sensible basic agent architecture (see <a class="quarto-xref" href="#fig-basic-agent">Figure <span>10.2</span></a>).</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
-<div id="fig-basic-agent" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="quarto-float quarto-figure quarto-figure-center anchored" id="fig-basic-agent">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-basic-agent-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div>
@@ -401,41 +373,41 @@ Figure&nbsp;10.1: A basic agent architecture.
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-basic-agent-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10.2: Inside the basic agent architecture.
+Figure 10.2: Inside the basic agent architecture.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>This architecture is sufficiently detailed for us to discuss different variants, while being sufficiently abstract to allow many different use cases and implementations. For example, we haven’t explicitely defined what goes in the internal representation of the world: it could be anything from a structured set of values to a list of natural language facts to a full-blown database. We also haven’t specified what sensors or actuators actually are, which depend heavily on the concrete use case.</p>
-<section id="adding-natural-language" class="level3">
+<section class="level3" id="adding-natural-language">
 <h3 class="anchored" data-anchor-id="adding-natural-language">Adding natural language</h3>
 <p>So far we haven’t used the fact our agent is LLM-powered, and for good reason. The basic agent architecture we just defined is agnostic to implementation details. Adding an LLM to the agent architecture just means some, or all of the modules are implemented using language models: that is, with prompts, RAG, function calling, and everything else we’ve seen so far.</p>
 <p>First, perception may be LLM-based: your agent can receive information from the environment in the form of natural language documents. Likewise, the actuators can be LLM-based, e.g., via function calling. But more importantly, the reasoning process and the internal representation may involve language models as well. The internal representation can be a straightforward collection natural language claims about the environment, which the agent updates and refines via reasoning. And the reasoning itself can be guided with some clever prompting and thus occur entirely in a linguistic framework. Finally, the environment itself can contain other language models, or otherwise be implemented also as a language-based simulation with clever prompts.</p>
 </section>
 </section>
-<section id="use-cases-for-llm-agents" class="level2">
+<section class="level2" id="use-cases-for-llm-agents">
 <h2 class="anchored" data-anchor-id="use-cases-for-llm-agents">Use cases for LLM agents</h2>
 <p>The most obvious use case for an LLM-based agent is some sort of always-on assistant; your personal Jarvis, if you will. Unfortunately, most AI assistants today are more tools than agents. They turn on after a user command, do their thing, and go back to iddle. All interactions between you and Siri, Cortana, or Google Assistant, are started by you.</p>
 <p>Moving towards more agentic behavior, what we should expect is an AI assistant that has long-term goals—e.g., keeping you informed, or keeping your calendar well organized—and is always consuming information and taking actions to further those goals. So here are a few possible, very broad use cases for such a type of agent.</p>
-<section id="the-planning-agent" class="level3">
+<section class="level3" id="the-planning-agent">
 <h3 class="anchored" data-anchor-id="the-planning-agent">The planning agent</h3>
 <p>This is one of the most useful and yet unexplored use cases. An agent that is connected to all your input sources: email, work and family chat groups, etc., collecting all information about upcoming events and tasks. Its goal would be to help you maintain a healthy work-life balance by keeping your calendar up to date. Potentially, the agent could reply back to a meeting email and ask for a reschedule if it knows you’ll be busy that day. Now imagine everyone has such an agent, and they all negotiate with themselves and find the optimal schedule for the group meeting.</p>
 </section>
-<section id="the-research-agent" class="level3">
+<section class="level3" id="the-research-agent">
 <h3 class="anchored" data-anchor-id="the-research-agent">The research agent</h3>
 <p>This is an agent whose goal is to answer some complicated, nuanced research question. It can be something related to your work, like mapping a business opportunity, or something more akin to a typical scientific research question. The agent would search online for relevant sources, extract insights, update its internal representation and generate new follow-up questions, building a web of interconnected pieces of information for a given domain.</p>
 </section>
-<section id="the-coding-agent" class="level3">
+<section class="level3" id="the-coding-agent">
 <h3 class="anchored" data-anchor-id="the-coding-agent">The coding agent</h3>
 <p>This is the software engineering holy grail: an agent that continuosly scans and improves an existing codebase, perhaps adding unit tests, comments in code, or refactoring existing functions. Additionally, this agent could pick low-complexity issues (like obvious bug fixes) and attempt to solve them automatically, even crafting a pull request when all test cases pass. Furthermore, it could revise existing pull requests and make suggestions for improvements or general comments before a human revisor takes over the final merge.</p>
 </section>
-<section id="the-gossip-agent" class="level3">
+<section class="level3" id="the-gossip-agent">
 <h3 class="anchored" data-anchor-id="the-gossip-agent">The gossip agent</h3>
 <p>And this is more tongue-in-cheek but, imagine an agent that is monitoring all your social accounts: Facebook (who has that?), Twitter/X, LinkedIn, your friends’ WhatsApp group chats, etc. Everytime some event happens—e.g., someone announces they got a job, or are traveling somewhere, etc.—the agent updates it’s internal representation of your social network. And periodically, or whenever something important changes, it will send you updates on who’s doing what or going where.</p>
 </section>
 </section>
-<section id="beyond-the-single-agent-paradigm" class="level2">
+<section class="level2" id="beyond-the-single-agent-paradigm">
 <h2 class="anchored" data-anchor-id="beyond-the-single-agent-paradigm">Beyond the single agent paradigm</h2>
 <p>All of the above are reasonably straightforward applications of the agent paradigm using LLMs. While the devil is in the details, and implementation is often much harder than one first thought, I can definitely see all of the above examples working in the near future, at least within reasonable constraints. However, single-agent architectures are just scratching the surface of what this paradigm can bring. The real deal is in multi-agent environments.</p>
 <p>In a multi-agent setup, different agents coexist, collaborating and/or competing to achieve common or distinct goals. The power of mulit-agent architectures is that a complex problem may be very hard to model with a single agent, but feasible when subdivided into distinct goals and skills. Take, for example, the coding agent scenario mentioned before. Now, instead of a single agent taking all these tasks one at a time, imagine multiple agents working in parallel, some optimized to fix bugs, others to comment code, and others yet to revise, add tests, make suggestions, etc.</p>
@@ -443,7 +415,7 @@ Figure&nbsp;10.2: Inside the basic agent architecture.
 <p>Furthermore, you can have gatekeeper agents that revise code and emit some sort of qualitative evaluation. They can even ask questions, and the implementors must convince them of their solution. A lot of both old and recent research suggests than, when combined in such a manner, multiple agents can solve problems that none of them was able to tackle on its own.</p>
 <p>Why would this work better than just a super coder LLM? You can consider it an advanced form of ensembling mixed with self-reflection, which are in turn advanced forms of chain-of-thought. By combining multiple LLMs with different tasks (i.e., different prompts) in iterated interactions, we give them more chances to revise and regenerate, which translates in more computational power. At the same time, we’re leveraging the ensemble effect of pooling different solutions to the same problem which tends to produce better solutions on average as mistakes are smoothed out.</p>
 </section>
-<section id="symbolic-learning-in-llm-agents" class="level2">
+<section class="level2" id="symbolic-learning-in-llm-agents">
 <h2 class="anchored" data-anchor-id="symbolic-learning-in-llm-agents">Symbolic learning in LLM agents</h2>
 <p>Putting a bunch of LLM-powered agents to work together is neat, but we can go further. The next step is make our agents actually learn from their interactions with the environment.</p>
 <p>In the classic agent architecture we’ve discussed so far, there is no explicit learning happening inside the agent. To some extent, you can think of updating the internal representation as some sort of learning about the environment, but there is no learning about the strategies the agent can use. The reasoning module, however is implemented, has no way (at least so far) to update itself so that, given the same environment, it could perform better in future ocassions instead of repeating the same mistakes.</p>
@@ -454,22 +426,19 @@ Figure&nbsp;10.2: Inside the basic agent architecture.
 <p>After ten thousand or so iterations, the doctor agents had built a case database that contained a distilled knowledge about every possible rundown of diseases, symptoms, treatments, etc., they had seen. This is equivalent to what medical residents see in two years of training. And incredibly, this database, when provided to a GPT-4 single-shot question answering bot, improved its results in a standard medical question benchmarks by almost 10%.</p>
 <p>This is something akin to reinforcement learning, but it is parameter-free and 100% transparent and explainable. Instead of updating some opaque weights in some neural networks, your LLM-powered agent is learning like humans do: by analysing its actions, taking notes, and constructing hypotheses. While extremely experimental, this is one of the most exciting use cases for LLM agents I’ve seen recently.</p>
 </section>
-<section id="caveats-and-limitations" class="level2">
+<section class="level2" id="caveats-and-limitations">
 <h2 class="anchored" data-anchor-id="caveats-and-limitations">Caveats and limitations</h2>
 <p>As in everything related to LLMs, you must beware of hallucinations and biases. Ensembles in general, and agents in particular are more robust to random errors because of their distributed nature. This means that unlikely hallucinations that could be deal-breakers in single-LLM scenarios might get smoothed away when you pool together multiple LLMs taking turns to make choices.</p>
 <p>However, biases are not random but systematic errors. Using the same model to power all your agents means they are all susceptible to making the same judgement mistakes over and over. In general, there is no algorithmic solution to reducing biases that doesn’t attack the original problem: biased data.</p>
 <p>Another major caveat of LLM agents is that, compared to a single zero-shot or a simple chain-of-thought prompt, they are significantly more costly. Your agent is always running, which means you’re constantly calling the LLM API, even if there is nothing new to be done. This underscores once again the need for in-house, open-source language models that can be scaled to these heavy-duty scenarios in a cost-effective manner.</p>
 <p>And finally, agents in AI have a long history of being abused as an overengineered solution to problems that could otherwise be solved with more direct methods. Do your own experiments and test whether simple prompts, or other, more straightforward augmentation techniques are sufficient for your use case before going the length of building an entire simulated environment.</p>
 </section>
-<section id="conclusions" class="level2">
+<section class="level2" id="conclusions">
 <h2 class="anchored" data-anchor-id="conclusions">Conclusions</h2>
 <p>The agent model is one of the most exciting paradigms in artificial intelligence, with a long and rich history of architectures and approaches. It is also one of the hardest to put into practice, at least until now, because it always required far more intelligence that was possible with previous approaches. But with LLMs, agents are seeing a rebirth as one of the most promising approaches to building reliable and truly intelligent AI solutions.</p>
 <p>I am, however, fairly biased. This is one of my dearest research topics and I may well be over-excited about it. So take everything I said here with a grain of salt. Modern agent architectures are still brittle and hard to deploy in large-enough scale for their distributed strenth to be noticeable. Still, they hold great promise, and are one of the few paths forward that may take us all the way to general AI.</p>
 <p>In Part 3 we will build some agent-based simulations, especially towards the final chapters. Due to their complexity and cost, we won’t spend as much time building agents and simulations as I would like, but you’ll get a taste of how powerful this paradigm can be in <span class="quarto-unresolved-ref">?sec-dnd</span> and <span class="quarto-unresolved-ref">?sec-storyteller</span>.</p>
-
-
 </section>
-
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -892,40 +861,37 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 <nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../part2/code.html" class="pagination-link" aria-label="Code generation">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Code generation</span></span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../part2/finetune.html" class="pagination-link" aria-label="Fine-tuning">
-        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Fine-tuning</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
+<div class="nav-page nav-page-previous">
+<a aria-label="Code generation" class="pagination-link" href="../part2/code.html">
+<i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>  <span class="chapter-title">Code generation</span></span>
+</a>
+</div>
+<div class="nav-page nav-page-next">
+<a aria-label="Fine-tuning" class="pagination-link" href="../part2/finetune.html">
+<span class="nav-page-text"><span class="chapter-number">11</span>  <span class="chapter-title">Fine-tuning</span></span> <i class="bi bi-arrow-right-short"></i>
+</a>
+</div>
 </nav>
 </div> <!-- /content -->
 <footer class="footer">
-  <div class="nav-footer">
-    <div class="nav-footer-left">
+<div class="nav-footer">
+<div class="nav-footer-left">
 <p>Copyright 2024 - The Authors</p>
-</div>   
-    <div class="nav-footer-center">
-      &nbsp;
+</div>
+<div class="nav-footer-center">
+       
     </div>
-    <div class="nav-footer-right">
-      <ul class="footer-items list-unstyled">
-    <li class="nav-item compact">
-    <a class="nav-link active" href="https://store.apiad.net/l/chatbots" aria-current="page">
-      <i class="bi bi-book" role="img">
-</i> 
-    </a>
-  </li>  
+<div class="nav-footer-right">
+<ul class="footer-items list-unstyled">
+<li class="nav-item compact">
+<a aria-current="page" class="nav-link active" href="https://store.apiad.net/l/chatbots">
+<i class="bi bi-book" role="img">
+</i>
+</a>
+</li>
 </ul>
-    </div>
-  </div>
-</footer>
+</div>
+</div>
 
 
-
-
-</body></html>
+</footer><div class="reader-controls"><button class="reader-btn" id="theme-btn" title="Toggle theme">🌙</button></div><script src="/books/reader.js"></script></body></html>

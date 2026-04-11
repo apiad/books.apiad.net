@@ -1,12 +1,9 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><head>
+<link href="/books/reader.css" rel="stylesheet"/>
+<meta charset="utf-8"/>
+<meta content="quarto-1.5.57" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport"/>
 <title>The Road Ahead – Mostly Harmless AI</title>
 <style>
 code{white-space: pre-wrap;}
@@ -21,27 +18,23 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 </style>
-
-
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./road-to-agi.html" rel="prev">
+<meta content="./" name="quarto:offset"/>
+<link href="./road-to-agi.html" rel="prev"/>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet"/>
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" id="quarto-text-highlighting-styles" rel="stylesheet"/>
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+<link data-mode="light" href="site_libs/bootstrap/bootstrap-icons.css" id="quarto-bootstrap" rel="stylesheet"/>
+<script id="quarto-search-options" type="application/json">,
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "start",
@@ -63,186 +56,165 @@ ul.task-list li input[type="checkbox"] {
     "search-clear-button-title": "Clear",
     "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
-  }
-}</script>
-
-
+    "search-submit-button-title": "Submit",}</script>
 </head>
-
 <body class="nav-sidebar floating">
-
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./epilogue.html">The Road Ahead</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
+<header class="headroom fixed-top" id="quarto-header">
+<nav class="quarto-secondary-nav">
+<div class="container-fluid d-flex">
+<button aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="quarto-btn-toggle btn" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="button" type="button">
+<i class="bi bi-layout-text-sidebar-reverse"></i>
+</button>
+<nav aria-label="breadcrumb" class="quarto-page-breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./epilogue.html">The Road Ahead</a></li></ol></nav>
+<a aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="flex-grow-1" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="navigation">
+</a>
+<button aria-label="Search" class="btn quarto-search-button" onclick="window.quartoOpenSearch();" type="button">
+<i class="bi bi-search"></i>
+</button>
+</div>
+</nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div class="quarto-container page-columns page-rows-contents page-layout-article" id="quarto-content">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">Mostly Harmless AI</a> 
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
-  </div>
+<nav class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" id="quarto-sidebar">
+<div class="pt-lg-2 mt-2 text-left sidebar-header">
+<div class="sidebar-title mb-0 py-0">
+<a href="./">Mostly Harmless AI</a>
+</div>
+</div>
+<div class="mt-2 flex-shrink-0 align-items-center">
+<div class="sidebar-search">
+<div class="" id="quarto-search" title="Search"></div>
+</div>
+</div>
+<div class="sidebar-menu-container">
+<ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./index.html">
+<span class="menu-text">Preface</span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./foreword.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Beyond Optimism and Doom: Finding a Third Path in AI Discourse</span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./foreword.html">
+<span class="menu-text">Beyond Optimism and Doom: Finding a Third Path in AI Discourse</span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./prologue.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The Age of Artificial Intelligence</span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./prologue.html">
+<span class="menu-text">The Age of Artificial Intelligence</span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./coding-is-dead.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Coding is Dead; Long Live Coding!</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./coding-is-dead.html">
+<span class="menu-text"><span class="chapter-number">1</span>  <span class="chapter-title">Coding is Dead; Long Live Coding!</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./education.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The AI Revolution We Don’t Need</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./education.html">
+<span class="menu-text"><span class="chapter-number">2</span>  <span class="chapter-title">The AI Revolution We Don’t Need</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./beyond-chatbot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Beyond the Chatbot Revolution</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./beyond-chatbot.html">
+<span class="menu-text"><span class="chapter-number">3</span>  <span class="chapter-title">Beyond the Chatbot Revolution</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./ai-kill-us.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Will AI Kill Us All?</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./ai-kill-us.html">
+<span class="menu-text"><span class="chapter-number">4</span>  <span class="chapter-title">Will AI Kill Us All?</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./risks.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The Actual Risks of AI</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./risks.html">
+<span class="menu-text"><span class="chapter-number">5</span>  <span class="chapter-title">The Actual Risks of AI</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./hallucinations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Reliable AI needs a New Paradigm</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./hallucinations.html">
+<span class="menu-text"><span class="chapter-number">6</span>  <span class="chapter-title">Reliable AI needs a New Paradigm</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./reasoning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Large Language Models Cannot Reason</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./reasoning.html">
+<span class="menu-text"><span class="chapter-number">7</span>  <span class="chapter-title">Large Language Models Cannot Reason</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./alignment.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Why AI Alignment is So Hard</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./alignment.html">
+<span class="menu-text"><span class="chapter-number">8</span>  <span class="chapter-title">Why AI Alignment is So Hard</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./open-source.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">The Future of AI is Open Source</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./open-source.html">
+<span class="menu-text"><span class="chapter-number">9</span>  <span class="chapter-title">The Future of AI is Open Source</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./road-to-agi.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">The Road to AGI</span></span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./road-to-agi.html">
+<span class="menu-text"><span class="chapter-number">10</span>  <span class="chapter-title">The Road to AGI</span></span></a>
+</div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./epilogue.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">The Road Ahead</span></a>
-  </div>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link active" href="./epilogue.html">
+<span class="menu-text">The Road Ahead</span></a>
+</div>
 </li>
-    </ul>
-    </div>
+</ul>
+</div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div class="quarto-sidebar-collapse-item" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" id="quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Epilogue</h2>
-   
-  <ul>
-  <li><a href="#hallucinations" id="toc-hallucinations" class="nav-link active" data-scroll-target="#hallucinations">Hallucinations</a></li>
-  <li><a href="#biases" id="toc-biases" class="nav-link" data-scroll-target="#biases">Biases</a></li>
-  <li><a href="#understanding" id="toc-understanding" class="nav-link" data-scroll-target="#understanding">Understanding</a></li>
-  <li><a href="#moving-forward" id="toc-moving-forward" class="nav-link" data-scroll-target="#moving-forward">Moving forward</a></li>
-  </ul>
+<div class="sidebar margin-sidebar" id="quarto-margin-sidebar">
+<nav class="toc-active" id="TOC" role="doc-toc">
+<h2 id="toc-title">Epilogue</h2>
+<ul>
+<li><a class="nav-link active" data-scroll-target="#hallucinations" href="#hallucinations" id="toc-hallucinations">Hallucinations</a></li>
+<li><a class="nav-link" data-scroll-target="#biases" href="#biases" id="toc-biases">Biases</a></li>
+<li><a class="nav-link" data-scroll-target="#understanding" href="#understanding" id="toc-understanding">Understanding</a></li>
+<li><a class="nav-link" data-scroll-target="#moving-forward" href="#moving-forward" id="toc-moving-forward">Moving forward</a></li>
+</ul>
 </nav>
-    </div>
+</div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
+<header class="quarto-title-block default" id="title-block-header">
 <div class="quarto-title">
 <h1 class="title">The Road Ahead</h1>
 </div>
-
-
-
 <div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
+</div>
 </header>
-
-
 <p>We began this book with a quick overview of how we got here and where we stand. We’ve highlighted the potential capabilities of large language models and generative AI systems in general. In this final chapter, let’s talk about the fundamental challenges we’ve encountered over the past couple of years and what we can expect to solve in the near future.</p>
-<section id="hallucinations" class="level2">
+<section class="level2" id="hallucinations">
 <h2 class="anchored" data-anchor-id="hallucinations">Hallucinations</h2>
 <p>The first major challenge is the issue of hallucinations. Despite the models’ remarkable ability to produce coherent text aligned with user preferences, they can still veer off course into a response sequence that strays from the conversation. This randomness in sampling makes it impossible to guarantee that a model won’t generate text that deviates from what’s expected, no matter how finely tuned it gets. These deviations range from factual inaccuracies to more complex issues like promoting racism or discrimination. This phenomenon, often called “jail-breaking mode,” poses a significant obstacle to the model’s reliability.</p>
 <p>Addressing hallucinations becomes even more critical when using these models for tasks beyond writing or editing text. For instance, the model is used for tasks like booking flights or hotels, where the user may not have full visibility into the prompt used to generate the model’s response, making it difficult to detect any hallucinations in the model’s output.</p>
 <p>These hallucinations are the primary roadblock to scaling language models for practical applications beyond simple conversational agents, presenting the most pressing issue for the widespread use of generative AI and large language models today.</p>
 </section>
-<section id="biases" class="level2">
+<section class="level2" id="biases">
 <h2 class="anchored" data-anchor-id="biases">Biases</h2>
 <p>Dealing with biases is another major challenge in making these models work in real-world applications. These models are trained on huge amounts of data, and as a result, they inevitably contain discriminatory and harmful biases inherited from the training data. When combined with the issues of hallucinations and jailbreak, it’s always possible, whether intentionally or unintentionally, for these models to exhibit biased behavior.</p>
 <p>Furthermore, as we use reinforcement learning and human feedback to encourage these models to behave fairly and unbiasedly, they lose their original effectiveness. They may refuse to answer slightly biased questions, some dubbed the “wokeness problem of AI.” That is, striving to make them as harmless and unbiased as possible can make them less responsive in situations where bias or discrimination isn’t a concern.</p>
 <p>Determining the precise boundary between a biased or discriminatory response and one that isn’t is challenging when using reinforcement learning, which has a low sample density. As a result, the boundary of these two sets is likely to be quite jagged and hard to define. Consequently, we currently don’t have a solution to unbias these models effectively. We don’t yet know how to remove biases from a dataset or model without significantly harming performance.</p>
 <p>This issue will continue to manifest in any situation where these models are employed to make or assist with decisions that involve people and ethical considerations regarding their data. Thus, as AI regulation becomes more prevalent, ensuring fairness is a major challenge in the widespread adoption of LLM-driven applications.</p>
 </section>
-<section id="understanding" class="level2">
+<section class="level2" id="understanding">
 <h2 class="anchored" data-anchor-id="understanding">Understanding</h2>
 <p>Finally, let’s consider a more fundamental limitation: whether language models can develop accurate internal world models solely from linguistic interaction.</p>
 <p><a href="https://arxiv.org/abs/2303.12712">The GPT-4 paper</a>, along with many anecdotal claims, suggests that sufficiently complex language models do form internal world models, enabling them to engage in something resembling actual general-purpose reasoning during next token prediction. However, skeptics from various fields question the ability to learn to build a world model purely from linguistic interactions, arguing that grounding in experiential reality is necessary.</p>
@@ -253,15 +225,12 @@ ul.task-list li input[type="checkbox"] {
 <p>However, without internal world representations, LLMs might only learn correlations between sequences of instructions and end states, leading to a higher likelihood of mistakes with longer prompts. This limitation is significant because if these language models are to be used for tasks beyond linguistic manipulation, such as planning, problem-solving, or decision-making, they must be able to simulate and predict outcomes for extended sequences. Without the ability to learn a model of the world, these models will be severely limited in the complexity of problems they can solve.</p>
 <p>Furthermore, building internal models from linguistic interaction alone may be fundamentally impossible. If true, then we will need a qualitative improvement in our AI systems, a new approach that surpasses the capabilities of large language models.</p>
 </section>
-<section id="moving-forward" class="level2">
+<section class="level2" id="moving-forward">
 <h2 class="anchored" data-anchor-id="moving-forward">Moving forward</h2>
 <p>As we welcome AI into our lives, we can contemplate what has undoubtedly been the some of the most impactful years of Artificial Intelligence since the birth of the field around the 1960s. The next few years will be about cristalizing the many potential applications of AI into actual, useful products that might usher a new era of abundance like we’ve never seen before. Even if we hit a major theoretical barrier, and there is now new scientific development that has led to AGI for decades, we still have years ahead to harvest what’s already possible with current AI technology.</p>
 <p>But the future is never certain. Artificial intelligence is the most powerful technology we have, and as such, it is also the most dangerous. There are deeply troubling problems and challenges in the short and medium term, for which we have little guarantee we can solve them. Only with the collective effort of researchers, engineers, lawmakers, creators, and the general public can we stand a chance to overcome them.</p>
-<p>In any case, if you feel like the year has passed and you got left behind, worry not;&nbsp;<strong>today is the best moment to get into AI</strong>. Whatever your profession and your interests, there is something in the field of AI for you. If you care about fundamental theory, AI questions are some of the most challenging open questions in math and logic. If you care about engineering, some of the most interesting pragmatic problems are about scaling AI. If you care about ethics and society, one of the most critical questions ahead is how to deal with this tech’s massive impact on our lives. And if you just want to have fun, you now have one of the most powerful technologies ever made at your fingertips.</p>
-
-
+<p>In any case, if you feel like the year has passed and you got left behind, worry not; <strong>today is the best moment to get into AI</strong>. Whatever your profession and your interests, there is something in the field of AI for you. If you care about fundamental theory, AI questions are some of the most challenging open questions in math and logic. If you care about engineering, some of the most interesting pragmatic problems are about scaling AI. If you care about ethics and society, one of the most critical questions ahead is how to deal with this tech’s massive impact on our lives. And if you just want to have fun, you now have one of the most powerful technologies ever made at your fingertips.</p>
 </section>
-
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -684,17 +653,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 <nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./road-to-agi.html" class="pagination-link" aria-label="The Road to AGI">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">The Road to AGI</span></span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-  </div>
+<div class="nav-page nav-page-previous">
+<a aria-label="The Road to AGI" class="pagination-link" href="./road-to-agi.html">
+<i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>  <span class="chapter-title">The Road to AGI</span></span>
+</a>
+</div>
+<div class="nav-page nav-page-next">
+</div>
 </nav>
 </div> <!-- /content -->
 
 
-
-
-</body></html>
+<div class="reader-controls"><button class="reader-btn" id="theme-btn" title="Toggle theme">🌙</button></div><script src="/books/reader.js"></script></body></html>
