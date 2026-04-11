@@ -59,6 +59,68 @@
     });
   })();
 
+  // ========== NAVIGATION ARROWS + SWIPE ==========
+  (function() {
+    if (!bookId) return;
+    
+    var nav = document.querySelector('nav.page-navigation');
+    if (!nav) return;
+    
+    var prevLink = nav.querySelector('.nav-page-previous a') || 
+                   nav.querySelector('.pagination-link.previous');
+    var nextLink = nav.querySelector('.nav-page-next a') || 
+                   nav.querySelector('.pagination-link.next');
+    
+    // Find content area
+    var content = document.querySelector('#quarto-document-content') || 
+                  document.querySelector('main.content') ||
+                  document.querySelector('main');
+    if (!content) return;
+    
+    var navArrows = document.createElement('div');
+    navArrows.id = 'reader-nav-arrows';
+    if (prevLink) {
+      navArrows.innerHTML += '<button id="nav-prev" onclick="window.location.href=\'' + prevLink.href + '\'"><span class="nav-arrow">‹</span> Prev</button>';
+    }
+    if (nextLink) {
+      navArrows.innerHTML += '<button id="nav-next" onclick="window.location.href=\'' + nextLink.href + '\'">Next <span class="nav-arrow">›</span></button>';
+    }
+    content.appendChild(navArrows);
+    
+    var prevBtn = document.getElementById('nav-prev');
+    var nextBtn = document.getElementById('nav-next');
+    
+    if (prevBtn && !prevLink) prevBtn.classList.add('disabled');
+    if (nextBtn && !nextLink) nextBtn.classList.add('disabled');
+    
+    var touchStartX = 0;
+    var touchEndX = 0;
+    var touchStartY = 0;
+    var touchEndY = 0;
+    var swipeThreshold = 50;
+    
+    document.addEventListener('touchstart', function(e) {
+      touchStartX = e.changedTouches[0].screenX;
+      touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+    
+    document.addEventListener('touchend', function(e) {
+      touchEndX = e.changedTouches[0].screenX;
+      touchEndY = e.changedTouches[0].screenY;
+      
+      var deltaX = touchEndX - touchStartX;
+      var deltaY = touchEndY - touchStartY;
+      
+      if (Math.abs(deltaX) > swipeThreshold && Math.abs(deltaY) < Math.abs(deltaX) * 0.5) {
+        if (deltaX > 0 && prevLink) {
+          window.location.href = prevLink.href;
+        } else if (deltaX < 0 && nextLink) {
+          window.location.href = nextLink.href;
+        }
+      }
+    }, { passive: true });
+  })();
+
   // ========== FONT SIZE CONTROLS ==========
   (function() {
     var fontSizes = [14, 16, 18, 20, 22, 24, 28, 32];

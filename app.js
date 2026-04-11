@@ -203,6 +203,53 @@ function renderLayout() {
   );
   const totalSales = bookSales + (window.catalogData.compendium.salesCount || 0);
 
+  // Get random book for reader link
+  const allBooksWithReadUrl = window.catalogData.categories
+    .flatMap(c => c.items)
+    .filter(b => b.readUrl);
+  const randomBook = allBooksWithReadUrl[Math.floor(Math.random() * allBooksWithReadUrl.length)];
+  const readerLink = randomBook ? randomBook.readUrl : '#';
+
+  const readerBannerHtml = `
+    <div class="rounded-2xl p-6 md:p-8 bg-gradient-to-r from-emerald-500/10 via-card to-cyan-500/10 border border-emerald-500/30 mb-12 hover:border-emerald-500/50 transition-all duration-300">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+        <div class="md:col-span-2 text-center md:text-left">
+          <h2 class="text-2xl md:text-3xl font-bold text-zinc-100 mb-3">
+            📖 All books are free to read online
+          </h2>
+          <p class="text-zinc-400 max-w-xl mb-4">
+            I built a custom web reader that feels like a native experience — 100% free. You can buy the EPUB/PDF later if you want to support the author.
+          </p>
+          <div class="flex flex-wrap justify-center md:justify-start gap-2">
+            <span class="px-3 py-1.5 bg-zinc-800/60 text-zinc-400 text-xs rounded-full flex items-center gap-1.5 hover:bg-zinc-700/60 hover:text-zinc-300 transition-colors cursor-default">
+              🔖 Remembers your place
+            </span>
+            <span class="px-3 py-1.5 bg-zinc-800/60 text-zinc-400 text-xs rounded-full flex items-center gap-1.5 hover:bg-zinc-700/60 hover:text-zinc-300 transition-colors cursor-default">
+              🌙 Light & dark mode
+            </span>
+            <span class="px-3 py-1.5 bg-zinc-800/60 text-zinc-400 text-xs rounded-full flex items-center gap-1.5 hover:bg-zinc-700/60 hover:text-zinc-300 transition-colors cursor-default">
+              📊 Reading progress
+            </span>
+            <span class="px-3 py-1.5 bg-zinc-800/60 text-zinc-400 text-xs rounded-full flex items-center gap-1.5 hover:bg-zinc-700/60 hover:text-zinc-300 transition-colors cursor-default">
+              👆 Swipe navigation
+            </span>
+            <span class="px-3 py-1.5 bg-zinc-800/60 text-zinc-400 text-xs rounded-full flex items-center gap-1.5 hover:bg-zinc-700/60 hover:text-zinc-300 transition-colors cursor-default">
+              🔤 Font size controls
+            </span>
+            <span class="px-3 py-1.5 bg-zinc-800/60 text-zinc-400 text-xs rounded-full flex items-center gap-1.5 hover:bg-zinc-700/60 hover:text-zinc-300 transition-colors cursor-default">
+              ⬅️➡️ Chapter arrows
+            </span>
+          </div>
+        </div>
+        <div class="flex justify-center md:justify-end">
+          <a href="${readerLink}" class="inline-flex items-center gap-3 px-8 py-4 bg-emerald-500/20 text-emerald-400 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-[1.02] hover:bg-emerald-500/30 hover:shadow-lg hover:shadow-emerald-500/30" style="transition: transform 0.2s, box-shadow 0.2s;">
+            Try the reader <span class="text-xl">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  `;
+
   return `
     <div class="max-w-6xl mx-auto px-4 py-12">
       <header class="text-center mb-16">
@@ -218,6 +265,8 @@ function renderLayout() {
           <a href="https://blog.apiad.net/subscribe" class="text-violet-400 hover:text-violet-300 transition-colors">Subscribe for updates →</a>
         </p>
       </header>
+
+      ${readerBannerHtml}
 
       ${compendiumHtml}
 
