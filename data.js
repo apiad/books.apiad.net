@@ -1,3 +1,17 @@
+window.readerConfig = {
+  upsell: {
+    enabled: true,
+    thresholds: [10, 30, 60, 120, 240, 480]
+  }
+};
+
+// Developer console message
+console.log('%c👋 Hey there, developer!', 'font-size: 18px; font-weight: bold; color: #f97316;');
+console.log('%cLooks like you\'re peeking behind the curtains — I respect that.', 'color: #a1a1aa;');
+console.log('%cIf you enjoy deep dives into CS, AI, and software engineering,', 'color: #71717a;');
+console.log('%cI send out free weekly articles on my blog: 📧 https://blog.apiad.net/subscribe', 'color: #8b5cf6; font-weight: bold;');
+console.log('%cHappy reading! 🚀', 'color: #71717a;');
+
 window.catalogData = {
   compendium: {
     id: "compendium",
@@ -5,7 +19,8 @@ window.catalogData = {
     description: "A bundle of all current and future educational projects at a reduced price. Get access in perpetuity to all books and future work.",
     fullDescription: "This is my opus magna, a grand view of the whole field of computer science, from foundational theory to systems to applications. The compendium includes all current books (The Science of Computation, Mostly Harmless AI, How to Train your Chatbot, Mostly Harmless Graphs) plus all future books I write. Every chapter comes out as a blog post first, then PDF and EPUB versions are updated on Gumroad at a reduced price. Getting it today grants you access in perpetuity to all my digital educational work.",
     price: 6900,
-    gumroadUrl: "https://apiad.gumroad.com/l/compendium"
+    gumroadUrl: "https://apiad.gumroad.com/l/compendium",
+    salesCount: 138
   },
   categories: [
     {
@@ -33,7 +48,8 @@ window.catalogData = {
           gumroadUrl: "https://apiad.gumroad.com/l/tsoc",
           readUrl: "/books/tsoc",
           coverUrl: "/books/tsoc/cover.jpg",
-          hint: "Use FIFTYOFF discount code for a 50% discount!"
+          hint: "Use FIFTYOFF discount code for a 50% discount!",
+          salesCount: 28
         },
         {
           id: "mhai",
@@ -47,10 +63,11 @@ window.catalogData = {
           pages: 92,
           targetPages: 300,
           price: 2900,
-          gumroadUrl: "https://apiad.gumroad.com/l/mhai",
+          gumroadUrl: "https://apiad.gumroad.com/l/ai",
           readUrl: "/books/mhai",
           coverUrl: "/books/mhai/cover.jpg",
-          hint: "Use FIFTYOFF discount code for a 50% discount!"
+          hint: "Use FIFTYOFF discount code for a 50% discount!",
+          salesCount: 90
         },
         {
           id: "chatbots",
@@ -67,7 +84,8 @@ window.catalogData = {
           gumroadUrl: "https://apiad.gumroad.com/l/chatbots",
           readUrl: "/books/chatbots",
           coverUrl: "/books/chatbots/cover.jpg",
-          hint: "Use FIFTYOFF discount code for a 50% discount!"
+          hint: "Use FIFTYOFF discount code for a 50% discount!",
+          salesCount: 71
         },
         {
           id: "graphs",
@@ -84,7 +102,8 @@ window.catalogData = {
           gumroadUrl: "https://apiad.gumroad.com/l/graphs",
           readUrl: "/books/graphs",
           coverUrl: "/books/graphs/cover.jpg",
-          hint: "Use FIFTYOFF discount code for a 50% discount!"
+          hint: "Use FIFTYOFF discount code for a 50% discount!",
+          salesCount: 49
         }
       ]
     },

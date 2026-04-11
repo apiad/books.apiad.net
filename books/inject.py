@@ -36,15 +36,20 @@ def inject():
                 btn.string = '🌙'
                 controls.append(btn)
                 
-                script = soup.new_tag('script', src='/books/reader.js')
+                # Add data.js first (so window.catalogData is available)
+                data_script = soup.new_tag('script', src='/data.js')
+                
+                # Add reader.js
+                reader_script = soup.new_tag('script', src='/books/reader.js')
                 
                 # Insert AFTER footer (or at end of body if no footer)
                 footer = body.find('footer')
                 if footer:
-                    footer.insert_after(controls, script)
+                    footer.insert_after(controls, data_script, reader_script)
                 else:
                     body.append(controls)
-                    body.append(script)
+                    body.append(data_script)
+                    body.append(reader_script)
             
             result = str(soup)
             html_file.write_text(result, encoding='utf-8')

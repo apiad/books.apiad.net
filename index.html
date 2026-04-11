@@ -279,7 +279,8 @@
           <h2 id="book-modal-title" class="text-2xl font-bold font-serif text-zinc-100 mb-2"></h2>
           <div id="book-modal-badges" class="flex flex-wrap gap-2 mb-4"></div>
           <p id="book-modal-description" class="text-zinc-400 mb-4"></p>
-          <div id="book-modal-progress" class="mb-4"></div>
+          <div id="book-modal-progress" class="mb-2"></div>
+          <div id="book-modal-sales" class="mb-4"></div>
           <div id="book-modal-buttons" class="mt-6"></div>
         </div>
       </div>
@@ -412,6 +413,12 @@
           ? '<span class="text-zinc-500 text-sm">Status: Planned</span>'
           : renderProgressBarModal(book.progress) + `<div class="text-xs text-zinc-500 mt-1">${book.pages} of ~${book.targetPages} pages</div>`);
       document.getElementById('book-modal-progress').innerHTML = progressHtml;
+
+      // Set sales count
+      const salesHtml = book.salesCount > 0
+        ? `<p class="text-zinc-500 text-sm">👤 ${book.salesCount} buyers</p>`
+        : '';
+      document.getElementById('book-modal-sales').innerHTML = salesHtml;
 
       // Set buttons (side by side) - compendium has buy button but no read
       const buttonsHtml = isCompendium

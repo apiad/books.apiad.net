@@ -432,3 +432,104 @@ main.content pre code {
   background-color: var(--link-color);
   color: white;
 }
+
+/* ========== UPSELL MODAL ========== */
+#reader-upsell-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.upsell-overlay {
+  background: rgba(24, 24, 27, 0.95);
+  padding: 2.5rem;
+  border-radius: 1rem;
+  max-width: 480px;
+  text-align: center;
+  border: 1px solid #3f3f46;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.upsell-content h3 {
+  color: #f97316;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.upsell-content p {
+  color: #a1a1aa;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.upsell-cta {
+  font-size: 0.9rem !important;
+  color: #71717a !important;
+  margin-top: 1rem !important;
+}
+
+.upsell-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.upsell-btn-primary {
+  display: block;
+  background: #f97316;
+  color: white;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.upsell-btn-primary:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(249, 115, 22, 0.3);
+}
+
+.upsell-btn-secondary {
+  display: block;
+  background: linear-gradient(135deg, #8b5cf6, #9333ea);
+  color: white;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.upsell-btn-secondary:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);
+}
+
+.upsell-btn-dismiss {
+  background: transparent;
+  color: #71717a;
+  border: 1px solid #3f3f46;
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.upsell-btn-dismiss:hover {
+  color: #a1a1aa;
+  border-color: #52525b;
+}

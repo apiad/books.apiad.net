@@ -98,7 +98,7 @@ function renderBookCard(book) {
     ? ''
     : `<div class="mt-3 pt-3 border-t border-zinc-800">
         <button onclick="openBookModal('compendium')" class="w-full py-2 text-xs text-violet-400 hover:text-violet-300 transition-colors">
-          📦 Get Compendium - all books + future included →
+          📦 Get Compendium - all books + private Discord →
         </button>
       </div>`;
 
@@ -113,6 +113,10 @@ function renderBookCard(book) {
           ${renderBadge(book.status, book.statusEmoji, isPlanned, statusTooltips[book.statusEmoji + ' ' + book.status] || '')}
         </div>
         <h3 class="text-lg font-semibold text-zinc-100 font-serif">${book.title}</h3>
+        ${book.salesCount > 0 
+          ? `<p class="text-zinc-500 text-xs mt-1">👤 ${book.salesCount} buyers</p>`
+          : ''
+        }
         <p class="text-zinc-400 text-sm mt-2 custom-clamp">${book.description}</p>
         <div class="flex-grow"></div>
         ${progressHtml}
@@ -167,12 +171,16 @@ function renderCompendium(compendium) {
                 <span class="text-green-400 font-semibold ml-3">Save ${savingsPercent}%</span>
               </p>
               <p class="text-violet-400 text-xs mt-1">
-                ✨ Plus ${futureCount} more future books included forever (worth $${((futureCount * 29)).toFixed(0)}+)
+                💬 Plus access to private Discord community for discussions and Q&A
               </p>
             </div>
           </div>
           <div class="flex flex-col justify-center items-start md:items-end">
-            <span class="text-5xl font-bold text-orange-400 mb-6">${formatPrice(compendium.price)}</span>
+            <span class="text-5xl font-bold text-orange-400 mb-2">${formatPrice(compendium.price)}</span>
+            ${compendium.salesCount > 0 
+              ? `<p class="text-zinc-500 text-sm mb-4">👤 ${compendium.salesCount}+ total buyers</p>`
+              : ''
+            }
             <a href="#" data-gumroad-url="${compendium.gumroadUrl}" class="gumroad-buy-btn bg-gradient-to-r from-violet-500 to-purple-600 hover:from-violet-600 hover:to-purple-700 text-white px-10 py-5 rounded-xl font-semibold text-xl transition-all duration-200 hover:scale-[1.02] shadow-lg shadow-violet-500/25 w-full md:w-auto text-center" onclick="event.stopPropagation();">🎁 Buy Bundle</a>
           </div>
         </div>
@@ -189,17 +197,24 @@ function renderLayout() {
   const earlyAccess = window.catalogData.categories.find(c => c.id === 'early-access');
   const bookCount = earlyAccess ? earlyAccess.items.length : 0;
 
+  // Calculate total sales (all books + compendium)
+  const bookSales = window.catalogData.categories.reduce((sum, cat) => 
+    sum + cat.items.reduce((s, book) => s + (book.salesCount || 0), 0), 0
+  );
+  const totalSales = bookSales + (window.catalogData.compendium.salesCount || 0);
+
   return `
     <div class="max-w-6xl mx-auto px-4 py-12">
       <header class="text-center mb-16">
         <h1 class="text-4xl md:text-5xl font-bold font-serif text-zinc-100 mb-4">The Computist Library</h1>
-        <h2 class="text-2xl md:text-2xl font-bold font-serif text-zinc-100 mb-4">Master Computer Science & Artificial Intelligence</h1>
+        <h2 class="text-2xl md:text-2xl font-bold font-serif text-zinc-100 mb-4">Master Computer Science & Artificial Intelligence</h2>
         <p class="text-zinc-400 text-lg max-w-2xl mx-auto mb-4">
           Deep, conceptual books on computation, algorithms, and AI.
           Zero formulas, zero code. Written for curious minds.
         </p>
         <p class="text-zinc-500 text-sm">
           📚 ${bookCount} books in progress •
+          💰 Over ${totalSales}+ total sales on Gumroad •
           <a href="https://blog.apiad.net/subscribe" class="text-violet-400 hover:text-violet-300 transition-colors">Subscribe for updates →</a>
         </p>
       </header>
@@ -219,9 +234,9 @@ function renderLayout() {
           <p class="text-zinc-400 text-sm">Buy once, get all future updates, forever - no extra cost, ever.</p>
         </div>
         <div class="text-center">
-          <div class="text-5xl mb-3">🎁</div>
-          <h3 class="text-zinc-100 font-semibold mb-2">All Future Books Included</h3>
-          <p class="text-zinc-400 text-sm">Compendium bundle includes every book I ever write - infinite value.</p>
+          <div class="text-5xl mb-3">💬</div>
+          <h3 class="text-zinc-100 font-semibold mb-2">Private Community</h3>
+          <p class="text-zinc-400 text-sm">Join a private Discord of like-minded readers and the author for Q&A.</p>
         </div>
       </div>
 
@@ -241,12 +256,54 @@ function renderLayout() {
   `;
 }
 
+async function fetchGumroadSales(permalink) {
+  try {
+    const url = `https://api.gumroad.com/v2/products/${permalink}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    return data.product ? data.product.sales_count : 0;
+  } catch (e) {
+    console.error('Failed to fetch sales for', permalink, e);
+    return 0;
+  }
+}
+
+async function loadSalesCounts() {
+  const products = [
+    { id: 'tsoc', permalink: 'tsoc' },
+    { id: 'mhai', permalink: 'mhai' },
+    { id: 'chatbots', permalink: 'chatbots' },
+    { id: 'graphs', permalink: 'graphs' },
+    { id: 'compendium', permalink: 'compendium' }
+  ];
+
+  for (const p of products) {
+    const count = await fetchGumroadSales(p.permalink);
+    if (p.id === 'compendium') {
+      window.catalogData.compendium.salesCount = count;
+    } else {
+      for (const cat of window.catalogData.categories) {
+        const book = cat.items.find(b => b.id === p.id);
+        if (book) {
+          book.salesCount = count;
+          break;
+        }
+      }
+    }
+  }
+
+  document.getElementById('catalog-root').innerHTML = renderLayout();
+  attachEventHandlers();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-  // Render the page
   document.getElementById('catalog-root').innerHTML = renderLayout();
   console.log('Page rendered');
 
-  // Attach click handlers to Gumroad buttons (already inside cards)
+  attachEventHandlers();
+});
+
+function attachEventHandlers() {
   document.querySelectorAll('.gumroad-buy-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
@@ -255,13 +312,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Attach click handler to book cards (but not on buttons)
   document.querySelectorAll('.book-card').forEach(card => {
     card.addEventListener('click', (e) => {
-      // Don't open modal if clicking on a button or link
       if (e.target.closest('a') || e.target.closest('button')) return;
       const bookId = card.dataset.bookId;
       openBookModal(bookId);
     });
   });
-});
+}
