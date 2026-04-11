@@ -20,6 +20,18 @@ def inject():
                 if not has_css:
                     link = soup.new_tag('link', href='/books/reader.css', rel='stylesheet')
                     head.insert(0, link)
+                
+                # Add PWA manifest
+                has_manifest = any(link.get('href') == '/manifest.json' for link in head.find_all('link'))
+                if not has_manifest:
+                    manifest_link = soup.new_tag('link', href='/manifest.json', rel='manifest')
+                    head.append(manifest_link)
+                
+                # Add Service Worker registration
+                has_sw = any(script.get('src') == '/sw-register.js' for script in head.find_all('script'))
+                if not has_sw:
+                    sw_script = soup.new_tag('script', src='/sw-register.js')
+                    head.append(sw_script)
             
             body = soup.find('body')
             if body:
