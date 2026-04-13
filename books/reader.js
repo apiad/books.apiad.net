@@ -16,11 +16,64 @@
     drawer.innerHTML = 
       '<div id="reader-drawer-handle">▲</div>' +
       '<div id="reader-drawer-controls">' +
+        '<button id="toc-btn" title="Table of Contents">☰</button>' +
         '<button id="font-smaller" title="Smaller text">A-</button>' +
         '<button id="font-larger" title="Larger text">A+</button>' +
         '<button id="theme-btn" title="Toggle theme">🌙</button>' +
       '</div>';
     document.body.appendChild(drawer);
+    
+    // TOC toggle
+    var tocBtn = document.getElementById('toc-btn');
+    var sidebar = document.getElementById('quarto-sidebar');
+    var overlay = document.createElement('div');
+    overlay.id = 'reader-toc-overlay';
+    document.body.appendChild(overlay);
+    
+    var closeBtn = document.createElement('button');
+    closeBtn.id = 'reader-toc-close';
+    closeBtn.innerHTML = '×';
+    document.body.appendChild(closeBtn);
+    
+    // Close TOC on page load (reset state)
+    if (sidebar) {
+      sidebar.classList.remove('active');
+      overlay.classList.remove('active');
+      closeBtn.style.display = 'none';
+    }
+    
+    function closeToc() {
+      if (sidebar) {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+        closeBtn.style.display = 'none';
+      }
+    }
+    
+    function toggleToc() {
+      if (sidebar) {
+        if (sidebar.classList.contains('active')) {
+          closeToc();
+        } else {
+          sidebar.classList.add('active');
+          overlay.classList.add('active');
+          closeBtn.style.display = 'flex';
+        }
+      }
+    }
+    
+    tocBtn.addEventListener('click', toggleToc);
+    overlay.addEventListener('click', closeToc);
+    closeBtn.addEventListener('click', closeToc);
+    
+    // Close TOC when clicking sidebar links
+    if (sidebar) {
+      sidebar.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A' && e.target.classList.contains('sidebar-link')) {
+          closeToc();
+        }
+      });
+    }
     
     // Theme toggle
     var themeBtn = document.getElementById('theme-btn');
