@@ -1,5 +1,4 @@
 // App initialization
-console.log('app.js loaded');
 
 const audienceTooltips = {
   '😄 General': 'A book that can be read by anyone, regardless of their background.',
@@ -300,7 +299,7 @@ function renderLayout() {
       </main>
 
       <footer class="mt-20 pt-8 border-t border-zinc-800 text-center text-zinc-500 text-sm">
-        <p>© 2025 <a href="https://books.apiad.net" class="hover:text-zinc-300 transition-colors">The Computist Library</a> - All rights reserved.</p>
+        <p>© ${new Date().getFullYear()} <a href="https://books.apiad.net" class="hover:text-zinc-300 transition-colors">The Computist Library</a> - All rights reserved.</p>
         <p class="mt-2">
           <a href="https://blog.apiad.net" class="hover:text-zinc-300 transition-colors">Blog</a> ·
           <a href="https://store.apiad.net" class="hover:text-zinc-300 transition-colors">Store</a> ·

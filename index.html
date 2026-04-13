@@ -11,8 +11,24 @@
     gtag('config', 'G-QNXS0D46FW');
   </script>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Computist Library</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>The Computist Library — Master Computer Science & AI</title>
+  <meta name="description" content="Deep, conceptual books on computation, algorithms, and AI. All free to read online with a custom reader. Buy PDF/EPUB to support the author.">
+  <link rel="canonical" href="https://books.apiad.net/">
+  <meta property="og:title" content="The Computist Library — Master Computer Science & AI">
+  <meta property="og:description" content="Deep, conceptual books on computation, algorithms, and AI. All free to read online.">
+  <meta property="og:url" content="https://books.apiad.net/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="The Computist Library">
+  <meta property="og:image" content="https://books.apiad.net/icon-512.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="The Computist Library">
+  <meta name="twitter:description" content="Free online books on CS, AI, and software engineering.">
+  <meta name="twitter:image" content="https://books.apiad.net/icon-512.png">
+  <meta name="theme-color" content="#0f0f0f">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <link rel="manifest" href="/manifest.json">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -255,6 +271,13 @@
   </style>
 </head>
 <body class="min-h-screen">
+  <noscript>
+    <div style="max-width:600px;margin:40px auto;padding:20px;color:#fafafa;font-family:sans-serif;text-align:center">
+      <h1>The Computist Library</h1>
+      <p style="margin:16px 0;color:#a1a1aa">Free online books on computer science, AI, and software engineering.</p>
+      <p style="color:#a1a1aa">This site requires JavaScript. <a href="/books/" style="color:#8b5cf6">Try the book reader instead →</a></p>
+    </div>
+  </noscript>
   <div id="catalog-root"></div>
 
   <!-- Custom Gumroad Modal -->
@@ -289,9 +312,9 @@
   </div>
 
   <!-- Load data first -->
-  <script src="data.js?v=202404110100"></script>
+  <script src="data.js"></script>
   <!-- Then app logic -->
-  <script src="app.js?v=202404110100"></script>
+  <script src="app.js"></script>
 
   <script>
     // Emoji spinner cycling

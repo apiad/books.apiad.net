@@ -14,13 +14,13 @@
     var drawer = document.createElement('div');
     drawer.id = 'reader-drawer';
     drawer.innerHTML = 
-      '<div id="reader-drawer-handle">▲</div>' +
+      '<div id="reader-drawer-handle" role="button" aria-label="Toggle controls" tabindex="0">▲</div>' +
       '<div id="reader-drawer-controls">' +
-        '<button id="home-btn" title="All Books">🏠</button>' +
-        '<button id="toc-btn" title="Table of Contents">☰</button>' +
-        '<button id="font-smaller" title="Smaller text">A-</button>' +
-        '<button id="font-larger" title="Larger text">A+</button>' +
-        '<button id="theme-btn" title="Toggle theme">🌙</button>' +
+        '<button id="home-btn" aria-label="All Books">🏠</button>' +
+        '<button id="toc-btn" aria-label="Table of Contents">☰</button>' +
+        '<button id="font-smaller" aria-label="Decrease font size">A-</button>' +
+        '<button id="font-larger" aria-label="Increase font size">A+</button>' +
+        '<button id="theme-btn" aria-label="Toggle theme">🌙</button>' +
       '</div>';
     document.body.appendChild(drawer);
     
@@ -39,6 +39,7 @@
     var closeBtn = document.createElement('button');
     closeBtn.id = 'reader-toc-close';
     closeBtn.innerHTML = '×';
+    closeBtn.setAttribute('aria-label', 'Close table of contents');
     document.body.appendChild(closeBtn);
     
     // Close TOC on page load (reset state)
@@ -80,6 +81,14 @@
         }
       });
     }
+    
+    // Close TOC on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && sidebar && sidebar.classList.contains('active')) {
+        closeToc();
+        tocBtn.focus();
+      }
+    });
     
     // Theme toggle
     var themeBtn = document.getElementById('theme-btn');
@@ -162,7 +171,7 @@
     var touchEndX = 0;
     var touchStartY = 0;
     var touchEndY = 0;
-    var swipeThreshold = 50;
+    var swipeThreshold = 80;
     
     document.addEventListener('touchstart', function(e) {
       touchStartX = e.changedTouches[0].screenX;
@@ -215,29 +224,22 @@
       applyFontSize(fontSizes[sizeIndex]);
     };
     
-    // Keyboard shortcuts for font size
+    // Keyboard shortcuts for font size (skip if in input/textarea)
     document.addEventListener('keydown', function(e) {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable) return;
       if (e.key === '-' || e.key === '_') {
         document.getElementById('font-smaller').click();
       } else if (e.key === '=' || e.key === '+') {
         document.getElementById('font-larger').click();
+      } else if (e.key === 't' || e.key === 'T') {
+        document.getElementById('theme-btn').click();
       }
     });
   })();
 
-  // ========== KEYBOARD SHORTCUTS ==========
-  document.addEventListener('keydown', function(e) {
-    // T key to toggle theme
-    if (e.key === 't' || e.key === 'T') {
-      document.getElementById('theme-btn').click();
-    }
-  });
-
   // ========== REMEMBER POSITION ==========
   (function() {
-    var pathMatch = window.location.pathname.match(/\/books\/([^/]+)/);
-    if (!pathMatch) return;
-    var bookId = pathMatch[1];
+    if (!bookId) return;
     
     var posKey = 'reader_pos_' + bookId;
     var savedPos = JSON.parse(localStorage.getItem(posKey));
@@ -276,29 +278,11 @@
                   document.querySelector('.page-content') ||
                   document.querySelector('.content');
     
-    if (!content) {
-      console.log('Reader progress: no content element found');
-      return;
-    }
-    
-    // Debug: log content details
-    console.log('Reader progress: found content', {
-      tag: content.tagName,
-      id: content.id,
-      className: content.className,
-      textLength: (content.innerText || '').length,
-      wordCount: (content.innerText || '').split(/\s+/).filter(function(w) { return w.length > 0; }).length,
-      offsetHeight: content.offsetHeight
-    });
+    if (!content) return;
     
     // Word count for this chapter
     var totalWords = (content.innerText || '').split(/\s+/).filter(function(w) { return w.length > 0; }).length;
-    if (totalWords < 50) {
-      console.log('Reader progress: too few words', totalWords);
-      return;
-    }
-    
-    console.log('Reader progress: words:', totalWords, 'expected time:', Math.ceil(totalWords / 120), 'minutes');
+    if (totalWords < 50) return;
     
     // Create progress bar
     var progressBar = document.createElement('div');
@@ -348,10 +332,7 @@
 
   // ========== UPSELL MODAL ==========
   (function() {
-    // Get book ID from URL path (e.g., /books/tsoc/intro.html -> tsoc)
-    var pathMatch = window.location.pathname.match(/\/books\/([^/]+)/);
-    if (!pathMatch) return;
-    var bookId = pathMatch[1];
+    if (!bookId) return;
 
     // Get config from window
     var config = window.readerConfig?.upsell;
@@ -380,31 +361,42 @@
     // Time tracking (cumulative per book)
     var timeKey = 'reader_time_' + bookId;
     var totalSeconds = parseInt(localStorage.getItem(timeKey) || '0');
+    var thresholds = config.thresholds || [15, 30, 60, 120, 240, 480];
+    var maxThreshold = thresholds[thresholds.length - 1];
+    var shownKey = 'reader_upsell_' + bookId;
+    var shownThresholds = JSON.parse(localStorage.getItem(shownKey) || '[]');
 
     // Save time periodically
-    setInterval(function() {
+    var saveInterval = setInterval(function() {
       localStorage.setItem(timeKey, totalSeconds.toString());
     }, 30000);
 
-    // Increment time every second
-    setInterval(function() {
+    // Increment time every second and check upsell
+    var tickInterval = setInterval(function() {
       totalSeconds++;
+      
+      // Stop intervals if past all thresholds
+      var minutes = Math.floor(totalSeconds / 60);
+      if (minutes > maxThreshold && shownThresholds.length >= thresholds.length) {
+        localStorage.setItem(timeKey, totalSeconds.toString());
+        clearInterval(tickInterval);
+        clearInterval(saveInterval);
+        return;
+      }
+      
       checkUpsell();
     }, 1000);
 
     // Check and show modal
     function checkUpsell() {
-      var thresholds = config.thresholds || [15, 30, 60, 120, 240, 480];
       var minutes = Math.floor(totalSeconds / 60);
-      var shownKey = 'reader_upsell_' + bookId;
-      var shown = JSON.parse(localStorage.getItem(shownKey) || '[]');
 
       for (var i = 0; i < thresholds.length; i++) {
         var threshold = thresholds[i];
-        if (minutes >= threshold && shown.indexOf(threshold) === -1) {
+        if (minutes >= threshold && shownThresholds.indexOf(threshold) === -1) {
           showUpsellModal(threshold, book, compendium);
-          shown.push(threshold);
-          localStorage.setItem(shownKey, JSON.stringify(shown));
+          shownThresholds.push(threshold);
+          localStorage.setItem(shownKey, JSON.stringify(shownThresholds));
           break;
         }
       }
@@ -439,6 +431,17 @@
       modal.querySelector('.upsell-btn-dismiss').onclick = function() {
         modal.remove();
       };
+      
+      // Close upsell on Escape
+      modal.setAttribute('role', 'dialog');
+      modal.setAttribute('aria-modal', 'true');
+      var escHandler = function(e) {
+        if (e.key === 'Escape') {
+          modal.remove();
+          document.removeEventListener('keydown', escHandler);
+        }
+      };
+      document.addEventListener('keydown', escHandler);
 
       document.body.appendChild(modal);
     }

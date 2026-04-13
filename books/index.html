@@ -1,164 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><link href="/books/reader.css" rel="stylesheet"/>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>The Computist Library</title>
-<link href="/manifest.json" rel="manifest"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
-<script src="/sw-register.js"></script>
-<style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: #0f0f0f;
-      color: #fafafa;
-      min-height: 100vh;
-      padding: 24px 16px;
-    }
-    .header { text-align: center; margin-bottom: 32px; }
-    .header h1 {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 8px;
-      background: linear-gradient(to right, #f97316, #8b5cf6);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .header p { color: #71717a; font-size: 14px; }
-    .books { display: flex; flex-direction: column; gap: 16px; max-width: 400px; margin: 0 auto; }
-    .book-card {
-      display: flex;
-      gap: 16px;
-      background: #1a1a1a;
-      border: 1px solid #27272a;
-      border-radius: 12px;
-      padding: 16px;
-      text-decoration: none;
-      color: inherit;
-      transition: transform 0.2s, border-color 0.2s;
-    }
-    .book-card:hover { transform: scale(1.02); border-color: #3f3f46; }
-    .book-card:active { transform: scale(0.98); }
-    .book-cover {
-      width: 60px;
-      height: 80px;
-      border-radius: 6px;
-      object-fit: cover;
-      flex-shrink: 0;
-    }
-    .book-info { flex: 1; display: flex; flex-direction: column; justify-content: center; }
-    .book-title {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-    .book-description {
-      font-size: 13px;
-      color: #a1a1aa;
-      line-height: 1.4;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-    .book-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 11px;
-      color: #71717a;
-      margin-top: 8px;
-    }
-    .progress-bar {
-      height: 3px;
-      background: #27272a;
-      border-radius: 2px;
-      margin-top: 8px;
-      overflow: hidden;
-    }
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(to right, #f97316, #8b5cf6);
-      border-radius: 2px;
-    }
-    .read-btn {
-      display: inline-block;
-      margin-top: 8px;
-      padding: 6px 12px;
-      background: #8b5cf6;
-      color: white;
-      font-size: 12px;
-      font-weight: 500;
-      border-radius: 6px;
-      text-align: center;
-    }
-    .footer {
-      text-align: center;
-      margin-top: 40px;
-      padding-top: 20px;
-      border-top: 1px solid #27272a;
-      color: #52525b;
-      font-size: 12px;
-    }
-    .footer a { color: #8b5cf6; text-decoration: none; }
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>The Computist Library — Free Online Books</title>
+  <meta name="description" content="Read free books on computer science, AI, and software engineering. Custom web reader with offline support, dark mode, progress tracking, and more.">
+  <link rel="canonical" href="https://books.apiad.net/books/">
+  <meta property="og:title" content="The Computist Library — Free Online Books">
+  <meta property="og:description" content="Read free books on computer science, AI, and software engineering online.">
+  <meta property="og:url" content="https://books.apiad.net/books/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://books.apiad.net/icon-512.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="The Computist Library">
+  <meta name="twitter:description" content="Free online books on CS, AI, and software engineering.">
+  <meta name="twitter:creator" content="@alepiad">
+  <meta name="theme-color" content="#0f0f0f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <script src="/sw-register.js"></script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#0f0f0f;color:#fafafa;min-height:100vh;padding:max(24px,env(safe-area-inset-top)) 16px max(24px,env(safe-area-inset-bottom))}
+    .header{text-align:center;margin-bottom:32px}
+    .header h1{font-family:'Playfair Display',Georgia,serif;font-size:28px;font-weight:700;margin-bottom:8px;background:linear-gradient(to right,#f97316,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .header p{color:#71717a;font-size:14px}
+    .books{display:flex;flex-direction:column;gap:16px;max-width:400px;margin:0 auto}
+    .book-card{display:flex;gap:16px;background:#1a1a1a;border:1px solid #27272a;border-radius:12px;padding:16px;text-decoration:none;color:inherit;transition:transform .2s,border-color .2s}
+    .book-card:hover{transform:scale(1.02);border-color:#3f3f46}
+    .book-card:active{transform:scale(.98)}
+    .book-cover{width:60px;height:80px;border-radius:6px;object-fit:cover;flex-shrink:0}
+    .book-info{flex:1;display:flex;flex-direction:column;justify-content:center}
+    .book-title{font-family:'Playfair Display',Georgia,serif;font-size:16px;font-weight:600;margin-bottom:4px}
+    .book-description{font-size:13px;color:#a1a1aa;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .book-status{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:#71717a;margin-top:8px}
+    .progress-bar{height:3px;background:#27272a;border-radius:2px;margin-top:8px;overflow:hidden}
+    .progress-fill{height:100%;background:linear-gradient(to right,#f97316,#8b5cf6);border-radius:2px}
+    .read-btn{display:inline-block;margin-top:8px;padding:6px 12px;background:#8b5cf6;color:#fff;font-size:12px;font-weight:500;border-radius:6px;text-align:center}
+    .footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #27272a;color:#52525b;font-size:12px}
+    .footer a{color:#8b5cf6;text-decoration:none}
   </style>
 </head>
 <body>
-<div class="header">
-<h1>The Computist Library</h1>
-<p>Read online for free</p>
-</div>
-<div class="books">
-<a class="book-card" href="/books/tsoc/index.html">
-<img alt="The Science of Computation" class="book-cover" src="/books/tsoc/cover.jpg"/>
-<div class="book-info">
-<div class="book-title">The Science of Computation</div>
-<div class="book-description">A grand view of computer science, from foundations to AI. Zero formulas or code. Four parts: foundations, systems, software engineering, AI.</div>
-<span class="book-status">🔴 Alpha · 18%</span>
-<div class="progress-bar"><div class="progress-fill" style="width: 18%"></div></div>
-<span class="read-btn">Read</span>
-</div>
-</a>
-<a class="book-card" href="/books/mhai/index.html">
-<img alt="Mostly Harmless AI" class="book-cover" src="/books/mhai/cover.jpg"/>
-<div class="book-info">
-<div class="book-title">Mostly Harmless AI</div>
-<div class="book-description">Essays on AI and its impact on society. Revised and formatted from newsletter issues. Covers AI in software, education, existential risks, limitations, and future.</div>
-<span class="book-status">🟠 Beta · 31%</span>
-<div class="progress-bar"><div class="progress-fill" style="width: 31%"></div></div>
-<span class="read-btn">Read</span>
-</div>
-</a>
-<a class="book-card" href="/books/chatbots/index.html">
-<img alt="How to Train your Chatbot" class="book-cover" src="/books/chatbots/cover.jpg"/>
-<div class="book-info">
-<div class="book-title">How to Train your Chatbot</div>
-<div class="book-description">Hands-on guide to building LLM applications. Covers prompt engineering, RAG, code interpreter, tools, agents, and how LLMs work.</div>
-<span class="book-status">🔴 Alpha · 73%</span>
-<div class="progress-bar"><div class="progress-fill" style="width: 73%"></div></div>
-<span class="read-btn">Read</span>
-</div>
-</a>
-<a class="book-card" href="/books/graphs/index.html">
-<img alt="Mostly Harmless Graphs" class="book-cover" src="/books/graphs/cover.jpg"/>
-<div class="book-info">
-<div class="book-title">Mostly Harmless Graphs</div>
-<div class="book-description">Graphs from theory to algorithms to applications. Focuses on practical problems and builds theory as needed. Each chapter starts with a concrete problem.</div>
-<span class="book-status">🔴 Alpha · 18%</span>
-<div class="progress-bar"><div class="progress-fill" style="width: 18%"></div></div>
-<span class="read-btn">Read</span>
-</div>
-</a>
-</div>
-<div class="footer">
-<p>Built with ❤️ by <a href="https://apiad.net">Alejandro Piad</a></p>
-<p style="margin-top: 8px;">100% free to read online</p>
-</div>
-<script src="/data.js"></script><script src="/books/reader.js"></script></body>
+  <div class="header">
+    <h1>The Computist Library</h1>
+    <p>Read online for free</p>
+  </div>
+  <div class="books">
+    <a href="/books/tsoc/index.html" class="book-card">
+      <img src="/books/tsoc/cover.jpg" alt="The Science of Computation" class="book-cover" loading="lazy">
+      <div class="book-info">
+        <div class="book-title">The Science of Computation</div>
+        <div class="book-description">A grand view of computer science, from foundations to AI. Zero formulas or code. Four parts: foundations, systems, software engineering, AI.</div>
+        <span class="book-status">🔴 Alpha · 18%</span>
+        <div class="progress-bar"><div class="progress-fill" style="width:18%"></div></div>
+        <span class="read-btn">Read</span>
+      </div>
+    </a>
+    <a href="/books/mhai/index.html" class="book-card">
+      <img src="/books/mhai/cover.jpg" alt="Mostly Harmless AI" class="book-cover" loading="lazy">
+      <div class="book-info">
+        <div class="book-title">Mostly Harmless AI</div>
+        <div class="book-description">Essays on AI and its impact on society. Revised and formatted from newsletter issues. Covers AI in software, education, existential risks, limitations, and future.</div>
+        <span class="book-status">🟠 Beta · 31%</span>
+        <div class="progress-bar"><div class="progress-fill" style="width:31%"></div></div>
+        <span class="read-btn">Read</span>
+      </div>
+    </a>
+    <a href="/books/chatbots/index.html" class="book-card">
+      <img src="/books/chatbots/cover.jpg" alt="How to Train your Chatbot" class="book-cover" loading="lazy">
+      <div class="book-info">
+        <div class="book-title">How to Train your Chatbot</div>
+        <div class="book-description">Hands-on guide to building LLM applications. Covers prompt engineering, RAG, code interpreter, tools, agents, and how LLMs work.</div>
+        <span class="book-status">🔴 Alpha · 73%</span>
+        <div class="progress-bar"><div class="progress-fill" style="width:73%"></div></div>
+        <span class="read-btn">Read</span>
+      </div>
+    </a>
+    <a href="/books/graphs/index.html" class="book-card">
+      <img src="/books/graphs/cover.jpg" alt="Mostly Harmless Graphs" class="book-cover" loading="lazy">
+      <div class="book-info">
+        <div class="book-title">Mostly Harmless Graphs</div>
+        <div class="book-description">Graphs from theory to algorithms to applications. Focuses on practical problems and builds theory as needed. Each chapter starts with a concrete problem.</div>
+        <span class="book-status">🔴 Alpha · 18%</span>
+        <div class="progress-bar"><div class="progress-fill" style="width:18%"></div></div>
+        <span class="read-btn">Read</span>
+      </div>
+    </a>
+  </div>
+  <div class="footer">
+    <p>© 2026 <a href="https://apiad.net">Alejandro Piad</a></p>
+    <p style="margin-top:8px">100% free to read online</p>
+  </div>
+</body>
 </html>
