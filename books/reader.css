@@ -2,6 +2,13 @@
    Kindle-like Reading Experience for The Computist
    ===================================================== */
 
+/* Hide Quarto breadcrumbs */
+.quarto-page-breadcrumbs,
+.quarto-secondary-nav,
+#quarto-header {
+  display: none !important;
+}
+
 /* Google Fonts import */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&family=Fira+Code:wght@400;500&display=swap');
 
@@ -580,9 +587,22 @@ nav.page-navigation {
   font-weight: 300;
 }
 
-#reader-nav-arrows button.disabled {
+#reader-nav-arrows button#nav-prev.disabled,
+#reader-nav-arrows button#nav-next.disabled {
   opacity: 0.3;
   pointer-events: none;
+  cursor: default;
+}
+
+#reader-nav-arrows button#nav-prev.disabled:hover,
+#reader-nav-arrows button#nav-next.disabled:hover {
+  transform: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] #reader-nav-arrows button#nav-prev.disabled:hover,
+[data-theme="dark"] #reader-nav-arrows button#nav-next.disabled:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 /* ========== CODE IMPROVEMENTS ========== */

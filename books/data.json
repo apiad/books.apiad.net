@@ -1,25 +1,10 @@
-window.readerConfig = {
-  "upsell": {
-    "enabled": true,
-    "thresholds": [
-      10,
-      30,
-      60,
-      120,
-      240,
-      480
-    ]
-  }
-};
-
-// Developer console message
-console.log('%c👋 Hey there, developer!', 'font-size: 18px; font-weight: bold; color: #f97316;');
-console.log('%cLooks like you\'re peeking behind the curtains — I respect that.', 'color: #a1a1aa;');
-console.log('%cIf you enjoy deep dives into CS, AI, and software engineering,', 'color: #71717a;');
-console.log('%cI send out free weekly articles on my blog: 📧 https://blog.apiad.net/subscribe', 'color: #8b5cf6; font-weight: bold;');
-console.log('%cHappy reading! 🚀', 'color: #71717a;');
-
-window.catalogData = {
+{
+  "readerConfig": {
+    "upsell": {
+      "enabled": true,
+      "thresholds": [10, 30, 60, 120, 240, 480]
+    }
+  },
   "compendium": {
     "id": "compendium",
     "title": "The Computist Compendium",
@@ -218,4 +203,4 @@ window.catalogData = {
       ]
     }
   ]
-};
+}

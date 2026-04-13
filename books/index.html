@@ -10,12 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
 <script src="/sw-register.js"></script>
 <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background-color: #0f0f0f;
@@ -23,12 +18,7 @@
       min-height: 100vh;
       padding: 24px 16px;
     }
-    
-    .header {
-      text-align: center;
-      margin-bottom: 32px;
-    }
-    
+    .header { text-align: center; margin-bottom: 32px; }
     .header h1 {
       font-family: 'Playfair Display', Georgia, serif;
       font-size: 28px;
@@ -39,20 +29,8 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-    
-    .header p {
-      color: #71717a;
-      font-size: 14px;
-    }
-    
-    .books {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      max-width: 400px;
-      margin: 0 auto;
-    }
-    
+    .header p { color: #71717a; font-size: 14px; }
+    .books { display: flex; flex-direction: column; gap: 16px; max-width: 400px; margin: 0 auto; }
     .book-card {
       display: flex;
       gap: 16px;
@@ -64,16 +42,8 @@
       color: inherit;
       transition: transform 0.2s, border-color 0.2s;
     }
-    
-    .book-card:hover {
-      transform: scale(1.02);
-      border-color: #3f3f46;
-    }
-    
-    .book-card:active {
-      transform: scale(0.98);
-    }
-    
+    .book-card:hover { transform: scale(1.02); border-color: #3f3f46; }
+    .book-card:active { transform: scale(0.98); }
     .book-cover {
       width: 60px;
       height: 80px;
@@ -81,21 +51,13 @@
       object-fit: cover;
       flex-shrink: 0;
     }
-    
-    .book-info {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    
+    .book-info { flex: 1; display: flex; flex-direction: column; justify-content: center; }
     .book-title {
       font-family: 'Playfair Display', Georgia, serif;
       font-size: 16px;
       font-weight: 600;
       margin-bottom: 4px;
     }
-    
     .book-description {
       font-size: 13px;
       color: #a1a1aa;
@@ -105,7 +67,6 @@
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
-    
     .book-status {
       display: inline-flex;
       align-items: center;
@@ -114,7 +75,6 @@
       color: #71717a;
       margin-top: 8px;
     }
-    
     .progress-bar {
       height: 3px;
       background: #27272a;
@@ -122,13 +82,11 @@
       margin-top: 8px;
       overflow: hidden;
     }
-    
     .progress-fill {
       height: 100%;
       background: linear-gradient(to right, #f97316, #8b5cf6);
       border-radius: 2px;
     }
-    
     .read-btn {
       display: inline-block;
       margin-top: 8px;
@@ -140,7 +98,6 @@
       border-radius: 6px;
       text-align: center;
     }
-    
     .footer {
       text-align: center;
       margin-top: 40px;
@@ -149,11 +106,7 @@
       color: #52525b;
       font-size: 12px;
     }
-    
-    .footer a {
-      color: #8b5cf6;
-      text-decoration: none;
-    }
+    .footer a { color: #8b5cf6; text-decoration: none; }
   </style>
 </head>
 <body>
@@ -161,52 +114,51 @@
 <h1>The Computist Library</h1>
 <p>Read online for free</p>
 </div>
-<div class="books" id="books-container"></div>
+<div class="books">
+<a class="book-card" href="/books/tsoc/index.html">
+<img alt="The Science of Computation" class="book-cover" src="/books/tsoc/cover.jpg"/>
+<div class="book-info">
+<div class="book-title">The Science of Computation</div>
+<div class="book-description">A grand view of computer science, from foundations to AI. Zero formulas or code. Four parts: foundations, systems, software engineering, AI.</div>
+<span class="book-status">🔴 Alpha · 18%</span>
+<div class="progress-bar"><div class="progress-fill" style="width: 18%"></div></div>
+<span class="read-btn">Read</span>
+</div>
+</a>
+<a class="book-card" href="/books/mhai/index.html">
+<img alt="Mostly Harmless AI" class="book-cover" src="/books/mhai/cover.jpg"/>
+<div class="book-info">
+<div class="book-title">Mostly Harmless AI</div>
+<div class="book-description">Essays on AI and its impact on society. Revised and formatted from newsletter issues. Covers AI in software, education, existential risks, limitations, and future.</div>
+<span class="book-status">🟠 Beta · 31%</span>
+<div class="progress-bar"><div class="progress-fill" style="width: 31%"></div></div>
+<span class="read-btn">Read</span>
+</div>
+</a>
+<a class="book-card" href="/books/chatbots/index.html">
+<img alt="How to Train your Chatbot" class="book-cover" src="/books/chatbots/cover.jpg"/>
+<div class="book-info">
+<div class="book-title">How to Train your Chatbot</div>
+<div class="book-description">Hands-on guide to building LLM applications. Covers prompt engineering, RAG, code interpreter, tools, agents, and how LLMs work.</div>
+<span class="book-status">🔴 Alpha · 73%</span>
+<div class="progress-bar"><div class="progress-fill" style="width: 73%"></div></div>
+<span class="read-btn">Read</span>
+</div>
+</a>
+<a class="book-card" href="/books/graphs/index.html">
+<img alt="Mostly Harmless Graphs" class="book-cover" src="/books/graphs/cover.jpg"/>
+<div class="book-info">
+<div class="book-title">Mostly Harmless Graphs</div>
+<div class="book-description">Graphs from theory to algorithms to applications. Focuses on practical problems and builds theory as needed. Each chapter starts with a concrete problem.</div>
+<span class="book-status">🔴 Alpha · 18%</span>
+<div class="progress-bar"><div class="progress-fill" style="width: 18%"></div></div>
+<span class="read-btn">Read</span>
+</div>
+</a>
+</div>
 <div class="footer">
 <p>Built with ❤️ by <a href="https://apiad.net">Alejandro Piad</a></p>
 <p style="margin-top: 8px;">100% free to read online</p>
 </div>
-<script>
-    (function() {
-      var container = document.getElementById('books-container');
-      var categories = window.catalogData ? window.catalogData.categories : [];
-      
-      var booksHtml = '';
-      
-      for (var c = 0; c < categories.length; c++) {
-        var items = categories[c].items || [];
-        for (var i = 0; i < items.length; i++) {
-          var book = items[i];
-          
-          // Skip books without readUrl (like compendium)
-          if (!book.readUrl) continue;
-          
-          // Skip compendium
-          if (book.id === 'compendium') continue;
-          
-          var coverHtml = book.coverUrl 
-            ? '<img src="' + book.coverUrl + '" alt="' + book.title + '" class="book-cover">'
-            : '<div class="book-cover" style="background: linear-gradient(135deg, #f97316, #8b5cf6); display: flex; align-items: center; justify-content: center; font-size: 24px;">📚</div>';
-          
-          var link = book.readUrl + '/index.html';
-          var progress = book.progress || 0;
-          
-          booksHtml += 
-            '<a href="' + link + '" class="book-card">' +
-              coverHtml +
-              '<div class="book-info">' +
-                '<div class="book-title">' + book.title + '</div>' +
-                '<div class="book-description">' + book.description + '</div>' +
-                '<span class="book-status">' + (book.statusEmoji || '') + ' ' + (book.status || '') + ' · ' + progress + '%</span>' +
-                '<div class="progress-bar"><div class="progress-fill" style="width: ' + progress + '%"></div></div>' +
-                '<span class="read-btn">Read</span>' +
-              '</div>' +
-            '</a>';
-        }
-      }
-      
-      container.innerHTML = booksHtml;
-    })();
-  </script>
 <script src="/data.js"></script><script src="/books/reader.js"></script></body>
 </html>

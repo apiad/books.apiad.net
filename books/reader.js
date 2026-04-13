@@ -16,12 +16,18 @@
     drawer.innerHTML = 
       '<div id="reader-drawer-handle">▲</div>' +
       '<div id="reader-drawer-controls">' +
+        '<button id="home-btn" title="All Books">🏠</button>' +
         '<button id="toc-btn" title="Table of Contents">☰</button>' +
         '<button id="font-smaller" title="Smaller text">A-</button>' +
         '<button id="font-larger" title="Larger text">A+</button>' +
         '<button id="theme-btn" title="Toggle theme">🌙</button>' +
       '</div>';
     document.body.appendChild(drawer);
+    
+    // Home button
+    document.getElementById('home-btn').onclick = function() {
+      window.location.href = '/books/index.html';
+    };
     
     // TOC toggle
     var tocBtn = document.getElementById('toc-btn');
@@ -132,19 +138,25 @@
     
     var navArrows = document.createElement('div');
     navArrows.id = 'reader-nav-arrows';
-    if (prevLink) {
-      navArrows.innerHTML += '<button id="nav-prev" onclick="window.location.href=\'' + prevLink.href + '\'"><span class="nav-arrow">‹</span> Prev</button>';
-    }
-    if (nextLink) {
-      navArrows.innerHTML += '<button id="nav-next" onclick="window.location.href=\'' + nextLink.href + '\'">Next <span class="nav-arrow">›</span></button>';
-    }
+    navArrows.innerHTML = 
+      '<button id="nav-prev" class="nav-prev-btn"><span class="nav-arrow">‹</span> Prev</button>' +
+      '<button id="nav-next" class="nav-next-btn">Next <span class="nav-arrow">›</span></button>';
     content.appendChild(navArrows);
     
     var prevBtn = document.getElementById('nav-prev');
     var nextBtn = document.getElementById('nav-next');
     
-    if (prevBtn && !prevLink) prevBtn.classList.add('disabled');
-    if (nextBtn && !nextLink) nextBtn.classList.add('disabled');
+    if (prevLink) {
+      prevBtn.onclick = function() { window.location.href = prevLink.href; };
+    } else {
+      prevBtn.classList.add('disabled');
+    }
+    
+    if (nextLink) {
+      nextBtn.onclick = function() { window.location.href = nextLink.href; };
+    } else {
+      nextBtn.classList.add('disabled');
+    }
     
     var touchStartX = 0;
     var touchEndX = 0;
