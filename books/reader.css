@@ -68,8 +68,8 @@ html {
 
 body {
   font-family: var(--font-body);
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
   line-height: var(--line-height);
   margin: 0;
   padding: 0;
@@ -89,7 +89,11 @@ quarto-header,
 }
 
 /* ========== MAIN CONTENT AREA ========== */
+/* Quarto 1.7+ wraps content in a CSS Grid (display: grid + named column tracks
+   like body-content-start/end). The reader needs a simple centered column, so
+   we force block layout here; main.content's margin: 0 auto then takes effect. */
 #quarto-content {
+  display: block !important;
   padding: 0 !important;
   margin-left: 0 !important;
 }
@@ -97,7 +101,7 @@ quarto-header,
 main.content,
 #quarto-document-content {
   max-width: var(--content-max-width);
-  margin: 0 auto;
+  margin: 0 auto !important;
   padding: 2rem 1.5rem;
   background-color: var(--bg-content);
   transition: background-color 0.15s ease-out, color 0.15s ease-out;
