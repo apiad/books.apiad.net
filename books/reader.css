@@ -2,8 +2,13 @@
    Kindle-like Reading Experience for The Computist
    ===================================================== */
 
-/* Hide Quarto breadcrumbs */
+/* Hide Quarto breadcrumbs and chrome.
+   The nav[aria-label="breadcrumb"] catches both the page-level and the
+   title-block-header breadcrumb (Quarto 1.7+ adds .d-lg-block to the latter
+   with !important; we need a selector specific enough to win that cascade). */
+nav[aria-label="breadcrumb"],
 .quarto-page-breadcrumbs,
+.quarto-title-breadcrumbs,
 .quarto-secondary-nav,
 #quarto-header {
   display: none !important;
