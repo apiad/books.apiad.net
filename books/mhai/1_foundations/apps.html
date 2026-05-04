@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><head><link href="/books/reader.css" rel="stylesheet"/>
+<meta charset="utf-8"/>
+<meta content="quarto-1.7.30" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<title>4  Techniques for LLM Deployment – Mostly Harmless AI</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta content="../" name="quarto:offset"/>
+<link href="../1_foundations/optimization.html" rel="next"/>
+<link href="../1_foundations/llms.html" rel="prev"/>
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet"/>
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de070a7b0ab54f8780927367ac907214.css" id="quarto-text-highlighting-styles" rel="stylesheet"/>
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet"/>
+<link append-hash="true" data-mode="light" href="../site_libs/bootstrap/bootstrap-364982630eef5352dd1537128a8ed5cb.min.css" id="quarto-bootstrap" rel="stylesheet"/>
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@600;700;800&amp;family=Fira+Code:wght@400;500&amp;display=swap" rel="stylesheet"/><link href="/manifest.json" rel="manifest"/><script src="/sw-register.js"></script><meta content="#0f0f0f" name="theme-color"/><meta content="yes" name="apple-mobile-web-app-capable"/><link href="/icon-192.png" rel="apple-touch-icon"/><link href="/icon-192.png" rel="icon" sizes="192x192" type="image/png"/></head>
+<body class="nav-sidebar floating quarto-light">
+<div id="quarto-search-results"></div>
+<header class="headroom fixed-top" id="quarto-header">
+<nav class="quarto-secondary-nav">
+<div class="container-fluid d-flex">
+<button aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="quarto-btn-toggle btn" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="button" type="button">
+<i class="bi bi-layout-text-sidebar-reverse"></i>
+</button>
+<nav aria-label="breadcrumb" class="quarto-page-breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../1_foundations/index.html">Foundations of AI</a></li><li class="breadcrumb-item"><a href="../1_foundations/apps.html"><span class="chapter-number">4</span>  <span class="chapter-title">Techniques for LLM Deployment</span></a></li></ol></nav>
+<a aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="flex-grow-1" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="navigation">
+</a>
+<button aria-label="Search" class="btn quarto-search-button" onclick="window.quartoOpenSearch();" type="button">
+<i class="bi bi-search"></i>
+</button>
+</div>
+</nav>
+</header>
+<!-- content -->
+<div class="quarto-container page-columns page-rows-contents page-layout-article" id="quarto-content">
+<!-- sidebar -->
+<nav class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" id="quarto-sidebar">
+<div class="pt-lg-2 mt-2 text-left sidebar-header">
+<div class="sidebar-title mb-0 py-0">
+<a href="../">Mostly Harmless AI</a>
+</div>
+</div>
+<div class="mt-2 flex-shrink-0 align-items-center">
+<div class="sidebar-search">
+<div class="" id="quarto-search" title="Search"></div>
+</div>
+</div>
+<div class="sidebar-menu-container">
+<ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../index.html">
+<span class="menu-text">Preface</span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../manifesto.html">
+<span class="menu-text">The Techno-Pragmatist Manifesto</span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../prologue.html">
+<span class="menu-text">Prologue</span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../intro.html">
+<span class="menu-text">A Brief History of Artificial Intelligence</span></a>
+</div>
+</li>
+<li class="sidebar-item sidebar-item-section">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/index.html">
+<span class="menu-text">Foundations of AI</span></a>
+<a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-1" data-bs-toggle="collapse" role="navigation">
+<i class="bi bi-chevron-right ms-2"></i>
+</a>
+</div>
+<ul class="collapse list-unstyled sidebar-section depth1 show" id="quarto-sidebar-section-1">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/ai.html">
+<span class="menu-text"><span class="chapter-number">1</span>  <span class="chapter-title">Foundations of Artificial Intelligence</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/ml.html">
+<span class="menu-text"><span class="chapter-number">2</span>  <span class="chapter-title">Machine Learning</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/llms.html">
+<span class="menu-text"><span class="chapter-number">3</span>  <span class="chapter-title">Generative AI and Large Language Models</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link active" href="../1_foundations/apps.html">
+<span class="menu-text"><span class="chapter-number">4</span>  <span class="chapter-title">Techniques for LLM Deployment</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/optimization.html">
+<span class="menu-text"><span class="chapter-number">5</span>  <span class="chapter-title">Optimization of LLMs</span></span></a>
+</div>
+</li>
+</ul>
+</li>
+<li class="sidebar-item sidebar-item-section">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/index.html">
+<span class="menu-text">Applications of AI</span></a>
+<a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-2" data-bs-toggle="collapse" role="navigation">
+<i class="bi bi-chevron-right ms-2"></i>
+</a>
+</div>
+<ul class="collapse list-unstyled sidebar-section depth1 show" id="quarto-sidebar-section-2">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/intro.html">
+<span class="menu-text"><span class="chapter-number">6</span>  <span class="chapter-title">AI for Critical Thinkers</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/research.html">
+<span class="menu-text"><span class="chapter-number">7</span>  <span class="chapter-title">AI for Knowledge Workers</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/coding.html">
+<span class="menu-text"><span class="chapter-number">8</span>  <span class="chapter-title">AI for Software Development</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/education.html">
+<span class="menu-text"><span class="chapter-number">9</span>  <span class="chapter-title">AI for Educators and Learners</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/creative.html">
+<span class="menu-text"><span class="chapter-number">10</span>  <span class="chapter-title">AI for Creative Professionals</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/policy.html">
+<span class="menu-text"><span class="chapter-number">11</span>  <span class="chapter-title">AI for Policy-Makers</span></span></a>
+</div>
+</li>
+</ul>
+</li>
+<li class="sidebar-item sidebar-item-section">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../3_dangers/index.html">
+<span class="menu-text">Dangers of AI</span></a>
+<a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-3" data-bs-toggle="collapse" role="navigation">
+<i class="bi bi-chevron-right ms-2"></i>
+</a>
+</div>
+<ul class="collapse list-unstyled sidebar-section depth1 show" id="quarto-sidebar-section-3">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../3_dangers/alignment.html">
+<span class="menu-text"><span class="chapter-number">12</span>  <span class="chapter-title">Why Artificial Intelligence is Hard</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../3_dangers/limitations.html">
+<span class="menu-text"><span class="chapter-number">13</span>  <span class="chapter-title">The limits of language models</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../3_dangers/risks.html">
+<span class="menu-text"><span class="chapter-number">14</span>  <span class="chapter-title">The Actual Risks of AI</span></span></a>
+</div>
+</li>
+</ul>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../epilogue.html">
+<span class="menu-text">Epilogue: The Road Ahead</span></a>
+</div>
+</li>
+</ul>
+</div>
+</nav>
+<div class="quarto-sidebar-collapse-item" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" id="quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+<div class="sidebar margin-sidebar" id="quarto-margin-sidebar">
+<nav class="toc-active" id="TOC" role="doc-toc">
+<h2 id="toc-title">Table of contents</h2>
+<ul class="collapse">
+<li><a class="nav-link active" data-scroll-target="#prompt-engineering" href="#prompt-engineering" id="toc-prompt-engineering">Prompt Engineering</a></li>
+<li><a class="nav-link" data-scroll-target="#context-augmentation" href="#context-augmentation" id="toc-context-augmentation">Context Augmentation</a></li>
+<li><a class="nav-link" data-scroll-target="#agentic-ai" href="#agentic-ai" id="toc-agentic-ai">Agentic AI</a></li>
+</ul>
+</nav>
+</div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+<header class="quarto-title-block default" id="title-block-header"><nav aria-label="breadcrumb" class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../1_foundations/index.html">Foundations of AI</a></li><li class="breadcrumb-item"><a href="../1_foundations/apps.html"><span class="chapter-number">4</span>  <span class="chapter-title">Techniques for LLM Deployment</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">4</span>  <span class="chapter-title">Techniques for LLM Deployment</span></h1>
+</div>
+<div class="quarto-title-meta">
+</div>
+</header>
+<section class="level2" id="prompt-engineering">
+<h2 class="anchored" data-anchor-id="prompt-engineering">Prompt Engineering</h2>
+<p>Prompt engineering is how we call a nascent discipline of designing and optimizing prompts for different tasks, overcoming or navigating around the many limitations that LLMs currently have. While some believe that prompt engineering will become less and less relevant the more advanced (and “smart”) LLMs get, I still think some basic principles and techniques will remain useful, simply because no matter how smart an agent is, there are better and worse ways to give instructions.</p>
+<p>There are literally thousands of prompt engineering guides and cheatsheets published online, many of which are not generalizable or become irrelevant as new LLMs are created. Also, the vast majority of prompt hacks you’ll find online are based on some key principles. If you master these principles, you can design your optimized prompt for any task with some focused experimentation.</p>
+<p>For this reason, in this chapter we won’t focus too deeply on specific prompting templates for concrete tasks. Instead, we’ll focus on the most important high-level principles and the most general techniques that apply in all tasks and domains.</p>
+<section class="level3" id="principles-for-effective-prompt-engineering">
+<h3 class="anchored" data-anchor-id="principles-for-effective-prompt-engineering">Principles for effective prompt engineering</h3>
+<p>The goal of prompt engineering is to design an effective prompt for a given task. The reason this is necessary is because LLMs have inherent limitations and design caveats that make then brittle and prone to fail on an otherwise solvable task if the wrong instructions are given. And wrong doesn’t mean necessarily wrong in any objective sense, just not adjusted to the limitations of the LLM you are using.</p>
+<p>The following principles of prompt engineering stem from the basic structure of statistical language modeling: next-token prediction—understanding that an LLM is ultimately an autocompletion machine on steroids, based on word-context correlations learned from data. This realization informs the following principles.</p>
+<section class="level4" id="context-matters">
+<h4 class="anchored" data-anchor-id="context-matters">Context matters</h4>
+<p>Since every new token generated is conditioned on the previously generated tokens, the response you get for a given prompt will be heavily influenced by the content of the promp, down to the exact phrasing you use. Though LLMs are notoriously good at capturing the underlying semantics of text, the actual words, the tone, the style, and even the exact order in which you construct the prompt may determine the quality of the response.</p>
+<p>Current research suggests, for example, that LLMs tend to focus more on the beginning and final parts of the prompt and less on the middle, although this may change rapidly as novel architectures are invented. But, regardless of the idisincracies of specific models, the critical insight here is that whatever you put in the prompt will heavily influence the response, so everything important should be explicitly mentioned.</p>
+</section>
+<section class="level4" id="focus-matters">
+<h4 class="anchored" data-anchor-id="focus-matters">Focus matters</h4>
+<p>For the same reason, it is notoriously hard for LLMs to perform many tasks at once. The more focused the instructions are, the better–and more robust–output you’ll get. As we have seen in <a class="quarto-xref" href="../3_dangers/limitations.html"><span>Chapter 13</span></a>, LLMs are weak reasoners, and struggle with complicated conditional instructions. Some bigger models may be able to deal with a larger degree of flexibility, but in general you should avoid writing prompts with conditions, and instead make them as straightforward as possible.</p>
+<p>For example, you can try prompting “if the user says X then reply Y, otherwise reply Z”, hoping the LLM will correctly classify the input and choose the right response in the same API call. This might work in many cases, depending on how good the LLM is. But the problem here is that you’re asking the LLM to solve two problems at once. Instead, you can solve the same problem more robustly with two sequential instructions: first ask the LLM to classify the user query, and then pick the corresponding prompt for that category, thus the LLM never has to explicity choose.</p>
+</section>
+<section class="level4" id="reasoning-requires-verbosity">
+<h4 class="anchored" data-anchor-id="reasoning-requires-verbosity">Reasoning requires verbosity</h4>
+<p>As we say in <span class="quarto-unresolved-ref">?sec-training</span>, LLMs perform a fixed amount of computation per token. This includes input and generated tokens. Thus, intuitively, a larger, more detailed prompt will tend to produce a better response, especially when some complicated reasoning is involved.</p>
+<p>But crucially, this also applies to output generated with the LLM. The more it talks, the more computation is performing in total. For this reason, asking for very terse output is often not optimal. Instead, your prompt should incite the LLM to be verbose, explain its reasoning, summarize its key points before reaching a conclusion, etc.</p>
+</section>
+<section class="level4" id="but-more-is-not-always-better">
+<h4 class="anchored" data-anchor-id="but-more-is-not-always-better">But more is not always better</h4>
+<p>However, keep in mind that just stuffing the prompt with redundant information or instructions is not always better. The information density in the context matters more than its raw length.</p>
+<p>You should strive for a minimum valuable prompt: the shortest prompt that contains the necessary amount of information to produce a succesful response. To achieve it, consider making your instructions more intentional, using more precise wording and avoiding vague terms. Provide informative examples where necessary.</p>
+<p>But crucially, do not add irrelevant instructions, as LLMs are lousy at ignoring things. A typical issue is adding negative examples to correct some behavior and discover the LLM doubles down. The reason is simple, everything in the context will influence what the LLM generates, so negative examples are still examples that will bias the sampling process towards similar content.</p>
+</section>
+<section class="level4" id="experimentation-rules">
+<h4 class="anchored" data-anchor-id="experimentation-rules">Experimentation rules</h4>
+<p>All of the above being said, prompt engineering is still mostly artisanal, and far from a established science. For this reason, no amount of theory can replace good old experimentation. You should try different orderings of the instructions, different output formats, different writing styles, and see which gives you better results.</p>
+<p>While you should write prompts that are, in general, agnostic to the specific LLM you’re using, keep in mind that the optimally-tuned prompt for one model, say GPT-4, might not be the universally best prompt. Different LLMs trained on different datasets and tuned with different strategies might have subtle differences that make one, for example, perform better with terse instructions while the other prefers verbosity. This may go down to the actual selection of words: a single word changed by an appropriate synonym may very well improve results significantly.</p>
+<p>These principles are high-level insights that should inform how you approach prompt engineering. But keep in mind everything we know about large language models is changing very rapidly at the moment, and many of their current limitations could be fixed or at least reduced considerably with newer models, making some of these principles less relevant in the near future.</p>
+</section>
+</section>
+<section class="level3" id="prompt-engineering-techniques">
+<h3 class="anchored" data-anchor-id="prompt-engineering-techniques">Prompt engineering techniques</h3>
+<p>In the following sections, we will explore specific prompt engineering techniques or patterns that are general enough to be valuable in many contexts and domains. Each of these patterns and techniques is informed by the afforementioned principles, and we will discuss why they seem to work within this framework.</p>
+<section class="level4" id="zero-shot-instructions">
+<h4 class="anchored" data-anchor-id="zero-shot-instructions">Zero-shot instructions</h4>
+<p>Zero-shot means providing a model with a single instruction and asking it to solve a problem without any additional training data or example. This should be the baseline for any new application, and is useful for complex or novel tasks where there is no existing data to draw from.</p>
+<p>Zero-shot learning works by leveraging the model’s ability to generalize from a single instruction. By providing a clear and specific prompt, the model can use its internal knowledge and understanding to generate a solution without needing additional training data.</p>
+<p>Some exaplmes of zero-shot learning are:</p>
+<ul>
+<li>Generating product descriptions for new or unique products.</li>
+<li>Translating text between languages without parallel data.</li>
+<li>Summarizing long documents or articles into concise overviews.</li>
+</ul>
+</section>
+<section class="level4" id="few-shot-learning">
+<h4 class="anchored" data-anchor-id="few-shot-learning">Few-shot learning</h4>
+<p>Few-shot learning involves adding a small set of examples to the model’s input to help it generalize better. This technique is particularly useful for rare or ambiguous queries, as it allows the model to learn from a small number of examples.</p>
+<p>Few-shot learning works by providing the model with a few examples of similar queries and their corresponding answers. This helps the model learn from these examples and apply the knowledge to new, unseen queries. The few-shot approach also reinforces the output format, thus improving fidelity.</p>
+<p>Some examples of few-shot learning are:</p>
+<ul>
+<li>Solving tasks that aren’t easy to explain concisely.</li>
+<li>Reinforcing an output format or response style.</li>
+<li>Generating recomendations of products, activities, etc., based on examples.</li>
+</ul>
+</section>
+<section class="level4" id="role-playing">
+<h4 class="anchored" data-anchor-id="role-playing">Role playing</h4>
+<p>Role playing involves informing the model about the audience, tone, role, and other context-specific details to bias it towards a specific complexity level, extension, or style. This technique is useful for generating responses that are tailored to a specific audience or context.</p>
+<p>Role playing works by providing the model with context-specific information that helps it generate responses that are more relevant and engaging to the target audience. By understanding the audience and context, the model can tailor its responses to meet their needs and expectations.</p>
+<p>Examples of role playing include:</p>
+<ul>
+<li>Writing dialogue for characters with distinct personalities and speaking styles.</li>
+<li>Generating social media posts tailored to different demographics and platforms.</li>
+<li>Drafting emails with appropriate tone and formality for different recipients.</li>
+</ul>
+</section>
+<section class="level4" id="chain-of-thought">
+<h4 class="anchored" data-anchor-id="chain-of-thought">Chain of thought</h4>
+<p>Chain of thought involves asking the model to output a detailed reasoning process before providing the final answer. This technique is useful for complex queries that require multi-step reasoning or problem-solving.</p>
+<p>Chain of thought works by forcing the model to explicitly demonstrate its thought process. This helps ensure that the model’s responses are based on sound reasoning and logic, making them more accurate and trustworthy.</p>
+<p>Examples where chain of thought is useful include:</p>
+<ul>
+<li>Solving logic puzzles and brain teasers by breaking down the steps.</li>
+<li>Providing step-by-step instructions for complex procedures or recipes.</li>
+<li>Analyzing data to draw insights and conclusions.</li>
+</ul>
+</section>
+<section class="level4" id="structured-output">
+<h4 class="anchored" data-anchor-id="structured-output">Structured output</h4>
+<p>Structured output involves instructing the model to produce the output in a structured format, such as JSON. This technique is useful for applications that require structured data, such as database queries or data analysis.</p>
+<p>Structured output works by simplifying the parsing of the response and allowing for easier integration with downstream applications. By providing a structured format, the model can generate responses that are easily consumable and actionable.</p>
+<p>Examples where structured ouput is useful:</p>
+<ul>
+<li>Generating tabular data like schedules, calendars, or price lists.</li>
+<li>Producing API responses in a standardized JSON format.</li>
+<li>Extracting structured information like addresses, dates, or product details from text.</li>
+</ul>
+</section>
+<section class="level4" id="self-reflection">
+<h4 class="anchored" data-anchor-id="self-reflection">Self-reflection</h4>
+<p>Self-reflection involves asking the model to evaluate its own response and determine if, given new context, it would change it. This technique is useful for identifying and correcting errors or inconsistencies in the model’s original output.</p>
+<p>Self-reflection works by allowing the model to assess its own responses and identify potential errors or inconsistencies. By reflecting on its own output, the model can refine its responses and improve their accuracy and fidelity.</p>
+<p>Examples of using self-reflection include:</p>
+<ul>
+<li>Identifying biased or unethical statements in the model’s own outputs.</li>
+<li>Detecting logical inconsistencies or contradictions in generated text.</li>
+<li>Refining responses based on feedback or additional context provided.</li>
+</ul>
+</section>
+<section class="level4" id="ensembling">
+<h4 class="anchored" data-anchor-id="ensembling">Ensembling</h4>
+<p>Ensembling involves combining the output of several models and asking a final model to produce a consensus answer. This technique is useful for improving the overall accuracy and fidelity of the response.</p>
+<p>Ensembling works by leveraging the strengths of multiple models to generate a more accurate and reliable response. By combining the output of multiple models, ensembling can reduce the impact of individual errors and improve the overall quality of the response.</p>
+<p>Examples of ensembling include:</p>
+<ul>
+<li>Combining outputs from models with different specialties or training data.</li>
+<li>Aggregating responses from models with different decoding strategies.</li>
+<li>Leveraging models with different strengths to produce well-rounded outputs.</li>
+</ul>
+</section>
+</section>
+<section class="level3" id="do-you-need-prompt-engineering">
+<h3 class="anchored" data-anchor-id="do-you-need-prompt-engineering">Do you need Prompt Engineering?</h3>
+<p>Prompt engineering is a nascent discipline and much is still unknown about what are core principles and what are caveats and consequences of the current state of development in LLMs. This means you should beware that many of these ideas or principles might not remain relevant in the mid-term, as novel models and architectures are invented.</p>
+<p>Prompt engineering is a very powerful and cualitatively new software development pattern. You can now program a computer to solve novel problems with reasonable effectiveness using natural language! But there is no free lunch, as usual. The main limitations of Large Language Models (LLMs) in prompt engineering stem from their inherent design caveats and constraints.</p>
+<p>LLMs can be brittle and prone to failure on tasks if the instructions provided are not aligned with the model’s capabilities. This means that even solvable tasks can fail if the wrong instructions are given, highlighting the importance of crafting prompts that suit the specific LLM being used. They struggle with complex reasoning tasks and conditional instructions. They may not perform well when faced with intricate conditional prompts, making it challenging for them to handle multiple instructions or conditions within a single prompt.</p>
+<p>LLMs operate with a fixed amount of computation per token, which affects both input and output tokens. This constraint implies that a more detailed and verbose prompt tends to produce better responses, especially for tasks involving complex reasoning. This also means that overly terse prompts may not yield optimal results. However, some balance is important, because overly verbose prompts can be more confusing that informaive.</p>
+<p>Prompt engineering is still an evolving and artisanal process, lacking a standardized approach. Experimentation is essential to determine the optimal prompt for a specific task and LLM. Different LLMs trained on diverse datasets may respond better to varying prompt styles, making it necessary to experiment with different strategies to find the most effective approach.</p>
+<p>These limitations underscore the complexity and nuances involved in designing prompts for LLMs, highlighting the need for careful consideration and adaptation to maximize the performance of these models in various tasks and domains. In Part 3 of the book we will apply all of these prompt engineering techniques to concrete problems, and we will have plenty of time to explore the contexts in which they perform well.</p>
+</section>
+</section>
+<section class="level2" id="context-augmentation">
+<h2 class="anchored" data-anchor-id="context-augmentation">Context Augmentation</h2>
+<section class="level3" id="sec-rag">
+<h3 class="anchored" data-anchor-id="sec-rag">Retrieval augmented generation</h3>
+<p>Retrieval augmented generation (RAG) is the most common augmentation technique for large language models. It is easy to implement and provides a very good value for money, especially in restricted domains where a vanilla LLM has limited knowledge.</p>
+<p>A typical example is building a Q&amp;A bot that can answer queries related to institutional or private knowledge. For example, a bot that knows about your company’s policies and internal rules. It is unlikely that any vanilla LLM, no matter how powerful, can answer a precise query about your organization.</p>
+<p>To bridge this knowledge gap, we introduce a retrieval component that can access a knowledge base (database, folder of documents, etc.) and obtain a small chunk of relevant context for a particular user query. This context is then inserted into a prompt template, along with the user query, instructing the LLM to answer the query based on the given context. If the context is indeed relevant, this often works wonders.</p>
+<p>Different RAG approaches differ in at least two dimensions. First, you must decide how to index the background knowledge, which in turns determines how the retrieval works. For example, if the knowledge consists of a set of text documents (the most common scenario), you will almost certainly use a vector database for similarity queries. But you can also use a more sofisticated search strategy, such as full-text search engine like ElasticSearch or even a search service like Google or a commercial search API.</p>
+<p>Second, you must decide how exactly the user query is used to locate the most relevant context. The simplest option is to directly provide the user query to the retrieval engine–e.g., embedding the user query if you’re using a vector store, or directly submitting the user query to the search engine. However, the user query is often not the most informative way to query the search engine, and you can resort to the LLM itself to modify, augment, or even completely change the query.</p>
+<section class="level4" id="retrieval-strategies">
+<h4 class="anchored" data-anchor-id="retrieval-strategies">Retrieval strategies</h4>
+<p>These are the most common retrieval strategies.</p>
+<section class="level5" id="vector-databases">
+<h5 class="anchored" data-anchor-id="vector-databases">Vector databases</h5>
+<p>In this approach, each document is split into meaningful chunks of text (e.g, paragraphs or sections) and each chunk is transformed into an embedding. At inference time, the user query is used to obtain a “key” embedding. This key is compared to each stored chunk and the most similar are inserted in the context. For large scale scenarions, you would use an efficient vector store that can quickly locate the most similar vectors.</p>
+</section>
+<section class="level5" id="structured-databases">
+<h5 class="anchored" data-anchor-id="structured-databases">Structured databases</h5>
+<p>If the knowledge is stored in a traditional SQL database, then you must resort to SQL code generation for retrieval. The simplest solution is to have an LLM generate the approriate SQL statement for a given user query in a single shot, but this process can be improved with multiple passes, as we’ll see in <span class="quarto-unresolved-ref">?sec-code-generation</span>.</p>
+</section>
+<section class="level5" id="knowledge-graphs">
+<h5 class="anchored" data-anchor-id="knowledge-graphs">Knowledge graphs</h5>
+<p>A compelling alternative for storing well-structured facts about a specific business domains is knowledge graphs. Explaining what is a knowledge graph in detail goes beyond the scope of this book, but in a nutshell, it is a network of the relevant entities in a domain and their interrelationships. For example, if you are in the medical domain, this graph could contain nodes for all known diseases, symptoms, and drugs, and edges relating which disease is associated with which symptoms, and which drugs can be prescribed for each disease.</p>
+<p>Querying a knowledge graph depends on the underlying implementation. If you are using a graph database, such as Neo4j, this isn’t that much different to querying a traditional database. You will probably use an LLM to generate query statements in an appropriate query language (e.g., Cypher in the case of Neo4).</p>
+<p>However, you can also expose the graph structure to the LLM and use it as a controller to navigate the graph. The simplest approaches involve asking the LLM for the relevant entities and relations to focus on, and obtaining the relevant induced subgraph. More advanced approaches involve constructing a relevant subgraph by iteratively querying the LLM about which relations (edges) are worthwile to explore in each iteration.</p>
+</section>
+<section class="level5" id="search-apis">
+<h5 class="anchored" data-anchor-id="search-apis">Search APIs</h5>
+<p>Finally, you can store your relevant domain knowledge in a storage service that provides a search API. This can range from locally deployed document databases such as ElasticSearch or MongoDB to cloud-based instances to using third-party search APIs like Google, Reddit, Wikipedia, and a myriad other domain-specific services.</p>
+<p>In these cases, your retrieval strategy will depend on the idionsincracies of the search service you use. For something simple like ElasticSearch full-text search or the Google API, you may simply submit the user query directly. However, if the search API has relevant parameters, this becomes an instance of function calling, which we’ll see in <a class="quarto-xref" href="#sec-function-calling"><span>Section 4.2.2</span></a>.</p>
+</section>
+</section>
+<section class="level4" id="query-strategies">
+<h4 class="anchored" data-anchor-id="query-strategies">Query strategies</h4>
+<p>The following are ways to use the user query for generating a suitable search query.</p>
+<section class="level5" id="search-by-query">
+<h5 class="anchored" data-anchor-id="search-by-query">Search by query</h5>
+<p>The most direct strategy is to simply submit the user query to your retrieval engine. In the case of vector databases, this implies embedding the user query directly, while in the case of search APIs this involves sending the user query as the main argument in the API search method.</p>
+<p>The obvious upside of this strategy is its simplicity, and the fact that is works surprinsingly well in many cases. This of course depends on how robust your search engine is, and more specifically, how closely related is the user query to the expected query language used by your search engine.</p>
+</section>
+<section class="level5" id="search-by-answer">
+<h5 class="anchored" data-anchor-id="search-by-answer">Search by answer</h5>
+<p>Specifically in vector databases and embedding-based retrieval, researchers have observed that the user query is often not informative enough to pinpoint the most relevant document chunk. For example, if you knowledge base is composed of research papers or technical documents in general, it is very unlikely that a user query formulated in an imprecise, informal language will have an embedding that is most similar to the exact paragraph that holds the answer, especially if that answer is far from trivial.</p>
+<p>In these cases, a neat trick is to use the LLM first to generate an answer on-the-fly, and then embed that answer and use it as query key. The reason this works is that, even if the vanilla LLM doesn’t have the precise knowledge to answer the user query in detail, it is often capable of producing at least a plausibily-sounding response that mimics the right language.</p>
+</section>
+<section class="level5" id="llm-guided-search">
+<h5 class="anchored" data-anchor-id="llm-guided-search">LLM-guided search</h5>
+<p>A more elaborate search strategy involves prompting the LLM to generate a suitable search query. This can work better than both previous strategies if the prompt is carefully constructed. By providing the LLM both the context from which the user is coming as well as the characteristics of the knowledge base, we can leverage the powerful natural language understanding capabilities of the LLM to bridge that gap between what the user says, what the user actually wants, and what the search engine needs.</p>
+<p>The simplest example of this approach is prompting the LLM to, given a user query, produce a set of relevant search queries for a general-purpose search engine. For example, if you’re building a Medical Q&amp;A bot backed by a custom knowledge base, and the user query is something like “What are the effects of looking straight into the Sun during an eclipse”, it is unlikey this query by itself will result in the right article. However, an LLM can easily determine that an appropriate query would be “Solar eclipses: medical recommendations”.</p>
+<p>If you enhance this approach with a small set of examples, the LLM can quickly learn to map from fuzzy user queries to much more precise and domain-specific queries. Thus, this approach works best when you’re dealing with custom search engines or knowledge bases that are not as capable as, say, Google, to provide a relevant context for an arbitrary user query.</p>
+</section>
+<section class="level5" id="iterated-retrieval-refinement">
+<h5 class="anchored" data-anchor-id="iterated-retrieval-refinement">Iterated retrieval &amp; refinement</h5>
+<p>This is an extension of the previous approach in which instead of a single shot, we let the LLM iteratively provide more relevant queries. The objective is to construct a relevant context one step at a time, by obtaining a query from the LLM, extracting the relevant chunk, and using self-reflection to let the LLM decide if additional information is required.</p>
+<p>This approach has the advantage that if the first query is not as informative as necessary, we still get a few shots to pinpoint the exact context we need. However, this can quickly get out of hand and produce a huge, semi-relevant or mostly irrelevant context that will confuse the LLM more than it helps.</p>
+<p>To counter this effect, we can add a refinement step after each retrieval, as follows. We let the LLM produce a query, find the most relevant chunk, and then ask the LLM to, given the query and the context, extract a summary of the relevant points mentioned in the context. This way, even if we end up extracting dozens of chunks, the final context could be a very concise and relevant summary of the necessary background knowledge.</p>
+</section>
+</section>
+</section>
+<section class="level3" id="sec-function-calling">
+<h3 class="anchored" data-anchor-id="sec-function-calling">External Tools</h3>
+<p>Whereas RAG is mostly passive (in the sense that the LLM has little to no control over the query process), function calling is an active method where the LLM can decide, at any point in a conversation, to invoke a helper function for a specific functionality. The most common use case is to implement dynamic querying of a private API.</p>
+<p>For example, suppose you’re making a bot for a delivery service. To implement this functionality, you’d need some elaborate prompts to first, instruct the bot to ask the user for the necessary data (such as the package ID). Then, you’d need a way to produce a well-formatted API call, invoke your API, and inject the resulting data in a prompt template to produce the final answer. This might not be enough, though. Getting the right answer might require more than one API call, with some back-and-forth between bot and user to narrow down the precise information the user needs.</p>
+<p>This back-and-forth between bot, user, and API is so common that it makes sense to abstract it into a design pattern. This is what function calling is meant to support. Instead of manually crafting detailed prompts with a description of your API, and implementing the whole back-and-forth conversation workflow, most LLM providers already support function calling as an explicit feature.</p>
+<section class="level4" id="how-function-calling-works">
+<h4 class="anchored" data-anchor-id="how-function-calling-works">How function calling works</h4>
+<p>First, you define a set of “functions”, which can be anything from real code functions (e.g., Python methods) to API calls. It doesn’t matter what is the underlying implementation, as the LLM will never directly interact with the function. It will just tell you when and how it should be invoked.</p>
+<p>For that reason, you need to provide the LLM with a natural language description as well as an structured definition of the arguments of every function. This is usually all encapsulated in a standarized JSON schema, such as the following:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a aria-hidden="true" href="#cb1-1" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb1-2"><a aria-hidden="true" href="#cb1-2" tabindex="-1"></a>    <span class="dt">"functions"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb1-3"><a aria-hidden="true" href="#cb1-3" tabindex="-1"></a>        <span class="fu">{</span></span>
+<span id="cb1-4"><a aria-hidden="true" href="#cb1-4" tabindex="-1"></a>            <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"get_user_info"</span><span class="fu">,</span></span>
+<span id="cb1-5"><a aria-hidden="true" href="#cb1-5" tabindex="-1"></a>            <span class="dt">"description"</span><span class="fu">:</span> <span class="st">"get information about what a user has bought."</span><span class="fu">,</span></span>
+<span id="cb1-6"><a aria-hidden="true" href="#cb1-6" tabindex="-1"></a>            <span class="dt">"arguments"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb1-7"><a aria-hidden="true" href="#cb1-7" tabindex="-1"></a>                <span class="fu">{</span></span>
+<span id="cb1-8"><a aria-hidden="true" href="#cb1-8" tabindex="-1"></a>                    <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"user_id"</span><span class="fu">,</span></span>
+<span id="cb1-9"><a aria-hidden="true" href="#cb1-9" tabindex="-1"></a>                    <span class="dt">"description"</span><span class="fu">:</span> <span class="st">"The unique user identifier"</span><span class="fu">,</span></span>
+<span id="cb1-10"><a aria-hidden="true" href="#cb1-10" tabindex="-1"></a>                    <span class="dt">"type"</span><span class="fu">:</span> <span class="st">"string"</span><span class="fu">,</span></span>
+<span id="cb1-11"><a aria-hidden="true" href="#cb1-11" tabindex="-1"></a>                    <span class="dt">"mandatory"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb1-12"><a aria-hidden="true" href="#cb1-12" tabindex="-1"></a>                <span class="fu">}</span></span>
+<span id="cb1-13"><a aria-hidden="true" href="#cb1-13" tabindex="-1"></a>            <span class="ot">]</span></span>
+<span id="cb1-14"><a aria-hidden="true" href="#cb1-14" tabindex="-1"></a>        <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb1-15"><a aria-hidden="true" href="#cb1-15" tabindex="-1"></a>        <span class="fu">{</span></span>
+<span id="cb1-16"><a aria-hidden="true" href="#cb1-16" tabindex="-1"></a>            <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"get_item_info"</span><span class="fu">,</span></span>
+<span id="cb1-17"><a aria-hidden="true" href="#cb1-17" tabindex="-1"></a>            <span class="dt">"description"</span><span class="fu">:</span> <span class="st">"get information about an item's status and location."</span><span class="fu">,</span></span>
+<span id="cb1-18"><a aria-hidden="true" href="#cb1-18" tabindex="-1"></a>            <span class="dt">"arguments"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb1-19"><a aria-hidden="true" href="#cb1-19" tabindex="-1"></a>                <span class="fu">{</span></span>
+<span id="cb1-20"><a aria-hidden="true" href="#cb1-20" tabindex="-1"></a>                    <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"item_id"</span><span class="fu">,</span></span>
+<span id="cb1-21"><a aria-hidden="true" href="#cb1-21" tabindex="-1"></a>                    <span class="dt">"description"</span><span class="fu">:</span> <span class="st">"The unique item identifier"</span><span class="fu">,</span></span>
+<span id="cb1-22"><a aria-hidden="true" href="#cb1-22" tabindex="-1"></a>                    <span class="dt">"type"</span><span class="fu">:</span> <span class="st">"string"</span><span class="fu">,</span></span>
+<span id="cb1-23"><a aria-hidden="true" href="#cb1-23" tabindex="-1"></a>                    <span class="dt">"mandatory"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb1-24"><a aria-hidden="true" href="#cb1-24" tabindex="-1"></a>                <span class="fu">}</span></span>
+<span id="cb1-25"><a aria-hidden="true" href="#cb1-25" tabindex="-1"></a>            <span class="ot">]</span></span>
+<span id="cb1-26"><a aria-hidden="true" href="#cb1-26" tabindex="-1"></a>        <span class="fu">}</span></span>
+<span id="cb1-27"><a aria-hidden="true" href="#cb1-27" tabindex="-1"></a>    <span class="ot">]</span></span>
+<span id="cb1-28"><a aria-hidden="true" href="#cb1-28" tabindex="-1"></a><span class="fu">}</span></span></code><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></pre></div>
+<p>Then, at inference time, a special system prompt instructs the LLM to either respond as normal or to produce a function call. The function call is a special type of structured response in which the LLM provides just a JSON object with the identifier of the function to call and the values for all mandatory arguments. An onversimplified example might be:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a aria-hidden="true" href="#cb2-1" tabindex="-1"></a>The following is a set of API functions you can invoke to obtain</span>
+<span id="cb2-2"><a aria-hidden="true" href="#cb2-2" tabindex="-1"></a>relevant information to answer a user query.</span>
+<span id="cb2-3"><a aria-hidden="true" href="#cb2-3" tabindex="-1"></a></span>
+<span id="cb2-4"><a aria-hidden="true" href="#cb2-4" tabindex="-1"></a>{functions}</span>
+<span id="cb2-5"><a aria-hidden="true" href="#cb2-5" tabindex="-1"></a></span>
+<span id="cb2-6"><a aria-hidden="true" href="#cb2-6" tabindex="-1"></a>Given the following user query, determine whether an API call is appropriate.</span>
+<span id="cb2-7"><a aria-hidden="true" href="#cb2-7" tabindex="-1"></a>If any arguments are missing from the conversation, ask the user.</span>
+<span id="cb2-8"><a aria-hidden="true" href="#cb2-8" tabindex="-1"></a>If all arguments are available, output your response in JSON</span>
+<span id="cb2-9"><a aria-hidden="true" href="#cb2-9" tabindex="-1"></a>format with the corresponding function call.</span>
+<span id="cb2-10"><a aria-hidden="true" href="#cb2-10" tabindex="-1"></a>Otherwise, answer to the user in natural language.</span>
+<span id="cb2-11"><a aria-hidden="true" href="#cb2-11" tabindex="-1"></a></span>
+<span id="cb2-12"><a aria-hidden="true" href="#cb2-12" tabindex="-1"></a>{query}</span>
+<span id="cb2-13"><a aria-hidden="true" href="#cb2-13" tabindex="-1"></a><span class="in">```##</span></span>
+<span id="cb2-14"><a aria-hidden="true" href="#cb2-14" tabindex="-1"></a><span class="in">##</span></span>
+<span id="cb2-15"><a aria-hidden="true" href="#cb2-15" tabindex="-1"></a><span class="in">##</span></span>
+<span id="cb2-16"><a aria-hidden="true" href="#cb2-16" tabindex="-1"></a><span class="in">##</span></span>
+<span id="cb2-17"><a aria-hidden="true" href="#cb2-17" tabindex="-1"></a></span>
+<span id="cb2-18"><a aria-hidden="true" href="#cb2-18" tabindex="-1"></a><span class="in">Given a prompt like the above, an well-tuned LLM should be able to determine whether, given a specific query, it needs to call an API function or not. The developer must capture these function calling replies and, instead of outputting them to the user, call the appropriate function and inject the result back into the LLM context. Then, the LLM will produce an appropriate natural language response.</span></span>
+<span id="cb2-19"><a aria-hidden="true" href="#cb2-19" tabindex="-1"></a></span>
+<span id="cb2-20"><a aria-hidden="true" href="#cb2-20" tabindex="-1"></a><span class="in">An example of a possible conversation in this fictional setting would be as follows.</span></span>
+<span id="cb2-21"><a aria-hidden="true" href="#cb2-21" tabindex="-1"></a></span>
+<span id="cb2-22"><a aria-hidden="true" href="#cb2-22" tabindex="-1"></a><span class="in">First, the user asks for a specific information.</span></span>
+<span id="cb2-23"><a aria-hidden="true" href="#cb2-23" tabindex="-1"></a></span>
+<span id="cb2-24"><a aria-hidden="true" href="#cb2-24" tabindex="-1"></a><span class="in">```txt</span></span>
+<span id="cb2-25"><a aria-hidden="true" href="#cb2-25" tabindex="-1"></a><span class="in">USER: Hey, please show me my latest purchases.</span></span></code><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></pre></div>
+<p>Given this query, and an appropriate prompt like the one shown above, the LLM might recognize it needs to call the <code>get_user_info</code> function but it’s missing the <code>user_id</code> argument.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb3-1"><a aria-hidden="true" href="#cb3-1" tabindex="-1"></a>ASSISTANT: Sure, I will need your user ID for that.</span></code><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></pre></div>
+<p>The user replies back.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb4-1"><a aria-hidden="true" href="#cb4-1" tabindex="-1"></a>USER: Of course, my user ID is 12345.</span></code><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></pre></div>
+<p>Since the LLM is receiving the whole conversation story, the second time it’s called it will recognize that it has all the appropriate arguments, and produce a function call.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb5-1"><a aria-hidden="true" href="#cb5-1" tabindex="-1"></a>ASSISTANT: {"function": "get_user_info", "arguments": {"user_id": {"12345"}}}</span></code><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></pre></div>
+<p>This time, instead of showing this message to the user, the developer intercepts the function call, invokes the API, and outputs the return value, presumably a list of purchases.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb6-1"><a aria-hidden="true" href="#cb6-1" tabindex="-1"></a>TOOL: {"function": "get_user_info", "result": [ ... ]}</span></code><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></pre></div>
+<p>Given this new information, the LLM can now answer back to the user.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb7-1"><a aria-hidden="true" href="#cb7-1" tabindex="-1"></a>ASSISTANT: You have bought 3 items in the last month...</span></code><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></pre></div>
+<p>This process can occur as many times as necessary in a conversation. With a suitable prompt, the LLM can even detect when some argument value is missing and produce the corresponding natural language question for the user. This way, we can naturally weave a conversation in which the user supplies the necessary arguments for a given function call in any order. The LLM can also call more than one function in the same conversation, giving a lot more flexibility than a rigid RAG cycle.</p>
+</section>
+<section class="level4" id="use-cases-for-function-calling">
+<h4 class="anchored" data-anchor-id="use-cases-for-function-calling">Use cases for function calling</h4>
+<p>Function calling is particularly useful for integrating an LLM with an external tool that can be consumed as an API. A typical use case (which we will see in <span class="quarto-unresolved-ref">?sec-shopping</span>) is building a shopping assistant for an online store that can suggest products, add or remove items from the shopping cart, provide information on delivery status, etc.</p>
+<p>An interesting trick is to use function calling for structured generation. When you want an LLM to produce a JSON-formatted output, it’s typically hard to guarantee you always get the exact schema you need–except maybe when using the best models. However, even some of the smaller models, once fine-tuned for function calling, are extremely robust in generating the exact argument names and types for any function. Thus, if you can frame your generation prompt as an API function call, you get all this robustness for free.</p>
+<p>But the possibilities don’t end here. Whatever service you can encapsulate behind a reasonably well-structured and fine-grained API, you can now stamp an LLM upfront and make your API queryable in natural language. Here are some typical examples:</p>
+<ul>
+<li><p><strong>Customer support</strong>: Integrate an LLM with a company’s knowledge base, product information, and customer data to create an intelligent virtual agent for customer support. The LLM can handle common queries, provide product recommetions, look up order status, and escalate complex issues to human agents.</p></li>
+<li><p><strong>Information systems:</strong> Connect an LLM to a query API that provides realtime information about some specific domain, from weather to stocks. Use it for internal tools connected to a company dashboard and integrate a conversational-style interface with a traditional graphical user interface.</p></li>
+<li><p><strong>Workflow automation</strong>: Connect an LLM to APIs for various business tools like CRM, project management, HR systems etc. Allow users to automate common workflows by querying the LLM in natural language, e.g. “Create a new Salesforce lead for this email”, “Schedule a meeting with the team next week”, “Approve this time off request”.</p></li>
+<li><p><strong>Collaborative writing</strong>: Integrate an LLM with document editing and collaboration tools to assist with writing tasks. The LLM can help brainstorm ideas, provide feedback on tone and structure, check for grammar and spelling, and even generate content based on prompts. We will see an example of this use case in <span class="quarto-unresolved-ref">?sec-writer</span>.</p></li>
+<li><p><strong>Software development</strong>: When combined with the powerful code generation skills of language models, another possibility opens up: connecting an LLM to code repositories, documentation, and APIs to create an AI programming assistant. Developers can ask the LLM to explain code, debug issues, suggest improvements, and even generate new code based on high-level requirements. We will see an example of this use case in <span class="quarto-unresolved-ref">?sec-coder</span>.</p></li>
+</ul>
+<p>The key is to identify areas where humans currently interact with APIs and information systems, and see how an LLM can make those interactions more natural, efficient and productive.</p>
+</section>
+<section class="level4" id="some-caveats-and-limitations">
+<h4 class="anchored" data-anchor-id="some-caveats-and-limitations">Some caveats and limitations</h4>
+<p>As usual with LLMs, there are significant caveats and limitations to any integration. Although in general you can mitigate hallucinations considerably, the LLM can still hallucinate a wrong function call by, e.g., passing the wrong arguments. In the simplest case, maybe you can catch that error when arguments have the wrong type or are out of range. However, subtle hallucinations might result in a function call that succeeds but wasn’t the user intention.</p>
+<p>For this reason, in all critical systems it is crucial that you don’t simply call an API blindly on behalf of the user, specially when doing so can have irreversible effects. For example, in a banking app, your LLM might hallucinate an incorrect destination in a transference, effectively sending the user money to an arbitrary third party. Furthermore, hackers might find a way to mess with your prompt and trigger the hallucination.</p>
+<p>In these cases, you should always make the user explicitely trigger the final action, and make sure they have reviewed and understood the implications of such action. This enhances reliability at a small cost in usefulness, turning the LLM into an assistant that fills in the data for you, but doesn’t click the red button.</p>
+<p>Another possible source of concern is when the LLM hallucinates the response, even though it made the right call and received the right data. This is the same problem we had with RAG: even if the context contains the right answer, there is no guarantee the LLM will pick it. One easy fix in many cases is to display the function result next to the LLM interpretation, so the user can double check the response.</p>
+<p>One final caveat that may be relevant in many cases is regarding privacy. If you are interacting with a private API–say, a banking app–using a commercial LLM, you are effectively sending to OpenAI (or any other provider) you users’ information as part of the prompts, and this may include user IDs, addresses, financial details, etc. This underscores the need for powerfull open source LLMs that companies can self-host for added privacy and security.</p>
+</section>
+<section class="level4" id="rag-vs-function-calling">
+<h4 class="anchored" data-anchor-id="rag-vs-function-calling">RAG vs Function Calling</h4>
+<p>Function calling can be seen at the same time a special case and a generalization of retrieval augmented generation. It is a special case because it involves injecting external information in the prompt to enhance the capabilities of an LLM. It is a generalization because you can implement RAG with function calling, simply by encapsulating your search functionality in a function call specification.</p>
+<p>This pattern is extremely flexible, but at the same time it’s very repeatible. However, to make it work, it is crucial to get the prompt right. Since prompts are, in general, not entirely portable across different models, implementing this workflow from scratch every single time is a chore.</p>
+<p>For this reason, most LLM services provide a native way to perform function calling, basically abstracting away the fragile prompt engineering component. Moreover, the LLM provider might have fine-tuned their model to a specific function-calling prompt and formatting. And since most LLM providers implement the OpenAI API specification, porting function calling between different providers is way easier.</p>
+</section>
+</section>
+<section class="level3" id="sec-code">
+<h3 class="anchored" data-anchor-id="sec-code">Code Generation</h3>
+<p>Function calling is one step towards enabling LLMs to interact with external systems, by giving them more flexibility in choosing which operations to perform—i.e., which methods to call—based on the conversation context. But, in the end, function calling still limits how much the model can do. It is restricted to the set of preprogrammed functionalities we give it access to.</p>
+<p>This may be exactly what you want, because it gives you total control over the action space of the LLM. However, for some of the most complex tasks, it may be too hard to come up with a flexible enough API.</p>
+<p>Suppose you’re making a data analysis bot, that will read a CSV file and answer questions about it. You can ask it to group, filter, or otherwise process the data in a myriad of ways. You could conceivably come up with a set of functions that cover your entire question space, but you would end up coding something that resembles the <code>pandas</code> API. What you actually want, is for your chatbot to write and run <code>pandas</code> code!</p>
+<p>Enter code generation. Instead of coming up with a very flexible and broad set of API functions, simply let your bot write Python code (or any other programming language) and run it. If the model is sufficiently well trained in code generation, it can often solve a majority of the low-level coding tasks that you would end up encapsulating anyway.</p>
+<p>There are many flavors to code generation, ranging in complexity from single instructions to fully working applications. There is also the question of how that code gets used. One option is to execute immediately, maybe even transparently to the user, to obtain a response. In this case, the result from running the code is what matters, rather than the code itself. On the other hand, you might want the code as the end result, maybe to copy and paste it somewhere else.</p>
+<p>In this chapter, we will explore the most interesting use cases for code generation, and some tips and strategies to get the most out of language model that can code.</p>
+<section class="level4" id="how-code-generation-works">
+<h4 class="anchored" data-anchor-id="how-code-generation-works">How code generation works</h4>
+<p>In the simplest case, you can think of code generation as a subset instance of text generation. If your model is trained on mixed natural language and code input, and/or fine-tuned with coding instructions, it will naturally learn to answer to some prompts with actual code. For example, you can train an LLM on programming contests, where the input is a problem statement, and the output is the code of the solution in some programming language.</p>
+<p>It is at least somewhat surprising that vanilla LLMs, trained on code, can learn to write code at all. The reason to be skeptic is that programming languages have very strict syntax rules which make it hard, at least in principle, for a purely statistical language model to produce something that is just parseable code, not to mention semantically correct. Failing to produce a single semicolon in the exact location can make incorrect an otherwise perfect piece of code. Yet, LLMs learn to code, almost without additional effort.</p>
+<p>In fact, most general-purpose models now available have at least some general capabilities for code generation, if only because they are trained of vast datasets that contain, among the many types of text modalities, lots and lots of code. And even if you don’t want an LLM explicitely for code generation, training on code and text (rather than just text) has shown to improve the general reasoning capabilities of a model, even for text-only tasks! But although you can get reasonably good code generation almost for free, the best coding LLMs are fine-tuned on precise text-and-code datasets.</p>
+<p>There are many reasons to prefer a model fine-tuned for coding to a general one. The simplest argument is that, contrary to natural language, highly plausible code can still be incorrect. Fine-tuning a model specifically on code reinforces the syntax rules and makes it much less likely to generate almost-correct but still syntactically wrong code.</p>
+<p>In the same vein, since programming languages are much more rigid in terms of syntax than natural language, fine-tuning can make a smaller model as good or even better than larger, general models, if focused on a specific language. Likewise, even if your general LLM can code Python, it may not know the specific framework you’re interested in, or code with the exact style you want.</p>
+</section>
+<section class="level4" id="code-generation-use-cases">
+<h4 class="anchored" data-anchor-id="code-generation-use-cases">Code generation use cases</h4>
+<p>In this section we’ll look at code generation from a high-level perspective, to understand what are the most interesting use cases it unlocks. We won’t go in-depth into technical details of how to make these use cases work in practice, as we will have plenty of time in Part 3 to see concrete examples in action.</p>
+<section class="level5" id="code-completion">
+<h5 class="anchored" data-anchor-id="code-completion">Code completion</h5>
+<p>The simplest use case for code generation is straightforward code completion. This can be as simple as asking ChatGPT the code to solve a concrete problem without any additional context. However, this use case becomes much more interesting when you can provide the LLM with relevant context (existing code, class hierarchies, function declarations, etc.) and have it produce code that fits right into an existing codebase.</p>
+<p>Code completion, at its core, is just a particular form of text completion, with all the quirks and caveats. The same prompt can produce different results, and slightly different prompts can vary widely in the quality of the output. All prompt techniques we’ve discussed so far apply: format your prompt carefully, be precise, don’t overshare, use examples whenever possible (no negative examples, please), and overall be intentional and cognizant of all usual gotchas.</p>
+</section>
+<section class="level5" id="code-maintainance">
+<h5 class="anchored" data-anchor-id="code-maintainance">Code maintainance</h5>
+<p>Code maintainance is an slightly more advanced form of code completion, in which we ask the model not code to support new functionality, but rather to modify existing code (or add to the existing code) to improve its quality, maintainability, clarity, etc. A typical example is automatic refactoring: asking the model to, e.g., extract some functionality into its own function, or otherwise abstract or encapsulate relevant fragments of code.</p>
+<p>This process can be enhanced with the use of prompt templates for common tasks, including generating boilerplate code or running typical refactors like splitting methods, encapsulating functionality, or changing style from, e.g., a recursive implementation to an iterative one.</p>
+<p>Another form of code maintainance is adding unit tests. A careful explanation of the relevant functional requisites, in natural language, might be enough to have a model generate reasonably good unit tests for the most common use cases.</p>
+</section>
+<section class="level5" id="translation-and-explanation">
+<h5 class="anchored" data-anchor-id="translation-and-explanation">Translation and explanation</h5>
+<p>The previous use cases are mostly examples of language to code generation. On the other hand, we can have code to code and code to language generation.</p>
+<p>The first case is useful for code translation. A simple example is to translate code in one programming language to another, perhaps because you found the solution to your problem online but it’s not in the right programming language. But you can also translate between two versions of the same language, say, from Python 2 to Python 3, to update an implementation. Or translate between different frameworks, or different implementation styles.</p>
+<p>The second case is useful for automatically adding comments to existing code, or otherwise generate explanations in any level of detail. As usual, the accuracy of the explanation is subject to how powerful the model is, and how complex the code. In general, it is impossible to understand what a given code will do without executing it, but you can get pretty far at least in the most common scenarios.</p>
+</section>
+<section class="level5" id="using-external-tools">
+<h5 class="anchored" data-anchor-id="using-external-tools">Using external tools</h5>
+<p>Now we get into the domain of code as means to an end rather than the end in itself. You can use code generation to interface with external tools that either don’t have a high-level functional API or that, by their nature, are code based.</p>
+<p>An example of the former is using any of the myriad utilities in your terminal, via Bash scripts. If you want your LLM to be capable of, e.g., creating files, making commits, downloading stuff, compressing and moving things around, etc., it is very likely that a reasonably good LLM can generate a Bash one-liner or small script to work these tasks out.</p>
+<p>In the latter case, you may want to interface with tools that are code-based, such as SQL databases, or any number of special-purpose computing engines, from Wolfram Alpha to a SAT solver or an in-house tool. If the language used by that tool is not mainstream—meaning, the LLM won’t be trained on it—you’ll need to fine-tune on it.</p>
+<p>And finally, you can interface with programming frameworks that have, e.g., a Python-based API. Again, unless the framework is very well-known—e.g., sklearn—you may need to fine-tune your model to teach it how to use that concrete API. But in many cases the model might generalize from its basic Python knowledge to specific APIs with a small set of carefully curated k-shot examples.</p>
+</section>
+<section class="level5" id="enhanced-reasoning">
+<h5 class="anchored" data-anchor-id="enhanced-reasoning">Enhanced reasoning</h5>
+<p>As we’ve seen in <a class="quarto-xref" href="../3_dangers/limitations.html"><span>Chapter 13</span></a>, LLMs are lousy at mathematical and logical reasoning. This is rather surprising at first, because computers are supposed to be precise mathematical machines. However, when you understand how LLMs reason, you realize they don’t have any explicit mechanism for even the simplest mathematical operations. But you know what does? Python! (and any other programming language).</p>
+<p>Code generation is the most effective way to enhance the mathematical skills of LLMs. Instead of having the model directly answer questions involving mathematical operations, make it generate a short code expression that computes the right formula, run it, and feed the result back to the LLM. This way you can “teach” an LLM to solve complex mathematical problems by doing the same we humans do: using the right tool.</p>
+<p>But the possibilites go far beyond simple (or fairly involved) mathematical operations. You can pair an LLM with any of the many specialized inference engines the AI community has invented over the decades. Make your LLM generate Prolog code and voilá, you have a general purpose logic reasoning engine from natural language, or make it generate SymPy expressions and you have a symbolic reasoner.</p>
+<p>But this is no silver bullet, of course. Your LLM can simply fail to generate the right code. So even if you have the perfect computing engine that solves the right problem, getting a language model to generate semantically correct code for that engine is an open problem, and one which is ultimately unsolvable according to basic computatibility theory.</p>
+<p>However, for many practical cases, given enough examples for k-shot or a small fine-tuning process, you can get an LLM to learn how to solve interesting problems reasonably well. And this is an active area of research, so we can only expect these capabilities to improve in the near future.</p>
+</section>
+</section>
+<section class="level4" id="prompting-tips-for-code-generation">
+<h4 class="anchored" data-anchor-id="prompting-tips-for-code-generation">Prompting tips for code generation</h4>
+<p>In many common cases, you can make an LLM write code simply by asking. A prompt like “Generate a Python function to find the third maximum element from a list” will work almost flawlessly in any sufficiently capable language model you can find today. And this works fine for many use cases where the code is all you need. At least is no worst than searching for a similar snippet of code online.</p>
+<p>However, there are several drawbacks with this KISS approach. First, most LLMs you’ll find online are fine-tuned for chat, so they are… chatty. Instead of the raw code, they might answer with something like “Sure, here is a function in Python to do ….” and then the code. This makes it hard to integrate them with external tools that need just the code, because then you have to parse the response.</p>
+<p>In many cases, you can get away by adding an explicit instruction like “Please answer just with the source code”, but still, some models may refuse. And even if they comply, different models output code in different formats. Some will enclose the code in markdown-style code block annotations while other models might indent the code. It depends heavily on their training data.</p>
+<p>Another problem you may face is when asking for one-liners, i.e., single instructions or expressions that you want to evaluate with, e.g., the <code>eval</code> function in Python. If you ask for a single <code>pandas</code> expression to, say, group and filter a dataset, the model may sometimes produce a propper expression—e.g., <code>df.groupby(...).agg(...)</code>—and other times an instruction—e.g., <code>df = df.groupby(...)</code>. You may work around these issues by doing some checking and post-processing of the response, like removing anything before the last <code>=</code> sign, but this is a very brittle approach.</p>
+<p>In these cases, some of our well-known prompt techniques also apply. Be very intentional with the prompt and provide positive examples of the exact response format you expect. While none of this will 100% guarantee you’ll get a response in the format you need, when paired with a try-and-repeat strategy, you can often get away with the performance you need. For example, if the model makes a mistake 10% of the time, you’ll need to redo one in ten queries on average, which is not that terrible all things considered.</p>
+<p>In many cases, when retrying the same code generation task, it helps including in the prompt the previous answer and the error. This can often be automated simply by trying to run the code, capturing any exceptions, and feeding the model back with the exception message asking it to try and fix it.</p>
+<p>Finally, with some tricks, we can force the LLM to produce syntactically-correct code—even if not guaranteed to be semantically valid. The trick is to restrict the sampling step to only select among the tokens that would be syntactically valid.</p>
+<p>Some open-source LLM inference engines, like llama.cpp, support passing a formal grammar that defines the syntax of the programming language. During sampling, the engine will select among the top-k tokens only those that are valid according to the production rules of the grammar. This can be done efficiently with a linearly bound automaton that can be constructed automatically from the formal grammar definition. While this is a relatively novel and, arguably, rather advanced feature, some commercial APIs, like &lt;fireworks.ai&gt; are starting to support it.</p>
+</section>
+<section class="level4" id="limitations-and-caveats">
+<h4 class="anchored" data-anchor-id="limitations-and-caveats">Limitations and caveats</h4>
+<p>Needless to say, code generation is full of subtle and not-so-subtle problems. For starters, some hallucinations are going to happen, and this might result in several different types of problems. The simplest case is getting code that is not syntactically-correct, that is, code that doesn’t parse. If this is your main problem, then you’re lucky because this is simple to check. Just run a linter for your target language and retry if you find any syntax errors.</p>
+<p>A more complicated issue is when your model generates syntactically-correct code that throws an exception. This is still not so terrible because you can run the code and check for exceptions. However, running code generated by an LLM is a bad idea if you don’t have some guardrails in place. For all you know, the code may have an instruction to wipe out your hard drive. So you must <strong>always run LLM-generated code in a sandboxed environment</strong>. This is especially true when you’re running code generated by a user-facing LLM. Someone <em>will</em> hack that LLM to generate some system-breaking instruction.</p>
+<p>The third level of problem is when your LLM generates code that runs without exceptions but doesn’t do the right thing. This is, in general, impossible to detect beforehand. However, depending on your specific use case, you may be able to check the result is what you expect, and even roll-back any potential side effects if that isn’t the case. For example, you can have your code work on a copy of the relevant data, and check for any unexpected changes before merging that data back.</p>
+<p>This is, however, the most important open problem in program synthesis from natural language, and one that, I believe, will require a new paradigm that goes beyond statistical language modeling to fully solve it.</p>
+<p>Grammar-restricted output is is one of the most effective ways to make code generation more robust. Still, this process is ad-hoc, not baked into the training process. Thus, it is entirely possible for the LLM to get stuck simply because it doesn’t give a high probability to any valid tokens. If the LLM wouldn’t naturally produce, at least with some non-trivial probability, the right response, there is no ad-hoc filtering mechanism that can force it to generate correct code.</p>
+<p>This means adequate prompting and possibly fine-tuning for specific domains will remain relevant strategies in the near term.</p>
+</section>
+</section>
+</section>
+<section class="level2" id="agentic-ai">
+<h2 class="anchored" data-anchor-id="agentic-ai">Agentic AI</h2>
+<p>Agents are our last stop in the road towards giving language models more autonomy. So far, we’ve been able to connect LLMs with other systems, extending their knowledge and enhancing their capacity to solve complicated problems by leveraging different tools. But all tasks the tasks we can solve so far are, essentially, single-shot: requiring little to no planning once the task is well understood and the right tools are selected. Regardless of how complex the tasks we’ve seen, the number of steps they require is fixed from the beginning.</p>
+<p>To handle the most complex tasks, we must give LLMs the ability to not only pick and use arbitrary tools, but to actively reason about the task <em>while</em> performing it, incorporate new insights, and change their minds during the solution process. LLMs must become active agents rather than passive tools. This is what the agent paradigm is supposed to unlock. Agents are not a new thing in AI, or computer science in general, though. In fact, it is one of the most important software design paradigms since primorial ages—back when Turing was thinking about German codes.</p>
+<p>In computational terms, a agent is just a software component that acts autonomously, interacting with an (computational) environment and constantly making choices as to further some goals. The difference between traditional software and agent-based software is that, in traditional software, all changes to a system are in response to some user input: that is, the user is the active element. In agent-based software, the software itself is active, in the sense that it is always making adjustments and producing effects on the computational system, regardless of whether there is a user at all.</p>
+<p>As an example, consider the difference between a passive AI assistant, like Alexa or Siri, and an active one. In the former case, the assistant is essentially dormant until you make a request. Then, it turns on, parses your query, and takes any actions needed to fullfil your request, before going back to sleep. All interactions are started bu you, the user.</p>
+<p>In contrast, an active AI assistant would be always processing stuff, reading the news, scanning your emails, searching in Google, etc. It could forward you any interesting links it finds online and update your calendar as new tasks arrive at your email. But, more importantly, it could be working on a specific task for as long as necessary, without continued input from you.</p>
+<p>Now, you can stretch the definition so that <em>any</em> piece of software looks like agent-based. Your operating system is always on, doing stuff, ready to ping you when there’s a problem. It has a goal—keeping the system running—and it can interact with an environment—hardware drivers, peripherals, hard drives, etc.—and exert actions to make changes to the system. But this is seldom a useful way to think about your operating system, mostly because its goals are pretty straightforward, and the actions it can perform as very restricted.</p>
+<p>Things turn interesting when you give a software agent long-term goals that have no immediately obvious steps. The agent must then observe the environment, gather information, maybe ask you for clarifications, and make a plan to further those goals. Moreover, as it discovers new information, it may refine those goals, split them into lower-level subgoals, and generally navigate around a complex decision-making process that wasn’t explicitly programmed, or even obvious to an external observer from the beginning.</p>
+<p>Adding language models to the mix unlocks exciting new possibilities, as now your agent can not only communicate with you in natural language, but also talk to other agents easily—no need to define formal communication protocols or APIs—, and even <em>reason and argue with itself</em> in natural language.</p>
+<section class="level3" id="anatomy-of-an-llm-powered-agent">
+<h3 class="anchored" data-anchor-id="anatomy-of-an-llm-powered-agent">Anatomy of an LLM-powered agent</h3>
+<p>An LLM agent is, ultimately, just a plain-old AI agent with some linguistic capabilities. So let’s review the general definition of agent in the AI field, and explore some of the basic agent architectures that have been invented.</p>
+<p>In its simplest conception, an agent is a software component embedded within a larger computational system we call the <em>environment</em>. This environment can be anything from a computer simulation, to the whole Internet, including other agents (computational or otherwise). THe agent always has some <em>goals</em>—which can as abstract and ambiguous as you want—that it must further by performing some <em>actions</em>. For this purpose, the agent has some <em>sensors</em> by which it can obtain information from the environment, and some <em>actuators</em> that allow it to exert changes in the environment. Finally, the agent has some internal <em>reasoning</em> process to decide which actions to perform given the current environment state (see <span class="quarto-unresolved-ref">?fig-agent</span>).</p>
+<p>This picture is complete from the outside, but if we look inside the agent, we can further refine it. Here is where literature is—quite literally—overflown with variants of “standard” agent architectures. So I won’t attempt to cover the majority of variants or even be too formal. Rather, I’ll explain what are the main ingredients in most used agent architectures, using a casual nomenclature.</p>
+<p>The most basic agent that does some form of reasoning needs to do two separate things: keep track of the state of the world (which may include it’s own state) and then reason about that world to decide which actions to take. This reasoning can be cyclical, updating its own state with new information inferred from previous state. We can thus come up with a sensible basic agent architecture (see <span class="quarto-unresolved-ref">?fig-basic-agent</span>).</p>
+<p>This architecture is sufficiently detailed for us to discuss different variants, while being sufficiently abstract to allow many different use cases and implementations. For example, we haven’t explicitely defined what goes in the internal representation of the world: it could be anything from a structured set of values to a list of natural language facts to a full-blown database. We also haven’t specified what sensors or actuators actually are, which depend heavily on the concrete use case.</p>
+<section class="level4" id="adding-natural-language">
+<h4 class="anchored" data-anchor-id="adding-natural-language">Adding natural language</h4>
+<p>So far we haven’t used the fact our agent is LLM-powered, and for good reason. The basic agent architecture we just defined is agnostic to implementation details. Adding an LLM to the agent architecture just means some, or all of the modules are implemented using language models: that is, with prompts, RAG, function calling, and everything else we’ve seen so far.</p>
+<p>First, perception may be LLM-based: your agent can receive information from the environment in the form of natural language documents. Likewise, the actuators can be LLM-based, e.g., via function calling. But more importantly, the reasoning process and the internal representation may involve language models as well. The internal representation can be a straightforward collection natural language claims about the environment, which the agent updates and refines via reasoning. And the reasoning itself can be guided with some clever prompting and thus occur entirely in a linguistic framework. Finally, the environment itself can contain other language models, or otherwise be implemented also as a language-based simulation with clever prompts.</p>
+</section>
+</section>
+<section class="level3" id="beyond-the-single-agent-paradigm">
+<h3 class="anchored" data-anchor-id="beyond-the-single-agent-paradigm">Beyond the single agent paradigm</h3>
+<p>All of the above are reasonably straightforward applications of the agent paradigm using LLMs. While the devil is in the details, and implementation is often much harder than one first thought, I can definitely see all of the above examples working in the near future, at least within reasonable constraints. However, single-agent architectures are just scratching the surface of what this paradigm can bring. The real deal is in multi-agent environments.</p>
+<p>In a multi-agent setup, different agents coexist, collaborating and/or competing to achieve common or distinct goals. The power of mulit-agent architectures is that a complex problem may be very hard to model with a single agent, but feasible when subdivided into distinct goals and skills. Take, for example, the coding agent scenario mentioned before. Now, instead of a single agent taking all these tasks one at a time, imagine multiple agents working in parallel, some optimized to fix bugs, others to comment code, and others yet to revise, add tests, make suggestions, etc.</p>
+<p>And this is more than just N different agents working in parallel on a codebase. These agents may have to coordinate to solve a big task. For example, maybe one “software architect” agent will take a complex issue and make plan, dividing it into subtasks for different features, and then other “implementation” agents will work out the simpler tasks and do the actual coding.</p>
+<p>Furthermore, you can have gatekeeper agents that revise code and emit some sort of qualitative evaluation. They can even ask questions, and the implementors must convince them of their solution. A lot of both old and recent research suggests than, when combined in such a manner, multiple agents can solve problems that none of them was able to tackle on its own.</p>
+<p>Why would this work better than just a super coder LLM? You can consider it an advanced form of ensembling mixed with self-reflection, which are in turn advanced forms of chain-of-thought. By combining multiple LLMs with different tasks (i.e., different prompts) in iterated interactions, we give them more chances to revise and regenerate, which translates in more computational power. At the same time, we’re leveraging the ensemble effect of pooling different solutions to the same problem which tends to produce better solutions on average as mistakes are smoothed out.</p>
+</section>
+<section class="level3" id="symbolic-learning-in-llm-agents">
+<h3 class="anchored" data-anchor-id="symbolic-learning-in-llm-agents">Symbolic learning in LLM agents</h3>
+<p>Putting a bunch of LLM-powered agents to work together is neat, but we can go further. The next step is make our agents actually learn from their interactions with the environment.</p>
+<p>In the classic agent architecture we’ve discussed so far, there is no explicit learning happening inside the agent. To some extent, you can think of updating the internal representation as some sort of learning about the environment, but there is no learning about the strategies the agent can use. The reasoning module, however is implemented, has no way (at least so far) to update itself so that, given the same environment, it could perform better in future ocassions instead of repeating the same mistakes.</p>
+<p>The standard solution to this problem is reinforcement learning. Assume some optimizable inference architecture inside the agent’s reasoning module (e.g., a neural network) and use feedback from the environment to update its parameters. But what if we could achieve something similar using a purely linguistic approach?</p>
+<p>One way to achieve this is to give the agent the ability to reason about its own performance, and generate hypotheses (which are nothing more than natural language claims) that describe what it has learned. These hypotheses can be stored in a private knowledge base (separate from the environment description) and retrieved during reasoning.</p>
+<p>In the simplest case, this is a long-term memory of what the agent has tried in different situations, and what has worked. In future situations, a RAG approach could provide examples of things that have worked before. However, this can be refined further, by progressively asking the LLM to produce high-level hypotheses that abstract and summarize similar situations, eventually building operative knowledge, more general than any specific past situation.</p>
+<p>What’s incredible is this approach has been shown to improve reasoning and problem-solving skills in domains as complicated as medical question answering. <a href="https://arxiv.org/pdf/2405.02957">In a recent paper</a>, researchers put agents in a simulated hospital environment, and generated thousands of cases of patients with different conditions. The whole simulation is run by linguistic agents, from patients to nurses to doctors, who interact with each other and decide on a treatment. External rules (from a medical knowledge base) are used to simulate if the treatment is effective or not. And after each case is completed, the doctor agents write a detailed report of the case, which is stored in their internal knowledge base.</p>
+<p>After ten thousand or so iterations, the doctor agents had built a case database that contained a distilled knowledge about every possible rundown of diseases, symptoms, treatments, etc., they had seen. This is equivalent to what medical residents see in two years of training. And incredibly, this database, when provided to a GPT-4 single-shot question answering bot, improved its results in a standard medical question benchmarks by almost 10%.</p>
+<p>This is something akin to reinforcement learning, but it is parameter-free and 100% transparent and explainable. Instead of updating some opaque weights in some neural networks, your LLM-powered agent is learning like humans do: by analysing its actions, taking notes, and constructing hypotheses. While extremely experimental, this is one of the most exciting use cases for LLM agents I’ve seen recently.</p>
+</section>
+<section class="level3" id="caveats-and-limitations">
+<h3 class="anchored" data-anchor-id="caveats-and-limitations">Caveats and limitations</h3>
+<p>As in everything related to LLMs, you must beware of hallucinations and biases. Ensembles in general, and agents in particular are more robust to random errors because of their distributed nature. This means that unlikely hallucinations that could be deal-breakers in single-LLM scenarios might get smoothed away when you pool together multiple LLMs taking turns to make choices.</p>
+<p>However, biases are not random but systematic errors. Using the same model to power all your agents means they are all susceptible to making the same judgement mistakes over and over. In general, there is no algorithmic solution to reducing biases that doesn’t attack the original problem: biased data.</p>
+<p>Another major caveat of LLM agents is that, compared to a single zero-shot or a simple chain-of-thought prompt, they are significantly more costly. Your agent is always running, which means you’re constantly calling the LLM API, even if there is nothing new to be done. This underscores once again the need for in-house, open-source language models that can be scaled to these heavy-duty scenarios in a cost-effective manner.</p>
+<p>And finally, agents in AI have a long history of being abused as an overengineered solution to problems that could otherwise be solved with more direct methods. Do your own experiments and test whether simple prompts, or other, more straightforward augmentation techniques are sufficient for your use case before going the length of building an entire simulated environment.</p>
+</section>
+<section class="level3" id="conclusions">
+<h3 class="anchored" data-anchor-id="conclusions">Conclusions</h3>
+<p>The agent model is one of the most exciting paradigms in artificial intelligence, with a long and rich history of architectures and approaches. It is also one of the hardest to put into practice, at least until now, because it always required far more intelligence that was possible with previous approaches. But with LLMs, agents are seeing a rebirth as one of the most promising approaches to building reliable and truly intelligent AI solutions.</p>
+<p>I am, however, fairly biased. This is one of my dearest research topics and I may well be over-excited about it. So take everything I said here with a grain of salt. Modern agent architectures are still brittle and hard to deploy in large-enough scale for their distributed strenth to be noticeable. Still, they hold great promise, and are one of the few paths forward that may take us all the way to general AI.</p>
+</section>
+</section>
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+<div class="nav-page nav-page-previous">
+<a aria-label="Generative AI and Large Language Models" class="pagination-link" href="../1_foundations/llms.html">
+<i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>  <span class="chapter-title">Generative AI and Large Language Models</span></span>
+</a>
+</div>
+<div class="nav-page nav-page-next">
+<a aria-label="Optimization of LLMs" class="pagination-link" href="../1_foundations/optimization.html">
+<span class="nav-page-text"><span class="chapter-number">5</span>  <span class="chapter-title">Optimization of LLMs</span></span> <i class="bi bi-arrow-right-short"></i>
+</a>
+</div>
+</nav>
+</div> <!-- /content -->
+<script src="/data.js"></script><script src="/books/reader.js"></script></body></html>

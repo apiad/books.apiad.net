@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><head><link href="/books/reader.css" rel="stylesheet"/>
+<meta charset="utf-8"/>
+<meta content="quarto-1.7.30" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<title>2  Machine Learning – Mostly Harmless AI</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta content="../" name="quarto:offset"/>
+<link href="../1_foundations/llms.html" rel="next"/>
+<link href="../1_foundations/ai.html" rel="prev"/>
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet"/>
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de070a7b0ab54f8780927367ac907214.css" id="quarto-text-highlighting-styles" rel="stylesheet"/>
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet"/>
+<link append-hash="true" data-mode="light" href="../site_libs/bootstrap/bootstrap-364982630eef5352dd1537128a8ed5cb.min.css" id="quarto-bootstrap" rel="stylesheet"/>
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@600;700;800&amp;family=Fira+Code:wght@400;500&amp;display=swap" rel="stylesheet"/><link href="/manifest.json" rel="manifest"/><script src="/sw-register.js"></script><meta content="#0f0f0f" name="theme-color"/><meta content="yes" name="apple-mobile-web-app-capable"/><link href="/icon-192.png" rel="apple-touch-icon"/><link href="/icon-192.png" rel="icon" sizes="192x192" type="image/png"/></head>
+<body class="nav-sidebar floating quarto-light">
+<div id="quarto-search-results"></div>
+<header class="headroom fixed-top" id="quarto-header">
+<nav class="quarto-secondary-nav">
+<div class="container-fluid d-flex">
+<button aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="quarto-btn-toggle btn" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="button" type="button">
+<i class="bi bi-layout-text-sidebar-reverse"></i>
+</button>
+<nav aria-label="breadcrumb" class="quarto-page-breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../1_foundations/index.html">Foundations of AI</a></li><li class="breadcrumb-item"><a href="../1_foundations/ml.html"><span class="chapter-number">2</span>  <span class="chapter-title">Machine Learning</span></a></li></ol></nav>
+<a aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="flex-grow-1" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="navigation">
+</a>
+<button aria-label="Search" class="btn quarto-search-button" onclick="window.quartoOpenSearch();" type="button">
+<i class="bi bi-search"></i>
+</button>
+</div>
+</nav>
+</header>
+<!-- content -->
+<div class="quarto-container page-columns page-rows-contents page-layout-article" id="quarto-content">
+<!-- sidebar -->
+<nav class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" id="quarto-sidebar">
+<div class="pt-lg-2 mt-2 text-left sidebar-header">
+<div class="sidebar-title mb-0 py-0">
+<a href="../">Mostly Harmless AI</a>
+</div>
+</div>
+<div class="mt-2 flex-shrink-0 align-items-center">
+<div class="sidebar-search">
+<div class="" id="quarto-search" title="Search"></div>
+</div>
+</div>
+<div class="sidebar-menu-container">
+<ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../index.html">
+<span class="menu-text">Preface</span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../manifesto.html">
+<span class="menu-text">The Techno-Pragmatist Manifesto</span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../prologue.html">
+<span class="menu-text">Prologue</span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../intro.html">
+<span class="menu-text">A Brief History of Artificial Intelligence</span></a>
+</div>
+</li>
+<li class="sidebar-item sidebar-item-section">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/index.html">
+<span class="menu-text">Foundations of AI</span></a>
+<a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-1" data-bs-toggle="collapse" role="navigation">
+<i class="bi bi-chevron-right ms-2"></i>
+</a>
+</div>
+<ul class="collapse list-unstyled sidebar-section depth1 show" id="quarto-sidebar-section-1">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/ai.html">
+<span class="menu-text"><span class="chapter-number">1</span>  <span class="chapter-title">Foundations of Artificial Intelligence</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link active" href="../1_foundations/ml.html">
+<span class="menu-text"><span class="chapter-number">2</span>  <span class="chapter-title">Machine Learning</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/llms.html">
+<span class="menu-text"><span class="chapter-number">3</span>  <span class="chapter-title">Generative AI and Large Language Models</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/apps.html">
+<span class="menu-text"><span class="chapter-number">4</span>  <span class="chapter-title">Techniques for LLM Deployment</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/optimization.html">
+<span class="menu-text"><span class="chapter-number">5</span>  <span class="chapter-title">Optimization of LLMs</span></span></a>
+</div>
+</li>
+</ul>
+</li>
+<li class="sidebar-item sidebar-item-section">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/index.html">
+<span class="menu-text">Applications of AI</span></a>
+<a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-2" data-bs-toggle="collapse" role="navigation">
+<i class="bi bi-chevron-right ms-2"></i>
+</a>
+</div>
+<ul class="collapse list-unstyled sidebar-section depth1 show" id="quarto-sidebar-section-2">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/intro.html">
+<span class="menu-text"><span class="chapter-number">6</span>  <span class="chapter-title">AI for Critical Thinkers</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/research.html">
+<span class="menu-text"><span class="chapter-number">7</span>  <span class="chapter-title">AI for Knowledge Workers</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/coding.html">
+<span class="menu-text"><span class="chapter-number">8</span>  <span class="chapter-title">AI for Software Development</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/education.html">
+<span class="menu-text"><span class="chapter-number">9</span>  <span class="chapter-title">AI for Educators and Learners</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/creative.html">
+<span class="menu-text"><span class="chapter-number">10</span>  <span class="chapter-title">AI for Creative Professionals</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/policy.html">
+<span class="menu-text"><span class="chapter-number">11</span>  <span class="chapter-title">AI for Policy-Makers</span></span></a>
+</div>
+</li>
+</ul>
+</li>
+<li class="sidebar-item sidebar-item-section">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../3_dangers/index.html">
+<span class="menu-text">Dangers of AI</span></a>
+<a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-3" data-bs-toggle="collapse" role="navigation">
+<i class="bi bi-chevron-right ms-2"></i>
+</a>
+</div>
+<ul class="collapse list-unstyled sidebar-section depth1 show" id="quarto-sidebar-section-3">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../3_dangers/alignment.html">
+<span class="menu-text"><span class="chapter-number">12</span>  <span class="chapter-title">Why Artificial Intelligence is Hard</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../3_dangers/limitations.html">
+<span class="menu-text"><span class="chapter-number">13</span>  <span class="chapter-title">The limits of language models</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../3_dangers/risks.html">
+<span class="menu-text"><span class="chapter-number">14</span>  <span class="chapter-title">The Actual Risks of AI</span></span></a>
+</div>
+</li>
+</ul>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../epilogue.html">
+<span class="menu-text">Epilogue: The Road Ahead</span></a>
+</div>
+</li>
+</ul>
+</div>
+</nav>
+<div class="quarto-sidebar-collapse-item" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" id="quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+<div class="sidebar margin-sidebar" id="quarto-margin-sidebar">
+<nav class="toc-active" id="TOC" role="doc-toc">
+<h2 id="toc-title">Table of contents</h2>
+<ul class="collapse">
+<li><a class="nav-link active" data-scroll-target="#the-rise-of-learning-machines" href="#the-rise-of-learning-machines" id="toc-the-rise-of-learning-machines">The Rise of Learning Machines</a></li>
+<li><a class="nav-link" data-scroll-target="#how-machines-learn" href="#how-machines-learn" id="toc-how-machines-learn">How Machines Learn</a></li>
+<li><a class="nav-link" data-scroll-target="#the-training-process-from-data-to-generalization" href="#the-training-process-from-data-to-generalization" id="toc-the-training-process-from-data-to-generalization">The Training Process: From Data to Generalization</a></li>
+<li><a class="nav-link" data-scroll-target="#how-machines-model-reality" href="#how-machines-model-reality" id="toc-how-machines-model-reality">How Machines Model Reality</a></li>
+<li><a class="nav-link" data-scroll-target="#a-glimpse-at-common-machine-learning-models" href="#a-glimpse-at-common-machine-learning-models" id="toc-a-glimpse-at-common-machine-learning-models">A Glimpse at Common Machine Learning Models</a></li>
+<li><a class="nav-link" data-scroll-target="#conclusion-the-bitter-lesson-and-the-path-forward" href="#conclusion-the-bitter-lesson-and-the-path-forward" id="toc-conclusion-the-bitter-lesson-and-the-path-forward">Conclusion: The Bitter Lesson and the Path Forward</a></li>
+</ul>
+</nav>
+</div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+<header class="quarto-title-block default" id="title-block-header"><nav aria-label="breadcrumb" class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../1_foundations/index.html">Foundations of AI</a></li><li class="breadcrumb-item"><a href="../1_foundations/ml.html"><span class="chapter-number">2</span>  <span class="chapter-title">Machine Learning</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">2</span>  <span class="chapter-title">Machine Learning</span></h1>
+</div>
+<div class="quarto-title-meta">
+</div>
+</header>
+<section class="level2" id="the-rise-of-learning-machines">
+<h2 class="anchored" data-anchor-id="the-rise-of-learning-machines">The Rise of Learning Machines</h2>
+<p>In the previous chapter, “Foundations of AI: Logic, Knowledge, and the Dawn of Intelligence,” we explored the early ambitions of Artificial Intelligence, particularly through the lens of “Good Old-Fashioned AI” (GOFAI). We saw how GOFAI excelled at problems that could be solved with explicit rules, logical reasoning, and structured knowledge. However, we also touched upon its fundamental limitations: its brittleness when faced with real-world complexity, its struggle with common-sense knowledge, and the sheer impossibility of hand-coding every piece of information or every rule for truly unstructured problems.</p>
+<p>This is precisely where Machine Learning (ML) emerges as a transformative paradigm. ML is a field within AI that allows computers to “learn” from data, finding patterns, making predictions, and even making decisions without being explicitly programmed for every single scenario. It’s the answer to problems that are too complex or too nuanced for us to write down precise, step-by-step instructions.</p>
+<p>For example, it’s the technology behind your phone’s face recognition, the recommendations you get on streaming services, or how spam is filtered from your inbox. Instead, we design systems that can discover these instructions themselves by observing examples and experiences. From a techno-pragmatist perspective, Machine Learning represents a human-designed approach to extend AI’s capabilities into previously “unsolvable” domains, highlighting our ongoing agency in shaping intelligent tools.</p>
+<section class="level3" id="what-is-machine-learning-a-formal-definition">
+<h3 class="anchored" data-anchor-id="what-is-machine-learning-a-formal-definition">What is Machine Learning? A Formal Definition</h3>
+<p>To better understand this transformative paradigm, it’s helpful to consider a formal definition that captures its essence. We turn to a widely accepted definition by AI researcher Tom Mitchell. He states that “Machine Learning is a computational approach to problem-solving with four key ingredients: A task to solve (T), a performance metric (M), a computer program (P), and a source of experience (E).” According to Mitchell, “You have a Machine Learning solution when: The performance of program P at task T, as measured by M, improves with access to the experience E.”</p>
+<p>This definition highlights the core essence of ML: improvement through experience. In traditional software, a program’s performance is fixed by its initial design; it doesn’t get “smarter” the more you use it. In stark contrast, an ML program is specifically designed to automatically get better at its task as it processes more data or gains more experience. This fundamental shift allows us to tackle problems that were once beyond the reach of explicit programming.</p>
+</section>
+</section>
+<section class="level2" id="how-machines-learn">
+<h2 class="anchored" data-anchor-id="how-machines-learn">How Machines Learn</h2>
+<p>As we discussed in Chapter 1, the history of AI has been marked by a “tug-of-war” between Symbolic and Statistical approaches. In this chapter, we delve deeper into the principles that define the Statistical AI side, specifically focusing on the various ways machines learn from data. Machine learning paradigms differ based on the type of experience available, the quality of feedback they receive, and the strategies they employ to learn.</p>
+<p>Every machine learning process, regardless of its specific flavor, relies on a combination of three essential factors. First, there is the Nature of Experience, which refers to the kind of data or environment the machine interacts with. This experience can be Static, like a fixed collection of books, images, or recorded observations (datasets), where the machine learns from what’s already provided without influencing the data itself. Alternatively, it can be Dynamic, involving an environment where the machine’s actions influence the experience it receives, often seen in simulations or real-world interactions.</p>
+<p>Second, the Quality of Feedback describes how clear and direct the guidance is that the machine receives about its performance. Explicit Feedback provides direct and precise information about whether an action was correct or incorrect, such as a teacher telling you exactly how to solve a math problem. Conversely, Implicit Feedback offers indirect cues that suggest whether the machine is doing well or poorly, like kicking a soccer ball and observing its trajectory. Challenges often arise when feedback is Delayed, meaning the outcome is known much later (like losing a chess game), or Sparse, where feedback is available for only a small subset of decisions.</p>
+<p>Finally, Learning Strategies are the actual mechanisms by which the machine processes experience and feedback to improve. Imitation, also known as Learning by Demonstration, involves observing correct behavior and trying to reproduce it, making it highly efficient but requiring explicit, high-quality examples. Trial-and-Error involves trying different actions, observing the consequences, and then adjusting behavior based on whether the outcomes are better or worse; this method is slower but effective when explicit instructions are unavailable. Lastly, Pattern Recognition focuses on finding hidden regularities or structures within data, often without direct guidance on what those patterns should be.</p>
+<section class="level3" id="learning-by-example-supervised-learning">
+<h3 class="anchored" data-anchor-id="learning-by-example-supervised-learning">Learning by Example: Supervised Learning</h3>
+<p>Supervised Learning is the most common and intuitive machine learning paradigm. It’s based on imitation learning and relies on static experience with the most explicit kind of feedback. In this setup, the machine is given a dataset of “input/output pairs.” The task is to learn a function or mapping that can produce the correct output for any given input.</p>
+<p>This approach is fundamentally a problem of prediction: given a new, unseen input, the system predicts its corresponding output. The core assumption here is that there’s a computable relationship between the input and output that can be inferred from a sufficiently large number of examples. Supervised learning problems typically fall into two main categories: Classification and Regression.</p>
+<p>Classification is used when the output is a category chosen from a finite set. This can involve Binary Classification, where the system predicts one of two categories (e.g., “spam” or “not spam,” “cancer” or “no cancer”). It also includes Multi-class Classification, which predicts one of more than two categories (e.g., identifying the type of animal in an image: “dog,” “cat,” “bird”). Furthermore, Multi-label Classification predicts zero, one, or more than one category for a single input, such as identifying all topics present in a news article.</p>
+<p>Regression, on the other hand, is applied when the output is a continuous numerical value. A typical example is predicting the price of a house based on its features like the number of rooms, location, or size. It can also be used for forecasting stock prices.</p>
+</section>
+<section class="level3" id="learning-by-discovery-unsupervised-learning">
+<h3 class="anchored" data-anchor-id="learning-by-discovery-unsupervised-learning">Learning by Discovery: Unsupervised Learning</h3>
+<p>In contrast to supervised learning, Unsupervised Learning deals with situations where we don’t have access to the “right outputs” or labels. Instead, the machine is given a large static dataset, and its primary goal is to find hidden patterns, structures, or relationships within that data. Here, feedback is highly indirect and often implicitly defined, and the main learning strategy is pattern recognition.</p>
+<p>The underlying assumption is that there’s some inherent organization or regularity in the data that can be summarized or explained with a smaller amount of information than simply listing all elements. The human designer still plays a crucial role by providing the algorithm’s inductive bias—the type of regularities or structures it should look for. For example, when grouping customers, the human might decide the algorithm should prioritize grouping by age rather than by location, thereby introducing a specific preference for how patterns are discovered. This type of design bias is distinct from the harmful societal biases that models can unfortunately learn from biased data, which we will discuss later. Two common sub-problems in unsupervised learning are Clustering and Dimensionality Reduction.</p>
+<p>Clustering involves grouping similar elements together based on their characteristics. The machine defines these groups without being told what the groups are beforehand. For example, this could mean grouping customers based on their purchasing behavior or segmenting news articles by topic without predefined categories.</p>
+<p>Dimensionality Reduction aims to find a more compact or simplified representation of each element while retaining its most essential characteristics. This is often used as a preprocessing step to make data easier for other ML algorithms to handle. An example could be reducing a high-resolution image to a lower-resolution version that still captures its key visual information, or simplifying complex customer data into a few key “dimensions” that describe their preferences.</p>
+</section>
+<section class="level3" id="learning-by-doing-reinforcement-learning">
+<h3 class="anchored" data-anchor-id="learning-by-doing-reinforcement-learning">Learning by Doing: Reinforcement Learning</h3>
+<p>The third fundamental machine learning paradigm is Reinforcement Learning (RL). Unlike supervised or unsupervised learning, RL primarily involves dynamic simulations where an “agent” (the machine learning program) can interact with an environment and learn to make decisions that lead to desirable outcomes. This approach is fundamentally based on learning by trial and error.</p>
+<p>Reinforcement Learning is particularly useful when the problem involves a sequence of actions, and there’s no obvious way to define the “correct” sequence beforehand other than through experimentation. The machine learns by receiving a “payoff” or “reward” after performing an action or a sequence of actions, and its objective is to maximize the total accumulated payoff over time. A major challenge in RL is credit assignment: deciding which specific actions in a long sequence contributed to the ultimate reward, especially when feedback is delayed (you only know if your strategy was good at the end of a game) and sparse (rewards are infrequent).</p>
+<p>For instance, RL is used for training an AI to play a video game, where it learns to move, jump, and attack by receiving points (rewards) for achieving goals and penalties for mistakes. Other prominent examples include training robots to perform complex tasks or developing self-driving car algorithms that learn to navigate traffic in dynamic environments.</p>
+</section>
+<section class="level3" id="blurring-the-lines-hybrid-learning-approaches">
+<h3 class="anchored" data-anchor-id="blurring-the-lines-hybrid-learning-approaches">Blurring the Lines: Hybrid Learning Approaches</h3>
+<p>While supervised, unsupervised, and reinforcement learning are the three foundational paradigms, many real-world applications and advanced techniques blur these lines. They combine elements from different approaches to achieve more powerful results.</p>
+<p>One such blend is Semi-supervised Learning. This approach is used when you have a small amount of explicitly labeled data (input/output pairs) but a vast amount of unlabeled data (just inputs). The machine leverages the unlabeled data to learn general structures or patterns (unsupervised) and then uses the small amount of labeled data to refine its predictions for specific tasks (supervised). This method is particularly useful when obtaining labeled data is expensive.</p>
+<p>Another hybrid is Self-supervised Learning. In this paradigm, the machine learns by creating its own “supervision” from the input data itself. The “output” it tries to predict is simultaneously part of the input, but hidden or masked. A common form involves predicting a missing word in a sentence based on the surrounding words. The machine generates its own labels from the vast amount of text data available, making it highly scalable like unsupervised learning, but with the explicit prediction goal of supervised learning.</p>
+<p>Finally, Active Learning represents a different kind of hybrid, mixing traits of supervised and reinforcement learning. Here, the machine has access to a vast, potentially infinite amount of unlabeled data and an “oracle” (often a human expert) who can provide the correct output for any specific input. The key is that the machine actively chooses which unlabeled examples to ask the human to label, aiming to select the most informative examples that will maximize its learning while minimizing the human effort required.</p>
+</section>
+</section>
+<section class="level2" id="the-training-process-from-data-to-generalization">
+<h2 class="anchored" data-anchor-id="the-training-process-from-data-to-generalization">The Training Process: From Data to Generalization</h2>
+<p>Once we’ve chosen a learning paradigm and a type of model, the machine needs to be “trained.” This process involves feeding the model data and adjusting its internal workings so it can perform its task effectively. The ultimate goal of training is not just for the model to perform well on the data it has seen, but to generalize – to work effectively on new, unseen data.</p>
+<section class="level3" id="preparing-the-data">
+<h3 class="anchored" data-anchor-id="preparing-the-data">Preparing the Data</h3>
+<p>To properly evaluate a machine learning model’s performance and ensure it can generalize, we always split our available data into three distinct sets. The Training Set is the largest portion of the data, used to “teach” the model, where it learns patterns and relationships. The Validation Set is used during the training process to tune the model’s settings, known as “hyperparameters,” and to make decisions about when to stop training. This set acts as a “practice exam” that the model takes periodically to check its progress, but its performance on this set doesn’t directly influence the final score.</p>
+<p>The Test Set is the most crucial set for evaluating the model’s true performance. It consists of data that the model has never seen before during any part of its training or tuning. This set is used only once at the very end to give an unbiased estimate of how well the model will perform in the real world on new data. To measure performance, we use evaluation metrics (M, from Mitchell’s definition). For classification tasks, this might be accuracy (the percentage of correct predictions), while for regression, it might be a measure of error (how far off the predictions are from the actual values). Sometimes, the direct “success” metric we care about (like “winning a chess game”) is hard to optimize directly, so we use a proxy metric (like “guessing if a given board appears on a winning game”) that is easier for the machine to learn from.</p>
+</section>
+<section class="level3" id="the-challenge-of-robust-learning">
+<h3 class="anchored" data-anchor-id="the-challenge-of-robust-learning">The Challenge of Robust Learning</h3>
+<p>During the training process, two major challenges constantly arise, representing the core struggle of ensuring a model generalizes well. Underfitting occurs when the model is too simple or hasn’t learned enough from the training data to capture the underlying patterns. It performs poorly on both the training data and any new data. Think of a student who hasn’t studied enough for an exam – they perform badly on the practice questions and the actual test. In this scenario, the model is too basic to understand the complexity of the problem.</p>
+<p>Conversely, Overfitting is arguably the more insidious problem. It happens when the model learns the training data too well, including its noise, random fluctuations, and specific quirks that aren’t representative of the broader problem. An overfit model will perform exceptionally well on the training data but poorly on new, unseen data.</p>
+<p>Imagine a student who memorized only the practice exam questions and their answers, but doesn’t understand the underlying concepts; they ace the practice test but fail the real exam when the questions are slightly different. The model is too complex or too specialized for the training data, failing to capture a generalizable pattern.</p>
+<p>The ultimate goal of training is to find a delicate balance: a model that is complex enough to capture the true patterns in the data (avoiding underfitting) but simple enough to ignore the noise and generalize well to new data (avoiding overfitting).</p>
+<p>To help models achieve good generalization and avoid the pitfalls of underfitting and overfitting, machine learning practitioners use several key techniques. Regularization refers to a set of methods that “penalize overly complex formulas” during the training process. By adding a “cost” for complexity, regularization encourages the model to find “smoother formulas that are more likely to generalize to unseen data.” It’s like telling the student to focus on understanding the core principles rather than memorizing every single detail.</p>
+<p>Early Stopping is a practical technique where we monitor the model’s performance not just on the training set, but also on the validation set. Training is halted when the model’s performance on the validation set starts to degrade, even if its performance on the training set is still improving. This prevents the model from continuing to learn the “noise” of the training data and thus prevents overfitting.</p>
+<p>Additionally, Cross-Validation is a more robust way to evaluate a model’s performance, especially with smaller datasets. Instead of a single train/validation/test split, the data is divided into multiple “folds,” and the model is trained and validated multiple times, with different folds serving as the validation set each time.</p>
+<p>This provides a more reliable estimate of how the model will perform on unseen data. Ultimately, good generalization is the ultimate goal in machine learning: the model should work well on data it has never seen before. These techniques help ensure that the “learning” is truly applicable beyond the training examples.</p>
+</section>
+</section>
+<section class="level2" id="how-machines-model-reality">
+<h2 class="anchored" data-anchor-id="how-machines-model-reality">How Machines Model Reality</h2>
+<p>When a machine learning algorithm learns, it’s essentially trying to build a “model” of the relationships within the data. This “model” is a simplified representation of reality that allows the machine to make predictions or find patterns. The way these models are structured leads to a fundamental distinction: parametric versus non-parametric.</p>
+<p>Before training, we define a “model family” or “hypothesis space.” This is the set of all possible programs or functions that our machine learning algorithm can choose from. Think of it as a blueprint or a template for the kind of solution the AI is allowed to find. This choice of model family is a crucial initial decision, as it defines the fundamental capabilities and limitations of the learning system. For example, if we’re trying to predict house prices, our model family might be “all straight lines” or “all wavy curves.” The algorithm’s job is to find the best specific line or curve within that family.</p>
+<section class="level3" id="parametrics-vs-non-parametric-models">
+<h3 class="anchored" data-anchor-id="parametrics-vs-non-parametric-models">Parametrics vs Non-parametric Models</h3>
+<p><strong>Parametric models</strong> are those where the model family has a fixed number of parameters (or “weights”) that need to be learned from the data. The model’s structure is predetermined, and learning involves finding the optimal values for these parameters. Their advantages include often having very efficient training algorithms because their structure is well-defined. The size of the model is independent of the size of the training data, making them good at “compressing” large datasets into a fixed-size “formula.” They are also often easy to regularize, helping to prevent overfitting.</p>
+<p>However, parametric models imply significant assumptions about the data. If these assumptions are wrong (e.g., assuming a linear relationship when the data is clearly curved), the model is very likely to underfit, failing to capture the true patterns. Examples include Logistic Regression (which finds a fixed set of coefficients), Naive Bayes (which learns a fixed set of probabilities), and Neural Networks (with a fixed number of layers and neurons).</p>
+<p><strong>Non-parametric models</strong>, in contrast, have a variable number of parameters that often depends on the size or complexity of the training data. Their structure is more flexible and can adapt to the data’s intricacies. These models often imply weaker assumptions about the data, making them more adaptable to complex or unusual datasets where the underlying relationships aren’t clear. They can “adapt to difficult datasets easier than similarly complex parametric models.”</p>
+<p>However, training algorithms for non-parametric models can be more “ad-hoc” and less universally efficient. Their model size can sometimes be proportional to the training set size, making them less suitable for extremely large datasets if memory is a concern. Examples include K-nearest neighbors (which essentially “remembers” training examples), Support Vector Machines (SVMs) with non-linear kernels, and Decision Trees (where the number of “branches” can grow with data complexity).</p>
+</section>
+<section class="level3" id="generative-vs.-discriminative-models">
+<h3 class="anchored" data-anchor-id="generative-vs.-discriminative-models">Generative vs. Discriminative Models</h3>
+<p>When a machine learning model is tasked with distinguishing between different categories (like “dog” vs. “cat”), it can approach the problem in two fundamentally different ways: by understanding how each category is generated, or by understanding what discriminates between them.</p>
+<p><strong>Generative models</strong> try to learn what the fundamental characteristics are that define each class independently. Their goal is to understand how an example of a given class is made. These models estimate the probability of observing specific features given a certain class (P(features∣Class)).</p>
+<p>As an analogy, if you want to recognize dogs and cats, a generative model would first try to learn: “What is a dog?” (e.g., dogs generally have four legs, large noses, round ears) and “What is a cat?” (e.g., cats generally have four legs, small noses, pointy ears). To classify a new animal, it asks: “How likely is this animal to be a dog, based on what I know about dogs?” and “How likely is this animal to be a cat, based on what I know about cats?” Then it picks the more likely one. Because they learn how data is generated for each class, these models can often be used to generate new, random examples of each class. Naive Bayes is a classic generative model.</p>
+<p><strong>Discriminative models</strong>, on the other hand, try to learn directly what makes one class different from another. Their focus is on finding the boundaries or distinctions between categories. These models estimate the probability of a class given a set of observed features (P(Class∣features)).</p>
+<p>As an analogy, instead of learning what a dog is and what a cat is, a discriminative model would learn: “What features best separate dogs from cats?” It might learn that “the larger the nose or the tongue, the more likely to be a dog,” or “the pointier the ears and the sneakier the eyes, the more likely it is to be a cat.” It might not care about features like “number of legs” if they don’t help in distinguishing the two. These models are excellent at computing “feature importance”—telling you which features are most useful for separating the classes. Logistic Regression and most Neural Networks are discriminative models.</p>
+</section>
+<section class="level3" id="which-is-better-the-trade-offs">
+<h3 class="anchored" data-anchor-id="which-is-better-the-trade-offs">Which is Better? The Trade-offs</h3>
+<p>There’s no single “best” type of model; the choice between generative and discriminative approaches, or parametric and non-parametric, depends on the specific problem you’re trying to solve, the amount and quality of data you have, and what you intend to do with the solution.</p>
+<p>Discriminative models often excel at pure performance in classification tasks. They focus on the important features for the task and can disregard anything that doesn’t help them score better. However, they learn “what’s useful,” which can sometimes be “something completely off-track, like spurious correlations or harmful biases in the training set.”</p>
+<p>Generative models “often encode stronger inductive biases” because they represent a human’s hypothesis about how the data is created. This can make them “more robust and controllable,” but if that initial hypothesis is too far from reality, they “may not learn anything useful.” Ultimately, there is “no silver bullet.” You need to ask the right questions, be mindful of your assumptions, and always rely on experimentation to decide what works best in practice.</p>
+<p>Understanding these trade-offs is crucial for responsible AI development, as the choices made can lead to models that learn unintended biases from data. The implications of this, such as the “Tank Problem” where a model learns irrelevant correlations, will be explored in more detail later in the book (e.g., in the “Dangers of AI” chapter).</p>
+</section>
+</section>
+<section class="level2" id="a-glimpse-at-common-machine-learning-models">
+<h2 class="anchored" data-anchor-id="a-glimpse-at-common-machine-learning-models">A Glimpse at Common Machine Learning Models</h2>
+<p>A profound theoretical result in machine learning, known as the No Free Lunch theorem, formalizes the idea that no single algorithm is universally superior. The theorem states that if an algorithm performs better on a specific subset of problems with certain data constraints, it must perform worse on all other problems. In essence, there is no universal, “one-size-fits-all” learning algorithm that can predict the future perfectly in all scenarios.</p>
+<p>This means that to develop an optimal learning algorithm for a specific task, you must always introduce some “bias” or prior knowledge about the data and the problem itself. There is no such thing as an unbiased model, only models with different types of biases. This choice of what assumptions to make about your data is where the human modeler’s role becomes crucial. The following are some common models that embody different assumptions about the nature of a problem.</p>
+<p><strong>Decision Trees</strong> are like a flowchart for making decisions. A Decision Tree works by asking a series of simple questions about the data, such as “Is the customer over 30?”. Each answer leads to another question or a final decision, effectively narrowing down the possibilities until a prediction is made. They are generally easy to understand and visualize.</p>
+<p><strong>Logistic Regression</strong> is a simple yet powerful model often used for classification. It finds the “best line” (or a more complex boundary in higher dimensions) to separate different categories in data, helping to predict the probability that an input belongs to a certain class.</p>
+<p><strong>Neural Networks</strong>, inspired by the human brain, consist of layers of interconnected “neurons,” which are simple processing units. Each neuron takes inputs, performs a calculation, and passes an output to the next layer. By adjusting the strength of these connections (weights) during training, neural networks learn to recognize complex patterns in data, ranging from images to text.</p>
+<p><strong>Bayesian Methods</strong> use probability theory to update their beliefs about data as new evidence comes in. These models allow AI to reason with uncertainty, much like how we update our own understanding based on new information. Naive Bayes, for example, calculates the probability of a data point belonging to a class based on the probabilities of its features.</p>
+<p><strong>Kernel Machines</strong>, such as Support Vector Machines (SVMs), offer a clever way to handle data that isn’t easily separable. Imagine you have two groups of dots that are all mixed up on a flat surface, making it impossible to draw a straight line to separate them. Kernel machines can “lift” these dots into a higher dimension—a conceptual space—where they become easily separable by a simple line or plane. Then, they project that separation back to the original space. This “kernel trick” allows them to find complex, non-linear boundaries between categories.</p>
+</section>
+<section class="level2" id="conclusion-the-bitter-lesson-and-the-path-forward">
+<h2 class="anchored" data-anchor-id="conclusion-the-bitter-lesson-and-the-path-forward">Conclusion: The Bitter Lesson and the Path Forward</h2>
+<p>As Machine Learning evolved, a profound observation emerged, articulated by AI researcher Rich Sutton as “The Bitter Lesson.” This lesson suggests that over the long haul, general methods that really lean into computation (like just making neural networks bigger and feeding them more data and processing power) tend to be more effective and robust than trying to build in human knowledge or super detailed, hand-crafted features.</p>
+<p>In essence, the Bitter Lesson indicates that simply scaling up general learning algorithms with more data and computing power often yields better results than meticulously designing systems based on human intuition or explicitly coding domain-specific rules. This insight pushed the field further towards data-driven, statistical approaches, often achieving performance at scales beyond human intuitive grasp.</p>
+<p>From a techno-pragmatist perspective, this lesson is not a dismissal of human understanding; rather, it’s a realization that human knowledge should be integrated by creating architectures and environments where algorithms can discover patterns and rules for themselves, emphasizing the ongoing human role in designing these powerful learning systems.</p>
+<p>Machine Learning has undeniably revolutionized AI by enabling systems to learn from vast amounts of data, adapt to new situations, and solve problems that were intractable for purely rule-based systems. It has transformed fields from computer vision to natural language processing, bringing AI out of the research labs and into everyday applications.</p>
+<p>However, while powerful, these methods also have their own set of challenges and limitations. As we’ve hinted, issues like learning unintended biases from data, the need for vast datasets, and the black box nature of some complex models are ongoing areas of research and concern. These challenges, along with the ethical implications of increasingly intelligent systems, will be explored in subsequent chapters of this book.</p>
+<p>The journey of AI is one of continuous discovery and adaptation, driven by both technological advancements and human choices, as we strive to build intelligent tools that are not just capable, but also responsible and beneficial for all.</p>
+</section>
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+<div class="nav-page nav-page-previous">
+<a aria-label="Foundations of Artificial Intelligence" class="pagination-link" href="../1_foundations/ai.html">
+<i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>  <span class="chapter-title">Foundations of Artificial Intelligence</span></span>
+</a>
+</div>
+<div class="nav-page nav-page-next">
+<a aria-label="Generative AI and Large Language Models" class="pagination-link" href="../1_foundations/llms.html">
+<span class="nav-page-text"><span class="chapter-number">3</span>  <span class="chapter-title">Generative AI and Large Language Models</span></span> <i class="bi bi-arrow-right-short"></i>
+</a>
+</div>
+</nav>
+</div> <!-- /content -->
+<script src="/data.js"></script><script src="/books/reader.js"></script></body></html>

@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><head><link href="/books/reader.css" rel="stylesheet"/>
+<meta charset="utf-8"/>
+<meta content="quarto-1.7.30" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<title>3  Generative AI and Large Language Models – Mostly Harmless AI</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta content="../" name="quarto:offset"/>
+<link href="../1_foundations/apps.html" rel="next"/>
+<link href="../1_foundations/ml.html" rel="prev"/>
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet"/>
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de070a7b0ab54f8780927367ac907214.css" id="quarto-text-highlighting-styles" rel="stylesheet"/>
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet"/>
+<link append-hash="true" data-mode="light" href="../site_libs/bootstrap/bootstrap-364982630eef5352dd1537128a8ed5cb.min.css" id="quarto-bootstrap" rel="stylesheet"/>
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@600;700;800&amp;family=Fira+Code:wght@400;500&amp;display=swap" rel="stylesheet"/><link href="/manifest.json" rel="manifest"/><script src="/sw-register.js"></script><meta content="#0f0f0f" name="theme-color"/><meta content="yes" name="apple-mobile-web-app-capable"/><link href="/icon-192.png" rel="apple-touch-icon"/><link href="/icon-192.png" rel="icon" sizes="192x192" type="image/png"/></head>
+<body class="nav-sidebar floating quarto-light">
+<div id="quarto-search-results"></div>
+<header class="headroom fixed-top" id="quarto-header">
+<nav class="quarto-secondary-nav">
+<div class="container-fluid d-flex">
+<button aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="quarto-btn-toggle btn" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="button" type="button">
+<i class="bi bi-layout-text-sidebar-reverse"></i>
+</button>
+<nav aria-label="breadcrumb" class="quarto-page-breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../1_foundations/index.html">Foundations of AI</a></li><li class="breadcrumb-item"><a href="../1_foundations/llms.html"><span class="chapter-number">3</span>  <span class="chapter-title">Generative AI and Large Language Models</span></a></li></ol></nav>
+<a aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="flex-grow-1" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="navigation">
+</a>
+<button aria-label="Search" class="btn quarto-search-button" onclick="window.quartoOpenSearch();" type="button">
+<i class="bi bi-search"></i>
+</button>
+</div>
+</nav>
+</header>
+<!-- content -->
+<div class="quarto-container page-columns page-rows-contents page-layout-article" id="quarto-content">
+<!-- sidebar -->
+<nav class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" id="quarto-sidebar">
+<div class="pt-lg-2 mt-2 text-left sidebar-header">
+<div class="sidebar-title mb-0 py-0">
+<a href="../">Mostly Harmless AI</a>
+</div>
+</div>
+<div class="mt-2 flex-shrink-0 align-items-center">
+<div class="sidebar-search">
+<div class="" id="quarto-search" title="Search"></div>
+</div>
+</div>
+<div class="sidebar-menu-container">
+<ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../index.html">
+<span class="menu-text">Preface</span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../manifesto.html">
+<span class="menu-text">The Techno-Pragmatist Manifesto</span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../prologue.html">
+<span class="menu-text">Prologue</span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../intro.html">
+<span class="menu-text">A Brief History of Artificial Intelligence</span></a>
+</div>
+</li>
+<li class="sidebar-item sidebar-item-section">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/index.html">
+<span class="menu-text">Foundations of AI</span></a>
+<a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-1" data-bs-toggle="collapse" role="navigation">
+<i class="bi bi-chevron-right ms-2"></i>
+</a>
+</div>
+<ul class="collapse list-unstyled sidebar-section depth1 show" id="quarto-sidebar-section-1">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/ai.html">
+<span class="menu-text"><span class="chapter-number">1</span>  <span class="chapter-title">Foundations of Artificial Intelligence</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/ml.html">
+<span class="menu-text"><span class="chapter-number">2</span>  <span class="chapter-title">Machine Learning</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link active" href="../1_foundations/llms.html">
+<span class="menu-text"><span class="chapter-number">3</span>  <span class="chapter-title">Generative AI and Large Language Models</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/apps.html">
+<span class="menu-text"><span class="chapter-number">4</span>  <span class="chapter-title">Techniques for LLM Deployment</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/optimization.html">
+<span class="menu-text"><span class="chapter-number">5</span>  <span class="chapter-title">Optimization of LLMs</span></span></a>
+</div>
+</li>
+</ul>
+</li>
+<li class="sidebar-item sidebar-item-section">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/index.html">
+<span class="menu-text">Applications of AI</span></a>
+<a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-2" data-bs-toggle="collapse" role="navigation">
+<i class="bi bi-chevron-right ms-2"></i>
+</a>
+</div>
+<ul class="collapse list-unstyled sidebar-section depth1 show" id="quarto-sidebar-section-2">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/intro.html">
+<span class="menu-text"><span class="chapter-number">6</span>  <span class="chapter-title">AI for Critical Thinkers</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/research.html">
+<span class="menu-text"><span class="chapter-number">7</span>  <span class="chapter-title">AI for Knowledge Workers</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/coding.html">
+<span class="menu-text"><span class="chapter-number">8</span>  <span class="chapter-title">AI for Software Development</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/education.html">
+<span class="menu-text"><span class="chapter-number">9</span>  <span class="chapter-title">AI for Educators and Learners</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/creative.html">
+<span class="menu-text"><span class="chapter-number">10</span>  <span class="chapter-title">AI for Creative Professionals</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/policy.html">
+<span class="menu-text"><span class="chapter-number">11</span>  <span class="chapter-title">AI for Policy-Makers</span></span></a>
+</div>
+</li>
+</ul>
+</li>
+<li class="sidebar-item sidebar-item-section">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../3_dangers/index.html">
+<span class="menu-text">Dangers of AI</span></a>
+<a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-3" data-bs-toggle="collapse" role="navigation">
+<i class="bi bi-chevron-right ms-2"></i>
+</a>
+</div>
+<ul class="collapse list-unstyled sidebar-section depth1 show" id="quarto-sidebar-section-3">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../3_dangers/alignment.html">
+<span class="menu-text"><span class="chapter-number">12</span>  <span class="chapter-title">Why Artificial Intelligence is Hard</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../3_dangers/limitations.html">
+<span class="menu-text"><span class="chapter-number">13</span>  <span class="chapter-title">The limits of language models</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../3_dangers/risks.html">
+<span class="menu-text"><span class="chapter-number">14</span>  <span class="chapter-title">The Actual Risks of AI</span></span></a>
+</div>
+</li>
+</ul>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../epilogue.html">
+<span class="menu-text">Epilogue: The Road Ahead</span></a>
+</div>
+</li>
+</ul>
+</div>
+</nav>
+<div class="quarto-sidebar-collapse-item" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" id="quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+<div class="sidebar margin-sidebar" id="quarto-margin-sidebar">
+<nav class="toc-active" id="TOC" role="doc-toc">
+<h2 id="toc-title">Table of contents</h2>
+<ul class="collapse">
+<li><a class="nav-link active" data-scroll-target="#the-core-mechanics-how-llms-work" href="#the-core-mechanics-how-llms-work" id="toc-the-core-mechanics-how-llms-work">The Core Mechanics: How LLMs Work</a></li>
+<li><a class="nav-link" data-scroll-target="#what-generative-ai-can-do-capabilities-and-use-cases" href="#what-generative-ai-can-do-capabilities-and-use-cases" id="toc-what-generative-ai-can-do-capabilities-and-use-cases">What Generative AI Can Do: Capabilities and Use Cases</a></li>
+<li><a class="nav-link" data-scroll-target="#generative-ai-beyond-language" href="#generative-ai-beyond-language" id="toc-generative-ai-beyond-language">Generative AI Beyond Language</a></li>
+</ul>
+</nav>
+</div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+<header class="quarto-title-block default" id="title-block-header"><nav aria-label="breadcrumb" class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../1_foundations/index.html">Foundations of AI</a></li><li class="breadcrumb-item"><a href="../1_foundations/llms.html"><span class="chapter-number">3</span>  <span class="chapter-title">Generative AI and Large Language Models</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>  <span class="chapter-title">Generative AI and Large Language Models</span></h1>
+</div>
+<div class="quarto-title-meta">
+</div>
+</header>
+<p>We are living in the Generative Era, a moment that has captured the public imagination like nothing else in the history of artificial intelligence. In 2022, ChatGPT burst onto the scene, quickly followed by other groundbreaking generative models like DALL-E and Midjourney. These models are capable of generating very plausible content that often seems uncannily human, and for many, may pass for genuine creativity. This has been called the “iPhone moment” of AI—not because the underlying technology was brand new, but because it was the first time this immense power was packaged into an intuitive, accessible interface that anyone could use, sparking a global conversation about the future of technology and humanity.</p>
+<p>This shift has put large-scale generative models squarely in the spotlight, forcing us to rethink what machines are truly capable of, fulfilling a vision first imagined by Ada Lovelace over a century ago. To understand how this is possible from what are, at their core, surprisingly simple statistical principles, I want to take you on a deep dive into the technology behind this revolution. Together, we will look under the hood to understand the core mechanics of how these models work, explore the vast range of capabilities they possess, and conclude with a crucial discussion of the inherent limitations we must all be aware of to wield these tools responsibly.</p>
+<section class="level2" id="the-core-mechanics-how-llms-work">
+<h2 class="anchored" data-anchor-id="the-core-mechanics-how-llms-work">The Core Mechanics: How LLMs Work</h2>
+<p>In machine learning, language modeling is the task of guessing how probable a given sentence is. For example, “the sun rises in the east and sets in the west” is a common sentence with a very high probability. A sentence with random words that don’t mean anything, however, has a low probability of ever being uttered by anyone. This simple yet profound idea—that language can be understood as a system of statistical probabilities rather than a rigid set of grammatical rules—underpins all modern generative AI.</p>
+<p>The practical goal of a language model is to predict the next word (or, more accurately, the next “token,” which can be a word or part of a word) in a sequence. Given the phrase, “The sun rises in the east and sets in the…,” a good model should predict that “west” is the most likely continuation. By repeatedly predicting the next token and appending it to the sequence, a model can generate entire sentences, paragraphs, and even books. This iterative process is the very reason why an LLM can be thought of as an advanced form of “autocomplete.”</p>
+<p>To generate a response, the model doesn’t just pick the single most likely next word. Instead, it calculates a probability distribution across its entire vocabulary. The final choice is often made through a sampling process that can be controlled by a parameter called temperature. Think of it this way: a low temperature (e.g., 0.2) makes the model more conservative and focused, usually picking the most probable word. This is ideal for factual tasks like summarization. A higher temperature (e.g., 0.8), on the other hand, increases randomness, allowing the model to choose less common but potentially more creative words. This is better suited for tasks like writing a poem or brainstorming ideas. This controlled randomness is why you can get different, though semantically similar, responses to the same prompt.</p>
+<section class="level3" id="the-path-to-understanding-context-a-brief-history">
+<h3 class="anchored" data-anchor-id="the-path-to-understanding-context-a-brief-history">The Path to Understanding Context: A Brief History</h3>
+<p>The journey to modern language models was a multi-decade quest to solve one fundamental problem: how to give a machine a true understanding of context. This story began with simple statistical methods and evolved through a series of breakthroughs, each new step building on the last.</p>
+<p>The n-gram model, one of our earliest approaches, works by counting how often sequences of n words (e.g., pairs or triplets) appear together. It would learn, for instance, that the probability of “York” following “New” is very high. However, this method suffers from the “curse of dimensionality.” As n increases, the number of possible word combinations explodes, making it impossible to store probabilities for them all. Its most critical limitation was its reliance on a fixed and tiny context; it simply couldn’t capture meaning beyond its small window of a few words.</p>
+<p>A far more flexible and powerful approach arrived with word embeddings. Models like Word2Vec (2011) learned to represent words as numerical vectors in a multi-dimensional space. The key insight, known as the distributional hypothesis, is that a word’s meaning is defined by the company it keeps. By analyzing which words appear in similar contexts, the model places their vectors close together. This was a massive leap, allowing models to capture deep semantic relationships. The most famous example, which still feels like magic, is the vector equation: vector(‘King’) - vector(‘Man’) + vector(‘Woman’) results in a vector remarkably close to vector(‘Queen’).</p>
+<p>However, these early models still had a critical flaw: they assigned a single, static vector to each word, regardless of its use. For example, the word bank would have the same vector whether it referred to a river bank or a financial institution. This inability to understand context was the major hurdle left to overcome.</p>
+<p>The revolutionary solution, and the one that truly unlocked the door to modern AI, was the transformer architecture (2017). The transformer’s core innovation is the attention mechanism, which allows the model to weigh the importance of different words in the input when processing a specific word. It can “pay attention” to the most relevant context, no matter how far away it is in the sentence. This means a transformer generates a dynamic, context-aware embedding for each word. It can finally distinguish between the different meanings of “bank” based on the other words around it. This fundamental shift is what paved the way for modern LLMs.</p>
+</section>
+<section class="level3" id="the-rise-of-large-language-models-llms">
+<h3 class="anchored" data-anchor-id="the-rise-of-large-language-models-llms">The Rise of Large Language Models (LLMs)</h3>
+<p>Large language models are the latest evolution of this journey, combining the transformer architecture with an unprecedented scale of data and computation. But the process of creating a useful LLM is not magic; it is a deliberate, human-driven, multi-step journey to “tame” the raw power of the base model and instill it with our intentions.</p>
+<section class="level4" id="step-1-self-supervised-pre-training-building-foundational-knowledge">
+<h4 class="anchored" data-anchor-id="step-1-self-supervised-pre-training-building-foundational-knowledge">Step 1: Self-Supervised Pre-training (Building Foundational Knowledge)</h4>
+<p>The process begins by training a raw transformer architecture on a massive corpus of text and code from the internet—trillions of words, equivalent to reading a massive library thousands of times over. The model’s sole task is next-token prediction. This requires immense computational power, often using thousands of specialized GPUs running for months. By learning the statistical patterns of human language at this scale, the model builds a foundational, implicit knowledge of grammar, facts, and reasoning patterns. The resulting “base model” is a powerful completion engine but is not yet a helpful assistant.</p>
+</section>
+<section class="level4" id="step-2-instruction-fine-tuning-making-the-model-usable">
+<h4 class="anchored" data-anchor-id="step-2-instruction-fine-tuning-making-the-model-usable">Step 2: Instruction Fine-Tuning (Making the Model Usable)</h4>
+<p>A base model can complete text but doesn’t know how to follow instructions. This phase fine-tunes the model on a much smaller, high-quality dataset of instruction-response pairs curated by humans (e.g., Input: “Summarize the following article.” Output: “This article is about…”). This doesn’t teach the model new knowledge; it teaches it a new skill: how to act as a helpful assistant that responds to queries, answers questions, and follows commands.</p>
+</section>
+<section class="level4" id="step-3-preference-tuning-aligning-the-model-with-human-values">
+<h4 class="anchored" data-anchor-id="step-3-preference-tuning-aligning-the-model-with-human-values">Step 3: Preference Tuning (Aligning the Model with Human Values)</h4>
+<p>An instruction-tuned model is useful but not necessarily safe. It may still generate biased, harmful, or untruthful content learned from the open internet. The final step uses Reinforcement Learning with Human Feedback (RLHF) to align the model with desired values like helpfulness and harmlessness. In this process, the model generates multiple responses to a prompt. Human reviewers then rank these responses from best to worst. This feedback is used to train a separate “reward model,” which learns to predict human preferences. The LLM is then further fine-tuned using this reward model as a guide, teaching it to generate answers that humans are more likely to find helpful and safe. This process is a real-world example of tackling what we will explore in depth in Chapter 11 as the “Alignment Problem.”</p>
+</section>
+</section>
+</section>
+<section class="level2" id="what-generative-ai-can-do-capabilities-and-use-cases">
+<h2 class="anchored" data-anchor-id="what-generative-ai-can-do-capabilities-and-use-cases">What Generative AI Can Do: Capabilities and Use Cases</h2>
+<p>A generative language model is, at its core, a prediction machine. This is where things get truly fascinating. This simple mechanic, it turns out, gives rise to a wide range of surprisingly complex cognitive abilities. These are often called emergent properties—behaviors that are not explicitly programmed but arise as a consequence of the model becoming exceptionally good at its primary task. For example, to accurately predict the next word in a legal document, a model must implicitly learn something about legal concepts.</p>
+<p>This phenomenon, where sophisticated skills emerge from a simple predictive function, is central to understanding LLMs. Models the size of GPT-3 and larger demonstrated in-context learning: the ability to infer a task from a few examples in a prompt without explicit instructions. By providing a few input-output pairs for a task like sentiment analysis, the model recognizes the pattern and correctly completes the final, unanswered example. This is both the source of their power and a reminder of their unpredictability, underscoring our role not as simple operators, but as critical evaluators of a tool whose capabilities can surprise even its creators.</p>
+<p>This leads to what I believe is the most useful mental model for how these systems “reason”: an LLM only thinks out loud. By design, a language model performs a fixed amount of computation for each token it processes. This means a longer, more detailed response isn’t just more verbose—it’s the result of more computation. When you ask a model to “think step-by-step” before giving an answer, you are giving it more tokens to process the problem, which often leads to a better result. For an LLM, the process of generating text is the process of thinking.</p>
+<section class="level3" id="language-capabilities">
+<h3 class="anchored" data-anchor-id="language-capabilities">Language Capabilities</h3>
+<p>The most direct and foundational use of a large language model is text generation, which serves as the basis for nearly all of its other linguistic skills. This can range from drafting simple emails to composing complex fictional narratives. For long-form content, where models can lose coherence over time, a “divide-and-conquer” approach is highly effective: a user can prompt the model to first create a detailed outline, and then work through it section by section, feeding the previously generated text back to the model to ensure consistency.</p>
+<p>Closely related to generation is the task of summarization. LLMs excel at condensing text, a natural extension of their ability to model the statistical essence of information. They are particularly adept at “abstractive” summarization—generating new, concise sentences—which is a much harder and more useful skill than simply extracting key sentences from the original text. However, the more a summary requires critical analysis rather than simple compression, the more it is prone to hallucination.</p>
+<p>The model’s ability to understand and manipulate language also extends to translation, a task for which the transformer architecture was originally designed. By learning a language-independent representation of concepts (an “interlingua”), models can perform zero-shot translation between language pairs they weren’t explicitly trained on. This capability goes beyond simple language-to-language conversion to include style transfer, allowing a user to translate text from a technical to a plain-spoken style, or to adjust its tone from formal to casual.</p>
+<p>Beyond free-form text, LLMs can also process and produce structured information. This capability for structured data extraction allows a model to parse an unstructured sentence like “John needs to schedule a meeting for Friday at 3 PM” and convert it into a clean, machine-readable format like JSON. This is the basis for powerful features like “function calling,” which allow LLMs to interact with external software APIs.</p>
+<p>Perhaps the most transformative capability is code generation. Because they are trained on vast repositories of public code alongside natural language, LLMs learn the syntax and patterns of programming languages. This allows them to generate functional code from a simple English description, fundamentally changing the nature of software development from writing precise syntax to describing high-level intent. This is one of their most powerful capabilities, as code is the most general type of external tool, enabling LLMs to solve problems far beyond the scope of language alone.</p>
+</section>
+<section class="level3" id="limitations-and-caveats">
+<h3 class="anchored" data-anchor-id="limitations-and-caveats">Limitations and Caveats</h3>
+<p>As in everything related to LLMs, we must beware of their inherent limitations. These aren’t just technical footnotes; they are the frontier of our responsibility as users and creators. The statistical nature of these models means they can confidently generate plausible-sounding but factually incorrect information, a phenomenon known as hallucination. This is not a bug to be fixed, but a fundamental trade-off for the model’s ability to generalize and be creative.</p>
+<p>Furthermore, because they are trained on vast amounts of internet data, they can inherit and amplify harmful societal biases present in the text. For instance, a prompt for “a portrait of a doctor” might disproportionately generate images of men, reflecting historical biases in the data. Finally, their “reasoning” is not based on formal logic but on sophisticated pattern-matching, which can lead to failures on complex problems that require multiple steps of deduction. As techno-pragmatists, our task is not to expect a perfect tool, but to understand its flaws so we can use it wisely.</p>
+</section>
+</section>
+<section class="level2" id="generative-ai-beyond-language">
+<h2 class="anchored" data-anchor-id="generative-ai-beyond-language">Generative AI Beyond Language</h2>
+<p>The same core principles powering LLMs—learning statistical patterns from vast datasets using transformer architectures—have been ingeniously adapted to work with pixels and sound waves. This has created a new wave of powerful applications that allow AI to perceive and create in the realms of vision and audio, moving us closer to systems that can interact with the world in a more holistically human-like way.</p>
+<section class="level3" id="vision-models">
+<h3 class="anchored" data-anchor-id="vision-models">Vision Models</h3>
+<p>AI’s expansion into the visual domain has two primary facets: the ability to generate novel images and the capacity to understand them. The generation of images from text descriptions has been one of the most stunning demonstrations of generative AI, a feat accomplished through sophisticated architectural approaches.</p>
+<p>The earliest breakthrough came from Generative Adversarial Networks (GANs), which use a clever game-theoretic process. A GAN pits two neural networks against each other: a Generator that creates forgeries and a Discriminator that acts as a detective, learning to distinguish fakes from real images. Through this adversarial training, the Generator becomes so skilled at creating convincing images that the Discriminator can no longer tell the difference.</p>
+<p>More recently, Diffusion Models have become the dominant architecture, powering systems like DALL-E and Midjourney. Inspired by thermodynamics, these models learn to reverse a process of adding noise to an image. To create a new picture, they start with a canvas of pure random noise and, guided by a text prompt, meticulously denoise it step-by-step until a coherent image emerges. This process is more stable than training GANs and excels at creating diverse, high-quality, images that align closely with user prompts.</p>
+<p>Beyond creating images, AI models must also interpret and understand them. This is the realm of computer vision, which has been revolutionized by models like Contrastive Language-Image Pre-training (CLIP). Instead of classifying images into a fixed set of categories, CLIP learns the relationship between images and their text captions from hundreds of millions of examples online.</p>
+<p>This creates a shared embedding space where an image of a golden retriever and the text “a photo of a golden retriever” are represented by similar vectors. This enables powerful zero-shot classification, allowing the model to categorize an image into a class it has never seen before by finding the closest text label. This also powers multimodal search, allowing users to find photos using natural language queries.</p>
+</section>
+<section class="level3" id="audio-models">
+<h3 class="anchored" data-anchor-id="audio-models">Audio Models</h3>
+<p>The transformer architecture has proven equally adept at processing the sequential data of audio waveforms, revolutionizing how machines interact with spoken language. These capabilities can be seen as two sides of the same coin: translating sound to text and text back to sound. Automatic Speech Recognition (ASR) models like OpenAI’s Whisper have achieved human-level accuracy in transcription.</p>
+<p>They work by converting a raw audio signal into a spectrogram—a visual representation of sound frequencies—and then using a transformer to translate this sequence of features into text. This approach is incredibly robust, capable of handling different languages, accents, and background noise, with massive implications for accessibility and communication.</p>
+<p>The reverse process, Text-to-Speech (TTS), generates natural-sounding human speech from text. Modern TTS systems use a transformer to convert input text into a sequence of linguistic features like phonemes (the basic units of sound) and prosody (the rhythm and intonation of speech). This representation is then passed to a vocoder, which synthesizes the final audio waveform.</p>
+<p>This two-stage process allows for fine-grained control over the generated voice, enabling the creation of highly expressive and lifelike speech. This technology also powers voice cloning, where a model can learn to speak in a specific person’s voice from just a few seconds of audio—a powerful capability that raises important ethical considerations around consent and misuse.</p>
+</section>
+<section class="level3" id="multimodality-the-unified-frontier">
+<h3 class="anchored" data-anchor-id="multimodality-the-unified-frontier">Multimodality: The Unified Frontier</h3>
+<p>The cutting edge of generative AI is moving beyond single-modality models to a unified, multimodal approach. Instead of having separate models for text, images, and audio, true multimodal systems are single, end-to-end models trained on a massive, interleaved dataset of all these data types simultaneously.</p>
+<p>The core innovation is a single, shared embedding space where all modalities are represented in a common numerical format. Text tokens, patches of an image, and segments of an audio waveform are all encoded into a uniform vector representation. This allows the transformer’s attention mechanism to find relationships between elements from different modalities—for example, connecting a specific object in an image to the word describing it in a caption, or linking the sound of a bark to the image of a dog.</p>
+<p>This unified approach enables a deeper, more grounded understanding and is moving us toward a future where AI systems can perceive, understand, and generate content across all forms of human communication. This unlocks novel capabilities, such as watching a video tutorial and writing the corresponding code, listening to a meeting and generating a summary slide deck, or analyzing a financial chart within a document and writing a textual summary of its trends. This is a paradigm shift from chaining together separate tools to creating a single, cohesive intelligence that can reason across the full spectrum of human expression.</p>
+</section>
+</section>
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+<div class="nav-page nav-page-previous">
+<a aria-label="Machine Learning" class="pagination-link" href="../1_foundations/ml.html">
+<i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>  <span class="chapter-title">Machine Learning</span></span>
+</a>
+</div>
+<div class="nav-page nav-page-next">
+<a aria-label="Techniques for LLM Deployment" class="pagination-link" href="../1_foundations/apps.html">
+<span class="nav-page-text"><span class="chapter-number">4</span>  <span class="chapter-title">Techniques for LLM Deployment</span></span> <i class="bi bi-arrow-right-short"></i>
+</a>
+</div>
+</nav>
+</div> <!-- /content -->
+<script src="/data.js"></script><script src="/books/reader.js"></script></body></html>
