@@ -3,7 +3,7 @@
 <meta charset="utf-8"/>
 <meta content="quarto-1.7.30" name="generator"/>
 <meta content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
-<title>1  Foundations of Artificial Intelligence – Mostly Harmless AI</title>
+<title>1  Classical AI – Mostly Harmless AI</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
 <button aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="quarto-btn-toggle btn" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="button" type="button">
 <i class="bi bi-layout-text-sidebar-reverse"></i>
 </button>
-<nav aria-label="breadcrumb" class="quarto-page-breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../1_foundations/index.html">Foundations of AI</a></li><li class="breadcrumb-item"><a href="../1_foundations/ai.html"><span class="chapter-number">1</span>  <span class="chapter-title">Foundations of Artificial Intelligence</span></a></li></ol></nav>
+<nav aria-label="breadcrumb" class="quarto-page-breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../1_foundations/index.html">Foundations</a></li><li class="breadcrumb-item"><a href="../1_foundations/ai.html"><span class="chapter-number">1</span>  <span class="chapter-title">Classical AI</span></a></li></ol></nav>
 <a aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="flex-grow-1" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="navigation">
 </a>
 <button aria-label="Search" class="btn quarto-search-button" onclick="window.quartoOpenSearch();" type="button">
@@ -118,13 +118,13 @@ ul.task-list li input[type="checkbox"] {
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../intro.html">
-<span class="menu-text">A Brief History of Artificial Intelligence</span></a>
+<span class="menu-text">A Brief History of AI</span></a>
 </div>
 </li>
 <li class="sidebar-item sidebar-item-section">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../1_foundations/index.html">
-<span class="menu-text">Foundations of AI</span></a>
+<span class="menu-text">Foundations</span></a>
 <a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-1" data-bs-toggle="collapse" role="navigation">
 <i class="bi bi-chevron-right ms-2"></i>
 </a>
@@ -133,7 +133,7 @@ ul.task-list li input[type="checkbox"] {
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link active" href="../1_foundations/ai.html">
-<span class="menu-text"><span class="chapter-number">1</span>  <span class="chapter-title">Foundations of Artificial Intelligence</span></span></a>
+<span class="menu-text"><span class="chapter-number">1</span>  <span class="chapter-title">Classical AI</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
@@ -144,20 +144,26 @@ ul.task-list li input[type="checkbox"] {
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/deep-learning.html">
+<span class="menu-text"><span class="chapter-number">3</span>  <span class="chapter-title">Deep Learning</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../1_foundations/llms.html">
-<span class="menu-text"><span class="chapter-number">3</span>  <span class="chapter-title">Generative AI and Large Language Models</span></span></a>
+<span class="menu-text"><span class="chapter-number">4</span>  <span class="chapter-title">Language Modeling</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
-<a class="sidebar-item-text sidebar-link" href="../1_foundations/apps.html">
-<span class="menu-text"><span class="chapter-number">4</span>  <span class="chapter-title">Techniques for LLM Deployment</span></span></a>
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/generative.html">
+<span class="menu-text"><span class="chapter-number">5</span>  <span class="chapter-title">Generative AI</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
-<a class="sidebar-item-text sidebar-link" href="../1_foundations/optimization.html">
-<span class="menu-text"><span class="chapter-number">5</span>  <span class="chapter-title">Optimization of LLMs</span></span></a>
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/agentic.html">
+<span class="menu-text"><span class="chapter-number">6</span>  <span class="chapter-title">Agentic AI</span></span></a>
 </div>
 </li>
 </ul>
@@ -165,7 +171,7 @@ ul.task-list li input[type="checkbox"] {
 <li class="sidebar-item sidebar-item-section">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../2_applications/index.html">
-<span class="menu-text">Applications of AI</span></a>
+<span class="menu-text">Applications</span></a>
 <a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-2" data-bs-toggle="collapse" role="navigation">
 <i class="bi bi-chevron-right ms-2"></i>
 </a>
@@ -174,37 +180,43 @@ ul.task-list li input[type="checkbox"] {
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../2_applications/intro.html">
-<span class="menu-text"><span class="chapter-number">6</span>  <span class="chapter-title">AI for Critical Thinkers</span></span></a>
+<span class="menu-text"><span class="chapter-number">7</span>  <span class="chapter-title">Working With AI</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
-<a class="sidebar-item-text sidebar-link" href="../2_applications/research.html">
-<span class="menu-text"><span class="chapter-number">7</span>  <span class="chapter-title">AI for Knowledge Workers</span></span></a>
+<a class="sidebar-item-text sidebar-link" href="../2_applications/knowledge-work.html">
+<span class="menu-text"><span class="chapter-number">8</span>  <span class="chapter-title">AI for Knowledge Work</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/science.html">
+<span class="menu-text"><span class="chapter-number">9</span>  <span class="chapter-title">AI for Scientific Research</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../2_applications/coding.html">
-<span class="menu-text"><span class="chapter-number">8</span>  <span class="chapter-title">AI for Software Development</span></span></a>
+<span class="menu-text"><span class="chapter-number">10</span>  <span class="chapter-title">AI for Software Development</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../2_applications/education.html">
-<span class="menu-text"><span class="chapter-number">9</span>  <span class="chapter-title">AI for Educators and Learners</span></span></a>
+<span class="menu-text"><span class="chapter-number">11</span>  <span class="chapter-title">AI for Education and Learning</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../2_applications/creative.html">
-<span class="menu-text"><span class="chapter-number">10</span>  <span class="chapter-title">AI for Creative Professionals</span></span></a>
+<span class="menu-text"><span class="chapter-number">12</span>  <span class="chapter-title">AI for Creative Work</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../2_applications/policy.html">
-<span class="menu-text"><span class="chapter-number">11</span>  <span class="chapter-title">AI for Policy-Makers</span></span></a>
+<span class="menu-text"><span class="chapter-number">13</span>  <span class="chapter-title">AI for Policy and Governance</span></span></a>
 </div>
 </li>
 </ul>
@@ -212,7 +224,7 @@ ul.task-list li input[type="checkbox"] {
 <li class="sidebar-item sidebar-item-section">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../3_dangers/index.html">
-<span class="menu-text">Dangers of AI</span></a>
+<span class="menu-text">Dangers</span></a>
 <a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-3" data-bs-toggle="collapse" role="navigation">
 <i class="bi bi-chevron-right ms-2"></i>
 </a>
@@ -221,19 +233,19 @@ ul.task-list li input[type="checkbox"] {
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../3_dangers/alignment.html">
-<span class="menu-text"><span class="chapter-number">12</span>  <span class="chapter-title">Why Artificial Intelligence is Hard</span></span></a>
+<span class="menu-text"><span class="chapter-number">14</span>  <span class="chapter-title">The Alignment Problem</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../3_dangers/limitations.html">
-<span class="menu-text"><span class="chapter-number">13</span>  <span class="chapter-title">The limits of language models</span></span></a>
+<span class="menu-text"><span class="chapter-number">15</span>  <span class="chapter-title">Limits of Language Models</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../3_dangers/risks.html">
-<span class="menu-text"><span class="chapter-number">14</span>  <span class="chapter-title">The Actual Risks of AI</span></span></a>
+<span class="menu-text"><span class="chapter-number">16</span>  <span class="chapter-title">Risks of AI</span></span></a>
 </div>
 </li>
 </ul>
@@ -241,7 +253,7 @@ ul.task-list li input[type="checkbox"] {
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../epilogue.html">
-<span class="menu-text">Epilogue: The Road Ahead</span></a>
+<span class="menu-text">The Road Ahead</span></a>
 </div>
 </li>
 </ul>
@@ -253,97 +265,96 @@ ul.task-list li input[type="checkbox"] {
 <nav class="toc-active" id="TOC" role="doc-toc">
 <h2 id="toc-title">Table of contents</h2>
 <ul class="collapse">
-<li><a class="nav-link active" data-scroll-target="#what-is-artificial-intelligence-really" href="#what-is-artificial-intelligence-really" id="toc-what-is-artificial-intelligence-really">What is Artificial Intelligence, Really?</a></li>
-<li><a class="nav-link" data-scroll-target="#the-age-old-debate-symbolic-ai-vs.-statistical-ai" href="#the-age-old-debate-symbolic-ai-vs.-statistical-ai" id="toc-the-age-old-debate-symbolic-ai-vs.-statistical-ai">The Age-Old Debate: Symbolic AI vs. Statistical AI</a></li>
-<li><a class="nav-link" data-scroll-target="#search-and-optimization" href="#search-and-optimization" id="toc-search-and-optimization">Search and Optimization</a></li>
-<li><a class="nav-link" data-scroll-target="#knowledge-representation-reasoning" href="#knowledge-representation-reasoning" id="toc-knowledge-representation-reasoning">Knowledge Representation &amp; Reasoning</a></li>
-<li><a class="nav-link" data-scroll-target="#conclusion-the-need-for-learning" href="#conclusion-the-need-for-learning" id="toc-conclusion-the-need-for-learning">Conclusion: The Need for Learning</a></li>
+<li><a class="nav-link active" data-scroll-target="#what-is-ai-really" href="#what-is-ai-really" id="toc-what-is-ai-really">What is AI, really?</a></li>
+<li><a class="nav-link" data-scroll-target="#symbolic-vs.-statistical-ai" href="#symbolic-vs.-statistical-ai" id="toc-symbolic-vs.-statistical-ai">Symbolic vs. statistical AI</a></li>
+<li><a class="nav-link" data-scroll-target="#search-and-optimization" href="#search-and-optimization" id="toc-search-and-optimization">Search and optimization</a></li>
+<li><a class="nav-link" data-scroll-target="#knowledge-representation-and-reasoning" href="#knowledge-representation-and-reasoning" id="toc-knowledge-representation-and-reasoning">Knowledge representation and reasoning</a></li>
+<li><a class="nav-link" data-scroll-target="#the-classical-agent" href="#the-classical-agent" id="toc-the-classical-agent">The classical agent</a></li>
+<li><a class="nav-link" data-scroll-target="#the-need-for-learning" href="#the-need-for-learning" id="toc-the-need-for-learning">The need for learning</a></li>
 </ul>
 </nav>
 </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
-<header class="quarto-title-block default" id="title-block-header"><nav aria-label="breadcrumb" class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../1_foundations/index.html">Foundations of AI</a></li><li class="breadcrumb-item"><a href="../1_foundations/ai.html"><span class="chapter-number">1</span>  <span class="chapter-title">Foundations of Artificial Intelligence</span></a></li></ol></nav>
+<header class="quarto-title-block default" id="title-block-header"><nav aria-label="breadcrumb" class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../1_foundations/index.html">Foundations</a></li><li class="breadcrumb-item"><a href="../1_foundations/ai.html"><span class="chapter-number">1</span>  <span class="chapter-title">Classical AI</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>  <span class="chapter-title">Foundations of Artificial Intelligence</span></h1>
+<h1 class="title"><span class="chapter-number">1</span>  <span class="chapter-title">Classical AI</span></h1>
 </div>
 <div class="quarto-title-meta">
 </div>
 </header>
-<section class="level2" id="what-is-artificial-intelligence-really">
-<h2 class="anchored" data-anchor-id="what-is-artificial-intelligence-really">What is Artificial Intelligence, Really?</h2>
-<p>Artificial Intelligence, or AI, is a term we hear almost constantly today, often surrounded by a mix of excitement, confusion, and sometimes, even fear. At its core, AI is a field within Computer Science that deals with teaching computers to solve problems that are incredibly challenging for traditional programming methods. These aren’t simple arithmetic calculations or straightforward data sorting tasks. Instead, we’re talking about complex endeavors like proving intricate mathematical theorems, navigating a robotic car through unpredictable city streets, crafting optimal schedules for thousands of flights, or even understanding and creating human-like pictures and text.</p>
-<p>For most of computer science, when we want a computer to solve a problem, we write a precise, step-by-step algorithm. Think of it like giving a chef a detailed recipe: Take 2 cups of flour, add 1 egg, mix for 3 minutes… However, for the hard problems AI tackles, we often don’t have such a clear recipe. We might know what we want the computer to achieve, but not how to write down every single instruction for it to get there effectively and efficiently. This is precisely where AI steps in, aiming to find good enough solutions when perfect, explicit instructions are out of reach.</p>
-<p>The very definition of AI has been a subject of debate since its inception, reflecting different philosophical ideas about what <em>intelligence</em> truly means. One prominent perspective, championed by AI pioneer Marvin Minsky, suggests that AI is about <em>solving problems for which humans employ intelligence</em>. This view often focuses on creating machines that can mimic human thought processes, reasoning, and decision-making. Essentially, it asks: Can a machine think like us?</p>
-<p>Developing concurrently, another powerful perspective emerged, emphasizing that AI <em>solves problems without being explicitly programmed</em>. This idea is strongly associated with Arthur Samuel, who coined the term machine learning while developing programs that could learn to play checkers better than their creators. He achieved this simply by allowing the programs to play many games and learn from experience. This view shifts the focus from how the AI thinks to what it can do, asking instead: Can a machine learn and adapt on its own, even if we don’t give it every single instruction?</p>
-<p>These two foundational ideas–mimicking human intelligence versus learning without explicit programming–have profoundly shaped the entire field of AI. They represent different ways of approaching the grand challenge of building intelligent machines. Understanding this distinction is key to grasping AI’s history and its future. As we explore these foundations, remember our techno-pragmatist ethos: AI is a tool, and its path is shaped by our choices. Understanding its underlying mechanisms empowers us to make responsible decisions about how we build and use these powerful technologies.</p>
-<section class="level3" id="the-pillars-of-good-old-fashioned-ai-gofai">
-<h3 class="anchored" data-anchor-id="the-pillars-of-good-old-fashioned-ai-gofai">The Pillars of Good Old-Fashioned AI (GOFAI)</h3>
-<p>In this chapter, we will delve into the foundational ideas that laid the groundwork for Artificial Intelligence, often referred to as Good Old-Fashioned AI, or GOFAI. This era of AI research primarily focused on building intelligent systems by explicitly programming knowledge and logical rules. Our exploration will center on two main pillars of GOFAI.</p>
-<p>First, we’ll examine Search and Optimization, which addresses how AI finds solutions by exploring vast possibilities, particularly when a perfect, direct path isn’t obvious. Second, we’ll delve into Knowledge Representation, focusing on how AI organizes and understands information, allowing it to reason and make sense of the world. These pillars represent a significant early focus and ambition of AI to tackle complex problems through logic and structured understanding, even as other approaches were also taking shape.</p>
+<section class="level2" id="what-is-ai-really">
+<h2 class="anchored" data-anchor-id="what-is-ai-really">What is AI, really?</h2>
+<p>Artificial Intelligence is the strangest field in computer science to define, because the definition keeps moving. Every time we teach a computer to do something that previously required intelligence — playing chess at world-champion level, recognising a friend’s face in a crowd, translating French into English — the achievement quietly stops counting. Larry Tesler captured the pattern in a single sentence: <em>intelligence is whatever machines haven’t done yet.</em><a class="footnote-ref" href="#fn1" id="fnref1" role="doc-noteref"><sup>1</sup></a> The phenomenon has a name in the literature, the <em>AI effect</em>, and it makes any definition pinned to a specific task obsolete the moment that task succumbs to engineering.</p>
+<p>Even so, two foundational definitions from the field’s first generation are worth holding in mind, because the rest of this book is, in one form or another, an argument between them.</p>
+<p>The first comes from Marvin Minsky in 1968: artificial intelligence is <em>the science of making machines do things that would require intelligence if done by men.</em><a class="footnote-ref" href="#fn2" id="fnref2" role="doc-noteref"><sup>2</sup></a> This is a <strong>functional</strong> definition. It doesn’t say <em>how</em> — by logic, by learning, by some unimagined third way — but it fixes the target: replicate human-grade cognitive performance, whatever the machinery. It is also the definition the AI effect erodes most sharply; once the machine does the thing, the goalposts move and the thing no longer counts.</p>
+<p>The second comes from Arthur Samuel, nine years earlier, in the paper that gave the field the term <em>machine learning</em>. Working on a checkers program that improved by playing itself, Samuel argued that the right way to make computers solve hard problems was to let them learn from experience rather than to spell out every move.<a class="footnote-ref" href="#fn3" id="fnref3" role="doc-noteref"><sup>3</sup></a> This is a <strong>mechanistic</strong> definition pointing in a specific direction: not “build something that performs like a human” but “build something that figures things out without being told every step.” Samuel’s bet was, in retrospect, the bet that won. The neural networks, deep learning systems, and language models of the chapters ahead are all descendants of his framing.</p>
+<p>The two definitions are not contradictory; they are complementary. Minsky names the <em>target</em> — human-grade competence. Samuel names a <em>method</em> — learning rather than authoring. Most of the history of AI is what happens when you commit to Minsky’s target with a tool other than Samuel’s method.</p>
+<p>For the working practitioner, though, both definitions sit one level above where the actual work happens. In practice, AI is the branch of computer science that tackles <strong>problems for which we do not have a direct algorithmic solution</strong>. Two distinct classes of problem live under that umbrella, and the distinction structures everything that follows.</p>
+<p>The first class is the <strong>intractable problems</strong>: combinatorial puzzles where an exact algorithm exists in principle, but the number of cases to check grows so fast that no machine, present or imaginable, can finish the job in useful time. Routing a delivery fleet through a hundred cities, scheduling thousands of flights, packing a container, playing chess at depth — same shape every time. The algorithm is known; it is just useless. AI’s job is to find good-enough answers fast.</p>
+<p>The second class is the <strong>ill-structured problems</strong>, a term the field owes to Herbert Simon’s 1973 paper of the same name.<a class="footnote-ref" href="#fn4" id="fnref4" role="doc-noteref"><sup>4</sup></a> These are problems where we lack not just an efficient algorithm but the <em>structure of the problem itself</em>: the inputs are perceptual rather than symbolic, the goal cannot be stated cleanly, common sense and context intrude. Recognising a face, understanding what a sentence means, deciding whether a chest X-ray looks worrying. The shape of “intelligence” most people mean in casual conversation lives almost entirely in this class.</p>
+<p>This two-class division is the spine of the rest of the chapter — and, in a sense, of the whole book. <strong>Good Old-Fashioned AI</strong> (GOFAI), the rationalist programme that dominated the field for its first three decades, attacked both classes with a single methodology: explicit symbols, explicit rules, explicit search. It succeeded brilliantly on the intractable class and stalled almost completely on the ill-structured one. The empirical line that chapters 2 through 4 open — machine learning, deep learning, large language models — is the answer the field eventually found for the ill-structured class. The intractable class never went away; the heuristic methods of this chapter remain the working backbone of every routing system, every game-playing engine, every constraint solver in production today.</p>
+<p>Neither paradigm was wrong; each turned out to be essential for a different class of problem. The modern systems that reason, plan, and act, which Part II will describe, only work because both halves are in good working order.</p>
+<section class="level3" id="the-pillars-of-good-old-fashioned-ai">
+<h3 class="anchored" data-anchor-id="the-pillars-of-good-old-fashioned-ai">The pillars of good old-fashioned AI</h3>
+<p>The rest of this chapter opens the rationalist line of attack: two pillars, mapped one-to-one onto the two classes above.</p>
+<p><strong>Search and Optimization</strong> is GOFAI’s answer to the intractable class. When the algorithm exists but cannot finish, AI replaces exactness with strategy — heuristics, metaheuristics, adversarial search, constraint satisfaction. We walk through each in turn.</p>
+<p><strong>Knowledge Representation and Reasoning</strong> is GOFAI’s answer to the ill-structured class. When the problem lacks structure, AI tries to <em>impose</em> it: formalise the world as symbols, write down the rules that connect them, let inference do the rest. We see what this looked like at its best — and, by the end of the chapter, where it ran out of road.</p>
+<p>A third section then introduces the <strong>classical agent</strong> shell that ties perception, deliberation, and action into a loop. That shell is fifty years old and remains the scaffold into which Part II will eventually drop large language models. A brief conclusion looks ahead to the next three chapters, where the empirical line begins.</p>
 </section>
 </section>
-<section class="level2" id="the-age-old-debate-symbolic-ai-vs.-statistical-ai">
-<h2 class="anchored" data-anchor-id="the-age-old-debate-symbolic-ai-vs.-statistical-ai">The Age-Old Debate: Symbolic AI vs. Statistical AI</h2>
-<p>For centuries, the idea of thinking machines has captivated human imagination. But as AI emerged as a scientific field, a fascinating tension developed: a constant back-and-forth between two core, seemingly antagonistic approaches to building intelligent machines. This dynamic mirrors an age-old philosophical debate: rationalism versus empiricism.</p>
-<p>The first dominant approach to AI was Symbolic AI, deeply rooted in the philosophical tradition of rationalism. Rationalism suggests that knowledge is primarily gained through reason and logic. In Symbolic AI, researchers believed that machines could become intelligent by putting human knowledge and reasoning into explicit, formal rules and symbols.</p>
-<p>Imagine, for instance, wanting to teach a computer to play chess. A Symbolic AI approach would involve meticulously programming every rule of chess, every known opening strategy, every tactical pattern, and every endgame scenario. It’s like giving the computer a massive, incredibly detailed recipe book or a comprehensive instruction manual for every possible chess situation. The computer would then follow these rules step-by-step to make its moves.</p>
-<p>Early impressive demonstrations of this ethos included programs like The Logic Theorist, which could prove mathematical theorems by mimicking human problem-solving steps. Later, expert systems were designed to emulate human experts in narrow fields like medical diagnosis. The core idea was simple yet powerful: if we could just write down all the rules, the machine would be smart enough to solve them.</p>
-<p>Quietly developing alongside Symbolic AI was Statistical AI, drawing inspiration from empiricism. Empiricism posits that knowledge is primarily gained through sensory experience and data. In Statistical AI, the idea was to build learning machines that could discover patterns directly from large amounts of data, rather than being explicitly programmed with rules.</p>
-<p>Think of it like a child learning to recognize a dog. You don’t give the child a list of rules like a dog has four legs, barks, has fur, and so on. Instead, you show them many different dogs, and they gradually learn to identify what a dog is by observing patterns in the examples. Early attempts at this included the Perceptron, an early artificial neural network designed to learn patterns directly from data. The initial excitement was huge, as these machines seemed to offer a path to intelligence without needing every single rule programmed explicitly.</p>
-<section class="level3" id="the-winters-of-ai">
-<h3 class="anchored" data-anchor-id="the-winters-of-ai">The Winters of AI</h3>
-<p>Despite the initial optimism, both Symbolic and Statistical AI approaches eventually hit significant roadblocks. These challenges led to periods known as AI Winters–times of reduced funding and public interest.</p>
-<p>Early Symbolic AI systems, while impressive in their specific domains (like proving theorems or diagnosing specific diseases), proved to be quite brittle. They struggled immensely with common-sense knowledge, which is vast and often unstated. Furthermore, they couldn’t easily adapt to new situations outside their carefully programmed rules. Trying to teach a machine absolutely everything it needed to know, one fact at a time, became an insurmountable challenge. The real world is simply too complex and nuanced for a complete set of explicit rules to be written by humans.</p>
-<p>Meanwhile, early Statistical AI systems like the Perceptron faced their own limitations. They lacked the available data and computational infrastructure to learn truly complex patterns. Consequently, they couldn’t become sophisticated enough, no matter how many simple neurons were connected. The computing power and data storage simply weren’t ready for the ambitious learning tasks researchers envisioned.</p>
-<p>These winters were not outright failures, but rather crucial learning periods. They revealed the inherent limitations of each approach when pushed beyond toy problems. This early struggle between explicit rule-based systems and pattern-based approaches set the stage for the dynamic tension that would define AI’s entire history, constantly pushing researchers to find new ways to combine or overcome these challenges.</p>
-</section>
+<section class="level2" id="symbolic-vs.-statistical-ai">
+<h2 class="anchored" data-anchor-id="symbolic-vs.-statistical-ai">Symbolic vs. statistical AI</h2>
+<p>Symbolic AI builds intelligence the way one builds a machine. The designer decides what the system needs to know, encodes that knowledge in explicit symbols and rules, and produces behaviour by manipulating the symbols according to logical operations. The dictionary, the law book, the deductive proof — these are the model objects. Allen Newell and Herbert Simon called the underlying bet the <em>physical symbol system hypothesis</em>: a system that can store and manipulate symbols according to rules has, they argued, the necessary and sufficient means for general intelligent action.<a class="footnote-ref" href="#fn5" id="fnref5" role="doc-noteref"><sup>5</sup></a> If the bet is right, the path to intelligent machines runs through better symbol-manipulation. The Logic Theorist, the General Problem Solver, expert systems like MYCIN, the planning systems of the 1970s — all of them inhabit this tradition.</p>
+<p>Statistical AI builds intelligence the way one trains an animal. The designer chooses an architecture with adjustable parameters, presents the system with enough examples of inputs and desired outputs, and lets an optimisation procedure find — across many iterations — a parameter setting that maps one to the other. The training corpus is the model object. Nothing is encoded explicitly; everything is absorbed from the data. The Perceptron was the first machine in this tradition, and every modern deep-learning system descends from the same lineage.</p>
+<p>The mechanical difference is <em>where knowledge lives</em>. In a symbolic system, knowledge lives in a hand-authored rule base that a human can read line by line, debug, and amend. In a statistical system, knowledge lives in a pile of learned numbers — weights, probabilities, embeddings — that no human can read at all. Both kinds of knowledge are operational; only one is legible. That asymmetry is the source of nearly every modern argument about AI transparency, alignment, and accountability, and we will return to it repeatedly.</p>
+<p>The tension between the two paradigms was real, and the field paid for it in two long winters of reduced funding — the symbolic camp’s collapse under common-sense knowledge in the late 1980s, and the connectionist branch’s earlier near-death after <em>Perceptrons</em>. The introduction tells that history in full. What matters here, structurally, is that neither paradigm was wrong in isolation. The symbolic camp built shells without competent cognition; the statistical camp built cognition without auditable shells. The synthesis we will arrive at by chapter 6 needs both halves in good working order, and the rest of Part I is what those halves look like up close.</p>
 </section>
 <section class="level2" id="search-and-optimization">
-<h2 class="anchored" data-anchor-id="search-and-optimization">Search and Optimization</h2>
-<p>At the heart of many AI problems, especially in the early days, was the challenge of finding the best solution among a vast number of possibilities. This is the realm of search and optimization.</p>
-<section class="level3" id="when-perfect-is-impossible-the-hard-problems">
-<h3 class="anchored" data-anchor-id="when-perfect-is-impossible-the-hard-problems">When Perfect is Impossible: The Hard Problems</h3>
+<h2 class="anchored" data-anchor-id="search-and-optimization">Search and optimization</h2>
+<p>At the heart of many AI problems, especially in the early days, was the challenge of finding the best solution among a vast number of possibilities. This is what search and optimization are for.</p>
+<section class="level3" id="when-perfect-is-impossible">
+<h3 class="anchored" data-anchor-id="when-perfect-is-impossible">When perfect is impossible</h3>
 <p>Imagine you’re a traveling salesperson, and you need to visit a hundred different cities, visiting each exactly once, and then return home. Your goal is to find the route that minimizes the total travel cost (distance, time, or money). This is a classic example of a hard problem in computer science, known as the Traveling Salesman Problem (TSP). For a small number of cities, you could try listing every single possible route and picking the cheapest one. This is called a brute force search.</p>
 <p>However, as the number of cities grows, the number of possible routes explodes. For just 20 cities, there are over 2.4 quintillion (2.4 followed by 18 zeros!) unique routes. Even the fastest supercomputer couldn’t check them all before the universe ends. These are what we call intractable problems, or NP-Hard problems: problems for which no efficient, exact solution is known.</p>
 <p>To tackle such problems, AI often models them as navigating a search space or state space. This conceptual space represents all possible configurations or situations relevant to the problem. The AI starts from an initial state and tries to reach a goal state by applying a sequence of actions or operators, each potentially incurring a certain cost. Since finding the absolute perfect solution is often impossible or impractical within this vast space, AI shifts its goal. Instead of perfection, it seeks approximate solutions. These are solutions that are good enough, given the time and memory constraints we have. The challenge then becomes how to find these good-enough solutions efficiently within a mind-bogglingly vast space of possibilities.</p>
 </section>
-<section class="level3" id="smart-shortcuts-heuristics-and-metaheuristics">
-<h3 class="anchored" data-anchor-id="smart-shortcuts-heuristics-and-metaheuristics">Smart Shortcuts: Heuristics and Metaheuristics</h3>
+<section class="level3" id="heuristics-and-metaheuristics">
+<h3 class="anchored" data-anchor-id="heuristics-and-metaheuristics">Heuristics and metaheuristics</h3>
 <p>To navigate these immense search spaces, AI uses clever strategies known as heuristics and metaheuristics. A heuristic is a problem-specific rule of thumb strategy that uses some known properties of a problem to improve search performance. It’s not guaranteed to find the absolute best solution, but it often finds a very good one much faster than a brute-force approach.</p>
 <p>Consider your GPS navigation app. When you ask for directions, it doesn’t calculate every single possible route from your current location to your destination. Instead, it uses a heuristic, often based on an algorithm called A∗. If your destination is northeast of your position, the A∗ algorithm will prioritize roads going north or east, assuming they are more likely to get you there faster than roads going to the west or the south. Of course, this isn’t always perfect–there might be a faster detour to the west, or a highway that’s counter-intuitive. Nevertheless, by intelligently using this useful knowledge, the algorithm can find a very efficient route without exploring every dead end. It’s a smart shortcut that balances speed with a high probability of finding a good solution.</p>
 <p>While heuristics are problem-specific, metaheuristics are more general-purpose search strategies. They leverage knowledge about the search paradigm itself and can be applied even when very little is known about the specific problem’s structure. They’re often used when nothing else works. A prime example of a metaheuristic approach is evolutionary algorithms. These computational strategies are inspired by certain aspects of the biological process of evolution.</p>
 <p>Imagine you want to design the optimal layout for a computer chip (like a GPU) – a problem with an astronomical number of possible designs. An evolutionary algorithm would start with a population of random chip designs. Then, through cycles of breeding (combining elements from two good designs to create a new one) and selection (keeping only the best-performing designs), the algorithm iteratively evolves better and better designs. Just like biological evolution, it seems to magically discover quasi-optimal design elements just by sheer luck and relentless repetition, without needing explicit instructions for every design choice. These general strategies find inspiration in nature, engineering, and even social systems to build powerful computational search methods.</p>
 </section>
 <section class="level3" id="specialized-search-beyond-simple-paths">
-<h3 class="anchored" data-anchor-id="specialized-search-beyond-simple-paths">Specialized Search: Beyond Simple Paths</h3>
+<h3 class="anchored" data-anchor-id="specialized-search-beyond-simple-paths">Specialized search beyond simple paths</h3>
 <p>Beyond general search and optimization, AI has developed specialized techniques for specific types of complex problems.</p>
-<section class="level4" id="adversarial-search-thinking-ahead-of-the-other">
-<h4 class="anchored" data-anchor-id="adversarial-search-thinking-ahead-of-the-other">Adversarial Search: Thinking Ahead of the Other</h4>
+<section class="level4" id="adversarial-search">
+<h4 class="anchored" data-anchor-id="adversarial-search">Adversarial search</h4>
 <p>Many real-world problems, especially in competitive scenarios, involve an opponent whose actions must be anticipated. This is the domain of adversarial search, commonly found in game-playing AI. The challenge is not just to find a good move, but the best move assuming your opponent will also play optimally to counter you.</p>
 <p>One of the oldest and most fundamental techniques is Minimax. Imagine a simple game like Tic-Tac-Toe. Minimax works by having the AI look ahead through all possible future moves, assuming that you (the opponent) will always choose the move that is best for you and worst for the AI. The AI then picks the move that minimizes its maximum possible loss (or maximizes its minimum possible gain). Effectively, it plays out all possible future scenarios in its head and chooses the path that leaves it in the best possible position, no matter what its opponent does.</p>
 <p>For games with an incredibly vast number of possibilities, like Go, simply looking ahead through every move is impossible. This is where Monte Carlo Tree Search (MCTS) comes in. Instead of exhaustively analyzing every branch, MCTS plays out many random simulations of the game from a given point. It explores the most promising moves more deeply, learning which paths lead to success through repeated trial and error simulations. This allows AI to tackle games that were once considered beyond computational reach, like when Google’s AlphaGo beat the world’s best Go players.</p>
 </section>
-<section class="level4" id="structured-search-satisfying-all-conditions">
-<h4 class="anchored" data-anchor-id="structured-search-satisfying-all-conditions">Structured Search: Satisfying All Conditions</h4>
+<section class="level4" id="constraint-satisfaction">
+<h4 class="anchored" data-anchor-id="constraint-satisfaction">Constraint satisfaction</h4>
 <p>Sometimes, the goal isn’t to find the best path, but simply any solution that meets a specific set of requirements. These are constraint satisfaction problems. Here, the AI needs to find values for a set of variables such that all given conditions, or constraints, are simultaneously met.</p>
 <p>Think about solving a Sudoku puzzle. You need to fill in numbers from 1 to 9 in each cell, but with strict rules: each row, column, and 3x3 box must contain all digits from 1 to 9 without repetition. The AI’s task is to find a set of numbers for all empty cells that satisfies all these constraints.</p>
 <p>Another common example is creating a university class schedule. You have classes, rooms, professors, and students, and a multitude of constraints: Professor A can’t teach two classes at the same time; Room B can only hold 50 students; Class C requires a lab; no two classes can be in the same room at the same time. The AI’s job is to assign times and rooms to all classes such that every single constraint is satisfied. The structure of these problems, defined by the variables and their interdependencies, allows AI to use specialized search techniques to efficiently find a valid solution.</p>
 </section>
 </section>
 </section>
-<section class="level2" id="knowledge-representation-reasoning">
-<h2 class="anchored" data-anchor-id="knowledge-representation-reasoning">Knowledge Representation &amp; Reasoning</h2>
+<section class="level2" id="knowledge-representation-and-reasoning">
+<h2 class="anchored" data-anchor-id="knowledge-representation-and-reasoning">Knowledge representation and reasoning</h2>
 <p>Beyond just searching for solutions, a truly intelligent system needs to know things about the world. This brings us to the second pillar of GOFAI: Knowledge Representation. This field explores how AI can efficiently represent, store, and use domain knowledge in a way that computers can understand and process.</p>
 <p>The fundamental goal of knowledge representation is to organize concepts and facts, as well as the relationships between them. This organization allows AI to reason about these facts and discover new relations. Ultimately, it’s about giving AI a structured way to understand and make sense of information, much like how humans build a mental model of the world around them. Without a clear way to represent what it knows, an AI would be unable to make logical inferences or apply its knowledge to new situations.</p>
 <section class="level3" id="from-raw-observations-to-understanding">
-<h3 class="anchored" data-anchor-id="from-raw-observations-to-understanding">From Raw Observations to Understanding</h3>
+<h3 class="anchored" data-anchor-id="from-raw-observations-to-understanding">From raw observations to understanding</h3>
 <p>To truly grasp how AI knows things, it’s helpful to understand the progression from raw observations to actionable understanding. At the most basic level, we encounter Data, which consists of raw, unprocessed facts or observations. This could be a list of numbers, individual words, or pixels in an image. In isolation, data has no inherent meaning; for example, the number 30 by itself is just a number.</p>
 <p>When we introduce context or metadata, data transforms into Information. For instance, if we know 30 is a temperature reading taken in Celsius at noon on July 1st in Havana, it becomes information. This contextualization helps us relate different observations and gives them initial meaning.</p>
 <p>Finally, when information is enriched with semantics and rules, enabling inference, reasoning, and the discovery of new relations, it becomes Knowledge. For example, if the AI knows that temperatures above 30 degrees Celsius in July in Havana indicate a heatwave, it possesses knowledge. This knowledge allows it to draw inferences (it’s a heatwave!), discover new relations (heatwaves can lead to increased energy consumption), and even take actions (warn residents about high temperatures). It’s this ability to add meaning and logical connections that truly transforms information into actionable knowledge.</p>
 </section>
 <section class="level3" id="ways-to-represent-knowledge">
-<h3 class="anchored" data-anchor-id="ways-to-represent-knowledge">Ways to Represent Knowledge</h3>
+<h3 class="anchored" data-anchor-id="ways-to-represent-knowledge">Ways to represent knowledge</h3>
 <p>Just as humans use different ways to store and recall information, from precise definitions to vague intuitions, AI employs various methods for knowledge representation, each with its own strengths and weaknesses.</p>
 <p>One key distinction lies between explicit and implicit representations. Explicit knowledge is clearly defined and directly encoded, often in rules or symbols. It’s much like a precisely written dictionary or a rulebook where every term and every rule is spelled out. This approach is central to Symbolic AI. For instance, Ontologies are explicit representations that define concepts within a domain and their strict relationships. Think of a meticulously designed family tree formally defining parent, child, sibling, and ancestor, along with rules such as if A is a parent of B, and B is a parent of C, then A is a grandparent of C.</p>
 <p>Conversely, implicit knowledge is learned from patterns in data, rather than being directly programmed. It’s more akin to human intuition or a gut feeling developed from vast experience, and is fundamental to Statistical AI. Embeddings, for example, are numerical representations where concepts like words, images, or even entire documents are transformed into points in a multi-dimensional space. Systems like Word2Vec learn these embeddings by analyzing how words are used together, so words with similar meanings or contexts (e.g., king and queen) end up being numerically close to each other in this space, even though no human explicitly programmed that relationship.</p>
@@ -354,26 +365,53 @@ ul.task-list li input[type="checkbox"] {
 <p>Vector databases, for example, are often used to store and efficiently search implicit representations (embeddings) derived from unstructured data. You could take millions of research papers (unstructured text), convert each into an embedding (implicit representation), and store them in a vector database. Then, when a user asks a question, the database can find the most similar papers based on their embeddings, even though the papers themselves are unstructured.</p>
 </section>
 <section class="level3" id="drawing-inference-from-knowledge">
-<h3 class="anchored" data-anchor-id="drawing-inference-from-knowledge">Drawing Inference from Knowledge</h3>
+<h3 class="anchored" data-anchor-id="drawing-inference-from-knowledge">Drawing inference from knowledge</h3>
 <p>Knowledge representation isn’t merely about storing information; its ultimate purpose is to enable AI to draw inferences and make decisions. This process of deriving new conclusions from existing knowledge is known as reasoning, and it can take both formal and informal forms.</p>
 <p>Formal reasoning, deeply rooted in logic, is about deriving new conclusions from existing knowledge using strict, unambiguous rules. This is the hallmark of Symbolic AI. It’s a process of deduction, where if the initial premises are true and the rules are applied correctly, the conclusion is guaranteed to be true. For example, if a knowledge base contains the rules All birds can fly and A sparrow is a bird, a formal reasoner can deduce, with absolute certainty, A sparrow can fly. Such rule-based systems are precise and auditable, but they are limited by the completeness and accuracy of the explicitly programmed rules.</p>
 <p>In contrast, informal reasoning is about drawing conclusions based on patterns, similarities, or analogies, often without strict logical guarantees. This type of reasoning is more akin to human intuition or common sense. It’s less about strict deduction and more about finding connections and probabilities. For example, if an AI has learned implicit representations (embeddings) of various animals, and it sees a new animal that is numerically close to many dogs, it might infer it’s a dog, even without explicit rules for every single feature.</p>
-<p>This distinction is crucial for understanding the different capabilities of AI. While formal reasoning provides certainty within defined boundaries, informal reasoning allows AI to operate in ambiguous, unstructured environments. The latter, particularly reasoning by analogy in embeddings and language models, will be explored in more detail in later chapters, showcasing how AI can make sense of the world even when explicit rules are unavailable.</p>
+<p>This distinction shapes what AI can and cannot do. While formal reasoning provides certainty within defined boundaries, informal reasoning allows AI to operate in ambiguous, unstructured environments. The latter, particularly reasoning by analogy in embeddings and language models, will be explored in more detail in later chapters, showcasing how AI can make sense of the world even when explicit rules are unavailable.</p>
 </section>
 <section class="level3" id="what-is-the-best-representation-for-knowledge">
-<h3 class="anchored" data-anchor-id="what-is-the-best-representation-for-knowledge">What is the Best Representation for Knowledge?</h3>
+<h3 class="anchored" data-anchor-id="what-is-the-best-representation-for-knowledge">What is the best representation for knowledge?</h3>
 <p>The choice of how to represent knowledge is a critical decision in AI design. Different representation types are chosen based on the specific problem, the type of data available, and the AI paradigm being used (Symbolic vs. Statistical). For instance, a Symbolic AI system designed for medical diagnosis might rely heavily on formal, explicit ontologies of diseases and symptoms. Conversely, a Statistical AI system for image recognition might primarily use implicit, unstructured representations of pixels that it learns from millions of example images.</p>
 <p>This challenge highlights a theoretical result known as the Ugly Duckling Theorem. This theorem, in essence, states that without a specific purpose or bias, all objects are equally similar or dissimilar to one another. This implies that there is no single, universally best way to represent knowledge or measure similarity without a context or goal in mind. For example, an ugly duckling is only ugly relative to a flock of swans; it might be beautiful among other ducklings.</p>
 <p>Therefore, the human responsibility in choosing the right representation is paramount. This choice directly impacts what an AI can know, how it can reason, and ultimately, the reliability and fairness of its inferences. Aligning the representation with the problem’s nature is a key part of building human-centered tools that truly understand and assist us.</p>
 </section>
 </section>
-<section class="level2" id="conclusion-the-need-for-learning">
-<h2 class="anchored" data-anchor-id="conclusion-the-need-for-learning">Conclusion: The Need for Learning</h2>
-<p>Good Old-Fashioned AI (GOFAI), with its focus on search, optimization, and explicit knowledge representation, laid the essential groundwork for the field of Artificial Intelligence. Its strengths lie in domains where problems are well-defined, rules are clear, and knowledge can be precisely encoded. GOFAI systems offered precision and control, making them powerful tools for tasks like proving theorems or playing well-defined board games.</p>
-<p>However, the ambitions of GOFAI soon ran into fundamental limitations when faced with the messy complexity of the real world. These systems proved to be brittle: a small change outside their programmed domain could break them entirely. They struggled immensely with common-sense knowledge, which is vast and often unstated. The sheer scale of real-world information made it an insurmountable challenge to explicitly program every piece of knowledge and every rule. GOFAI was excellent at solving problems for which it was explicitly programmed, but it couldn’t adapt, generalize, or handle unstructured data effectively. This revealed a crucial gap in AI’s capabilities.</p>
-<p>The limitations of GOFAI highlighted a profound truth: to build truly intelligent and adaptable systems, AI needed to move beyond simply executing pre-programmed rules. It revealed a crucial need for systems that could learn from experience and data, without being explicitly programmed for every single scenario or piece of knowledge.</p>
-<p>This growing realization of the power of learning-based approaches, which were developing concurrently with GOFAI, marked a significant shift. It showed that AI could discover its own patterns and adapt to unforeseen situations, offering a path to overcome the brittleness of purely symbolic systems.</p>
-<p>Recognizing these limitations and actively seeking new approaches is a hallmark of the ongoing, human-driven effort to build more capable and adaptable AI. It’s a testament to our techno-pragmatist ethos: acknowledging challenges, learning from past efforts, and continuously striving to create tools that can better serve humanity’s complex needs. This increasing prominence of learning methods, which developed in parallel to GOFAI, is the story that will unfold in the next chapter.</p>
+<section class="level2" id="the-classical-agent">
+<h2 class="anchored" data-anchor-id="the-classical-agent">The classical agent</h2>
+<p>The two pillars I have just walked through — search and knowledge representation — share an unstated assumption. Both treat intelligence as something a machine <em>does</em> once: pose the problem, run the algorithm, return the answer. Real intelligent systems are not like that. A self-driving car does not solve a planning problem at the start of the trip and then drive blind. A medical diagnostic system does not run inference once and ignore the next ten years of evidence. Intelligent behaviour, in any system worth building, is a loop.</p>
+<p>The classical AI literature has a name for that loop and the entity that runs it. The name is <em>agent</em>. The canonical statement is in chapter 2 of Stuart Russell and Peter Norvig’s <em>Artificial Intelligence: A Modern Approach</em> — the textbook that has trained roughly every working AI researcher since 1995.<a class="footnote-ref" href="#fn6" id="fnref6" role="doc-noteref"><sup>6</sup></a> I am going to walk through it slowly, because chapter 6 of this book returns to exactly this definition, and what looks like a tidy fifty-year-old abstraction is, in fact, the empty shell into which large language models slot.</p>
+<p>An <strong>agent</strong> is an entity that perceives its environment through <em>sensors</em>, deliberates over what to do, acts on the environment through <em>actuators</em>, and observes the consequences. Sensors and actuators are whatever the situation requires: cameras and wheels for a robot, a network connection and a function-call schema for a software agent, eyes and hands for the agent you are. The deliberation step is the variable. Different cognitive architectures fill it differently. What stays constant is the loop — perceive, deliberate, act, observe, repeat.</p>
+<p>Russell and Norvig divide agents into four classes by how much structure their deliberation has.</p>
+<p>A <strong>simple reflex agent</strong> maps the current percept directly to an action through a fixed table of condition–action rules. <em>If the thermostat reads above 22°C, turn off the heater.</em> No memory, no model of the world, no reasoning about consequences. Reflex agents are fast and brittle: they work exactly as well as their rule table covers the situations they meet.</p>
+<p>A <strong>model-based reflex agent</strong> maintains an internal model of how the world works and how its own actions change it. The thermostat that remembers the heater is currently on and accounts for the lag between turning it off and the temperature actually dropping is model-based. The agent reacts not just to what it senses, but to what it believes is true and not currently in the percept.</p>
+<p>A <strong>goal-based agent</strong> carries an explicit representation of what it is trying to achieve and chooses actions by reasoning about which ones move it closer to the goal. The chess-playing program from earlier in this chapter — the one that searches a tree of moves toward the state <em>checkmate</em> — is goal-based. The goal is a flag in state space; the agent’s job is to find a path to it.</p>
+<p>A <strong>utility-based agent</strong> generalises the previous case. Instead of a single binary goal, it has a <em>utility function</em> that scores every possible outcome on a continuous scale, and it chooses actions that maximise expected utility. A trip planner that trades off cost, time, and comfort to recommend an itinerary is utility-based. Most modern decision-making systems live here. The goal is not “arrive”; the goal is “arrive in the best way.”</p>
+<p>Before you build any of these, you have to specify the problem. Russell and Norvig propose a four-part recipe — <strong>PEAS</strong>: the <em>Performance measure</em> by which you score the agent’s behaviour, the <em>Environment</em> the agent operates in, the <em>Actuators</em> it has available to act, and the <em>Sensors</em> it has available to perceive. PEAS is not an algorithm; it is a discipline. Before writing a line of code for a vacuum-cleaning robot, you write down: <em>Performance</em> — cleanliness of floor per unit time, with a power-consumption penalty; <em>Environment</em> — apartment with rugs, hardwood, furniture, an occasional cat; <em>Actuators</em> — drive motors, suction motor, brush; <em>Sensors</em> — bump detector, dirt sensor, optical odometry. Skip PEAS and you build a system that solves a problem nobody asked for. Most failed AI projects are PEAS failures.</p>
+<p>The perceive–deliberate–act–observe shell predates large language models by more than half a century. In 1971 the SRI team built <strong>STRIPS</strong>, the first symbolic planner to formalise the deliberation step as search through a space of world-changing actions.<a class="footnote-ref" href="#fn7" id="fnref7" role="doc-noteref"><sup>7</sup></a> In 1987 Michael Bratman gave the deliberation step a richer interior — beliefs, desires, intentions — that the <em>BDI</em> literature spent the 1990s engineering into working systems. None of those systems became transformative, because none of them had a brain capable enough to fill the deliberation slot in any but the narrowest worlds. The slot sat empty for fifty years.</p>
+<p>In chapter 6, we will see what happens when you slot a modern reasoning language model into it. The agent shell is the same. The cognition inside is new.</p>
+</section>
+<section class="level2" id="the-need-for-learning">
+<h2 class="anchored" data-anchor-id="the-need-for-learning">The need for learning</h2>
+<p>Good Old-Fashioned AI (GOFAI), with its focus on search, optimization, and explicit knowledge representation, laid the essential groundwork for the field of Artificial Intelligence. Its strengths lie in domains where problems are well-defined, rules are clear, and knowledge can be precisely encoded. GOFAI systems offered precision and control, making them dependable for tasks like proving theorems or playing well-defined board games.</p>
+<p>However, the ambitions of GOFAI soon ran into fundamental limitations when faced with the messy complexity of the real world. These systems proved to be brittle: a small change outside their programmed domain could break them entirely. They struggled immensely with common-sense knowledge, which is vast and often unstated. The sheer scale of real-world information made it an insurmountable challenge to explicitly program every piece of knowledge and every rule. GOFAI was excellent at solving problems for which it was explicitly programmed, but it couldn’t adapt, generalize, or handle unstructured data effectively. This revealed a gap in AI’s capabilities that no amount of hand-coded rules could close.</p>
+<p>The limitations of GOFAI pointed to one conclusion: to build truly intelligent and adaptable systems, AI needed to move beyond simply executing pre-programmed rules. It revealed a need for systems that could learn from experience and data, without being explicitly programmed for every single scenario or piece of knowledge.</p>
+<p>This growing realization of the power of learning-based approaches, which were developing concurrently with GOFAI, redirected the field. It showed that AI could discover its own patterns and adapt to unforeseen situations, offering a path to overcome the brittleness of purely symbolic systems.</p>
+<p>Recognizing these limitations and actively seeking new approaches is a hallmark of the ongoing, human-driven effort to build more capable and adaptable AI. This is the techno-pragmatist ethos at work: acknowledge what breaks, learn from the attempt that broke, and build the next tool with that knowledge in hand.</p>
+<p>You now have the symbolic half of the argument: what it bet, what it built, and the perceive–deliberate–act–observe shell it left behind with the deliberation slot empty. The rest of Part I opens the empiricist substrate from the inside — how machines learn, why depth turned out to be the variable, and how one architecture specialised to language. The shell waits, empty, until something is finally competent enough to fill it.</p>
+</section>
+<section class="footnotes footnotes-end-of-document" id="footnotes" role="doc-endnotes">
+<hr/>
+<ol>
+<li id="fn1"><p>The quote is widely circulated as “AI is whatever hasn’t been done yet.” Tesler himself clarified on his personal site that his original phrasing was the slightly different <em>intelligence is whatever machines haven’t done yet.</em> See Larry Tesler, <em>Tesler’s Theorem and Other Adages and Coinages,</em> <code>nomodes.com/larry-tesler-consulting/adages-and-coinages</code>. The phenomenon is discussed in the literature as the <em>AI effect</em>; Pamela McCorduck’s <em>Machines Who Think</em> (2nd ed., A K Peters, 2004) traces several earlier instances of the same pattern.<a class="footnote-back" href="#fnref1" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Marvin Minsky (ed.), <em>Semantic Information Processing,</em> MIT Press, 1968. The functional definition appears in Minsky’s introduction and has been quoted in essentially every general AI textbook since. The full quote: “Artificial intelligence is the science of making machines do things that would require intelligence if done by men.”<a class="footnote-back" href="#fnref2" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Arthur L. Samuel, <em>Some Studies in Machine Learning Using the Game of Checkers,</em> IBM Journal of Research and Development, Vol. 3, No. 3, 1959, pp. 210–229. The widely circulated phrasing “the field of study that gives computers the ability to learn without being explicitly programmed” is apocryphal — it does not appear verbatim in the original paper, though it accurately summarises Samuel’s working programme. The 1959 paper itself argues that “programming computers to learn from experience should eventually eliminate the need for much of this detailed programming effort.”<a class="footnote-back" href="#fnref3" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Herbert A. Simon, <em>The Structure of Ill-Structured Problems,</em> Artificial Intelligence, Vol. 4, No. 3–4, 1973, pp. 181–201. Simon distinguishes <em>well-structured</em> problems — where initial state, operators, and goal are crisply defined — from <em>ill-structured</em> ones, where one or more of those elements is missing or perceptual, and argues that the same information-processing framework can be brought to bear on both. The distinction has anchored half a century of research on cognition, design, and AI.<a class="footnote-back" href="#fnref4" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Newell, A. &amp; Simon, H. A. <em>Computer Science as Empirical Inquiry: Symbols and Search.</em> Communications of the ACM, 19(3), 1976. The physical-symbol-system hypothesis is stated on p. 116.<a class="footnote-back" href="#fnref5" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Russell, S. &amp; Norvig, P. <em>Artificial Intelligence: A Modern Approach,</em> §2, 4th ed. Pearson, 2020.<a class="footnote-back" href="#fnref6" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Fikes, R. E. &amp; Nilsson, N. J. <em>STRIPS: A New Approach to the Application of Theorem Proving to Problem Solving.</em> Artificial Intelligence, 2, 1971.<a class="footnote-back" href="#fnref7" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -777,8 +815,8 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
 <div class="nav-page nav-page-previous">
-<a aria-label="Foundations of AI" class="pagination-link" href="../1_foundations/index.html">
-<i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Foundations of AI</span>
+<a aria-label="Foundations" class="pagination-link" href="../1_foundations/index.html">
+<i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Foundations</span>
 </a>
 </div>
 <div class="nav-page nav-page-next">

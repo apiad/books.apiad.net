@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><head><link href="/books/reader.css" rel="stylesheet"/>
+<meta charset="utf-8"/>
+<meta content="quarto-1.7.30" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<title>8  AI for Knowledge Work – Mostly Harmless AI</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta content="../" name="quarto:offset"/>
+<link href="../2_applications/science.html" rel="next"/>
+<link href="../2_applications/intro.html" rel="prev"/>
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet"/>
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de070a7b0ab54f8780927367ac907214.css" id="quarto-text-highlighting-styles" rel="stylesheet"/>
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet"/>
+<link append-hash="true" data-mode="light" href="../site_libs/bootstrap/bootstrap-364982630eef5352dd1537128a8ed5cb.min.css" id="quarto-bootstrap" rel="stylesheet"/>
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@600;700;800&amp;family=Fira+Code:wght@400;500&amp;display=swap" rel="stylesheet"/><link href="/manifest.json" rel="manifest"/><script src="/sw-register.js"></script><meta content="#0f0f0f" name="theme-color"/><meta content="yes" name="apple-mobile-web-app-capable"/><link href="/icon-192.png" rel="apple-touch-icon"/><link href="/icon-192.png" rel="icon" sizes="192x192" type="image/png"/></head>
+<body class="nav-sidebar floating quarto-light">
+<div id="quarto-search-results"></div>
+<header class="headroom fixed-top" id="quarto-header">
+<nav class="quarto-secondary-nav">
+<div class="container-fluid d-flex">
+<button aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="quarto-btn-toggle btn" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="button" type="button">
+<i class="bi bi-layout-text-sidebar-reverse"></i>
+</button>
+<nav aria-label="breadcrumb" class="quarto-page-breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../2_applications/index.html">Applications</a></li><li class="breadcrumb-item"><a href="../2_applications/knowledge-work.html"><span class="chapter-number">8</span>  <span class="chapter-title">AI for Knowledge Work</span></a></li></ol></nav>
+<a aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="flex-grow-1" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="navigation">
+</a>
+<button aria-label="Search" class="btn quarto-search-button" onclick="window.quartoOpenSearch();" type="button">
+<i class="bi bi-search"></i>
+</button>
+</div>
+</nav>
+</header>
+<!-- content -->
+<div class="quarto-container page-columns page-rows-contents page-layout-article" id="quarto-content">
+<!-- sidebar -->
+<nav class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" id="quarto-sidebar">
+<div class="pt-lg-2 mt-2 text-left sidebar-header">
+<div class="sidebar-title mb-0 py-0">
+<a href="../">Mostly Harmless AI</a>
+</div>
+</div>
+<div class="mt-2 flex-shrink-0 align-items-center">
+<div class="sidebar-search">
+<div class="" id="quarto-search" title="Search"></div>
+</div>
+</div>
+<div class="sidebar-menu-container">
+<ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../index.html">
+<span class="menu-text">Preface</span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../manifesto.html">
+<span class="menu-text">The Techno-Pragmatist Manifesto</span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../prologue.html">
+<span class="menu-text">Prologue</span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../intro.html">
+<span class="menu-text">A Brief History of AI</span></a>
+</div>
+</li>
+<li class="sidebar-item sidebar-item-section">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/index.html">
+<span class="menu-text">Foundations</span></a>
+<a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-1" data-bs-toggle="collapse" role="navigation">
+<i class="bi bi-chevron-right ms-2"></i>
+</a>
+</div>
+<ul class="collapse list-unstyled sidebar-section depth1 show" id="quarto-sidebar-section-1">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/ai.html">
+<span class="menu-text"><span class="chapter-number">1</span>  <span class="chapter-title">Classical AI</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/ml.html">
+<span class="menu-text"><span class="chapter-number">2</span>  <span class="chapter-title">Machine Learning</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/deep-learning.html">
+<span class="menu-text"><span class="chapter-number">3</span>  <span class="chapter-title">Deep Learning</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/llms.html">
+<span class="menu-text"><span class="chapter-number">4</span>  <span class="chapter-title">Language Modeling</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/generative.html">
+<span class="menu-text"><span class="chapter-number">5</span>  <span class="chapter-title">Generative AI</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/agentic.html">
+<span class="menu-text"><span class="chapter-number">6</span>  <span class="chapter-title">Agentic AI</span></span></a>
+</div>
+</li>
+</ul>
+</li>
+<li class="sidebar-item sidebar-item-section">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/index.html">
+<span class="menu-text">Applications</span></a>
+<a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-2" data-bs-toggle="collapse" role="navigation">
+<i class="bi bi-chevron-right ms-2"></i>
+</a>
+</div>
+<ul class="collapse list-unstyled sidebar-section depth1 show" id="quarto-sidebar-section-2">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/intro.html">
+<span class="menu-text"><span class="chapter-number">7</span>  <span class="chapter-title">Working With AI</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link active" href="../2_applications/knowledge-work.html">
+<span class="menu-text"><span class="chapter-number">8</span>  <span class="chapter-title">AI for Knowledge Work</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/science.html">
+<span class="menu-text"><span class="chapter-number">9</span>  <span class="chapter-title">AI for Scientific Research</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/coding.html">
+<span class="menu-text"><span class="chapter-number">10</span>  <span class="chapter-title">AI for Software Development</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/education.html">
+<span class="menu-text"><span class="chapter-number">11</span>  <span class="chapter-title">AI for Education and Learning</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/creative.html">
+<span class="menu-text"><span class="chapter-number">12</span>  <span class="chapter-title">AI for Creative Work</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/policy.html">
+<span class="menu-text"><span class="chapter-number">13</span>  <span class="chapter-title">AI for Policy and Governance</span></span></a>
+</div>
+</li>
+</ul>
+</li>
+<li class="sidebar-item sidebar-item-section">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../3_dangers/index.html">
+<span class="menu-text">Dangers</span></a>
+<a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-3" data-bs-toggle="collapse" role="navigation">
+<i class="bi bi-chevron-right ms-2"></i>
+</a>
+</div>
+<ul class="collapse list-unstyled sidebar-section depth1 show" id="quarto-sidebar-section-3">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../3_dangers/alignment.html">
+<span class="menu-text"><span class="chapter-number">14</span>  <span class="chapter-title">The Alignment Problem</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../3_dangers/limitations.html">
+<span class="menu-text"><span class="chapter-number">15</span>  <span class="chapter-title">Limits of Language Models</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../3_dangers/risks.html">
+<span class="menu-text"><span class="chapter-number">16</span>  <span class="chapter-title">Risks of AI</span></span></a>
+</div>
+</li>
+</ul>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../epilogue.html">
+<span class="menu-text">The Road Ahead</span></a>
+</div>
+</li>
+</ul>
+</div>
+</nav>
+<div class="quarto-sidebar-collapse-item" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" id="quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+<div class="sidebar margin-sidebar" id="quarto-margin-sidebar">
+<nav class="toc-active" id="TOC" role="doc-toc">
+<h2 id="toc-title">Table of contents</h2>
+<ul class="collapse">
+<li><a class="nav-link active" data-scroll-target="#the-pitfalls-of-the-prompt-and-pray-workflow" href="#the-pitfalls-of-the-prompt-and-pray-workflow" id="toc-the-pitfalls-of-the-prompt-and-pray-workflow">The pitfalls of the prompt-and-pray workflow</a></li>
+<li><a class="nav-link" data-scroll-target="#a-structured-knowledge-workflow" href="#a-structured-knowledge-workflow" id="toc-a-structured-knowledge-workflow">A structured knowledge workflow</a></li>
+<li><a class="nav-link" data-scroll-target="#critical-risks-for-the-knowledge-worker" href="#critical-risks-for-the-knowledge-worker" id="toc-critical-risks-for-the-knowledge-worker">Critical risks for the knowledge worker</a></li>
+<li><a class="nav-link" data-scroll-target="#augmentation-not-automation" href="#augmentation-not-automation" id="toc-augmentation-not-automation">Augmentation, not automation</a></li>
+</ul>
+</nav>
+</div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+<header class="quarto-title-block default" id="title-block-header"><nav aria-label="breadcrumb" class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../2_applications/index.html">Applications</a></li><li class="breadcrumb-item"><a href="../2_applications/knowledge-work.html"><span class="chapter-number">8</span>  <span class="chapter-title">AI for Knowledge Work</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">8</span>  <span class="chapter-title">AI for Knowledge Work</span></h1>
+</div>
+<div class="quarto-title-meta">
+</div>
+</header>
+<p>The universal method from the previous chapter — mindset, tactics, system — sharpens, under professional stakes, into a working discipline. Knowledge work is what most of this discipline was invented for: the daily labour of people who think for a living. The analyst, the strategist, the lawyer, the consultant, the in-house researcher. Their job is to find, interpret, synthesise, and apply information to problems where the answer was not in any one document and where the consequences of getting it wrong are paid by someone else.</p>
+<p>The promise these tools offer that population is something close to an <em>exocortex</em> — an external extension of the worker’s own mind, with the recall of the entire indexed internet and the patience of a salaried junior who never gets tired. The promise is real. The economics literature has now measured it directly. Across a series of controlled experiments — professional writing tasks,<a class="footnote-ref" href="#fn1" id="fnref1" role="doc-noteref"><sup>1</sup></a> customer-support interactions,<a class="footnote-ref" href="#fn2" id="fnref2" role="doc-noteref"><sup>2</sup></a> and software development<a class="footnote-ref" href="#fn3" id="fnref3" role="doc-noteref"><sup>3</sup></a> — generative AI reduces time-to-completion by anywhere between fifteen and fifty-five percent and improves quality by a fraction of a standard deviation, with the largest gains landing on the least experienced workers. Across the population of US occupations, roughly four in five jobs have at least one task that an LLM can meaningfully accelerate.<a class="footnote-ref" href="#fn4" id="fnref4" role="doc-noteref"><sup>4</sup></a> Whatever else one thinks about this technology, it has already moved the needle on the most measurable kind of professional output we have.</p>
+<p>But the stakes scale with the gains. A wrong answer that costs a high-schooler an embarrassing essay costs a securities lawyer their licence, a clinical researcher their study, a strategist their employer’s quarter. The chapter that follows is for two audiences at once. If you do knowledge work, it is a structured workflow you can adopt tomorrow. If you don’t, but the outputs of knowledge workers land on your desk — as a policymaker, an executive, a citizen — it is a description of how that work is changing, and of the failure modes you should know to look for in what arrives on your screen.</p>
+<p>The argument has three parts. First, the everyday “prompt-and-pray” workflow that most professionals fall into by default is not a slower version of the right one; it is a different thing entirely, and at professional stakes it fails by design. Second, a structured workflow built on three phases — research, analysis, communication — turns the same tool into something that can actually be used at those stakes. Third, even the best workflow leaves cognitive risks that the worker has to actively guard against, because they are not features of the model but of the mind interacting with it.</p>
+<section class="level2" id="the-pitfalls-of-the-prompt-and-pray-workflow">
+<h2 class="anchored" data-anchor-id="the-pitfalls-of-the-prompt-and-pray-workflow">The pitfalls of the prompt-and-pray workflow</h2>
+<p>The default image of using AI is deceptively simple: open a chat window, type a question, receive a complete answer. For a curious student or a busy parent planning a trip, this is fine. For a knowledge worker whose output will be acted on by someone with money on the line, it fails in five specific ways. Each failure is downstream of how the model actually works; the long-form mechanics live in Part I. Here, what matters is the consequence at the desk.</p>
+<section class="level3" id="the-hallucination-and-bias-trap">
+<h3 class="anchored" data-anchor-id="the-hallucination-and-bias-trap">The hallucination and bias trap</h3>
+<p>A language model is a statistical generator. The mechanics, in Part I’s chapter on language modelling, make hallucination structural rather than a defect: the model picks the next token to maximise plausibility, and the world is full of plausible continuations that are also false. For the knowledge worker, the consequence is concrete and embarrassing. A market analysis that quotes a fabricated statistic from a non-existent Gartner study is not a software bug. It is a professional failure with the analyst’s name on it. The same goes for inherited bias: the corpus from which the model learned was the internet, and the internet’s distribution of opinions, omissions, and stereotypes is now embedded in every prompt response. The model does not flag this. Verification is the worker’s job, not the tool’s.</p>
+</section>
+<section class="level3" id="the-context-void">
+<h3 class="anchored" data-anchor-id="the-context-void">The context void</h3>
+<p>The model has no idea what your project is, who your client is, what your firm decided last Tuesday, or what tone your manager prefers. It only knows the text in the immediate prompt. Ask for a “marketing strategy” and you will get a textbook response indexed against millions of unrelated marketing strategies — generic, ungrounded, and useless. The amount of context required for serious knowledge work is far larger than a single chat message can hold, and the model’s apparent fluency hides how much it has been forced to invent in place of the context you never gave it.</p>
+</section>
+<section class="level3" id="the-groundhog-day-problem-of-stateless-prompts">
+<h3 class="anchored" data-anchor-id="the-groundhog-day-problem-of-stateless-prompts">The Groundhog Day problem of stateless prompts</h3>
+<p>The practical consequence of the context void is repetition. The chatbot’s sense of continuity across turns is, as the language-modelling chapter spells out, an illusion maintained by re-sending the whole conversation on every turn. The moment you open a new chat tomorrow, the painstaking context you built today is gone. Reuploading the same documents, re-explaining the same constraints, re-deriving the same vocabulary — this is the tax the stateless interface charges, and over weeks of work it dominates the time you thought you were saving.</p>
+</section>
+<section class="level3" id="the-integration-dead-end">
+<h3 class="anchored" data-anchor-id="the-integration-dead-end">The integration dead end</h3>
+<p>The output of a chat interface is a block of prose in a browser, disconnected from the spreadsheets, slides, briefs, and case-management systems where the work actually lives. A beautifully formatted table copies into Excel as a jumble of pipes. A multi-level outline loses its structure in PowerPoint. The constant manual reformatting is a drag on the same productivity the tool is supposed to deliver. The integrated assistants — Microsoft 365 Copilot living inside Word and Excel, ChatGPT Enterprise and Claude for Work with admin controls and longer context, Glean and similar tools wiring retrieval into the firm’s actual document corpus — close some of this gap by living inside the tools rather than next to them. They do not eliminate it. The friction is reduced; it is not gone, and any workflow you build should assume some round-trip work between the model’s output and the surface where the document will ultimately ship.</p>
+</section>
+<section class="level3" id="the-one-shot-report-fallacy">
+<h3 class="anchored" data-anchor-id="the-one-shot-report-fallacy">The one-shot report fallacy</h3>
+<p>The most seductive misuse is the long-form request: <em>write a ten-page report on the future of renewable energy</em>. The document that comes back will be well-structured, grammatical, plausible-sounding, and soulless. It will lack a point of view, a coherent narrative thread, and the synthesis that only emerges from actual intellectual struggle. It will read like a pastiche of every adjacent training-corpus document averaged together, because mechanically that is what it is. A report worth reading requires choices about what to leave out, weight on the strongest evidence, and a defensible thesis. None of those survive the one-shot prompt.</p>
+</section>
+<section class="level3" id="the-illusion-of-automated-deep-research">
+<h3 class="anchored" data-anchor-id="the-illusion-of-automated-deep-research">The illusion of automated deep research</h3>
+<p>The 2026 version of this pitfall is different from the 2023 version, and the difference matters. Two years ago, “deep research” inside an AI tool meant the model browsing a handful of top search results and stitching their summaries into a patchwork. That product still exists, and it is still inadequate for serious work. But it has been joined by something genuinely better: agentic deep-research systems from the major labs that plan multi-step search trajectories, fetch and read dozens of sources, and return a structured synthesis with inline citations. These are real and useful. A first-year analyst handed a competitive-landscape question and three hours can do worse than what a deep-research agent will hand back in fifteen minutes.</p>
+<p>The trap is treating the agent’s output as the work rather than as the starting point of the work. The agent can pull and quote sources; it cannot tell you which ones are authoritative in your field versus which ones are SEO spam dressed as analysis. It cannot weigh a peer-reviewed study against a press release. It cannot notice the source it could not find because the relevant paper is behind a paywall it could not reach. The synthesis it produces is fluent and confident, and the fluency masks every judgement it could not make. The knowledge worker’s job has not been eliminated; it has been displaced. The hours saved on retrieval have to be reinvested in the harder work of evaluation. Skip that reinvestment and you have not done research; you have laundered a chatbot’s first draft through a few citation markers.</p>
+</section>
+</section>
+<section class="level2" id="a-structured-knowledge-workflow">
+<h2 class="anchored" data-anchor-id="a-structured-knowledge-workflow">A structured knowledge workflow</h2>
+<p>The alternative is not heroic. It is a structured, three-phase workflow that treats the AI as a partner with very specific competencies: tireless at finding and reformatting, decent at brainstorming, useful at criticism, and unreliable at every consequential decision. The phases are <strong>research</strong>, <strong>analysis</strong>, and <strong>communication</strong>. They are not strictly linear — insights from analysis often send you back to research, and a wobble in communication often reveals a hole in the analysis — but they are distinct in what the human and the AI are each doing inside them.</p>
+<p>For the marketing analyst, the three phases are: gather market data and competitor intelligence; identify trends and segment customers; write a report to stakeholders. For the research scientist: conduct the literature review; analyse experimental data against hypotheses; write the paper for peer review. For the lawyer: research case law and gather evidence; build the legal argument; draft the brief. Different domains, same shape. The rest of this chapter is a walk through each phase with the techniques that turn the prompt-and-pray failures into a working practice.</p>
+<section class="level3" id="phase-1-research">
+<h3 class="anchored" data-anchor-id="phase-1-research">Phase 1 — research</h3>
+<p>The goal of research is a defensible base of information. The AI’s job is to help you build it efficiently. Your job is to remain the arbiter of what counts as defensible.</p>
+<p><strong>Deconstruct the problem.</strong> A vague question yields a generic answer. Before searching for facts, use the model to break the question down. The marketing analyst, instead of asking “How should we enter the European market?”, asks “Act as a market-entry strategist. List the ten questions we need to answer to build a viable European market-entry plan for our product.” What comes back is a structured research plan — addressable market, regulatory hurdles, local competitors, distribution channels — that turns one vague query into ten concrete ones.</p>
+<p><strong>Discover and vet sources.</strong> With the questions in hand, the AI is a powerful discovery engine. The scientist asks for recent peer-reviewed work on CRISPR-Cas9 applications for genetic disease and gets a list. The vetting step is non-negotiable: for each candidate source, prompt the model to summarise the methodology, name the authors and their affiliations, and state the main conclusions. The point is to spend time reading the few sources that survive scrutiny, not to read the list.</p>
+<p><strong>Ground the inquiry in verifiable sources.</strong> The most effective antidote to hallucination is to remove the model’s freedom to invent. Instead of letting the AI draw from its opaque training data, upload your own curated documents and constrain the model to them. The technique is treated mechanically in Part I — it is the basis of every serious assistant in 2026 — but the practitioner version is simple: paste the documents, then prompt <em>using only the attached documents, what are the precedents for dismissing a case on the grounds of improper procedure?</em>. The model’s reliability on the answer is roughly the reliability of the documents you fed it, which is something you can actually assess. Productized versions of this — Glean and its competitors — wire the same trick into the firm’s document repository, so the worker doesn’t have to upload anything by hand.</p>
+<p><strong>Extract information at scale.</strong> Knowledge work has long included tedious extraction tasks: pulling specific data points from dense documents that have to be read end-to-end. The AI is genuinely good at this mechanical work. The lawyer uploads fifty witness depositions and asks for every mention of <em>the red car</em> with the date, time, and witness name in a CSV. What was a week becomes an afternoon, and the structured dataset that comes back is the starting point for analysis rather than its bottleneck.</p>
+<p><strong>Synthesise and journal continuously.</strong> The Groundhog Day problem is solved at the workflow level, not the chat-window level. Maintain a single living research document where every output — deconstructed questions, vetted summaries, extracted tables — gets pasted as you go. Periodically, upload the entire document back to the model and ask it to identify emerging themes and possible contradictions across the journal so far. This is the cumulative feedback loop that the stateless interface refuses to give you for free; it is also the artifact you will hand to the analyst doing the next phase, which is sometimes you.</p>
+</section>
+<section class="level3" id="phase-2-analysis">
+<h3 class="anchored" data-anchor-id="phase-2-analysis">Phase 2 — analysis</h3>
+<p>If research is about acquiring information, analysis is about interrogating it. This is the most intellectually demanding stretch of the workflow, and the place where the AI offers the most leverage <em>if you use it as a sparring partner rather than an oracle</em>.</p>
+<p><strong>Analyse the data, both kinds.</strong> Knowledge work runs on numbers and on narratives. For numbers, the model writes the analysis code: <em>here is the spreadsheet of experimental results — write a Python script using pandas to run a paired t-test on columns A and B and visualise the result.</em> For narratives, the same model performs thematic analysis at scale: <em>here are 3,000 customer survey responses — identify the top five recurring complaints, with three representative quotes for each.</em> In both cases the model handles the mechanics so the worker can interpret the result, which is the part nobody else can do.</p>
+<p><strong>Probe for gaps and connections.</strong> Insight often hides in absence. After the initial synthesis, push the model into a more strategic role. <em>Based on the case files we have reviewed, what is the weakest part of our opponent’s argument? Where are the gaps in their evidence?</em> Or: <em>you have summarised our competitor’s last five product launches — what common strategic thread connects them, and what market segment have they consistently ignored?</em> The model is not authoritative on the answer. It is generative on the question.</p>
+<p><strong>Brainstorm alternatives.</strong> The first idea is rarely the best one. The AI is unusually good at producing a range of options on demand, including options the worker would not have considered. <em>We need to increase lead generation by 20% next quarter. Propose three distinct strategies: one focused on paid advertising, one on content marketing, and one unconventional guerrilla-marketing approach.</em> The point is not to commit to one of the three. It is to know what the option space looks like before you commit to anything.</p>
+<p><strong>Test the argument’s structure.</strong> Before committing a conclusion to a deliverable, stress-test its logical integrity. The scientist lays out hypothesis, data, and conclusion and prompts: <em>act as a skeptical peer reviewer. Are there logical leaps or unsupported claims in this argument? Does the conclusion necessarily follow from the evidence?</em> The model will not always catch the real flaw, but it will catch some flaws — and the ones it surfaces are the cheapest to fix before writing begins.</p>
+<p><strong>Red-team your own conclusion.</strong> The most valuable single move in the entire workflow. Once a position is settled, instruct the model to argue against it. <em>I am going to argue that the contract is unenforceable due to ambiguity. You act as opposing counsel — what are the three strongest counter-arguments?</em> This is the partner-mindset move from the Part II intro turned all the way up: the human deliberately picks the foil, the model populates it, and the position that survives this kind of pressure-testing is genuinely stronger than the one that did not. The legal profession has formalised the practice for centuries. The AI makes it cheap enough to apply to ordinary memos.</p>
+</section>
+<section class="level3" id="phase-3-communication">
+<h3 class="anchored" data-anchor-id="phase-3-communication">Phase 3 — communication</h3>
+<p>After the work of research and analysis comes the work of conveying it. Here the AI’s role shifts again — from research assistant and analytical sparring partner to writing coach and presentation editor. The human remains the author. The model accelerates the mechanics around the authoring.</p>
+<p><strong>Generate the outline first.</strong> Instead of starting from a blank page, hand the living document of research and analysis to the model and ask it to propose a multi-level outline for a final report that makes a clear, evidence-based argument. The first draft of the outline is almost never the final version, but it is a scaffold you can react to, which is much faster than building one from scratch.</p>
+<p><strong>Draft section by section.</strong> The one-shot report fallacy is defeated at the workflow level. Take one section of the outline at a time, hand the model the relevant findings and the talking points, and ask for a first draft of that section only. The human edits, the model rewrites, the human edits again. This is iterative augmentation, not subcontracted authorship. The text that emerges sounds like the author because the author chose every sentence’s direction even if the model produced the first version of the words.</p>
+<p><strong>Integrate evidence explicitly.</strong> A drafted section without its supporting data is a claim. As you draft each section, instruct the model to incorporate the specific analysis output that grounds it: <em>draft the Results section, referencing the t-test we ran on columns A and B and the visualisation it produced.</em> The cited evidence is what separates a defensible report from a confident one.</p>
+<p><strong>Ground citations in your own sources.</strong> While drafting, ask the model to link claims back to the documents the research phase grounded itself in. <em>You mention “market saturation” in this paragraph — find the supporting sentence in the attached Analyst Report Q3 and add an in-text citation.</em> The result is a paper trail your reviewers — and you, six months from now — can actually follow.</p>
+<p><strong>Tailor for the audience.</strong> The same findings have to land differently for different readers. <em>Rewrite this five-page technical analysis as a one-page executive summary for the CEO, focused on business implications and recommended actions.</em> The model is remarkably good at this kind of stylistic translation, partly because it has read every memo ever written.</p>
+<p><strong>Anticipate the hard questions.</strong> Before the report or presentation ships, simulate the toughest reader. The lawyer uploads the final brief and asks: <em>act as the presiding judge — what are the three hardest questions you would ask me about this argument, and help me draft concise, evidence-based answers.</em> The pre-mortem catches what the post-mortem would have made expensive.</p>
+<p><strong>Polish last.</strong> Once the content and structure are settled, use the model as a copy editor. Grammar, consistency, clarity. Offload the mechanical part of polishing so the final hour goes to the strength of the ideas, not the placement of commas.</p>
+</section>
+</section>
+<section class="level2" id="critical-risks-for-the-knowledge-worker">
+<h2 class="anchored" data-anchor-id="critical-risks-for-the-knowledge-worker">Critical risks for the knowledge worker</h2>
+<p>The structured workflow is necessary but not sufficient. Even when the technique is correct, the worker’s own mind interacts with the tool in ways that introduce new failure modes. These are psychological rather than technical. The technology does not cause them. It <em>amplifies</em> tendencies that were already there.</p>
+<section class="level3" id="authority-bias-and-the-confidence-illusion">
+<h3 class="anchored" data-anchor-id="authority-bias-and-the-confidence-illusion">Authority bias and the confidence illusion</h3>
+<p>Humans defer to perceived authority. The modern AI writes with fluency, grammatical confidence, and a quiet certainty that older interfaces never managed. The combination is a cognitive trap: the more articulate the output, the less likely we are to scrutinise it, even when the content is fabricated. A scientist short on time accepts the model’s summary of a paper without checking the original, and only later discovers the paper does not say what the summary claimed. The structured workflow’s verification steps are an antidote to this, but the antidote works only if the habit is real. <em>Trust but verify</em> is a sentence that loses its meaning if you say it twice and never do it.</p>
+</section>
+<section class="level3" id="the-confirmation-bias-echo-chamber">
+<h3 class="anchored" data-anchor-id="the-confirmation-bias-echo-chamber">The confirmation-bias echo chamber</h3>
+<p>Confirmation bias is the natural human tendency to seek out information that confirms what one already believes. A language model trained to be helpful will dutifully supply that information when asked. The analyst who already believes a campaign is failing prompts <em>find data showing our recent social campaign has low engagement</em>, and that is what they get back — without the contrasting data the same prompt could have been written to surface. The chatbot does not push back; it pattern-matches to the request. The red-teaming move from the analysis phase is the direct counter: deliberately ask the model to argue against your tentative conclusion before you commit to it. The discipline is to do this when the tentative conclusion is the one you want to be true.</p>
+</section>
+<section class="level3" id="deskilling-and-cognitive-atrophy">
+<h3 class="anchored" data-anchor-id="deskilling-and-cognitive-atrophy">Deskilling and cognitive atrophy</h3>
+<p>The longest-horizon risk is also the quietest. If a junior lawyer leans on the model to summarise case law, the lawyer may never develop the skill of identifying a subtle distinction unaided. If a marketing analyst always uses the model to generate strategic frameworks, their own strategic thinking weakens over time. The point of augmentation is to free human attention for higher-order judgement, but the same lever, applied without discipline, lets the higher-order judgement atrophy with it. The empirical evidence is still thin and recent — the field experiments on consultants using GPT-4 found measurable quality gains on tasks inside the model’s competence and measurable degradation on tasks just outside it,<a class="footnote-ref" href="#fn5" id="fnref5" role="doc-noteref"><sup>5</sup></a> including a tendency for the user to stop noticing the model’s mistakes when the prose looked good. The pattern is what gets called the <em>jagged frontier</em>: the model is sharply better than you at some tasks and quietly worse at others, and the jagged border does not announce itself. Part III returns to the societal frame of this risk; the knowledge worker’s specific obligation is to keep practising the skill the model is doing for them. Periodically do the task without the tool — not for nostalgia, but as the only way to know whether your own competence is still intact.</p>
+</section>
+</section>
+<section class="level2" id="augmentation-not-automation">
+<h2 class="anchored" data-anchor-id="augmentation-not-automation">Augmentation, not automation</h2>
+<p>The arrival of AI does not mark the end of knowledge work. It marks a shift in what the work consists of. The structured workflow in this chapter is more than a set of techniques; it is a deliberate, techno-pragmatist choice. The future of knowledge work is not automation. It is augmentation, and the difference is whose name is on the final document.</p>
+<p>The macroeconomics is honest about where this lands. The consultancy projections of the early 2020s — McKinsey’s $2.6–4.4 trillion of annual potential, the trillion-dollar GDP impacts on every magazine cover — make for striking headlines. The more careful task-based analyses bound generative AI’s contribution to total factor productivity at something like half a percent per decade,<a class="footnote-ref" href="#fn6" id="fnref6" role="doc-noteref"><sup>6</sup></a> which is a meaningful number but not a civilisational one. The gains are real. The unprecedented transformation is not. The technology is a powerful instrument; it does what instruments do, which is reshape the work of the people who use it well and humble the people who don’t.</p>
+<p>The new core competency for the knowledge worker is no longer the ability to find an answer — that capability is now widely commoditised. It is the older, harder skill of asking the right question, evaluating what comes back, and integrating it into a judgement only the human can sign. The most durable framing of this came out of the augmentation literature long before the current model generation: humans and AI working as collaborators, each doing the part the other cannot.<a class="footnote-ref" href="#fn7" id="fnref7" role="doc-noteref"><sup>7</sup></a> The structured workflow in this chapter is one concrete way to live inside that framing.</p>
+<p>For the worker doing the daily labour, this means a practice that treats the model as a brilliant junior colleague — one who has read more than you ever will, can produce a draft in seconds, and will sometimes confidently invent the central fact of the paragraph. For the reader downstream — the policymaker, the executive, the citizen receiving the briefing — it means a healthy scepticism about what arrives on your screen. Not enough to discount every AI-touched document, because soon every document will have been AI-touched. Just enough to ask, of the analyst who handed it to you, what they did to verify it. The answer to that question is the entire content of this chapter.</p>
+</section>
+<section class="footnotes footnotes-end-of-document" id="footnotes" role="doc-endnotes">
+<hr/>
+<ol>
+<li id="fn1"><p>Noy, S., &amp; Zhang, W. <em>Experimental evidence on the productivity effects of generative artificial intelligence.</em> Science 381 (6654): 187–192, 2023. The canonical writing-tasks RCT: 444 college-educated professionals, ChatGPT reduces time-to-completion by about 37% and raises output quality by 0.45 SDs, with the largest gains accruing to the lowest-baseline writers.<a class="footnote-back" href="#fnref1" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Brynjolfsson, E., Li, D., &amp; Raymond, L. <em>Generative AI at Work.</em> NBER Working Paper 31161, 2023. A field deployment of an LLM-based customer-support copilot at a Fortune 500 firm; ~14% productivity uplift, concentrated in novice and low-skilled workers.<a class="footnote-back" href="#fnref2" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Peng, S., Kalliamvakou, E., Cihon, P., &amp; Demirer, M. <em>The Impact of AI on Developer Productivity: Evidence from GitHub Copilot.</em> arXiv:2302.06590, 2023. The Copilot RCT: developers with the assistant enabled complete the task 55.8% faster than the control group.<a class="footnote-back" href="#fnref3" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Eloundou, T., Manning, S., Mishkin, P., &amp; Rock, D. <em>GPTs are GPTs: An Early Look at the Labor Market Impact Potential of Large Language Models.</em> arXiv:2303.10130, 2023. Task-level exposure scoring covering roughly 80% of US occupations; knowledge-work roles cluster at the top of the exposure distribution.<a class="footnote-back" href="#fnref4" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Dell’Acqua, F., et al. <em>Navigating the Jagged Technological Frontier.</em> Field experiment with 758 BCG consultants assigned tasks inside and outside GPT-4’s frontier; inside-frontier tasks saw a ~40% quality lift, outside-frontier tasks saw a measurable <em>decline</em>, and users persistently failed to identify which side of the frontier any given task lived on. Summarised at BCG, <em>How People Create — and Destroy — Value with Generative AI</em>, 2023.<a class="footnote-back" href="#fnref5" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Acemoglu, D. <em>The Simple Macroeconomics of AI.</em> MIT Department of Economics working paper, April 2024. Task-based model bounding generative AI’s contribution to total-factor productivity at roughly 0.5–0.7% over a decade — sharply below the consultancy projections of the same period.<a class="footnote-back" href="#fnref6" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Daugherty, P. R., &amp; Wilson, H. J. <em>Collaborative Intelligence: Humans and AI Are Joining Forces.</em> Harvard Business Review, July–August 2018. The canonical statement of the augmentation-not-automation framing the chapter conclusion endorses.<a class="footnote-back" href="#fnref7" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+<div class="nav-page nav-page-previous">
+<a aria-label="Working With AI" class="pagination-link" href="../2_applications/intro.html">
+<i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>  <span class="chapter-title">Working With AI</span></span>
+</a>
+</div>
+<div class="nav-page nav-page-next">
+<a aria-label="AI for Scientific Research" class="pagination-link" href="../2_applications/science.html">
+<span class="nav-page-text"><span class="chapter-number">9</span>  <span class="chapter-title">AI for Scientific Research</span></span> <i class="bi bi-arrow-right-short"></i>
+</a>
+</div>
+</nav>
+</div> <!-- /content -->
+<script src="/data.js"></script><script src="/books/reader.js"></script></body></html>

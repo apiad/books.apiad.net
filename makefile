@@ -28,9 +28,9 @@ inject:
 # === Source rendering ===
 
 render-mhai:
-	cd ../books-mhai/english && quarto render --to html
+	cd ../books-mhai && quarto render --to html
 	mkdir -p books/mhai
-	rsync -a --delete --exclude='*.pdf' --exclude='*.epub' ../books-mhai/english/_book/ books/mhai/
+	rsync -a --delete --exclude='*.pdf' --exclude='*.epub' ../books-mhai/_book/ books/mhai/
 
 render-chatbots:
 	cd ../books-chatbots/src && quarto render --to html

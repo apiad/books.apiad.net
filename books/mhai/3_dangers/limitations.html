@@ -3,7 +3,7 @@
 <meta charset="utf-8"/>
 <meta content="quarto-1.7.30" name="generator"/>
 <meta content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
-<title>13  The limits of language models – Mostly Harmless AI</title>
+<title>15  Limits of Language Models – Mostly Harmless AI</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -63,6 +63,34 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 <link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@600;700;800&amp;family=Fira+Code:wght@400;500&amp;display=swap" rel="stylesheet"/><link href="/manifest.json" rel="manifest"/><script src="/sw-register.js"></script><meta content="#0f0f0f" name="theme-color"/><meta content="yes" name="apple-mobile-web-app-capable"/><link href="/icon-192.png" rel="apple-touch-icon"/><link href="/icon-192.png" rel="icon" sizes="192x192" type="image/png"/></head>
 <body class="nav-sidebar floating quarto-light">
 <div id="quarto-search-results"></div>
@@ -72,7 +100,7 @@ ul.task-list li input[type="checkbox"] {
 <button aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="quarto-btn-toggle btn" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="button" type="button">
 <i class="bi bi-layout-text-sidebar-reverse"></i>
 </button>
-<nav aria-label="breadcrumb" class="quarto-page-breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../3_dangers/index.html">Dangers of AI</a></li><li class="breadcrumb-item"><a href="../3_dangers/limitations.html"><span class="chapter-number">13</span>  <span class="chapter-title">The limits of language models</span></a></li></ol></nav>
+<nav aria-label="breadcrumb" class="quarto-page-breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../3_dangers/index.html">Dangers</a></li><li class="breadcrumb-item"><a href="../3_dangers/limitations.html"><span class="chapter-number">15</span>  <span class="chapter-title">Limits of Language Models</span></a></li></ol></nav>
 <a aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="flex-grow-1" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="navigation">
 </a>
 <button aria-label="Search" class="btn quarto-search-button" onclick="window.quartoOpenSearch();" type="button">
@@ -118,13 +146,13 @@ ul.task-list li input[type="checkbox"] {
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../intro.html">
-<span class="menu-text">A Brief History of Artificial Intelligence</span></a>
+<span class="menu-text">A Brief History of AI</span></a>
 </div>
 </li>
 <li class="sidebar-item sidebar-item-section">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../1_foundations/index.html">
-<span class="menu-text">Foundations of AI</span></a>
+<span class="menu-text">Foundations</span></a>
 <a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-1" data-bs-toggle="collapse" role="navigation">
 <i class="bi bi-chevron-right ms-2"></i>
 </a>
@@ -133,7 +161,7 @@ ul.task-list li input[type="checkbox"] {
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../1_foundations/ai.html">
-<span class="menu-text"><span class="chapter-number">1</span>  <span class="chapter-title">Foundations of Artificial Intelligence</span></span></a>
+<span class="menu-text"><span class="chapter-number">1</span>  <span class="chapter-title">Classical AI</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
@@ -144,20 +172,26 @@ ul.task-list li input[type="checkbox"] {
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/deep-learning.html">
+<span class="menu-text"><span class="chapter-number">3</span>  <span class="chapter-title">Deep Learning</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../1_foundations/llms.html">
-<span class="menu-text"><span class="chapter-number">3</span>  <span class="chapter-title">Generative AI and Large Language Models</span></span></a>
+<span class="menu-text"><span class="chapter-number">4</span>  <span class="chapter-title">Language Modeling</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
-<a class="sidebar-item-text sidebar-link" href="../1_foundations/apps.html">
-<span class="menu-text"><span class="chapter-number">4</span>  <span class="chapter-title">Techniques for LLM Deployment</span></span></a>
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/generative.html">
+<span class="menu-text"><span class="chapter-number">5</span>  <span class="chapter-title">Generative AI</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
-<a class="sidebar-item-text sidebar-link" href="../1_foundations/optimization.html">
-<span class="menu-text"><span class="chapter-number">5</span>  <span class="chapter-title">Optimization of LLMs</span></span></a>
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/agentic.html">
+<span class="menu-text"><span class="chapter-number">6</span>  <span class="chapter-title">Agentic AI</span></span></a>
 </div>
 </li>
 </ul>
@@ -165,7 +199,7 @@ ul.task-list li input[type="checkbox"] {
 <li class="sidebar-item sidebar-item-section">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../2_applications/index.html">
-<span class="menu-text">Applications of AI</span></a>
+<span class="menu-text">Applications</span></a>
 <a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-2" data-bs-toggle="collapse" role="navigation">
 <i class="bi bi-chevron-right ms-2"></i>
 </a>
@@ -174,37 +208,43 @@ ul.task-list li input[type="checkbox"] {
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../2_applications/intro.html">
-<span class="menu-text"><span class="chapter-number">6</span>  <span class="chapter-title">AI for Critical Thinkers</span></span></a>
+<span class="menu-text"><span class="chapter-number">7</span>  <span class="chapter-title">Working With AI</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
-<a class="sidebar-item-text sidebar-link" href="../2_applications/research.html">
-<span class="menu-text"><span class="chapter-number">7</span>  <span class="chapter-title">AI for Knowledge Workers</span></span></a>
+<a class="sidebar-item-text sidebar-link" href="../2_applications/knowledge-work.html">
+<span class="menu-text"><span class="chapter-number">8</span>  <span class="chapter-title">AI for Knowledge Work</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/science.html">
+<span class="menu-text"><span class="chapter-number">9</span>  <span class="chapter-title">AI for Scientific Research</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../2_applications/coding.html">
-<span class="menu-text"><span class="chapter-number">8</span>  <span class="chapter-title">AI for Software Development</span></span></a>
+<span class="menu-text"><span class="chapter-number">10</span>  <span class="chapter-title">AI for Software Development</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../2_applications/education.html">
-<span class="menu-text"><span class="chapter-number">9</span>  <span class="chapter-title">AI for Educators and Learners</span></span></a>
+<span class="menu-text"><span class="chapter-number">11</span>  <span class="chapter-title">AI for Education and Learning</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../2_applications/creative.html">
-<span class="menu-text"><span class="chapter-number">10</span>  <span class="chapter-title">AI for Creative Professionals</span></span></a>
+<span class="menu-text"><span class="chapter-number">12</span>  <span class="chapter-title">AI for Creative Work</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../2_applications/policy.html">
-<span class="menu-text"><span class="chapter-number">11</span>  <span class="chapter-title">AI for Policy-Makers</span></span></a>
+<span class="menu-text"><span class="chapter-number">13</span>  <span class="chapter-title">AI for Policy and Governance</span></span></a>
 </div>
 </li>
 </ul>
@@ -212,7 +252,7 @@ ul.task-list li input[type="checkbox"] {
 <li class="sidebar-item sidebar-item-section">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../3_dangers/index.html">
-<span class="menu-text">Dangers of AI</span></a>
+<span class="menu-text">Dangers</span></a>
 <a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-3" data-bs-toggle="collapse" role="navigation">
 <i class="bi bi-chevron-right ms-2"></i>
 </a>
@@ -221,19 +261,19 @@ ul.task-list li input[type="checkbox"] {
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../3_dangers/alignment.html">
-<span class="menu-text"><span class="chapter-number">12</span>  <span class="chapter-title">Why Artificial Intelligence is Hard</span></span></a>
+<span class="menu-text"><span class="chapter-number">14</span>  <span class="chapter-title">The Alignment Problem</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link active" href="../3_dangers/limitations.html">
-<span class="menu-text"><span class="chapter-number">13</span>  <span class="chapter-title">The limits of language models</span></span></a>
+<span class="menu-text"><span class="chapter-number">15</span>  <span class="chapter-title">Limits of Language Models</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../3_dangers/risks.html">
-<span class="menu-text"><span class="chapter-number">14</span>  <span class="chapter-title">The Actual Risks of AI</span></span></a>
+<span class="menu-text"><span class="chapter-number">16</span>  <span class="chapter-title">Risks of AI</span></span></a>
 </div>
 </li>
 </ul>
@@ -241,7 +281,7 @@ ul.task-list li input[type="checkbox"] {
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../epilogue.html">
-<span class="menu-text">Epilogue: The Road Ahead</span></a>
+<span class="menu-text">The Road Ahead</span></a>
 </div>
 </li>
 </ul>
@@ -253,236 +293,157 @@ ul.task-list li input[type="checkbox"] {
 <nav class="toc-active" id="TOC" role="doc-toc">
 <h2 id="toc-title">Table of contents</h2>
 <ul class="collapse">
-<li><a class="nav-link active" data-scroll-target="#how-do-llms-learn" href="#how-do-llms-learn" id="toc-how-do-llms-learn">How do LLMs learn?</a></li>
-<li><a class="nav-link" data-scroll-target="#context" href="#context" id="toc-context">Context</a></li>
-<li><a class="nav-link" data-scroll-target="#biases" href="#biases" id="toc-biases">Biases</a></li>
-<li><a class="nav-link" data-scroll-target="#sec-hallucinations" href="#sec-hallucinations" id="toc-sec-hallucinations">Hallucinations</a></li>
-<li><a class="nav-link" data-scroll-target="#the-illusion-of-reasoning" href="#the-illusion-of-reasoning" id="toc-the-illusion-of-reasoning">The Illusion of Reasoning</a></li>
+<li><a class="nav-link active" data-scroll-target="#plausibility-not-truth" href="#plausibility-not-truth" id="toc-plausibility-not-truth">Plausibility, not truth</a></li>
+<li><a class="nav-link" data-scroll-target="#the-shape-of-the-argument" href="#the-shape-of-the-argument" id="toc-the-shape-of-the-argument">The shape of the argument</a></li>
+<li><a class="nav-link" data-scroll-target="#sec-hallucinations" href="#sec-hallucinations" id="toc-sec-hallucinations">Fluent fabrication</a></li>
+<li><a class="nav-link" data-scroll-target="#what-the-model-can-hold" href="#what-the-model-can-hold" id="toc-what-the-model-can-hold">What the model can hold</a></li>
+<li><a class="nav-link" data-scroll-target="#asymmetric-and-brittle-memory" href="#asymmetric-and-brittle-memory" id="toc-asymmetric-and-brittle-memory">Asymmetric and brittle memory</a></li>
+<li><a class="nav-link" data-scroll-target="#the-biases-it-inherits" href="#the-biases-it-inherits" id="toc-the-biases-it-inherits">The biases it inherits</a></li>
+<li><a class="nav-link" data-scroll-target="#the-depth-ceiling-on-reasoning" href="#the-depth-ceiling-on-reasoning" id="toc-the-depth-ceiling-on-reasoning">The depth ceiling on reasoning</a></li>
+<li><a class="nav-link" data-scroll-target="#the-reliability-ceiling" href="#the-reliability-ceiling" id="toc-the-reliability-ceiling">The reliability ceiling</a></li>
+<li><a class="nav-link" data-scroll-target="#what-this-chapter-delivered" href="#what-this-chapter-delivered" id="toc-what-this-chapter-delivered">What this chapter delivered</a></li>
 </ul>
 </nav>
 </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
-<header class="quarto-title-block default" id="title-block-header"><nav aria-label="breadcrumb" class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../3_dangers/index.html">Dangers of AI</a></li><li class="breadcrumb-item"><a href="../3_dangers/limitations.html"><span class="chapter-number">13</span>  <span class="chapter-title">The limits of language models</span></a></li></ol></nav>
+<header class="quarto-title-block default" id="title-block-header"><nav aria-label="breadcrumb" class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../3_dangers/index.html">Dangers</a></li><li class="breadcrumb-item"><a href="../3_dangers/limitations.html"><span class="chapter-number">15</span>  <span class="chapter-title">Limits of Language Models</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="quarto-section-identifier" id="sec-limitations"><span class="chapter-number">13</span>  <span class="chapter-title">The limits of language models</span></span></h1>
+<h1 class="title"><span class="quarto-section-identifier" id="sec-limitations"><span class="chapter-number">15</span>  <span class="chapter-title">Limits of Language Models</span></span></h1>
 </div>
 <div class="quarto-title-meta">
 </div>
 </header>
-<p>In this chapter we will examine what are the main implications of how LLMs work, and what inherent limitations this entails. We’ll touch upon four main types of issues.</p>
-<p>First, we will look at reasoning skills, and argue why LLMs lack the capability to perform open-ended reasoning to arbitrary levels of complexity. Next, we’ll discuss the many issues that arise from the limited context size, including limitations for long-term and precise recall. Then, we’ll talk about biases and misrepresentation issues arising from both the training data and the way these models are fine-tuned. Finally, we’ll look at the most insidious problem in statistical language modeling, hallucinations, and argue why eliminating them completely might require a new paradigm altogether.</p>
-<p>But before that deep dive, let’s go back to how LLMs learn and contrast it with how humans learn. This comparison will give us some insights into the reasons for the limitations of LLMs.</p>
-<section class="level2" id="how-do-llms-learn">
-<h2 class="anchored" data-anchor-id="how-do-llms-learn">How do LLMs learn?</h2>
-<p>Regarding the differences between how large language models and humans learn language, a few key points stand out. First, the scale is vastly different—large models require billions of training examples to generate grammatically correct sentences, while human children need far fewer. This has sparked debate in linguistics about nature versus nurture in language acquisition. Is there a pre-programmed structure in the brain for learning grammar, or is it all learned during childhood? Although I’m not an expert in linguistics, we know that machine learning models with built-in biases for specific problems can learn more easily and with less data. It makes sense that there might be similar architectural designs in the human brain.</p>
-<p>However, we also know that backpropagation, the learning algorithm used in large language models, is biologically impossible. The neural networks in our brains function differently than those in artificial models. This fundamental difference in learning algorithms could impact how much these models truly understand.</p>
-<p>Another important distinction is symbolic grounding. When humans learn language, they not only learn relationships between words but also connections to real-world objects. Current LLMs lack this grounding, which could affect their understanding of language.</p>
-<p>Symbols, like the sound of cats or the word “cat” in a text, connect to real-life anchors, such as an actual cat. Grounding is crucial in language acquisition because children first learn concepts they experience daily, like mom, dad, food, and home. Only later do they make connections with abstract ideas like ethical values or metacognition, that can’t be directly tied to experiences.</p>
-<p>So, humans learn language while interacting with the real world. Language is grounded in physical experiences and other sensory inputs like images, touch, sound, and taste. This contrasts with large language models that only learn correlations between words without grounding their meaning in experience.</p>
-<p>For example, when you say “the apple is red” to a large language model, it recognizes this as a likely true sentence due to context. However, for a human, the same phrase connects the abstract symbols with experiences of what an apple looks like, tastes like, and feels like. This shows that language models reason differently than humans when it comes to real-world concepts.</p>
-<p>One could argue that humans can reason about purely symbolic things, like math. Even though numbers might be grounded in physical notions of quantity, abstract fields of math involve humans reasoning by manipulating symbols and learning correlations between them. In this sense, there may be a case for language models to be able to reason similarly in certain contexts.</p>
-<p>In summary, reasoning in LLMs, in its current limited form, involves understanding how words, sentences, and contexts relate and appear together. This provides a certain level of linguistic comprehension. However, this level of understanding differs greatly from that of humans or even animals with primitive intelligence.</p>
+<p>Every limit in this chapter follows from a single architectural fact. A language model is trained to predict the next plausible token, not the next true one. Fluent fabrications and lost-in-the-middle context are the visible faces; reasoning that collapses past the training distribution and a reliability ceiling that no scaling pass has yet closed are the deeper ones. All of them are downstream of that one design choice. METR’s 2025–26 horizon measurements pin down where the ceiling sits; a 2024 formal result from Kalai and Vempala explains why one half of it cannot be designed away. My job in this chapter is to make the chain from cause to consequence legible, separate the gaps that next year’s model might close from the ceilings that are architectural, and leave you with a clear-eyed account of what you can and cannot trust an LLM to do.</p>
+<section class="level2" id="plausibility-not-truth">
+<h2 class="anchored" data-anchor-id="plausibility-not-truth">Plausibility, not truth</h2>
+<p>The training of a language model is covered end-to-end in <a href="../1_foundations/llms.html">Chapter 4</a>. For this chapter, one feature of the procedure matters: the model is optimised to assign high probability to text that looks like its training corpus. It is not optimised to be right. It is optimised to be plausible. <em>Plausibility is an approximation of truth</em> in domains where the corpus is mostly truthful — which is how the technology works at all — but the optimisation target itself never mentions truth. The asymmetry between <em>plausible</em> and <em>true</em> is the source of every failure mode in the rest of this chapter. Keep it in mind as you read.</p>
+<p>A second contrast is also worth holding. Humans learn language with their hands and eyes and ears on a real world; symbols are anchored in objects, actions, and consequences. LLMs learn from text alone. When the model produces the sentence <em>the apple is red</em>, it has correlated the words. When you produce the same sentence, you have a fruit-shape, a colour, a weight, a smell. The grounding gap is not the cause of every failure below, but it is the cheapest way to remember why a language model can be fluent and confidently wrong at the same time.</p>
+<p>Bender, Gebru, McMillan-Major and Mitchell put this in famous form: an LLM is a <em>stochastic parrot</em>, a system that manipulates linguistic form without access to meaning in the grounding-theoretic sense.<a class="footnote-ref" href="#fn1" id="fnref1" role="doc-noteref"><sup>1</sup></a> You can quarrel with the polemic in their paper and still accept the technical claim, which is the one I am borrowing here. The model has read the word <em>apple</em> a billion times. It has never tasted one. The optimisation target was form. The output is form. The reader supplies the meaning.</p>
+<p>That root fact splits into a family of consequences. The rest of the chapter walks them one at a time, then closes by showing how they compound into an empirical ceiling that no scaling pass has yet closed.</p>
 </section>
-<section class="level2" id="context">
-<h2 class="anchored" data-anchor-id="context">Context</h2>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This section is under construction.</p>
-</div>
-</div>
-</section>
-<section class="level2" id="biases">
-<h2 class="anchored" data-anchor-id="biases">Biases</h2>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This section is under construction.</p>
-</div>
-</div>
+<section class="level2" id="the-shape-of-the-argument">
+<h2 class="anchored" data-anchor-id="the-shape-of-the-argument">The shape of the argument</h2>
+<p>I want you to read what follows as a single argument, not as a list of separate complaints. Concretely: a legal brief that cites a case that does not exist; a meeting summary that quietly invents a decision someone never made; a chain of reasoning whose third step does not follow from the second. Each section below names a place where the gap between <em>plausible</em> and <em>true</em> surfaces as a specific failure of trust. Fluent fabrication is the gap visible in the generated sentence. Context recall is the gap visible across the prompt. Memory and bias are the gap visible across the training distribution. Reasoning is the gap visible across computational depth. The reliability ceiling at the end of the chapter is what all four become when you measure them end-to-end on tasks that matter. The chain is the chapter. If any one section reads as a standalone essay, I have failed.</p>
+<p>The first place to look is the failure mode that expresses the root fact most directly — the one where plausibility-not-truth simply walks onto the page.</p>
 </section>
 <section class="level2" id="sec-hallucinations">
-<h2 class="anchored" data-anchor-id="sec-hallucinations">Hallucinations</h2>
-<p>The term “hallucination” in the context of AI refers to the phenomenon where a large language model (LLM) or other generative AI system produces outputs that appear plausible and coherent, but do not accurately reflect reality or the intended purpose of the system. These hallucinations manifest as the generation of false, inaccurate, or nonsensical information the AI system presents with confidence, as if it were factual.</p>
-<p>First, a caveat. Unlike human hallucinations, which involve perceiving things that are not real, AI hallucinations are associated with the model producing unjustified responses or beliefs, rather than perceptual experiences. The name “hallucination” is therefore imperfect, and it often leads to mistakes as people tend to antropomorphize these models and make erroneous assumptions about how they work and the causes of these failures.</p>
-<p>However, we will stick to this name in this article because it is the prevalent nomenclature used everywhere people talk about AI. Just keep in mind we’re talking about something completely different to what the term “hallucination” means in general.</p>
-<section class="level3" id="real-world-implications-of-ai-hallucinations">
-<h3 class="anchored" data-anchor-id="real-world-implications-of-ai-hallucinations">Real-World Implications of AI Hallucinations</h3>
-<p>The occurrence of hallucinations in AI systems, and particularly in large language models (LLMs), can have significant consequences, especially in high-stakes applications such as healthcare, finance, or public safety. For example, a healthcare AI model that incorrectly identifies a malignant skin lession as benign can doom a patient. On the other hand, identifying a benign skin lesion as malignant could lead to unnecessary medical interventions, also causing harm to the patient. Similarly, in the financial sector, hallucinated outputs from an AI system could result in poor investment decisions with potentially devastating economic impacts.</p>
-<p>However, even in low-stakes applications, the insidious nature of hallucinations make then a fundamental barrier to the widespread adoption of AI. For example, imagine you’re using an LLM to generate summaries from audio transcripts of a meeting, extracting relevant talking points and actionable items. If the model tends to hallucinate once in a while, either failing to extract one key item, or worse, producing an spurious item, it will be virtually impossible for anyone to detect that without manually revising the transcript, thus rendering the whole application of AI in this domain useless.</p>
-<p>For this reason, one of the key challenges in addressing the real-world implications of language model hallucinations is the difficulty in effectively communicating the limitations of these systems to end-users. LLMs are trained to produce fluent, coherent outputs that can appear plausible, even when they are factually incorrect. If the end-users of an AI system are not sufficiently informed to review the output of the system with a critical eye, they may never spot any hallucinations. This leads to a chain of mistakes as the errors from the AI system propagate upstream through the layers of decision makers in an organization. Ultimately, you could be making a very bad decision that seems entirely plausible given all the available information because the source of the error –an AI hallucination– is impossible to detect.</p>
-<p>Thus, the development and deployment of LLMs with hallucination capabilities raises important ethical considerations. There is a need for responsible AI development practices that prioritize transparency, accountability, and the mitigation of potential harms. This includes establishing clear guidelines for testing and validating LLMs before real-world use, as well as implementing robust monitoring and oversight mechanisms to identify and address hallucinations as they arise.</p>
-<p>Crucially, there are absolutely zero generative AI systems today that can guarantee they don’t hallucinate. This tech is simply unreliable in fundamental ways, so every actor in this domain, from developers to users, must be aware there will be hallucinations in your system, and you must have guardrails in place to deal with the output of unreliable AIs. And this is so perverse because we are used to software just working. Whenever software doesn’t do what it should, that’s a bug. But hallucinations are not a bug of AI, at least in the current paradigm. As we will see in the next section, they are an inherent feature of the way generative models work.</p>
+<h2 class="anchored" data-anchor-id="sec-hallucinations">Fluent fabrication</h2>
+<p>The technical literature uses <em>hallucination</em> for the phenomenon where a generative model produces output that is fluent, internally coherent, and not anchored in any fact. The name is imperfect. A human hallucination is a perceptual event; the model is not perceiving anything. But the term has stuck and I will use it. Keep in mind that we are talking about something completely different from what the word means in clinical contexts.</p>
+<p>The danger of hallucination is not that it happens sometimes. It is that the model’s surface gives you no signal it is happening. A fluently-written wrong sentence and a fluently-written right one have, by construction, the same probability profile. You cannot read the model’s output and tell which one you got. In low-stakes settings this is annoying. In a medical summary, a legal brief, or a meeting transcript that quietly invents an action item nobody agreed to, it is dangerous in a way that is hard to detect until the consequences have already propagated through whoever read it next.</p>
+<p>This makes hallucination a different kind of bug from the ones we are used to. Conventional software either does what it should or it crashes; a fault is something you can see. Hallucination is a feature of the next-token training design, not a defect of any specific model, and the next two subsections explain why.</p>
+<section class="level3" id="why-hallucination-is-by-design">
+<h3 class="anchored" data-anchor-id="why-hallucination-is-by-design">Why hallucination is by design</h3>
+<p>A language model captures statistical patterns in text. It does not store explicit factual claims; it stores correlations. The reason this mostly works is that generating plausibly-sounding text has a high probability of reproducing something true, <em>provided</em> you trained on mostly truthful data. But these models are trained on corpora scraped from the open internet, which contains inaccuracies, half-truths, jokes, fictions, and outright fabrications, and the training procedure has no mechanism to distinguish them.</p>
+<p>Now suppose you ran the training only on factual data — pretending for a moment that there is enough of it, which there is not. The statistical nature of the model would still produce hallucinations. Imagine two factual sentences that differ in a single span: <em>Person A was born in year X</em> and <em>Person B was born in year Y</em>. The probability the model assigns to the mixed-up sentence <em>Person B was born in year X</em> is only marginally lower than the probability of either correct sentence, because the model treats the input as a sequence of words and assumes that small changes in the sequence produce small changes in plausibility.</p>
+<p>That smoothness assumption is not a bug. It is what lets the model generalise at all — generating a sentence it has never seen requires interpolating between sentences it has seen, and interpolating requires assuming the space is smooth. The problem is that facts are not smooth. A sentence is true or false; there is no halfway. The model has no internal mechanism to represent the cliff between them. It encodes a smooth surface, and on a smooth surface the fabricated sentence sits a small step away from the true one, with a probability that reflects that small step rather than the chasm between truth and falsehood.</p>
+<p>Kalai and Vempala made this argument formal in 2024.<a class="footnote-ref" href="#fn2" id="fnref2" role="doc-noteref"><sup>2</sup></a> They prove that any pretrained language model that is <em>calibrated</em> — meaning the probability it assigns to a piece of information matches the frequency of that information in natural text — must hallucinate arbitrary facts at a rate bounded below by the fraction of facts that appear exactly once in the training corpus. For a power-law corpus like the web, that fraction is large. The bound is independent of architecture, training algorithm, and data quality. It is a property of doing calibrated probabilistic prediction over finite text. The implication is uncomfortable: the more honest your model is about how often it has seen a fact, the more it will fabricate the facts it has only seen once. Post-training alignment like RLHF can suppress the hallucination rate by breaking calibration, but that is a trade, not a fix.</p>
 </section>
-<section class="level3" id="why-hallucinations-happen">
-<h3 class="anchored" data-anchor-id="why-hallucinations-happen">Why Hallucinations Happen?</h3>
-<p>There are many superficial reasons for hallucinations, from data and modelling problems, to issues with prompting. However, the underlying cause of all hallucinations, at least in large language models, is that the current language modeling paradigm used in these systems is, by design, a hallucination machine. Let’s unpack that.</p>
-<p>As we saw in <span class="quarto-unresolved-ref">?sec-capabilities</span>, generative AI models, including LLMs, rely on capturing statistical patterns in their training data to generate outputs. Rather than storing explicit factual claims, LLMs implicitly encode information as statistical correlations between words and phrases. This means the models do not have a clear, well-defined understanding of what is true or false, they can just generate plausibly sounding text.</p>
-<p>The reason this mostly works, is because generating plausibly sounding text has a high probabilty of reproducing something that is true, provided you trained on mostly truthful data. But large language models (LLMs) are trained on vast corpora of text data from the internet, which contains inaccuracies, biases, and even fabricated information. So these models have “seen” many true sentences and thus picked up correlations between words that tend to generate true sentences, but they’ve also seen many variants of the same sentences which are slightly or even entirely wrong.</p>
-<p>So one of the primary reasons for the occurrence of hallucinations is the lack of grounding in authoritative knowledge sources. Without a strong foundation in verified, factual knowledge, the models struggle to distinguish truth from falsehood, leading to the generation of hallucinated outputs. But this is far from the only problem. Even if you only train on factual information—assuming there would be enough of such high-quality data to begin with—the statistical nature of language models make them susceptible to hallucinate.</p>
-<p>Suppose your model has only seen truthful sentences, and learned the correlations between words in these sentences. Imagine there are two very similar sentences, both factually true, that differ in just a couple of words –maybe a date and a name, for example “Person A was born in year X” and “Person B was born in year Y”. Given the way these models work, the probability of generating a mixed-up sentence like “Person B was born in year X” is only slightly smaller than generating either of the original sentences.</p>
-<p>What’s going on here is that the statistical model implicitely assumes that small changes in the input (the sequence of words) lead to small changes in the output (the probability of generating a sentence). In more technical terms, the statistical model assumes a smooth distribution, which is necessary because the amount of data the model needs to encode is orders of magnitude bigger than the memory (i.e., number of parameters) in the model. Thus, the models has to compress the training corpus, and compression implies loosing some of the information.</p>
-<p>In other words, statistical language models inherently assume that sentences very similar to what they have seen in the training data are also plausible sentences. They encode a smooth representation of language, and that’s fine, as long as you don’t equate plausible with factual. See, these models weren’t designed with factuality in mind. They were originally designed for tasks like translation, where plausibility and coherence are all that matters. It’s only when you turn them into answering machines that you run into a problem.</p>
-<p>The problem is there is nothing smooth about facts. A sentence is eithre factual or not, there are no degrees of truthfulness —for the most part; let’s not get dragged into epistemological discussions here. But LLMs cannot, by design, define a strict frontier between true and false sentences. All the frontiers are fuzzy, so there is no clear cutoff point where you can say, if a sentence has less than X value of perplexity then it is false. And even if you could define such a threshold, it would different for all sentences.</p>
-<p>You may ask why can’t we avoid using this “smooth” representation altogether. The reason is that you want to generate sentences that are not in the training set. This means you need to somehow guess that some sentences you have never seen are also plausible, and guessing means you have to make some assumptions. The smooth hypothesis is very reasonable —and computationally convenient, as these models are trained with gradient descent, which requieres smoothness in the loss function— again, as long as you don’t care about factuality. If you don’t compress the training data in this smooth, lossy way, you will simply I can’t wait for you to start training your own chatbot and building exciting applications with LLMs!not be able to generate novel sentences at all.</p>
-<p>In summary, this is the underlying reason why the current paradigm of generative AI will always hallucinate, no matter how good is your data and how ellaborated are your training procedures or guardrails. The statistical language modeling paradigm, at its core, is a hallucination machine. It is concocting plausibly-sounding sentences by mixing and matching words that is has seen together in similar contexts in the training set. It has no inherent notion of whether a given sentence is true or false. All it can tell is that it looks like sentences that appear in the training set.</p>
-<p>Now, a silver-lining could be this idea that even if some false sentences will unavoidably be generated, we can train the system to minimize their ocurrence by showing it lots and lots of high quality data. That is, can we push the probability of a hallucination to a sufficiently low value that, in practice, almost never happens? Recent research suggests that if there is a sentence that can be generated at all, no matter how low its base probability, then there is a prompt that will generate it with almost 100% certainty. This means that if we introduce malicious actors into our equation, we can never be sure our system can’t be jailbroken.</p>
-</section>
-<section class="level3" id="mitigating-hallucinations-in-ai">
-<h3 class="anchored" data-anchor-id="mitigating-hallucinations-in-ai">Mitigating Hallucinations in AI</h3>
-<p>So far we’ve argued that hallucinations are inherently impossible to eliminate completely. But this doesn’t mean we can’t do anything about it in practice. I want to end this article with a short summary of mitigation approaches that are being used today by researchers and developers.</p>
-<p>One key strategy is to incorporate external knowledge bases and fact-checking systems into the AI models. By grounding the models in authoritative, verified information sources, the risk of generating fabricated or inaccurate outputs can be reduced.</p>
-<p>Researchers are also exploring ways to develop more robust model architectures and training paradigms that are less susceptible to hallucinations. This may involve techniques like increasing model complexity, incorporating explicit reasoning capabilities, or using specialized training data and loss functions.</p>
-<p>Enhancing the transparency and interpretability of AI models is also crucial for addressing hallucinations. By making the models’ decision-making processes more transparent, it becomes easier to identify and rectify the underlying causes of hallucinations.</p>
-<p>Alongside these technical approaches, the development of standardized benchmarks and test sets for hallucination assessment is crucial. This will enable researchers and developers to quantify the prevalence and severity of hallucinations, as well as compare the performance of different models in this regard. Thus, if you can’t completely eliminate the problem, at least you can quantify it and make informed decisions about where and when it is safe enough to deploy a generative model.</p>
-<p>Finally, addressing the challenge of hallucinations in AI requires an interdisciplinary approach, involving collaboration between AI researchers, domain experts, and authorities in fields like scientific reasoning, legal argumentation, and other relevant disciplines. By fostering cross-disciplinary knowledge sharing and research, the understanding and mitigation of hallucinations can be further advanced.</p>
+<section class="level3" id="mitigations-and-their-ceiling">
+<h3 class="anchored" data-anchor-id="mitigations-and-their-ceiling">Mitigations and their ceiling</h3>
+<p>None of this means we are helpless. Several mitigations work in practice and you should use them.</p>
+<p>Retrieval-augmented generation is the strongest lever today. You ground the model in a curated corpus at inference time; the model looks up evidence and is prompted to produce text that cites it. Done well, RAG converts a free-running generator into something closer to a paraphrase-and-summarise system over a known knowledge base. Kalai and Vempala note this directly: retrieval bypasses the lower bound because the fact is no longer arbitrary — it is the one in the retrieved document.</p>
+<p>Specialised fine-tuning on systematic domains works for the same structural reason. Arithmetic, code, formal logic — facts that can be checked by rule — carry no inherent hallucination floor. Training can drive these toward zero, and the second-generation reasoning models discussed later in the chapter do exactly that on the slice of problems where verification is mechanical.</p>
+<p>External verification — running the generated code, checking the generated SQL against the schema, asking a logical solver whether the generated proof step is valid — converts the model’s output from a final answer into a candidate that a deterministic system signs off on. Where you can build the verifier, you can recover trust. Where you cannot, you cannot.</p>
+<p>What none of these mitigations do is eliminate the underlying floor. You can push the rate down. You can route around it with retrieval. You can specialise out the cases where rule-checking is possible. You cannot get a generative model to guarantee zero hallucinations on open-ended generation, because the same machinery that lets it answer also lets it fabricate. Treat any system that promises otherwise as a marketing artefact.</p>
+<p>Even when the model is grounded in evidence you handed it directly, the trust problem is not yet solved. You also need it to actually read what you put in front of it. As it turns out, it doesn’t.</p>
 </section>
 </section>
-<section class="level2" id="the-illusion-of-reasoning">
-<h2 class="anchored" data-anchor-id="the-illusion-of-reasoning">The Illusion of Reasoning</h2>
-<p>Large language models often seem to be able to reason effectively. They can generate coherent and contextually relevant responses that resemble human reasoning. However, this apparent capability can be misleading.</p>
-<p>LLMs frequently make mistakes when faced with complex problems requiring extensive reasoning chains. Their responses may seem logical initially, but they often lack the depth and accuracy for sound reasoning. This is particularly evident in tasks that involve multiple steps or intricate logical deductions, where the model may falter and produce incorrect conclusions.</p>
-<p>This limitation is most evident in what I call first generation LLMs, which is basically anything before OpenAI’s o1 model. Second generation LLMs are a different deal altogether. These models are explicitly designed for open-ended, complicated reasoning tasks, and they certainly surpass previous models significantly. However, I will argue that these newer models, although a significant leap forward, are still fundamentally incapable of a very concrete form of logical reasoning, just as all previous models.</p>
-<p>Now, I know I will get a lot of flak, especially from some of the most ardient believers in the immediacy of AGI. To be clear, I’m not claiming AGI is impossible. On the contrary, I’m firmly on the computationalist side here, and I do believe machines are capable of achieving the same and superior levels of intelligence as any living, organic being. And I’m bullish on LLMs playing a major role in the AGI breakthrough. However, I think there are solid arguments to claim the current paradigm of ducktaping language models with external tools is fundamentally insufficient.</p>
-<p>I am one of the many researchers working on better ways to make LLMs interact with other computational systems to enhance their capabilities. So, in adition to discussing the limitations of the language modelling paradigm, I will also highlight existing strategies to enhance LLM reasoning, including conventional prompt engineering techniques that can be applied to first-generation models, and newer techniques that probably underpin the enhanced capabilities we’re are seeing in second-generation models.</p>
-<p>And finally, I will also attempt to address some of the most poignant counter arguments I’ve seen (and received myself) in discussions around the limitations of LLMs for reasoning. My hope is that, when you finish reading this article, we can have an informed and civil conversation, and, even if we disagree on the conclusions, we both come out better equiped to understand and deal with the upcoming wave of LLM applications.</p>
-<section class="level3" id="what-do-we-mean-by-reasoning-in-ai">
-<h3 class="anchored" data-anchor-id="what-do-we-mean-by-reasoning-in-ai">What do we mean by reasoning (in AI)?</h3>
-<p>But before we begin, let me address one specific quirk of this discussion. “Reasoning” is a very loaded term, that means a lot of things for different people—even for different groups people who should agree on these definitions. So I will attempt to define precisely what I mean by the phrase “LLMs cannot reason”.</p>
-<p>When AI folks claim LLMs cannot reason, they are not talking about any abstract, philosophical sense of the word “reason”, nor any of the many psychological and sociological nuances it may entail. No, they have a very specific, quantifiable, simplified notion of reasoning that comes straight out of math.</p>
-<p>Reasoning is, simply put, the capacity to draw logically sound conclusions from a given premise. In math, there are two main reasoning types or modes: deduction and induction. Induction is somewhat problematic because it involves generalizing claims from specific instances, and thus, it requires some pretty strong assumptions. In contrast, deduction is very straightforward. It is about applying a finite set of logical inference rules to obtain new provably true claims from existing true claims. It is the type of reasoning that mathematicians do all day long when proving new theorems.</p>
-<p>Thus, in the remaining of this article, when I say “LLMs cannot reason”, I’m simply saying there are—sometimes deceptible simple—deduction problems they inherently cannot solve. It is not a value judgement, or an opinion based on experience. It is a straightforward claim provable from the definition of deductive reasoning and the inherent limitations of LLMs given their architecture and functionality.</p>
+<section class="level2" id="what-the-model-can-hold">
+<h2 class="anchored" data-anchor-id="what-the-model-can-hold">What the model can hold</h2>
+<p>A language model has access to a finite slice of recent text — the <em>context window</em> — and nothing else. Everything beyond that window is invisible. The window has grown from a few thousand tokens in 2020 to over a million tokens in some 2025 models, and the headline figures are real. They are also not the whole story.</p>
+<p>Liu and colleagues at Stanford documented the failure mode that most users only notice once they have been bitten by it.<a class="footnote-ref" href="#fn3" id="fnref3" role="doc-noteref"><sup>3</sup></a> They constructed a multi-document question-answering task: hand the model k passages, exactly one of which contains the answer, and vary the position of the answering passage across all k slots. If the model is actually attending uniformly to its context, position should not matter. It does. Performance is highest when the relevant information sits at the very beginning or the very end of the prompt, and drops by something like fifteen percentage points when the same information is buried in the middle. They named the curve a U-shape, and the name is exact.</p>
+<p>The effect is not a quirk of one model. It shows up across closed and open models, across different context lengths, and persists even in models that were explicitly trained on long sequences. Extending the training context does not flatten the curve; the U-shape survives. A controlled key-value retrieval task — synthetic, no linguistic variation — produces the same pattern, which rules out the explanation that the model is being confused by the passages themselves.</p>
+<p>The practical consequence is that <em>the model has read the prompt</em> is a hopeful description, not a guarantee. You cannot assume that something you put in the middle of a long context will inform the answer. If you are building a RAG system, the retrieved evidence wants to live at the edges of the prompt, not folded into a dense middle. If you are pasting in a long document and asking the model to find a specific clause, you should expect the clause’s position to matter as much as its content. Liu’s recommendation — performance-as-a-function-of-position should be a standard benchmark — has not yet propagated to the marketing material.</p>
+<p>Context limits are about what the model sees on any given prompt. The next limit is about what it stored from training, and the shape that storage takes.</p>
 </section>
-<section class="level3" id="why-llms-cant-reason">
-<h3 class="anchored" data-anchor-id="why-llms-cant-reason">Why LLMs can’t reason</h3>
-<p>One significant limitation of language models regarding reasoning is their stochastic nature. These models generate outputs based on probabilistic predictions rather than deterministic logical rules. This means that even a well-structured prompt can yield different responses on different occasions due to the randomness in their decision-making process.</p>
-<p>Consequently, an LLM might arrive at a wrong conclusion purely by chance, leading to inconsistencies in reasoning. For example, when asked to solve a mathematical problem or make a logical inference, the model’s response may vary significantly depending on the random seed used during generation, undermining trust in its reasoning capabilities.</p>
-<p>Granted, you may set the temperature to zero effectively forcing the model to fix the output for a given input. But this output is still probabilistic, you’re just sampling the most likely continuation. The fact that the mapping between input and output hinges on a probabilistic distribution that encodes correlations between elements in the input and corresponding elements in the output is already suspicious. It would be very weird, although not impossible, that we just happened to converge on the right probability distribution that produces the correct output for every input, in terms of logical deduction rules.</p>
-<p>However, this limitation is still not definitive. But it gets worse.</p>
-<p>By design, large language models spend a fixed amount of computation per token processed. This means the amount of computation an LLM does before it produces the first output token is a function of just two numbers: the input size and the model size. So, if you ask an LLM to produce a yes or no question for a logical puzzle, all the “thinking” the model can do is some fixed—albeit huge—number of matrix multiplications that only depend on the input size. See where I’m going here?</p>
-<p>Now, consider that you have two different logical puzzles with the same input size, i.e., the same number of tokens. But one is an easy puzzle that can be solved with a short chain of deduction steps, while the other requires a much higher number of steps. Here is the kicker: any LLM will spend exactly the same amount of computation in both problems. This can’t be right, can it?</p>
-<p>A basic result in computational complexity theory is that some problems with very small inputs seem to require an exponentially high computational cost to be solved correctly. These are NP-complete problems, and most computer scientists believe there are no efficient algorithms to solve them. Crucially, a huge number of reasoning problems fall in this category, including the most basic logical puzzle of all—determining if a given logical formula can be satisfied.</p>
-<p>When faced with an instance of an NP-complete problem, an LLM will produce an answer after a fixed amount of computation defined solely by the input size. Now, by sheer size, some larger models might just spend enough computation to cover many smaller instances of NP-complete problems. As it happens, a huge constant function can be larger than an exponential function for smaller inputs. But crucially, we can always find instances of NP-complete problems that require, even in principle, a sufficiently large amount of computation to surpass the computational capacity of any LLM, no matter how big.</p>
-<p>But this means something even more profound. Ultimately, LLMs are not Turing-complete systems but essentially very large finite automata. While they can handle a wide range of tasks and produce outputs that appear sophisticated, their underlying architecture limits the types of problems they can solve.</p>
-<p>Turing completeness is the ability of a computational system to perform any computation given sufficient time and resources. Modern computers and many seemingly simple systems, such as cellular automata, are Turing complete systems. But LLMs are not, ironically.</p>
-<p>The reason is simple. We know from computability theory that any Turing complete system must be able to loop indefinitely. There are some problems—some reasoning tasks—where the only possible solution is to compute, and compute, and compute until some condition holds, and the amount of computation required cannot be known in advance. You need potentially unbounded computation to be Turing complete.</p>
-<p>And this is the final nail in the coffin. LLMs, by definition, are computationally bounded. No matter their size, there will always be problem instances—which we may not be able to identify beforehand—that require more computation than is available in the huge chain of matrix multiplications inside the LLM.</p>
-<p>Thus, when LLMs seem to tackle complex reasoning problems, they often solve specific instances of those problems rather than demonstrating general problem-solving capabilities. This might just be enough for practical purposes—we may never need to tackle the larger instances—but, in principle, LLMs are incapable of truly open-ended computation, which means they are incapable of true reasoning.</p>
-<p>Case closed, right?</p>
+<section class="level2" id="asymmetric-and-brittle-memory">
+<h2 class="anchored" data-anchor-id="asymmetric-and-brittle-memory">Asymmetric and brittle memory</h2>
+<p>Memory in a language model is not propositional. The model does not store a fact like <em>Paris is the capital of France</em> as a structured assertion; it stores the surface forms in which that assertion appeared, and the statistical correlations between those forms. Three failure modes — the reversal curse, verbatim memorisation, and adversarial brittleness — look superficially unrelated. They are three faces of the same property. Each is what happens when surface-form storage meets a use case that assumed propositional storage.</p>
+<section class="level3" id="the-reversal-curse-and-form-bound-recall">
+<h3 class="anchored" data-anchor-id="the-reversal-curse-and-form-bound-recall">The reversal curse and form-bound recall</h3>
+<p>Berglund and colleagues trained models on synthetic sentences of the form <em>“A is B”</em> and then asked the trained models <em>“who is B?”</em><a class="footnote-ref" href="#fn4" id="fnref4" role="doc-noteref"><sup>4</sup></a> Models that perfectly recalled the forward direction were at chance on the reverse. The model had not learned a relation between two entities; it had learned the surface ordering of two tokens. Recall the ordering and you get the answer. Reverse the ordering and the surface match is gone, and the answer is gone with it.</p>
+<p>You can dismiss this as a contrived experiment until you notice it in production. Ask a model <em>“who directed Inception?”</em> and the answer is reliable. Ask <em>“what films did Christopher Nolan direct?”</em> and watch the recall degrade — not always, but with a pattern that maps onto how often each direction of the relation appeared in the training text. The model is good at the form it has seen and worse at the form it has not, and there is no general way to predict from a user’s question which form the corpus carried.</p>
 </section>
-<section class="level3" id="counterarguments">
-<h3 class="anchored" data-anchor-id="counterarguments">Counterarguments</h3>
-<p>But wait!</p>
-<section class="level4" id="argument-1-humans-also-have-these-limitations">
-<h4 class="anchored" data-anchor-id="argument-1-humans-also-have-these-limitations">Argument 1: Humans Also Have these Limitations</h4>
-<p>The most common criticism I received against the assertion that LLMs cannot reason is that, sure, LLMs cannot reason, but neither can humans, right? I mean, humans can be stupendously irrational. But this argument is flawed on many levels, so let’s unpack it.</p>
-<p>First, while it is true that humans can make errors in reasoning, the human brain definitely possesses the capacity for open-ended reasoning, as evidenced by the more than 2000 years of solid math we have collectively built. Moreover, all college students—at least in quant fields—at some point have to solve structured problem-solving exercises that require them to apply logical reasoning to arrive at correct conclusions, such as proving theorems. So, while humans can be pretty stupid at times, we are certainly capable of the most rigorous reasoning when trained to do so.</p>
-<p>But even more importantly, this assertion is a red herring. Why the fact humans can’t do something immediately makes it ok for a piece of technology to suck at it? Imagine we did this with all our other tech. Sure, that airplane fell down and killed 300 people, but humans can’t fly, so there’s that. Or yes, that submarine imploded, but humans can’t breathe underwater. Or that nuclear power plant melted, but humans can’t stand 3000 degrees of heat, so what’s the big deal?</p>
-<p>No, we don’t do that. We compare any new piece of technology with our current best solution, and only if the new thing improves upon the old—at least on some metrics—do we consider it worthwhile.</p>
-<p>Granted, we often compare AI capabilities to human capabilities, but this is only because humans are the gold standard for the types of problems we often want AI systems to solve. So we compare LLM’s capacity to generate creative stories with our best writers, and we compare LLMs’ capacity for open-ended dialogue or for emphatic customer assistance with humans because there is nothing out there better than humans at these tasks.</p>
-<p>However, there are well-established systems—such as traditional SAT solvers—that excel in structured logical deduction and reasoning tasks. These systems are designed with rigorous validation mechanisms that ensure correctness and reliability in their outputs. They are basically flawless and incredibly fast. So, instead of comparing LLMs to humans in deductive reasoning, let’s compare them with the best solution we currently have for this problem. And there, LLMs definitely suck.</p>
+<section class="level3" id="verbatim-memorisation-and-privacy">
+<h3 class="anchored" data-anchor-id="verbatim-memorisation-and-privacy">Verbatim memorisation and privacy</h3>
+<p>Carlini and colleagues showed that models memorise verbatim chunks of their training data, and that memorisation grows with model size.<a class="footnote-ref" href="#fn5" id="fnref5" role="doc-noteref"><sup>5</sup></a> You can craft prompts that elicit personal email addresses, private code, copyrighted passages, and unique sequences that no statistical generalisation would produce. The original 2021 attack on GPT-2 was already enough to make this a security property of the model rather than a curiosity; subsequent work confirmed the pattern across every major model family.</p>
+<p>The trust consequence is independent of task accuracy. A model can score perfectly on a benchmark and simultaneously be a privacy liability, because the benchmark measures behaviour under nominal prompts and the leak is what happens under adversarial ones. If you are deploying an LLM trained on data you do not fully control, the question is not <em>whether</em> it has memorised sensitive content, but <em>how easily</em> the next user can extract it.</p>
 </section>
-<section class="level4" id="argument-2-randomness-is-a-feature-not-a-bug">
-<h4 class="anchored" data-anchor-id="argument-2-randomness-is-a-feature-not-a-bug">Argument 2: Randomness is a Feature, Not a Bug</h4>
-<p>The second most common criticism I received was regarding the stochastic nature of language models. To recap, I claim that since LLMs generate tokens in a probabilistic fashion—which is a fundamental feature of the paradigm—, their output is inherently unreliable when you require absolute accuracy instead of versatility.</p>
-<p>A lot of people correctly argued that, in fact, randomness is essential in problem-solving and a crucial feature of many of the same SAT solvers against I pretend to compare LLMs. How hypocritical of me, they claim, to posit randomness as a limitation when the most effective deductive reasoning algorithms we have are essentially random. And this is true, but only partially, and it makes all the difference. So let me explain.</p>
-<p>Randomness plays a vital role in many computational problem-solving techniques, particularly in search algorithms for hard (read NP-complete or NP-hard) problems. Modern SAT solvers, for example, often employ randomized search strategies to efficiently explore vast solution spaces. By introducing randomness into the search process, these solvers can escape local optima and discover satisfactory solutions more quickly than deterministic methods might allow. This ability to leverage randomness is a powerful tool in the arsenal of computational techniques, enabling systems to tackle complex problems that would otherwise be intractable.</p>
-<p>However—and here comes the crucial difference—using randomness in the search process does not imply that the entire reasoning process is inherently unreliable. Randomness is confined to the search phase of problem-solving, where it helps identify potential solutions—potential reasoning paths. However, once a candidate solution is found, a deterministic validation phase kicks in that rigorously checks the correctness of the proposed reasoning path.</p>
-<p>The distinction between the search and validation phases is paramount in understanding how randomness contributes to effective problem-solving in general. During the search phase, algorithms may employ random sampling or other stochastic methods to explore possibilities and generate potential solutions. This phase allows for flexibility and adaptability, enabling systems to navigate complex landscapes of potential answers.</p>
-<p>However, once a potential solution has been identified, it must undergo a validation process that is grounded in deterministic logic. This validation phase involves applying established rules and principles to confirm that the proposed solution meets all necessary criteria for correctness. As a result, any solution that passes this validation step can be confidently accepted as valid, regardless of how it was generated in the first place.</p>
-<p>You can have millions of monkeys typing in a typewriter, and at some point, one of them will randomly produce Romeo and Juliet, but only Shakespeare can filter the garbage from the gold and decide which pamphlet to publish.</p>
-<p>That silly metaphor means that randomness is good for exploring hypotheses but not for deciding which one to accept. For that, you need a deterministic, provably correct method that doesn’t rely on probabilities—at least if you want to solve the problem exactly.</p>
-<p>However, in stark contrast to traditional problem-solving systems like SAT solvers, LLMs lack a robust validation mechanism. While they can generate coherent and contextually relevant responses based on probabilistic reasoning, some of which may be correct reasoning chains, they do not possess a reliable method for verifying the accuracy of those outputs. The verification process is also stochastic and subject to hallucinations, rendering it utterly unreliable.</p>
-<p>So, since LLMs evaluate their own outputs using the same probabilistic reasoning they employ for generating them in the first place, there is an unavoidable risk that incorrect conclusions will be propagated as valid responses. The monkeys are the also the editors.</p>
-</section>
-<section class="level4" id="argument-3-llms-can-loop-indefinitely">
-<h4 class="anchored" data-anchor-id="argument-3-llms-can-loop-indefinitely">Argument 3: LLMs Can Loop Indefinitely</h4>
-<p>The final argument I want to address is the notion that LLMs can be made Turing-complete by duct-taping them with some Turing-complete gadget. Here’s a brief recap of what this means.</p>
-<p>LLMs have a fixed computational budget—a fixed number of matrix multiplications they perform per input token. This means there are problems that are inherently outside the realm of what they can solve. These problems fall into two categories.</p>
-<p>First, NP-Complete problems—such as the very straightforward problem of determining whether a logical formula is valid—are a class of decision problems for which no known polynomial-time solutions exist. Moreover, most experts believe no such algorithm can exist. Thus, these problems probably require an exponential amount of computation for sufficiently large instances. Thus, given the fixed computational budget of LLMs, no matter how big your stochastic parrot, there will always be a logical formula that is simply to large for it to solve.</p>
-<p>On the other hand, we have semi-decidable problems, those for which an algorithm can confirm a solution if one exists but may run indefinitely if no solution is found. For these problems, we simply have no option but to keep searching for a potentially unbounded amount of time. And since LLMs are computationally bounded, there are solvable problem instances that simply would require more computing steps than the LLM can produce.</p>
-<p>Now, all of the above is clear to anyone who even superficially understands how LLMs work. However, a common argument posited by critics is that LLMs can be rendered Turing complete by integrating them with external tools, such as code generators or general-purpose inference engines, or even easier, let’s wrap it in a recursive procedure that can simply call the LLM as many times as necessary.</p>
-<p>And this is true. You can trivially make an LLM Turing-complete, in principle, by duct-taping it with something that is already Turing-complete. You can also build a flame thrower with a bamboo stick, some duct tape, and a fully working flame thrower.</p>
-<p>However, simply making LLMs Turing complete in principle does not guarantee that they will produce correct or reliable outputs. The integration of external tools introduces complexity and potential points of failure, particularly if the LLM does not effectively manage interactions with these tools.</p>
-<p>The problem is, when you combine stochastic output—prone to hallucinations—with external tools that require precise inputs, you get LLMs that, in principle, have access to all the resources they may need but are incapable of using them reliably.</p>
-<p>When relying on external systems for reasoning tasks—for example, having your LLM call a SAT solver when necessary—it is crucial that LLMs can consistently identify the appropriate tool to use and provide it with the correct arguments. However, due to their probabilistic nature and susceptibility to hallucinations, LLMs struggle to do so reliably. And even if they successfully invoke an external tool, there is no guarantee that they will interpret or apply the tool’s output correctly in their reasoning process.</p>
-<p>So, Turing-incompleteness or bounded computation may not be a knockout argument on its own, but when combined with the other inherent limitations of LLMs—crucially, their unreliability—it is clear there are no guarantees even the most advanced models won’t fail to solve some reasoning task.</p>
-<p>And here is the final kicker: approximate reasoning is not good enough. If the LLM fails one out of every million times to produce the right deduction, that still means the LLM cannot reason. For all practical purposes, you may be happy with a model that gets it right 9 out of 10 or 99 out of 100, but in mission-critical tasks, nothing short of sound, reliable reasoning is good enough.</p>
-<p>And that’s the claim: LLMs are incapable, by design, of sound reasoning.</p>
+<section class="level3" id="adversarial-perturbations">
+<h3 class="anchored" data-anchor-id="adversarial-perturbations">Adversarial perturbations</h3>
+<p>The original adversarial-examples result predates LLMs by a decade. Szegedy and colleagues showed that small, sometimes imperceptible perturbations of an input can flip the behaviour of a neural network.<a class="footnote-ref" href="#fn6" id="fnref6" role="doc-noteref"><sup>6</sup></a> In the image-classifier era this looked like academic mischief — a sticker on a stop sign, a hat that defeats face recognition. In the LLM era it is the entire jailbreak and prompt-injection literature, treated in <a href="../3_dangers/risks.html">the risks chapter</a>. For this chapter the point is structural: the model’s behaviour in the wild is a function not just of what <em>you</em> ask but of what an <em>adversary</em> might ask in your place, and the adversarial input often does not need to look like an attack.</p>
+<p>Memory and context together bound what the model can recall and use. The next limit is about what it produces when it has to make something up to fill the gap.</p>
 </section>
 </section>
-<section class="level3" id="improving-llm-reasoning-skills">
-<h3 class="anchored" data-anchor-id="improving-llm-reasoning-skills">Improving LLM reasoning skills</h3>
-<p>However, we need not throw the hat here. Researchers and practitioners have explored several innovative strategies, including Chain of Thought prompting, self-critique mechanisms, and integrating external tools to improve the reasoning skills of large language models.</p>
-<p>CoT prompting encourages LLMs to articulate their thought processes, allowing them to break complex problems into manageable steps and improve their accuracy in reasoning tasks. On the other hand, self-critique aims to refine outputs through an internal evaluation process, yet it has shown mixed effectiveness in meaningfully correcting errors. Additionally, incorporating external tools such as reasoning engines and code generation systems can significantly augment the LLMs’ capabilities by providing structured logic and formal verification.</p>
-<p>However, each approach has its own set of challenges, and their potential and limitations in fostering true reasoning abilities within LLMs need to be carefully examined.</p>
-<section class="level4" id="inference-time-approaches">
-<h4 class="anchored" data-anchor-id="inference-time-approaches">Inference-time approaches</h4>
-<section class="level5" id="chain-of-thought">
-<h5 class="anchored" data-anchor-id="chain-of-thought">Chain of Thought</h5>
-<p>Chain-of-thought prompting has emerged as a promising technique for enhancing the reasoning capabilities of large language models. By guiding models to articulate intermediate reasoning steps before arriving at a final answer, CoT prompting helps decompose complex problems into manageable parts. This method has improved performance across various reasoning tasks, such as arithmetic and commonsense reasoning.</p>
-<p>CoT prompting instructs LLMs to break down complex problems into simpler, sequential steps and then tackle each step independently. This structured approach enables the model to tackle each component individually, improving response accuracy and precision. Studies have shown that this technique can significantly boost performance on reasoning tasks, particularly when the model has a sufficient number of parameters (around 100 billion) to use the benefits of CoT prompting effectively.</p>
-<p>By encouraging models to articulate their thought processes, CoT prompting taps into the extensive pool of knowledge that LLMs acquire during training. This mechanism helps models apply relevant information more effectively, addressing their inherent difficulties with logical reasoning and problem-solving.</p>
-<p>Additionally, CoT makes the LLM “think harder” in the sense it forces the model to produce what we can consider “internal thought” tokens. Thus, we may view it as a way to produce additional computation on the input before deciding on the response.</p>
-<p>However, despite its advantages, CoT prompting remains insufficient for several reasons.</p>
-<p>The effectiveness of CoT prompting is highly contingent on the quality and diversity of the prompts used. If the examples provided are not representative or sufficiently varied, the model may struggle to generate coherent reasoning chains, leading to suboptimal performance. This reliance on effective prompt engineering can limit the technique’s scalability and generalizability.</p>
-<p>And again, the stochastic nature of LLMs means that even with CoT prompting, outputs can vary significantly across different runs due to randomness in generation processes. This variability can lead to inconsistent reasoning outcomes, undermining the reliability of the model’s responses.</p>
-<p>Ultimately, CoT extends the computation budget by a finite amount. Unless we try some cyclic scheme where the LLM is prompted to continue thinking, potentially indefinitely, until satisfied, their fundamental limitation on Turing incompleteness remains.</p>
+<section class="level2" id="the-biases-it-inherits">
+<h2 class="anchored" data-anchor-id="the-biases-it-inherits">The biases it inherits</h2>
+<p>A language model does not have an opinion. It has a distribution, and the distribution reflects who wrote the internet.</p>
+<p>That sentence is a slogan, but it is also literally true. Bender and colleagues catalogue the demographic skew of web-scale corpora in detail: Reddit users are roughly two-thirds male, English-Wikipedia editors are something like ten percent women, English-speaking sources dominate the training mix even for nominally multilingual models, and the <em>quality filtering</em> steps that prune offensive text from training data tend to silently erase reclaimed-slur discourse from marginalised communities.<a class="footnote-ref" href="#fn7" id="fnref7" role="doc-noteref"><sup>7</sup></a> At every stage — who participates online, what survives filters, what gets weighted by quality heuristics — the surviving distribution narrows. The model trained on that distribution carries its shape forward, and then its outputs become someone else’s training data, and the loop tightens.</p>
+<p>Bias is not an abstract problem. Parrish and colleagues built the BBQ benchmark — fifty-eight thousand hand-written question-answering examples that measure whether a model uses social stereotypes rather than the evidence in the prompt.<a class="footnote-ref" href="#fn8" id="fnref8" role="doc-noteref"><sup>8</sup></a> Every example targets one of nine social axes: age, disability, gender, nationality, appearance, race, religion, orientation, socioeconomic status. Every example comes in four variants, crossing ambiguous-versus-disambiguated context with negative-versus-non-negative question polarity. The findings have a uniform shape across model generations. When the context is ambiguous, the model picks the stereotypically-associated answer. When the context disambiguates correctly, the model is still a few percentage points more accurate when the correct answer happens to align with the stereotype. The gap is small per case and consistent across cases, which is how you know it is signal rather than noise.</p>
+<p>The point of measuring is to be honest with yourself about what the model is doing. Bias in a generative model is not a soft failure that more polish will fix. It is a measurable property of the output, on specific axes, that you can score with the same rigour you score accuracy. The mitigation work — value-aligned fine-tuning, demographic re-balancing of training data, instruction-tuning against stereotyped templates — moves the numbers. None of the published mitigations move them to zero. Treat the residual as a property of the system you are deploying, not as a moral lapse to be edited around in the prompt.</p>
+<p>All the limits so far are static properties of a trained model — what it has stored, what it can see, what it produces when it fills in the gaps. The next one is dynamic, and it fails in a different kind of way.</p>
 </section>
-<section class="level5" id="self-evaluation">
-<h5 class="anchored" data-anchor-id="self-evaluation">Self-evaluation</h5>
-<p>Another intuitive approach to improving reasoning is self-critique, which involves evaluating and refining an LLM’s responses with the same model, using prompts that instruct the model to read its previous output, highlight potential errors, and try to correct them. A form of after-the-fact chain-of-thought, if you might. However, recent research has highlighted significant limitations in the effectiveness of this self-critique capability.</p>
-<p>While LLMs can generate multiple ideas and attempt to critique their initial outputs, studies indicate that they cannot often meaningfully self-correct. The assumption that verification of correctness should be easier than generation—a fundamental idea in computational complexity theory—does not seem to hold true, in general, for LLMs. This is particularly problematic in reasoning tasks where the model struggles to adequately assess its outputs’ accuracy. For example, if an LLM generates a flawed answer, its attempt to critique and revise it can lead to further errors rather than improvements.</p>
-<p>Research shows that self-correction techniques in LLMs are heavily contingent on the availability of external feedback. In many cases, LLMs perform better when they have access to an external verifier or additional context rather than relying solely on their internal reasoning capabilities. For example, when solving complex problems, such as graph coloring or planning tasks, LLMs often fail to produce reliable solutions without external guidance.</p>
-<p>Interestingly, attempts at self-critique can sometimes degrade performance rather than enhance it. Studies have shown that when LLMs engage in self-critique without external validation, they may generate false positives or incorrect conclusions. If you push harder, you can easily fall into a cycle of self-reinforcement of invalid or erroneous arguments, making the LLM increasingly more certain despite it getting worse and worse.</p>
+<section class="level2" id="the-depth-ceiling-on-reasoning">
+<h2 class="anchored" data-anchor-id="the-depth-ceiling-on-reasoning">The depth ceiling on reasoning</h2>
+<p>Large language models often appear to reason. They produce coherent multi-step responses, generate plausible derivations, and articulate intermediate steps that look like the thinking a human would do. That appearance is misleading in a specific and provable way, and the second-generation reasoning models that landed through 2024 and 2025 — the o-series, R1, the extended-thinking variants — mitigate the failure without repairing it.</p>
+<p>I want to be precise about what I am and am not claiming. I am not claiming AGI is impossible; I am a computationalist and I think machines can reach and surpass human cognition. I am not claiming that LLMs are useless; they are extraordinary at what they were designed for. I am claiming there is one specific form of reasoning that no LLM as currently designed can perform reliably. That form is provably-sound deduction over arbitrary instances, and no amount of scaling closes the gap. The three subsections below make the case.</p>
+<section class="level3" id="reasoning-is-bounded-computation">
+<h3 class="anchored" data-anchor-id="reasoning-is-bounded-computation">Reasoning is bounded computation</h3>
+<p>When AI folks say <em>LLMs cannot reason</em>, they are not talking about anything philosophical. The relevant definition comes straight from math: reasoning is the capacity to draw logically sound conclusions from a given premise. In its strongest form — <em>deduction</em> — it is the mechanical application of a finite set of inference rules to obtain provably-true conclusions from existing true claims. It is what mathematicians do all day. The claim <em>LLMs cannot reason</em> in this chapter is the narrow technical claim that there exist deductively-simple problems an LLM provably cannot solve.</p>
+<p>A language model spends a fixed amount of computation per output token. The amount depends on input size and model size — and nothing else. So if I ask an LLM a yes-or-no question about a logical puzzle, the <em>thinking</em> it can do before answering is a finite, predetermined number of matrix multiplications. Now consider two puzzles of the same input length. One has a short proof. The other has a long one. The LLM spends <em>the same amount of computation on both</em>. This cannot be right, and it isn’t.</p>
+<p>A basic result in computational complexity is that some problems — the NP-complete ones — have small inputs but appear to require exponentially-many computation steps to solve. Most computer scientists believe no polynomial-time algorithm for them exists. A huge swath of reasoning problems lives in this class, including the most basic deductive task of all: determining whether a logical formula can be satisfied. For any LLM, no matter how big, there are instances of these problems small enough to fit in its context window and large enough to exceed its fixed computational budget. The model will answer them, of course. The answer will not be reliable.</p>
+<p>The deeper version of the same argument is that LLMs are not Turing-complete. Turing completeness requires the ability to loop indefinitely; some computations cannot be bounded in advance because you do not know how long they will take until they finish. LLMs, by definition, are computationally bounded. There is always a problem instance — perhaps one you cannot identify beforehand — that requires more computation than the model’s matrix multiplications can carry out. The model is, in this precise sense, a very large finite automaton. Useful for a great many things. Insufficient for the specific thing called sound deductive reasoning.</p>
 </section>
-<section class="level5" id="function-calling">
-<h5 class="anchored" data-anchor-id="function-calling">Function calling</h5>
-<p>Integrating external tools, such as reasoning engines or code generation systems, into large language models represents a promising—and, for me, the only really viable—approach to enhancing their reasoning capabilities.</p>
-<p>Connecting LLMs to external reasoning engines or logical inference tools makes it possible to augment their reasoning capabilities significantly. These tools can handle complex logical deductions, mathematical computations, or even domain-specific knowledge that the LLM might not possess inherently. This integration allows for more accurate and reliable outputs, as the external tools can apply formal logic and structured reasoning that LLMs typically struggle with.</p>
-<p>Similarly, external code generation systems enable LLMs to produce executable code for specific tasks. This capability can streamline software development processes and improve efficiency in generating functional code snippets. The external systems can provide rigorous checks and balances that help ensure the correctness of the generated code.</p>
-<p>By leveraging these external resources, LLMs can potentially overcome some of their inherent limitations in logical reasoning and problem-solving. For starters, an external inference engine will be Turing-complete, so we scratch that problem down, right?</p>
-<p>Not so fast. Unfortunately, this approach has many challenges, particularly regarding the LLM’s ability to generate the correct input for function calls or code execution. It all circles back to the original sin of LLMs: stochastic output.</p>
-<p>First, the effectiveness of function calling or code generation hinges on the model’s ability to accurately interpret a task and generate appropriate inputs. If the model misinterprets the requirements or generates vague or incorrect prompts, the external tool may produce erroneous outputs or fail to execute altogether. This reliance introduces a potential failure point where the model’s limitations in understanding context and intent become apparent.</p>
-<p>Many reasoning tasks require a nuanced understanding of logic and context that may exceed the capabilities of language models. For instance, when generating inputs for a logical inference engine, the model must understand the problem and articulate it in a way that aligns with the system’s requirements. If the model fails to capture these nuances, it may lead to incorrect deductions or ineffective reasoning processes.</p>
-<p>Translating text into code or structured queries makes it more complex and can undermine reasoning capabilities. This conversion requires programming syntax and logic knowledge that may not be intuitive for an LLM trained primarily in natural language data. Mistakes in this translation can spread to the external system, causing more errors.</p>
-<p>While external tools can, in principle, improve the reasoning capabilities of an LLM by providing structured logic and formal verification, they cannot compensate for LLMs’ basic limitations in generating precise inputs. Therefore, there is no formal guarantee that the outputs from this integration will be logically sound or appropriate for the context, simply because of the age-old adage: garbage in, garbage out.</p>
+<section class="level3" id="why-scale-does-not-close-the-gap">
+<h3 class="anchored" data-anchor-id="why-scale-does-not-close-the-gap">Why scale does not close the gap</h3>
+<p>The most common objection to the argument above takes three shapes. None of them work, and I’ll handle all three together because they fail for related reasons.</p>
+<p>The first is that humans also have these limits. True in a trivial sense — humans make mistakes — and irrelevant. Humans built two thousand years of provably-correct mathematics, including the proofs that NP-complete problems are hard in the first place; the species-level capacity for sound deduction is the gold standard, not an inferior baseline. And the comparison class for a piece of technology is <em>the best system we have for the task</em>, not an average human. For deductive reasoning that system is a SAT solver, not a person, and on deductive reasoning a SAT solver flatly beats an LLM.</p>
+<p>The second objection is that randomness is a feature, not a bug, because the best deductive solvers use randomised search. True for the search phase. False for the system as a whole. A SAT solver uses randomness to <em>explore</em> the space of candidate solutions; once a candidate is found, a deterministic validation step certifies whether it actually satisfies the formula. The exploration is stochastic; the acceptance is not. An LLM has only the exploration. There is no deterministic validator. The same probability machinery that generated the candidate is also evaluating it, and any error in generation can survive into the output unflagged.</p>
+<p>The third is that you can make an LLM Turing-complete by wrapping it in something Turing-complete — a code interpreter, a recursive call, a SAT solver. True in principle. It is also true that you can build a flame-thrower out of bamboo, duct tape, and a working flame-thrower. The question is whether the composition is reliable, and the answer is that the same stochastic output that limits the model in isolation also limits its ability to invoke external tools with the precise arguments those tools require. You can connect the LLM to a SAT solver. You cannot guarantee the LLM hands the solver the right formula. Garbage in, deduction out.</p>
+<p>All three objections share a structure: they assume that mitigating the architectural limit is the same as removing it. The mitigations are real. They buy you longer chains, more reliable invocations, better-shaped problems. They do not change what the model fundamentally is. For tasks that require <em>sound</em> reasoning rather than <em>probably-correct</em> reasoning, the difference shows up at the last decimal place, which is the place that decides whether you can deploy the system unsupervised.</p>
+</section>
+<section class="level3" id="chain-of-thought-self-critique-tool-use">
+<h3 class="anchored" data-anchor-id="chain-of-thought-self-critique-tool-use">Chain-of-thought, self-critique, tool use</h3>
+<p>Three families of technique have been developed to push the practical ceiling outward. Each one helps. None of them dissolves the underlying limit.</p>
+<p><em>Chain-of-thought prompting</em> asks the model to articulate its intermediate steps before producing the final answer. The model breaks a problem into smaller subproblems, tackles each, and assembles the result. CoT works because it routes around the per-token compute cap — the model now spends a sequence of forward passes on the problem instead of just one — and it works better when the steps decompose along lines the model has seen many examples of. Its limits are inherited from the underlying design: the chain extends the budget by a finite amount; the per-step error compounds across the chain; the quality of the decomposition depends on the prompt, which means the same problem in different wording can produce wildly different chains. CoT pushes the ceiling outward. It does not remove it.</p>
+<p><em>Self-critique</em> asks the model to evaluate its own output and revise it. Intuitively appealing, and the early results looked good. Huang and colleagues at Google Research went back and re-examined the methods that had been claimed to demonstrate self-correction and found that the apparent gains were artefacts of methodological confounds.<a class="footnote-ref" href="#fn9" id="fnref9" role="doc-noteref"><sup>9</sup></a> In the most common case, the experimental protocol was leaking oracle correctness signals to the model — <em>your previous answer was wrong; try again</em> requires <em>knowing</em> the previous answer was wrong, which is the unknown the system was supposed to solve. When the leak is removed, the gains vanish. Worse, intrinsic self-correction <em>degrades</em> performance on reasoning benchmarks: the model talks itself out of correct answers as often as it talks itself into them. The fundamental paradox is the one the paper names directly: if the model could recognise the error, it would not have made it in the first place. Reliable revision requires an external grounding signal — a verifier, a code executor, a test suite, a human.</p>
+<p><em>Tool use</em> is the most promising of the three, and the only one that even in principle escapes the bounded-computation argument. You give the model a SAT solver, a calculator, a code interpreter, a search index. The model issues calls, the tools execute, the model integrates the results. For tasks whose underlying problem is well-served by an existing deterministic solver, this is the right architecture, and it is the one I personally bet on for the next several years of agent work. What it does not do is repair the bounded-computation argument cleanly. The composition is now a hybrid: stochastic orchestrator, deterministic engine. The orchestrator still hallucinates. The orchestrator still misroutes. The engine returns the correct answer to the <em>wrong question</em> if the model formulated the question wrong. Tool use raises the ceiling. It also moves the failure mode upstream into the orchestrator, where it is harder to spot.</p>
+<p>The arguments above tell you <em>why</em>, in principle, an LLM cannot reliably reason past a certain horizon. They do not tell you <em>where</em> the ceiling actually sits. For that, you want a number.</p>
 </section>
 </section>
-<section class="level4" id="training-time-approaches">
-<h4 class="anchored" data-anchor-id="training-time-approaches">Training-time approaches</h4>
+<section class="level2" id="the-reliability-ceiling">
+<h2 class="anchored" data-anchor-id="the-reliability-ceiling">The reliability ceiling</h2>
+<p>The evaluation group METR has produced the most rigorous number we have. Their <em>time-horizon</em> methodology takes a population of well-defined tasks with measured human completion times — the time an experienced practitioner would need to do the task — and asks, for a given model, what is the longest task it can complete at some specified rate of success?<a class="footnote-ref" href="#fn10" id="fnref10" role="doc-noteref"><sup>10</sup></a> The 50%-reliability horizon — the task length at which the agent succeeds half the time — has been doubling roughly every seven months across recent frontier models, and by late 2025 sat around a couple of hours for software tasks. That is the curve that gets quoted in headlines. The <a href="../2_applications/coding.html">chapter on AI for software development</a> walks the ladder in detail.</p>
+<p>The number that matters for <em>this</em> chapter is the other one. The <em>80%-reliability horizon</em> — the task length at which the agent finishes the work well enough that you would not feel the need to check it — is much, much shorter. Across most benchmarks it sits stubbornly around seventy to eighty percent below the 50% figure, and it has been moving up far more slowly. The same agent that nominally clears a two-hour task half the time clears a half-hour task only four-out-of-five times. The longer the horizon, the wider the gap between <em>can do it sometimes</em> and <em>can be trusted with it</em>.</p>
+<p>This is the empirical bookend to the conceptual argument. The two arrive at the same place from opposite directions. The conceptual side says: any next-token model is a finite, bounded, probabilistic process; it cannot perform open-ended deduction; small surface perturbations of a problem it has seen knock it out, as <em>GSM-Symbolic</em> showed.<a class="footnote-ref" href="#fn11" id="fnref11" role="doc-noteref"><sup>11</sup></a> The empirical side says: when you actually measure end-to-end task success at the threshold of trust, the curve plateaus, and the plateau holds across model generations. The doubling of the 50% horizon is real progress. The slow movement of the 80% horizon is the fact that matters.</p>
+<p>The mechanical reason the two horizons diverge is the same root fact the chapter opened with. A per-token probability of error compounds multiplicatively with the length of the output. If each step is correct with probability <span class="math inline">\(p\)</span>, a sequence of <span class="math inline">\(n\)</span> steps is correct with probability roughly <span class="math inline">\(p^n\)</span>. A <span class="math inline">\(p\)</span> of 0.99 looks excellent on a single token and collapses to 0.37 over a hundred. The longer the chain — the more tool calls, the more intermediate reasoning, the more state to keep coherent — the more aggressively the error accumulates. Reasoning models buy you a higher per-step <span class="math inline">\(p\)</span> and they let you spend more steps, but they do not change the shape of the curve. Compositional tasks pile this on top of itself: <em>Faith and Fate</em> showed that transformer accuracy collapses with the depth of the computational graph even when each sub-step is individually solvable.<a class="footnote-ref" href="#fn12" id="fnref12" role="doc-noteref"><sup>12</sup></a> The ceiling is not an engineering gap that next year’s training run will close. It is an architectural property of the paradigm.</p>
+<p>And it is not the only architectural ceiling. The same training design that produces the reliability cliff is also bumping into harder boundaries on the inputs that produced it. Training the largest models has measurable energy and carbon costs — the BERT-large training run was carbon-comparable to several cars over their lifetimes, and GPT-3-scale runs an order of magnitude higher.<a class="footnote-ref" href="#fn13" id="fnref13" role="doc-noteref"><sup>13</sup></a> The supply of high-quality human-written text is finite; the Epoch AI projection puts exhaustion of usable public text between 2026 and 2032 at current consumption rates.<a class="footnote-ref" href="#fn14" id="fnref14" role="doc-noteref"><sup>14</sup></a> The curves that produced the last decade of improvement cannot be extrapolated indefinitely on the same inputs. When I write <em>no bigger model fixes this</em>, the phrase is doing more work than you might first read into it.</p>
+<p>If you want reliable autonomy past the current horizon, you will need a different kind of system on top of the model, not a bigger model.</p>
 </section>
+<section class="level2" id="what-this-chapter-delivered">
+<h2 class="anchored" data-anchor-id="what-this-chapter-delivered">What this chapter delivered</h2>
+<p>I argued one root fact: the language-modelling approach optimises for plausibility, not truth, and every failure mode in this chapter is a downstream consequence of that single design choice. I catalogued seven failures of trust that follow from it — fluent fabrication; non-uniform attention across the context window; form-bound recall and the reversal curse; verbatim memorisation and the privacy leak it carries; adversarial brittleness; demographic bias measurable on specific axes; the depth ceiling on deductive reasoning. I established the empirical bookend: METR’s 80%-reliability horizon is the place where probability arithmetic and architectural limits meet a measurable curve, and the curve plateaus where the math says it should. I identified, along the way, which limits are engineering gaps that next year’s models might close — chain-of-thought length, retrieval quality, calibration after RLHF — and which are architectural properties of next-token prediction that no amount of scaling will repair.</p>
+<p>The chapter that follows turns from limits to <a href="../3_dangers/alignment.html">alignment</a>. These are what the failures above become when you scale them up, hand them more autonomy, and ask them to act in the world. The limits documented here are the design boundary inside which any reliable application of an LLM has to sit. Cross the boundary and the model still talks. It just stops being trustworthy at the same rate it stops being correct.</p>
 </section>
-<section class="level3" id="conclusions">
-<h3 class="anchored" data-anchor-id="conclusions">Conclusions</h3>
-<p>The purpose of this article is to convince you of two claims:</p>
-<ol type="1">
-<li>Large Language Models currently lack the capability to perform a well-defined form of reasoning that is essential for many decision-making processes.</li>
-<li>We currently have absolutely no idea how to solve this in the near future.</li>
+<section class="footnotes footnotes-end-of-document" id="footnotes" role="doc-endnotes">
+<hr/>
+<ol>
+<li id="fn1"><p>Bender, E. M., Gebru, T., McMillan-Major, A. &amp; Mitchell, M. <em>On the Dangers of Stochastic Parrots: Can Language Models Be Too Big?</em> FAccT 2021. DOI: 10.1145/3442188.3445922. Coins the <em>stochastic parrot</em> framing for systems that manipulate linguistic form without grounding in meaning, and catalogues the demographic skew of web-scale training corpora that the bias section of this chapter draws on.<a class="footnote-back" href="#fnref1" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Kalai, A. T. &amp; Vempala, S. S. <em>Calibrated Language Models Must Hallucinate.</em> STOC 2024. arXiv:2311.14648. Proves a statistical lower bound on the hallucination rate of any calibrated pretrained language model — the bound equals the Good-Turing missing-mass estimator (fraction of facts seen exactly once in training) minus calibration error, and is independent of architecture or training procedure.<a class="footnote-back" href="#fnref2" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Liu, N. F., Lin, K., Hewitt, J., Paranjape, A., Bevilacqua, M., Petroni, F. &amp; Liang, P. <em>Lost in the Middle: How Language Models Use Long Contexts.</em> TACL 2024. arXiv:2307.03172. Documents the U-shaped position curve — performance highest at the start and end of the context, much lower in the middle — across closed and open models, and shows that the curve survives extended-context training.<a class="footnote-back" href="#fnref3" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Berglund, L., Tong, M., Kaufmann, M., Balesni, M., Stickland, A. C., Korbak, T. &amp; Evans, O. <em>The Reversal Curse: LLMs trained on “A is B” fail to learn “B is A”.</em> arXiv:2309.12288, September 2023.<a class="footnote-back" href="#fnref4" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Carlini, N., Tramèr, F., Wallace, E., et al. <em>Extracting Training Data from Large Language Models.</em> USENIX Security 2021. arXiv:2012.07805. The original extraction attack on GPT-2: verbatim recovery of PII, code, and URLs from the pretraining set. Follow-up: Carlini et al., <em>Quantifying Memorization Across Neural Language Models</em>, ICLR 2023, arXiv:2202.07646, establishing that larger models memorise more.<a class="footnote-back" href="#fnref5" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Szegedy, C., Zaremba, W., Sutskever, I., Bruna, J., Erhan, D., Goodfellow, I. &amp; Fergus, R. <em>Intriguing Properties of Neural Networks.</em> ICLR 2014. arXiv:1312.6199. The discovery paper for adversarial examples. Companion: Goodfellow, Shlens &amp; Szegedy, <em>Explaining and Harnessing Adversarial Examples</em> (FGSM), ICLR 2015, arXiv:1412.6572.<a class="footnote-back" href="#fnref6" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Bender, E. M., Gebru, T., McMillan-Major, A. &amp; Mitchell, M. <em>On the Dangers of Stochastic Parrots: Can Language Models Be Too Big?</em> FAccT 2021. DOI: 10.1145/3442188.3445922. Coins the <em>stochastic parrot</em> framing for systems that manipulate linguistic form without grounding in meaning, and catalogues the demographic skew of web-scale training corpora that the bias section of this chapter draws on.<a class="footnote-back" href="#fnref7" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>Parrish, A., Chen, A., Nangia, N., Padmakumar, V., Phang, J., Thompson, J., Htut, P. M. &amp; Bowman, S. R. <em>BBQ: A Hand-Built Bias Benchmark for Question Answering.</em> Findings of ACL 2022. arXiv:2110.08193. Hand-written 58,492-example benchmark spanning nine US-English social axes; crosses ambiguous-vs-disambiguated context with negative-vs-non-negative question polarity to isolate when models substitute stereotype for evidence.<a class="footnote-back" href="#fnref8" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>Huang, J., Chen, X., Mishra, S., Zheng, H. S., Yu, A. W., Song, X. &amp; Zhou, D. <em>Large Language Models Cannot Self-Correct Reasoning Yet.</em> ICLR 2024. arXiv:2310.01798. Re-examines methods previously claimed to demonstrate intrinsic self-correction (RCI, Reflexion, Self-Refine, Multi-Agent Debate) and shows the gains are explained by oracle leakage or sub-optimal initial prompts. Without oracle signals, intrinsic self-correction degrades reasoning performance across GSM8K, CommonSenseQA, and HotpotQA.<a class="footnote-back" href="#fnref9" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>Kwa, T., West, B., Becker, J., et al. (METR). <em>Measuring AI’s Ability to Complete Long Tasks.</em> arXiv:2503.14499, March 2025; updated as <em>Time Horizon 1.1</em>, January 2026. Establishes the doubling-every-seven-months trend on the 50%-reliability horizon across frontier models, and the much shorter 80%-reliability horizon that is the empirical anchor of the reliability-ceiling argument here.<a class="footnote-back" href="#fnref10" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>Mirzadeh, I., Alizadeh, K., Shahrokhi, H., Tuzel, O., Bengio, S. &amp; Farajtabar, M. (Apple). <em>GSM-Symbolic: Understanding the Limitations of Mathematical Reasoning in Large Language Models.</em> arXiv:2410.05229, October 2024. Frontier reasoning models drop tens of percentage points in accuracy under surface-level perturbations (variable renaming, irrelevant-but-plausible clauses) of standard math-benchmark problems — evidence that the apparent reasoning is pattern-matching over training distribution.<a class="footnote-back" href="#fnref11" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p>Dziri, N., Lu, X., Sclar, M., Li, X., Jiang, L., et al. <em>Faith and Fate: Limits of Transformers on Compositionality.</em> NeurIPS 2023. arXiv:2305.18654. Compositional tasks — multi-digit multiplication, dynamic programming, logic-grid puzzles — decompose as computational graphs; transformer accuracy collapses with graph depth even when each sub-step is individually solvable.<a class="footnote-back" href="#fnref12" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p>Strubell, E., Ganesh, A. &amp; McCallum, A. <em>Energy and Policy Considerations for Deep Learning in NLP.</em> ACL 2019. arXiv:1906.02243. The often-quoted “BERT-large training is comparable to several cars over their lifetimes” figure. Refined by Patterson, D. et al., <em>Carbon Emissions and Large Neural Network Training</em>, arXiv:2104.10350, 2021, which corrects for datacenter PUE and quantifies GPT-3-scale training at roughly an order of magnitude higher.<a class="footnote-back" href="#fnref13" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14"><p>Villalobos, P., Sevilla, J., Heim, L., Besiroglu, T., Hobbhahn, M. &amp; Ho, A. (Epoch AI). <em>Will We Run Out of Data? Limits of LLM Scaling Based on Human-Generated Data.</em> arXiv:2211.04325, revised 2024. Quantitative estimate that high-quality public text stock is exhausted between 2026 and 2032 at current training-rate consumption.<a class="footnote-back" href="#fnref14" role="doc-backlink">↩︎</a></p></li>
 </ol>
-<p>This matters because there is a growing trend to promote LLMs as general-purpose reasoning engines. As more users begin to rely on LLMs for important decisions, the implications of their limitations become increasingly significant. At some point, someone will trust an LLM with a life-and-death decision, with catastrophic consequences.</p>
-<p>More importantly, the primary challenges in making LLMs trustworthy for reasoning are immense. Despite ongoing research and experimentation, we have yet to discover solutions that effectively bridge the gap between LLM capabilities and the rigorous standards required for reliable reasoning. Currently, our best efforts in this area are nothing but duct tape—temporary fixes that do not address the underlying limitations of the stochastic language modeling paradigm.</p>
-<p>Now, I want to stress that these limitations do not diminish the many other applications where LLMs excel as stochastic language generators. In creative writing, question answering, user assistance, translation, summarization, automatic documentation, and even coding, many of the limitations we have discussed here are actually features.</p>
-<p>The thing is, this is what language models were designed for—to generate plausible, human-like, varied, not-necessarily-super-accurate language. The whole paradigm of stochastic language modeling is optimized for this task, and it excels at it. It is much better than anything else we’ve ever designed. But when we ask LLMs to step outside that range of tasks, they become brittle, unreliable, and, worse, opaquely so.</p>
-<p>The emergence of models like OpenAI’s o1, which boasts impressive reasoning abilities, may seem like a significant step forward. However, this approach does not represent a fundamentally new paradigm in logical reasoning with LLMs. Deep down, this is “just” a way to explicitly incorporate chain of thought prompting in a fine-tuning phase and teach the model via reinforcement learning to select mostly coherent paths of deduction.</p>
-<p>Thus, while definitely an impressive technical and engineering feat, o1 (terrible name) —and any future models based on the same paradigm— will continue to share the same core limitations inherent to all LLMs, only mitigated using some clever tricks. While they may excel in certain contexts, caution must be exercised in interpreting their outputs as definitive reasoning.</p>
-<p>If LLMs are to fulfill even some of our highly unrealistic expectations for them, we must prioritize solving the challenge of provably correct reasoning. Until then, all we have is a stochastic parrot—a fun toy with some interesting use cases but not a truly transformative technology.</p>
-</section>
 </section>
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -886,13 +847,13 @@ Note
   </script>
 <nav class="page-navigation">
 <div class="nav-page nav-page-previous">
-<a aria-label="Why Artificial Intelligence is Hard" class="pagination-link" href="../3_dangers/alignment.html">
-<i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>  <span class="chapter-title">Why Artificial Intelligence is Hard</span></span>
+<a aria-label="The Alignment Problem" class="pagination-link" href="../3_dangers/alignment.html">
+<i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>  <span class="chapter-title">The Alignment Problem</span></span>
 </a>
 </div>
 <div class="nav-page nav-page-next">
-<a aria-label="The Actual Risks of AI" class="pagination-link" href="../3_dangers/risks.html">
-<span class="nav-page-text"><span class="chapter-number">14</span>  <span class="chapter-title">The Actual Risks of AI</span></span> <i class="bi bi-arrow-right-short"></i>
+<a aria-label="Risks of AI" class="pagination-link" href="../3_dangers/risks.html">
+<span class="nav-page-text"><span class="chapter-number">16</span>  <span class="chapter-title">Risks of AI</span></span> <i class="bi bi-arrow-right-short"></i>
 </a>
 </div>
 </nav>

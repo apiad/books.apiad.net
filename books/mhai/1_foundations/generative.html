@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><head><link href="/books/reader.css" rel="stylesheet"/>
+<meta charset="utf-8"/>
+<meta content="quarto-1.7.30" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<title>5  Generative AI – Mostly Harmless AI</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta content="../" name="quarto:offset"/>
+<link href="../1_foundations/agentic.html" rel="next"/>
+<link href="../1_foundations/llms.html" rel="prev"/>
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet"/>
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de070a7b0ab54f8780927367ac907214.css" id="quarto-text-highlighting-styles" rel="stylesheet"/>
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet"/>
+<link append-hash="true" data-mode="light" href="../site_libs/bootstrap/bootstrap-364982630eef5352dd1537128a8ed5cb.min.css" id="quarto-bootstrap" rel="stylesheet"/>
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@600;700;800&amp;family=Fira+Code:wght@400;500&amp;display=swap" rel="stylesheet"/><link href="/manifest.json" rel="manifest"/><script src="/sw-register.js"></script><meta content="#0f0f0f" name="theme-color"/><meta content="yes" name="apple-mobile-web-app-capable"/><link href="/icon-192.png" rel="apple-touch-icon"/><link href="/icon-192.png" rel="icon" sizes="192x192" type="image/png"/></head>
+<body class="nav-sidebar floating quarto-light">
+<div id="quarto-search-results"></div>
+<header class="headroom fixed-top" id="quarto-header">
+<nav class="quarto-secondary-nav">
+<div class="container-fluid d-flex">
+<button aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="quarto-btn-toggle btn" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="button" type="button">
+<i class="bi bi-layout-text-sidebar-reverse"></i>
+</button>
+<nav aria-label="breadcrumb" class="quarto-page-breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../1_foundations/index.html">Foundations</a></li><li class="breadcrumb-item"><a href="../1_foundations/generative.html"><span class="chapter-number">5</span>  <span class="chapter-title">Generative AI</span></a></li></ol></nav>
+<a aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="flex-grow-1" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="navigation">
+</a>
+<button aria-label="Search" class="btn quarto-search-button" onclick="window.quartoOpenSearch();" type="button">
+<i class="bi bi-search"></i>
+</button>
+</div>
+</nav>
+</header>
+<!-- content -->
+<div class="quarto-container page-columns page-rows-contents page-layout-article" id="quarto-content">
+<!-- sidebar -->
+<nav class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" id="quarto-sidebar">
+<div class="pt-lg-2 mt-2 text-left sidebar-header">
+<div class="sidebar-title mb-0 py-0">
+<a href="../">Mostly Harmless AI</a>
+</div>
+</div>
+<div class="mt-2 flex-shrink-0 align-items-center">
+<div class="sidebar-search">
+<div class="" id="quarto-search" title="Search"></div>
+</div>
+</div>
+<div class="sidebar-menu-container">
+<ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../index.html">
+<span class="menu-text">Preface</span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../manifesto.html">
+<span class="menu-text">The Techno-Pragmatist Manifesto</span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../prologue.html">
+<span class="menu-text">Prologue</span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../intro.html">
+<span class="menu-text">A Brief History of AI</span></a>
+</div>
+</li>
+<li class="sidebar-item sidebar-item-section">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/index.html">
+<span class="menu-text">Foundations</span></a>
+<a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-1" data-bs-toggle="collapse" role="navigation">
+<i class="bi bi-chevron-right ms-2"></i>
+</a>
+</div>
+<ul class="collapse list-unstyled sidebar-section depth1 show" id="quarto-sidebar-section-1">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/ai.html">
+<span class="menu-text"><span class="chapter-number">1</span>  <span class="chapter-title">Classical AI</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/ml.html">
+<span class="menu-text"><span class="chapter-number">2</span>  <span class="chapter-title">Machine Learning</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/deep-learning.html">
+<span class="menu-text"><span class="chapter-number">3</span>  <span class="chapter-title">Deep Learning</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/llms.html">
+<span class="menu-text"><span class="chapter-number">4</span>  <span class="chapter-title">Language Modeling</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link active" href="../1_foundations/generative.html">
+<span class="menu-text"><span class="chapter-number">5</span>  <span class="chapter-title">Generative AI</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/agentic.html">
+<span class="menu-text"><span class="chapter-number">6</span>  <span class="chapter-title">Agentic AI</span></span></a>
+</div>
+</li>
+</ul>
+</li>
+<li class="sidebar-item sidebar-item-section">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/index.html">
+<span class="menu-text">Applications</span></a>
+<a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-2" data-bs-toggle="collapse" role="navigation">
+<i class="bi bi-chevron-right ms-2"></i>
+</a>
+</div>
+<ul class="collapse list-unstyled sidebar-section depth1 show" id="quarto-sidebar-section-2">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/intro.html">
+<span class="menu-text"><span class="chapter-number">7</span>  <span class="chapter-title">Working With AI</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/knowledge-work.html">
+<span class="menu-text"><span class="chapter-number">8</span>  <span class="chapter-title">AI for Knowledge Work</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/science.html">
+<span class="menu-text"><span class="chapter-number">9</span>  <span class="chapter-title">AI for Scientific Research</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/coding.html">
+<span class="menu-text"><span class="chapter-number">10</span>  <span class="chapter-title">AI for Software Development</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/education.html">
+<span class="menu-text"><span class="chapter-number">11</span>  <span class="chapter-title">AI for Education and Learning</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/creative.html">
+<span class="menu-text"><span class="chapter-number">12</span>  <span class="chapter-title">AI for Creative Work</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/policy.html">
+<span class="menu-text"><span class="chapter-number">13</span>  <span class="chapter-title">AI for Policy and Governance</span></span></a>
+</div>
+</li>
+</ul>
+</li>
+<li class="sidebar-item sidebar-item-section">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../3_dangers/index.html">
+<span class="menu-text">Dangers</span></a>
+<a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-3" data-bs-toggle="collapse" role="navigation">
+<i class="bi bi-chevron-right ms-2"></i>
+</a>
+</div>
+<ul class="collapse list-unstyled sidebar-section depth1 show" id="quarto-sidebar-section-3">
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../3_dangers/alignment.html">
+<span class="menu-text"><span class="chapter-number">14</span>  <span class="chapter-title">The Alignment Problem</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../3_dangers/limitations.html">
+<span class="menu-text"><span class="chapter-number">15</span>  <span class="chapter-title">Limits of Language Models</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../3_dangers/risks.html">
+<span class="menu-text"><span class="chapter-number">16</span>  <span class="chapter-title">Risks of AI</span></span></a>
+</div>
+</li>
+</ul>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../epilogue.html">
+<span class="menu-text">The Road Ahead</span></a>
+</div>
+</li>
+</ul>
+</div>
+</nav>
+<div class="quarto-sidebar-collapse-item" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" id="quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+<div class="sidebar margin-sidebar" id="quarto-margin-sidebar">
+<nav class="toc-active" id="TOC" role="doc-toc">
+<h2 id="toc-title">Table of contents</h2>
+<ul class="collapse">
+<li><a class="nav-link active" data-scroll-target="#leaving-language" href="#leaving-language" id="toc-leaving-language">Leaving language</a></li>
+<li><a class="nav-link" data-scroll-target="#gans" href="#gans" id="toc-gans">GANs</a></li>
+<li><a class="nav-link" data-scroll-target="#diffusion" href="#diffusion" id="toc-diffusion">Diffusion</a></li>
+<li><a class="nav-link" data-scroll-target="#whisper-and-audio-generation" href="#whisper-and-audio-generation" id="toc-whisper-and-audio-generation">Whisper and audio generation</a></li>
+<li><a class="nav-link" data-scroll-target="#clip-and-the-multimodal-bridge" href="#clip-and-the-multimodal-bridge" id="toc-clip-and-the-multimodal-bridge">CLIP and the multimodal bridge</a></li>
+<li><a class="nav-link" data-scroll-target="#native-multimodal-models" href="#native-multimodal-models" id="toc-native-multimodal-models">Native multimodal models</a></li>
+<li><a class="nav-link" data-scroll-target="#whats-still-hard" href="#whats-still-hard" id="toc-whats-still-hard">What’s still hard</a></li>
+</ul>
+</nav>
+</div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+<header class="quarto-title-block default" id="title-block-header"><nav aria-label="breadcrumb" class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../1_foundations/index.html">Foundations</a></li><li class="breadcrumb-item"><a href="../1_foundations/generative.html"><span class="chapter-number">5</span>  <span class="chapter-title">Generative AI</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">5</span>  <span class="chapter-title">Generative AI</span></h1>
+</div>
+<div class="quarto-title-meta">
+</div>
+</header>
+<p>The machine from the last chapter — tokens in, probability distribution out, sample, append, repeat — is not only a language machine. It is a <em>generative</em> machine that happens to have been pointed at language. Point it at something else and the cycle still runs. What changes is the alphabet.</p>
+<p>By the end of this chapter you will be able to take that one idea — learn a distribution, sample from it — through pixels, waveforms, video, and the strange in-between case where a single model handles all of them at once. Each modality starts as its own engineering problem with its own architecture, and the field spends roughly a decade building bespoke machines for each. Then, around 2023, the bespoke machines collapse into one, and the distinction between a language model and a generative model stops making sense.</p>
+<section class="level2" id="leaving-language">
+<h2 class="anchored" data-anchor-id="leaving-language">Leaving language</h2>
+<p>There is exactly one idea that survives leaving text. Look at a pile of data — sentences, images, recordings, frames of video, whatever — and learn the probability distribution that produced it. Then sample from that distribution to make new examples. That is what <em>generative</em> means, mechanically. Language modelling is one special case of it — the one where the data happens to be a sequence of tokens.</p>
+<p>The shapes of the data are different, and the different shapes are most of why the rest of the chapter exists. Language is a one-dimensional sequence of tokens. An image is a two-dimensional grid of pixels, each of which carries three colour values, which is a much larger object than it sounds — a one-megapixel photograph is three million numbers. Audio is also one-dimensional, a waveform sampled forty-four thousand times a second, but the structure that matters to a human ear lives at timescales the raw samples do not reveal. Video is the worst of all worlds. It is spatial like an image and temporal like audio, simultaneously, and a few seconds of it weighs in at billions of numbers.</p>
+<p>A generative model for any of these is a function that asks the same question chapter 4 asked: <em>what plausibly comes next, given what is already there?</em> In language the answer is the next token. In an image, “next” can mean the next pixel, or the next patch, or — as we will see — the next step of removing noise from a blurry version of the whole picture. In audio it can mean the next waveform sample, or the next codec token. In video it can mean the next frame, or the next patch in time and space. The answer shape changes with the modality. The shape of the question does not.</p>
+<p>What follows takes each modality on its own terms, then folds them together. Images first, since they got there first and the lessons from them anchor everything else.</p>
+</section>
+<section class="level2" id="gans">
+<h2 class="anchored" data-anchor-id="gans">GANs</h2>
+<p>In June 2014, a graduate student in Montreal named Ian Goodfellow proposed a training procedure so simple it sounds almost like a joke.<a class="footnote-ref" href="#fn1" id="fnref1" role="doc-noteref"><sup>1</sup></a> Train two neural networks against each other. One — the <em>generator</em> — takes a random vector of noise and tries to turn it into an image. The other — the <em>discriminator</em> — takes an image, real or fake, and tries to decide which it is. The two networks play a game. The generator wants to fool the discriminator. The discriminator wants to catch the generator. They train together. Each one’s loss is the other one’s win.</p>
+<p>The cleverness, once you see it, is what the game <em>avoids</em>. There is no need to specify what makes an image good. There is no hand-written cost function for <em>plausibility</em> or <em>realism</em> — words that would have been impossible to encode in code in 2014. The discriminator learns what real looks like from data, and the generator learns what real looks like from the discriminator. Both networks are the deep-learning machine chapter 3 built; nothing new in the parts, everything new in the arrangement.</p>
+<p>Two ideas come out of GANs that survive the entire chapter, so it is worth slowing down on them.</p>
+<p>The first is the <em>latent space</em>. The generator’s input is a vector of, say, a hundred random numbers. Different vectors produce different images. Train the network well and the vector space organises itself: nearby vectors produce visually similar images, and you can walk a smooth path from one vector to another and watch the corresponding images morph into each other coherently. Faces grow older, lighting shifts, expressions soften, all by walking a straight line through a hundred-dimensional space. The latent vector is not the image; it is a <em>coordinate</em> on a compressed map of the space of plausible images. That map is the deep prize of the technique. Every generative model in this chapter has one.</p>
+<p>The second is the trick of training without a hand-written objective. Adversarial training was the first crisp demonstration that you can let two networks negotiate a quality signal between them, instead of writing one down. The technique generalises far beyond images, and a chunk of modern model training — including the preference-optimisation step in chapter 4 — descends from this insight more than it descends from any particular GAN paper.</p>
+<p>By 2018 the technique had matured into <em>StyleGAN</em>, the system that gave the world <em>thispersondoesnotexist</em>.<a class="footnote-ref" href="#fn2" id="fnref2" role="doc-noteref"><sup>2</sup></a> A user reloads a webpage and is shown a face. The face is not a person. The face has never been a person. The pores are right, the catch-lights in the eyes are right, the wisps of hair against the forehead are right, and the face does not exist. The cultural moment landed harder than any technical paper of the era. For roughly two years, <em>what a GAN looks like</em> was a question one no longer had to teach; you could just open a browser tab.</p>
+<p>GANs had a failure mode that ultimately broke them, though. <em>Mode collapse</em>. The generator, in trying to fool the discriminator, sometimes discovers one image — or a small family of images — that the discriminator cannot reliably catch, and then it produces that one over and over. Training stops exploring. The latent space, instead of spreading evenly over the data distribution, bunches into a few attractors and leaves vast regions of plausibility empty. There are tricks to mitigate it. None of them are clean. By the time the field found a generative technique that did not have this problem, GANs were already being displaced.</p>
+<p>The lineage matters more than the throne. GANs lost the leading-edge race around 2021, but the latent-space picture they bequeathed is the idea everything after them builds on. Hold on to it. Cleaner ways to populate a useful latent space and walk around inside it are what the rest of the modalities are reaching for.</p>
+</section>
+<section class="level2" id="diffusion">
+<h2 class="anchored" data-anchor-id="diffusion">Diffusion</h2>
+<p>The idea that replaced GANs sounds, on first hearing, even more like a joke. Take a real photograph. Add a little visual static to it. Add a little more. Repeat the operation a thousand times. By the end, what was a photograph is now pure television-snow, indistinguishable from a random noise pattern. The reverse direction — going from snow back to a photograph in one step — is plainly impossible. The trick is to do it in a thousand small steps. Train a network on the question: <em>given an image that is slightly noisier than it should be, what was the previous, slightly cleaner version?</em> Each step is small enough that the network can learn it. To generate a new image, you start from snow and run the trained network in reverse, peeling off one layer of noise at a time, until something emerges that was never there.</p>
+<p>The technical name is a <em>denoising diffusion probabilistic model</em>, and the canonical paper is from Berkeley in 2020.<a class="footnote-ref" href="#fn3" id="fnref3" role="doc-noteref"><sup>3</sup></a> The intuition is the part that matters. The network never learns “how to draw”; it only learns “how to remove a little bit of noise.” Composition does the rest. A thousand small denoisings, run in sequence on a starting point that is pure noise, produce an image.</p>
+<p>Diffusion beat GANs on every axis that mattered. Training was stable: no adversarial knife-fight, no mode collapse, just a regression problem with a clean loss. The samples were higher quality and more diverse, because the noisy starting points covered the latent space evenly rather than getting trapped near the discriminator’s blind spots. The same architecture could be conditioned on text, on layout, on a sketch, on another image — anything that could be encoded into a vector could be poured in as an extra input and steer the denoising.</p>
+<p>The catch was cost. Doing the whole process at the full resolution of a photograph was punishing. Each of the thousand denoising steps had to run a full deep network over millions of pixels, and at the scale of a megapixel image this added up to hours on a single GPU. For a couple of years diffusion was beautiful and inaccessible.</p>
+<p>The unlock came in late 2021, from a group at Heidelberg. Their paper is called <em>High-Resolution Image Synthesis with Latent Diffusion Models</em>, and it became famous under a shorter name: <em>Stable Diffusion</em>.<a class="footnote-ref" href="#fn4" id="fnref4" role="doc-noteref"><sup>4</sup></a> The idea is to do the whole noisy dance not in the space of raw pixels but in a compressed latent space — the same kind of compressed map GANs had been using, learned by a small encoder–decoder network and frozen in advance. Run the thousand denoising steps over a sixty-by-sixty grid of latent codes instead of a thousand-by-thousand grid of pixels, then decode the result back into a picture at the end. The arithmetic shrinks by orders of magnitude. The image quality does not. Suddenly the same machine ran on one consumer GPU, in seconds rather than hours, and the weights were small enough to download.</p>
+<p>Text conditioning was the second piece, and the mechanism is worth naming precisely even though we will not fully unpack it until the next-but-one section. A text prompt is passed through a text encoder — the encoder half of a system called CLIP, which is the hinge of this chapter and which §5 takes apart properly — and the resulting vector is fed into the denoising network at every step, via the same attention mechanism chapter 4 explained. The picture being denoised is steered, at every step, by what the text vector tells the network to look for. Type <em>a cat in a top hat</em>, and the noisy patches start to organise themselves into a face with whiskers under a tall black cylinder, because at every step the denoiser is being pulled toward the part of latent space the text vector points at.</p>
+<p>In 2022 this combination — latent diffusion, text conditioning, weights you could download — produced the public phenomenon the intro called the <em>generative turn</em>. The intro told you the names: DALL·E 2 in April, Midjourney in July, Stable Diffusion in August.<a class="footnote-ref" href="#fn5" id="fnref5" role="doc-noteref"><sup>5</sup></a><a class="footnote-ref" href="#fn6" id="fnref6" role="doc-noteref"><sup>6</sup></a> Within ninety days, anybody with a credit card or a graphics card could type a sentence and get a picture. The pictures were, by any historical standard, miraculous. They were also, occasionally, cursed. The cursed-hands era is the artifact to remember. For about a year, image models could draw almost anything except the human hand, which would emerge with six fingers, with thumbs in the wrong places, with knuckles bending backward, with whole fingers fused into asymmetric bone-coloured clubs. The internet was full of pictures of beautiful imaginary people with terrible hands.</p>
+<p>The cursed-hands era ended quickly. Better training data, better captions, careful augmentation — by 2024 the major systems had largely solved the problem the same way they had solved every previous artifact, which is by throwing more data and more compute at it. The pattern is worth naming, because we will see it again. The artifacts of a generative model are not eternal bugs. They are the parts of the distribution the training data underrepresented or mislabelled, and they shrink as the data improves.</p>
+<p>Video belongs to this section as a one-paragraph honesty. By 2024–25, systems like Sora, Veo, and Runway had pushed diffusion into the time dimension — generating short clips by denoising a stack of frames jointly so that objects persist across them. The samples are striking, sometimes beautiful, often physically wrong in ways that are hard to articulate until you watch them twice. A glass falls and the shadow ignores the fall. A leg crosses behind another leg and the foot reappears on the wrong side. Temporal coherence is the hard part, and as of 2026 it is not yet solved. §7 will return to this briefly. For now, the takeaway is that diffusion is the substrate underneath video too, and the same mechanism that makes the still images astonishing is what makes the moving ones almost-but-not-quite right.</p>
+</section>
+<section class="level2" id="whisper-and-audio-generation">
+<h2 class="anchored" data-anchor-id="whisper-and-audio-generation">Whisper and audio generation</h2>
+<p>Audio cuts in two directions. <em>Listening</em> — converting a recording of speech into text — and <em>speaking</em> — converting text into a recording of speech. There is a third, <em>composing</em>, which is making music from scratch, and we will touch it at the end. The fundamental observation is that all three are the same trick in different coats. Once you can turn sound into a sequence the transformer from chapter 4 understands, the rest of the apparatus follows.</p>
+<p>Start with listening. The state-of-the-art system as of 2026 is <em>Whisper</em>, released by OpenAI in 2022.<a class="footnote-ref" href="#fn7" id="fnref7" role="doc-noteref"><sup>7</sup></a> The mechanism is two ideas stacked. First, take a raw audio waveform and convert it into a <em>spectrogram</em> — a two-dimensional image where one axis is time, the other axis is frequency, and the brightness at each point is how much energy the recording carried at that frequency at that time. A spectrogram is, mechanically, a picture of sound. Second, treat it as a sequence-to-sequence problem in exactly the chapter-4 sense: the spectrogram patches are the input tokens, the text transcript is the output, and a transformer between them learns the mapping. That is the entire system, in one line.</p>
+<p>The clever part is the training data. Whisper was trained on six hundred and eighty thousand hours of audio scraped from the public web, paired with whatever subtitles or transcripts accompanied them. Most of it was English; a substantial fraction was other languages; the rest was a mess of accents, background music, cross-talk, varying recording quality, and channel noise. The model trained on the whole pile at once, and it emerged generalising in a way previous speech-recognition systems did not. You can hand Whisper a poorly-recorded voice memo in Caribbean Spanish with a fan running in the background, and it transcribes it. The voice notes that scoped the outline this chapter is built from were transcribed by exactly this machine.</p>
+<p>Now speaking. Text-to-speech is the inverse problem, and the modern recipe runs in three steps. Text in. A network converts the text into linguistic features — the phonemes that will be spoken, the rhythm, the pitch contour, the emotional inflection. A second network, the <em>vocoder</em>, converts those features into a waveform. The lineage runs from DeepMind’s <em>WaveNet</em> in 2016, which was the first network to generate raw audio sample-by-sample at sixteen thousand samples per second and proved the technique was possible, through a generation of neural codecs that compressed audio into tokens, into today’s high-fidelity commercial systems like ElevenLabs and OpenAI’s voice mode.<a class="footnote-ref" href="#fn8" id="fnref8" role="doc-noteref"><sup>8</sup></a> The state of the art in 2026 is good enough that a clean, well-paced sample of synthesised speech can be mistaken for a recording of a person, by anyone not listening for tells.</p>
+<p>That capability is also where the chapter has to be sharp. <em>Voice cloning</em> — building a model that can speak in a specific person’s voice from a brief sample of that voice — used to require an hour of clean audio recorded by the target person in a studio. It now requires a few seconds. The system listens to a voicemail, extracts the speaker’s vocal characteristics into an embedding, and from then on can read any text in that voice. The technology is astonishing. It is also, in its current commercial deployment, grotesque. Phone scams targeting elderly parents with the cloned voice of a grandchild in distress are a real category of crime in 2026, and the technical floor for committing one has been lowered to the price of a monthly subscription. The book holds both observations together, which is what the techno-pragmatist register is for. Part III takes the ethics apart properly; here the job is to name the capability with the right sharpness and move on.</p>
+<p>Music briefly. Systems like Suno and Udio in 2024–25 generate songs from text prompts — full arrangements with vocals, in stylistic genres of the user’s choosing. The architecture is family-resembling to the rest of this section: a neural codec tokenises audio into discrete pieces, and a transformer learns to predict the next piece. The hard part is what no other modality has to solve at quite this scale — <em>long-range coherence over minutes</em>. A song has to remember its key, its verse–chorus structure, its melodic motifs across a three-minute span. As of 2026 the systems mostly do, sometimes do not, and the failure modes are interesting in ways that go beyond this chapter.</p>
+<p>The bridge sentence to the rest of the chapter is the one to remember. Once audio is <em>tokenised</em> — by Whisper-style spectrogram patches on the input side, by neural-codec tokens on the output side — generating it becomes next-token prediction again. The transformer from chapter 4 does not have to know it is working on sound rather than text. It just sees tokens.</p>
+</section>
+<section class="level2" id="clip-and-the-multimodal-bridge">
+<h2 class="anchored" data-anchor-id="clip-and-the-multimodal-bridge">CLIP and the multimodal bridge</h2>
+<p>Here is the question that organises the rest of the chapter. How do you teach a machine that the word <em>dog</em> and a photograph of a dog are about the same thing?</p>
+<p>For most of deep learning’s history, the answer was <em>you don’t</em>. Vision models were trained on labelled images, where the label was an integer from a fixed list of, say, a thousand category names. Language models were trained on text, where the words were tokens drawn from their own vocabulary. The two systems lived in incompatible spaces. A vision model produced a vector that meant “this image is in category 487”; a language model produced a vector that meant “the next token is probably <em>retriever</em>”. Those two vectors had no shared coordinate system. They lived in different countries with different currencies.</p>
+<p>In January 2021, a paper from OpenAI changed that. The paper is called <em>Learning Transferable Visual Models From Natural Language Supervision</em>, and it introduced the system the field calls <em>CLIP</em>.<a class="footnote-ref" href="#fn9" id="fnref9" role="doc-noteref"><sup>9</sup></a> The idea, told as plainly as it can be told, is this. Train two networks at the same time on a giant dataset of (image, caption) pairs scraped from the public web — four hundred million of them, in CLIP’s case. One network reads images. The other reads text. Both produce vectors of the same dimensionality. The training objective: for each (image, caption) pair, push the two vectors together; for each mismatched pair from the same batch, push them apart. That is <em>contrastive</em> training. The image of a golden retriever and the caption <em>a photo of a golden retriever</em> end up landing near each other in a shared vector space. The image of a golden retriever and the caption <em>a slice of pizza</em> end up far apart.</p>
+<p>What that joint training buys is the most consequential single idea of the multimodal era. After it, the image encoder and the text encoder <em>share a coordinate system</em>. A picture and a sentence can now be compared directly by computing the distance between their vectors. There is no longer any need for a fixed label set or a translation step between the two modalities. Meaning, for both pictures and words, is now expressed in the same currency.</p>
+<p>The implications fall out one after another. <em>Zero-shot classification</em>: given an image of an unfamiliar object, embed it, then embed each of a list of candidate descriptions — <em>a photo of a Border Collie, a photo of a Bernese Mountain Dog, a photo of a Welsh Corgi</em> — and pick the one closest to the image vector. No retraining. No fine-tuning. No labelled examples of the specific breed. CLIP can do the job because the joint space already encodes the relationship. <em>Cross-modal search</em>: you have a database of a million photographs and you type <em>children playing on a beach at sunset</em>; you embed the sentence, you compare its vector to every image vector, you return the closest few. The same trick. <em>Image generation conditioning</em>: this is the one §3 promised. The CLIP text encoder is exactly the steering wheel a diffusion model uses to point the denoising process at the right region of image space. <em>A cat in a top hat</em> is, mechanically, a coordinate in CLIP space, and the diffusion network’s job at every step is to nudge the noisy image toward that coordinate.</p>
+<p>The trick generalises beyond pictures and text. <em>CLAP</em> extends it to audio: train an audio encoder and a text encoder jointly, and the joint space lets you search for sounds with text queries or vice versa.<a class="footnote-ref" href="#fn10" id="fnref10" role="doc-noteref"><sup>10</sup></a> <em>MuLan</em> and its descendants do the same for music. The pattern is the same pattern every time. Pick two modalities you want to relate. Find a giant dataset of paired examples. Train two encoders jointly with a contrastive objective. The shared space falls out.</p>
+<p>That generality is what makes CLIP the hinge of the chapter. If every modality can be mapped, by the same recipe, into one shared coordinate space, then the next move is obvious. Stop training modalities separately and then stitching them together. Train one model on all of them at once, from the start, with all the modalities flowing through the same machine. The last section is what that looks like.</p>
+</section>
+<section class="level2" id="native-multimodal-models">
+<h2 class="anchored" data-anchor-id="native-multimodal-models">Native multimodal models</h2>
+<p>For most of the period this chapter covers, multimodal AI was a <em>pipeline</em>. You took an image encoder — frequently a CLIP-trained one — and bolted it to the front of a language model with a small adapter network in between, training the adapter to project image vectors into something the language model could read as if they were tokens. The result, called a <em>vision-language model</em>, could look at a picture and answer questions about it. It worked. It was also, architecturally, two systems duct-taped together. The image encoder and the language model had been trained separately, in different runs, with different objectives, and the adapter was the seam.</p>
+<p>The next move, which became dominant around 2024, was to dissolve the seam. Train a single model from the start on an <em>interleaved token stream</em> containing all modalities. The recipe has three pieces. First, a tokeniser per modality: byte-pair encoding for text, a patch tokeniser that chops images into small squares and embeds them, a neural codec for audio. Second, a single very large transformer trained on streams in which all those token types appear together, in any order, the way a human conversation might switch from speech to a referenced photograph to a written caption without changing register. Third, decoding heads per modality on the output side, so the same model can emit text tokens, image patches, or audio codec tokens depending on what the task wants. The transformer itself is the chapter-4 machine, unchanged. It does not know which kind of token it is reading or writing. It only knows the next-token-prediction objective.</p>
+<p>The systems that exemplify this in 2026 are easy to name. <em>GPT-4o</em> — <em>o</em> for <em>omni</em> — was OpenAI’s 2024 release that handled native audio in and audio out, alongside text and images, and as a side effect produced sub-second voice replies because the audio was being generated by the same machine that was thinking the answer. <em>Gemini</em>, Google DeepMind’s frontier line, was multimodal from its first version, with native handling of text, images, audio, and video in a single architecture. <em>Claude</em>, Anthropic’s family, was vision-native from version 3 and added audio input by 2025. Treat these as examples-as-of-2026 rather than canon: the names will date faster than the mechanism. The mechanism is the part to keep, and the mechanism is what the previous paragraph described.</p>
+<p>Here is what the convergence implies. By 2026 the distinction between a language model and a generative model for other modalities has largely stopped mattering. A frontier model is one model, trained from scratch on tokens of every shape, that can read and write any of them on demand. The text machine of the last chapter and the image and audio machines of this one were the same machine all along, looking at different alphabets. The only thing that changed was what the alphabet was. The transformer that emits the next token does not care.</p>
+</section>
+<section class="level2" id="whats-still-hard">
+<h2 class="anchored" data-anchor-id="whats-still-hard">What’s still hard</h2>
+<p>Three honest caveats before the chapter closes.</p>
+<p><em>Long-horizon video</em> remains unsolved as of 2026. The frame-by-frame snapshots are increasingly photoreal. The physics across frames drifts. An object that was on the table moves and reappears under it; a shadow ignores its source; a person turns their head and a different person turns back. The problem is not architectural cleverness. The problem is that the model has no internal world model strong enough to enforce that objects persist with consistent properties across time. The bigger the time window, the worse it gets, and there is no clean line in sight where this will be solved by simply scaling further. Whether scaling will solve it anyway is one of the open empirical questions of the next few years.</p>
+<p><em>Multi-speaker audio</em> is the other honest weak spot. Modern systems handle one voice in clean conditions beautifully. Two people overlapping in a noisy café still confounds them. The hard part is not perception of any individual voice; it is <em>separation</em> — deciding which sounds belong to which speaker, in real time, when the streams overlap. Humans do this constantly. The systems we have are still distinctly worse at it than a six-year-old in a crowded room.</p>
+<p>The deepest open question is the one Part III has to take seriously, and it sits across every modality the chapter has covered. <em>Does the model understand the image, or has it learned what captions tend to look like for images statistically near it?</em> CLIP can pick out a golden retriever in a photograph. Whether the network has learned the concept <em>dog</em>, or whether it has learned the statistics of how photographs of dogs are described in web captions, is a question the model itself cannot answer for us. The first reading is what most people imagine when they hear the word <em>understand</em>. The second is much closer to what the training procedure actually optimises for. Part III’s chapters on alignment and limitations pick this up from the other side, where the same gap shows up as bias, as fragility under distribution shift, as confident wrongness under domain change. Here, the job is only to name it, and to hold the two facts together.</p>
+<p>The convergence is real and astonishing. It is also not the same thing as understanding. Both have to be held at once. The next chapter wraps a loop around these machines and starts asking what they can be made to <em>do</em> in the world. The answer, with care, is a great deal.</p>
+</section>
+<section class="footnotes footnotes-end-of-document" id="footnotes" role="doc-endnotes">
+<hr/>
+<ol>
+<li id="fn1"><p>Goodfellow, I., Pouget-Abadie, J., Mirza, M., Xu, B., Warde-Farley, D., Ozair, S., Courville, A., &amp; Bengio, Y. <em>Generative Adversarial Networks.</em> NeurIPS, 2014. arXiv:1406.2661. The paper the intro pointed at when it said adversarial training arrived in Montreal in 2014.<a class="footnote-back" href="#fnref1" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Karras, T., Laine, S., &amp; Aila, T. <em>A Style-Based Generator Architecture for Generative Adversarial Networks.</em> CVPR, 2019. arXiv:1812.04948. The architecture behind <em>thispersondoesnotexist</em>.<a class="footnote-back" href="#fnref2" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Ho, J., Jain, A., &amp; Abbeel, P. <em>Denoising Diffusion Probabilistic Models.</em> NeurIPS, 2020. arXiv:2006.11239. The paper that established diffusion as a practical training recipe for high-quality image generation.<a class="footnote-back" href="#fnref3" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Rombach, R., Blattmann, A., Lorenz, D., Esser, P., &amp; Ommer, B. <em>High-Resolution Image Synthesis with Latent Diffusion Models.</em> CVPR, 2022. arXiv:2112.10752. The latent-space trick that made diffusion run on a consumer GPU; released as Stable Diffusion later that year.<a class="footnote-back" href="#fnref4" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Ramesh, A., Dhariwal, P., Nichol, A., Chu, C., &amp; Chen, M. <em>Hierarchical Text-Conditional Image Generation with CLIP Latents.</em> arXiv:2204.06125, 2022. The DALL·E 2 / unCLIP paper.<a class="footnote-back" href="#fnref5" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Saharia, C. et al. <em>Photorealistic Text-to-Image Diffusion Models with Deep Language Understanding.</em> NeurIPS, 2022. arXiv:2205.11487. The Imagen paper from Google, which alongside DALL·E 2 and Stable Diffusion defined the 2022 generative turn.<a class="footnote-back" href="#fnref6" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Radford, A., Kim, J. W., Xu, T., Brockman, G., McLeavey, C., &amp; Sutskever, I. <em>Robust Speech Recognition via Large-Scale Weak Supervision.</em> arXiv:2212.04356, 2022. The Whisper paper.<a class="footnote-back" href="#fnref7" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>van den Oord, A. et al. <em>WaveNet: A Generative Model for Raw Audio.</em> arXiv:1609.03499, 2016. The first neural network to generate raw audio waveforms sample-by-sample at fidelity high enough for production speech synthesis. The neural-codec lineage that runs through to today’s text-to-speech systems descends from it via VQ-VAE (van den Oord, Vinyals, &amp; Kavukcuoglu, <em>Neural Discrete Representation Learning</em>, NeurIPS 2017, arXiv:1711.00937).<a class="footnote-back" href="#fnref8" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>Radford, A. et al. <em>Learning Transferable Visual Models From Natural Language Supervision.</em> ICML, 2021. arXiv:2103.00020. The CLIP paper. The contrastive image–text training procedure that anchors the multimodal era.<a class="footnote-back" href="#fnref9" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>The same recipe, audio in place of images: see for example <em>CLAP: Learning Audio Concepts From Natural Language Supervision</em> (Elizalde, Deshmukh, Al Ismail, &amp; Wang, ICASSP 2023, arXiv:2206.04769) and Google’s <em>MuLan: A Joint Embedding of Music Audio and Natural Language</em> (Huang et al., ISMIR 2022, arXiv:2208.12415).<a class="footnote-back" href="#fnref10" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+<div class="nav-page nav-page-previous">
+<a aria-label="Language Modeling" class="pagination-link" href="../1_foundations/llms.html">
+<i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>  <span class="chapter-title">Language Modeling</span></span>
+</a>
+</div>
+<div class="nav-page nav-page-next">
+<a aria-label="Agentic AI" class="pagination-link" href="../1_foundations/agentic.html">
+<span class="nav-page-text"><span class="chapter-number">6</span>  <span class="chapter-title">Agentic AI</span></span> <i class="bi bi-arrow-right-short"></i>
+</a>
+</div>
+</nav>
+</div> <!-- /content -->
+<script src="/data.js"></script><script src="/books/reader.js"></script></body></html>

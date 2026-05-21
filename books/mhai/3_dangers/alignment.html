@@ -3,7 +3,7 @@
 <meta charset="utf-8"/>
 <meta content="quarto-1.7.30" name="generator"/>
 <meta content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
-<title>12  Why Artificial Intelligence is Hard – Mostly Harmless AI</title>
+<title>14  The Alignment Problem – Mostly Harmless AI</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
 <button aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="quarto-btn-toggle btn" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="button" type="button">
 <i class="bi bi-layout-text-sidebar-reverse"></i>
 </button>
-<nav aria-label="breadcrumb" class="quarto-page-breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../3_dangers/index.html">Dangers of AI</a></li><li class="breadcrumb-item"><a href="../3_dangers/alignment.html"><span class="chapter-number">12</span>  <span class="chapter-title">Why Artificial Intelligence is Hard</span></a></li></ol></nav>
+<nav aria-label="breadcrumb" class="quarto-page-breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../3_dangers/index.html">Dangers</a></li><li class="breadcrumb-item"><a href="../3_dangers/alignment.html"><span class="chapter-number">14</span>  <span class="chapter-title">The Alignment Problem</span></a></li></ol></nav>
 <a aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="flex-grow-1" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="navigation">
 </a>
 <button aria-label="Search" class="btn quarto-search-button" onclick="window.quartoOpenSearch();" type="button">
@@ -118,13 +118,13 @@ ul.task-list li input[type="checkbox"] {
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../intro.html">
-<span class="menu-text">A Brief History of Artificial Intelligence</span></a>
+<span class="menu-text">A Brief History of AI</span></a>
 </div>
 </li>
 <li class="sidebar-item sidebar-item-section">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../1_foundations/index.html">
-<span class="menu-text">Foundations of AI</span></a>
+<span class="menu-text">Foundations</span></a>
 <a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-1" data-bs-toggle="collapse" role="navigation">
 <i class="bi bi-chevron-right ms-2"></i>
 </a>
@@ -133,7 +133,7 @@ ul.task-list li input[type="checkbox"] {
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../1_foundations/ai.html">
-<span class="menu-text"><span class="chapter-number">1</span>  <span class="chapter-title">Foundations of Artificial Intelligence</span></span></a>
+<span class="menu-text"><span class="chapter-number">1</span>  <span class="chapter-title">Classical AI</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
@@ -144,20 +144,26 @@ ul.task-list li input[type="checkbox"] {
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/deep-learning.html">
+<span class="menu-text"><span class="chapter-number">3</span>  <span class="chapter-title">Deep Learning</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../1_foundations/llms.html">
-<span class="menu-text"><span class="chapter-number">3</span>  <span class="chapter-title">Generative AI and Large Language Models</span></span></a>
+<span class="menu-text"><span class="chapter-number">4</span>  <span class="chapter-title">Language Modeling</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
-<a class="sidebar-item-text sidebar-link" href="../1_foundations/apps.html">
-<span class="menu-text"><span class="chapter-number">4</span>  <span class="chapter-title">Techniques for LLM Deployment</span></span></a>
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/generative.html">
+<span class="menu-text"><span class="chapter-number">5</span>  <span class="chapter-title">Generative AI</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
-<a class="sidebar-item-text sidebar-link" href="../1_foundations/optimization.html">
-<span class="menu-text"><span class="chapter-number">5</span>  <span class="chapter-title">Optimization of LLMs</span></span></a>
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/agentic.html">
+<span class="menu-text"><span class="chapter-number">6</span>  <span class="chapter-title">Agentic AI</span></span></a>
 </div>
 </li>
 </ul>
@@ -165,7 +171,7 @@ ul.task-list li input[type="checkbox"] {
 <li class="sidebar-item sidebar-item-section">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../2_applications/index.html">
-<span class="menu-text">Applications of AI</span></a>
+<span class="menu-text">Applications</span></a>
 <a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-2" data-bs-toggle="collapse" role="navigation">
 <i class="bi bi-chevron-right ms-2"></i>
 </a>
@@ -174,37 +180,43 @@ ul.task-list li input[type="checkbox"] {
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../2_applications/intro.html">
-<span class="menu-text"><span class="chapter-number">6</span>  <span class="chapter-title">AI for Critical Thinkers</span></span></a>
+<span class="menu-text"><span class="chapter-number">7</span>  <span class="chapter-title">Working With AI</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
-<a class="sidebar-item-text sidebar-link" href="../2_applications/research.html">
-<span class="menu-text"><span class="chapter-number">7</span>  <span class="chapter-title">AI for Knowledge Workers</span></span></a>
+<a class="sidebar-item-text sidebar-link" href="../2_applications/knowledge-work.html">
+<span class="menu-text"><span class="chapter-number">8</span>  <span class="chapter-title">AI for Knowledge Work</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/science.html">
+<span class="menu-text"><span class="chapter-number">9</span>  <span class="chapter-title">AI for Scientific Research</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../2_applications/coding.html">
-<span class="menu-text"><span class="chapter-number">8</span>  <span class="chapter-title">AI for Software Development</span></span></a>
+<span class="menu-text"><span class="chapter-number">10</span>  <span class="chapter-title">AI for Software Development</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../2_applications/education.html">
-<span class="menu-text"><span class="chapter-number">9</span>  <span class="chapter-title">AI for Educators and Learners</span></span></a>
+<span class="menu-text"><span class="chapter-number">11</span>  <span class="chapter-title">AI for Education and Learning</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../2_applications/creative.html">
-<span class="menu-text"><span class="chapter-number">10</span>  <span class="chapter-title">AI for Creative Professionals</span></span></a>
+<span class="menu-text"><span class="chapter-number">12</span>  <span class="chapter-title">AI for Creative Work</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../2_applications/policy.html">
-<span class="menu-text"><span class="chapter-number">11</span>  <span class="chapter-title">AI for Policy-Makers</span></span></a>
+<span class="menu-text"><span class="chapter-number">13</span>  <span class="chapter-title">AI for Policy and Governance</span></span></a>
 </div>
 </li>
 </ul>
@@ -212,7 +224,7 @@ ul.task-list li input[type="checkbox"] {
 <li class="sidebar-item sidebar-item-section">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../3_dangers/index.html">
-<span class="menu-text">Dangers of AI</span></a>
+<span class="menu-text">Dangers</span></a>
 <a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-3" data-bs-toggle="collapse" role="navigation">
 <i class="bi bi-chevron-right ms-2"></i>
 </a>
@@ -221,19 +233,19 @@ ul.task-list li input[type="checkbox"] {
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link active" href="../3_dangers/alignment.html">
-<span class="menu-text"><span class="chapter-number">12</span>  <span class="chapter-title">Why Artificial Intelligence is Hard</span></span></a>
+<span class="menu-text"><span class="chapter-number">14</span>  <span class="chapter-title">The Alignment Problem</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../3_dangers/limitations.html">
-<span class="menu-text"><span class="chapter-number">13</span>  <span class="chapter-title">The limits of language models</span></span></a>
+<span class="menu-text"><span class="chapter-number">15</span>  <span class="chapter-title">Limits of Language Models</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../3_dangers/risks.html">
-<span class="menu-text"><span class="chapter-number">14</span>  <span class="chapter-title">The Actual Risks of AI</span></span></a>
+<span class="menu-text"><span class="chapter-number">16</span>  <span class="chapter-title">Risks of AI</span></span></a>
 </div>
 </li>
 </ul>
@@ -241,7 +253,7 @@ ul.task-list li input[type="checkbox"] {
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../epilogue.html">
-<span class="menu-text">Epilogue: The Road Ahead</span></a>
+<span class="menu-text">The Road Ahead</span></a>
 </div>
 </li>
 </ul>
@@ -253,18 +265,19 @@ ul.task-list li input[type="checkbox"] {
 <nav class="toc-active" id="TOC" role="doc-toc">
 <h2 id="toc-title">Table of contents</h2>
 <ul class="collapse">
-<li><a class="nav-link active" data-scroll-target="#a-cautionary-tale" href="#a-cautionary-tale" id="toc-a-cautionary-tale">A Cautionary Tale</a></li>
-<li><a class="nav-link" data-scroll-target="#the-problem-with-machine-learning" href="#the-problem-with-machine-learning" id="toc-the-problem-with-machine-learning">The Problem with Machine Learning</a></li>
-<li><a class="nav-link" data-scroll-target="#the-alignment-problem" href="#the-alignment-problem" id="toc-the-alignment-problem">The Alignment Problem</a></li>
+<li><a class="nav-link active" data-scroll-target="#a-cautionary-tale" href="#a-cautionary-tale" id="toc-a-cautionary-tale">A cautionary tale</a></li>
+<li><a class="nav-link" data-scroll-target="#the-problem-with-machine-learning" href="#the-problem-with-machine-learning" id="toc-the-problem-with-machine-learning">The problem with machine learning</a></li>
+<li><a class="nav-link" data-scroll-target="#the-alignment-problem" href="#the-alignment-problem" id="toc-the-alignment-problem">The alignment problem</a></li>
+<li><a class="nav-link" data-scroll-target="#operational-alignment-safety-in-the-harness" href="#operational-alignment-safety-in-the-harness" id="toc-operational-alignment-safety-in-the-harness">Operational alignment — safety in the harness</a></li>
 <li><a class="nav-link" data-scroll-target="#is-it-all-lost" href="#is-it-all-lost" id="toc-is-it-all-lost">Is it all lost?</a></li>
 </ul>
 </nav>
 </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
-<header class="quarto-title-block default" id="title-block-header"><nav aria-label="breadcrumb" class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../3_dangers/index.html">Dangers of AI</a></li><li class="breadcrumb-item"><a href="../3_dangers/alignment.html"><span class="chapter-number">12</span>  <span class="chapter-title">Why Artificial Intelligence is Hard</span></a></li></ol></nav>
+<header class="quarto-title-block default" id="title-block-header"><nav aria-label="breadcrumb" class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../3_dangers/index.html">Dangers</a></li><li class="breadcrumb-item"><a href="../3_dangers/alignment.html"><span class="chapter-number">14</span>  <span class="chapter-title">The Alignment Problem</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">12</span>  <span class="chapter-title">Why Artificial Intelligence is Hard</span></h1>
+<h1 class="title"><span class="chapter-number">14</span>  <span class="chapter-title">The Alignment Problem</span></h1>
 </div>
 <div class="quarto-title-meta">
 </div>
@@ -275,7 +288,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Following more or less the same methodology, these researchers sourced COVID and non-COVID lung image datasets, trained classifiers, and achieved impressive accuracy rates ranging from 80% to 95%. Many of them claimed to have successfully solved the task of COVID detection from X-ray images.</p>
 <p>It turns out all of this was useless. The vast majority fell prey to the original sin in machine learning. To understand why, let’s go back a few decades to one of the longest standing urban legends in artificial intelligence, and learn the most important lesson in Machine Learning.</p>
 <section class="level2" id="a-cautionary-tale">
-<h2 class="anchored" data-anchor-id="a-cautionary-tale">A Cautionary Tale</h2>
+<h2 class="anchored" data-anchor-id="a-cautionary-tale">A cautionary tale</h2>
 <p>It was the early 1960s—or so the legend tells. There are many variants of this tale, and some of them place it in different years or have different details. But details don’t matter. So let’s move on.</p>
 <p>Where was I? Oh yeah… It was the early 60s, and artificial intelligence researchers were very excited about this new connectionist idea that you could have small computational units similar to brain neurons connected together performing a small amount of computation. This would allow you to compute some really complex functions when these neurons—these artificial neural networks, as they were called—grew large enough.</p>
 <p>And so—our tale continues—the US government hired some of these early connectionist researchers to work on a neural network that could detect whether an image contained an enemy tank or it was an image of an empty space, a forest, some trees, a landscape, or… something not tank.</p>
@@ -288,7 +301,7 @@ ul.task-list li input[type="checkbox"] {
 <p>This is just a cautionary tale, probably apocryphal. Many people have told this story in different moments, and nobody can find an actual reference. But it’s a story that we keep telling because it highlights one of the most important issues at the core of machine learning. This is a story that I tell my students over and over, every course. And they nod in agreement, but they always fail to understand what the core of the issue is here, and they make this same mistake, over and over.</p>
 </section>
 <section class="level2" id="the-problem-with-machine-learning">
-<h2 class="anchored" data-anchor-id="the-problem-with-machine-learning">The Problem with Machine Learning</h2>
+<h2 class="anchored" data-anchor-id="the-problem-with-machine-learning">The problem with machine learning</h2>
 <p>The crux of the issue lies in the fact that machine learning, and particularly classification, primarily deals with discriminative models. A discriminative model aims to identify the most prominent feature that distinguishes objects among different classes.</p>
 <p>In classification problems, you typically have a set of objects, each described by a specific number of features. These features can be words in a text message, pixels in an image, or structured features, for example, in credit card transaction validation. The objective is to classify these objects into various classes according to those features.</p>
 <p>There are three primary types of classification problems: binary, multi-class, and multi-label. A binary problem separates objects into two classes, such as positive and negative. This is common in the medical domain, where the goal is often to distinguish between patients with and without a particular disease. A multi-class problem involves more than two classes, and the goal is to separate objects into one of these specific classes. A multi-label problem has more than one class, and a single object can belong to one or more classes.</p>
@@ -330,18 +343,18 @@ ul.task-list li input[type="checkbox"] {
 </section>
 </section>
 <section class="level2" id="the-alignment-problem">
-<h2 class="anchored" data-anchor-id="the-alignment-problem">The Alignment Problem</h2>
+<h2 class="anchored" data-anchor-id="the-alignment-problem">The alignment problem</h2>
 <p>In the AI safety community, concerns range from existential risks, where some believe super intelligent AI will inevitably harm us, to those focused on present issues like misuse of AI, perpetuating biases, discrimination, and spreading disinformation. However, most solutions to these problems rely on addressing the AI alignment problem.</p>
 <p>AI alignment ensures that an artificial intelligence system’s output aligns with user preferences beyond superficial optimization metrics. The goal is for the AI to genuinely solve the problem we care about, rather than just what we told it to do. This challenge arises because describing user preferences is incredibly difficult. Often, what we tell the AI we want is only a rough approximation of our true desires. Alignment aims to bridge that gap by helping AI understand our genuine intentions from our limited explanations.</p>
 <p>Now let’s explore why AI alignment may be the most difficult problem in computer science. In this article, we’ll examine why AI safety, specifically alignment, could be the hardest engineering challenge. We’ll start by defining AI alignment as ensuring an artificial intelligence system behaves according to user expectations, preferences, or values in various ways.</p>
 <section class="level3" id="understanding-ai-alignment">
-<h3 class="anchored" data-anchor-id="understanding-ai-alignment">Understanding AI Alignment</h3>
+<h3 class="anchored" data-anchor-id="understanding-ai-alignment">Understanding AI alignment</h3>
 <p>Why Is AI Alignment the Hardest Problem in Computer Science? In this section, we will explore why AI safety, specifically AI alignment, is potentially the most difficult challenge in engineering.</p>
 <p>AI alignment involves ensuring that an artificial intelligence system behaves according to a user’s expectations, preferences, or values. The interpretations can vary depending on context, but in general, the expectation is that a system will perform <em>aligned with</em> the user interests, that is, in a way that satisfies the user <em>actual needs and wants</em>, and not just some superficial approximation of them.</p>
 <p>First, lets question why alignment is necessary in artificial intelligence but not in other high-tech products engineering tools such as cars, planes, or rockets. The primary reason lies in the level of complexity and the nature of the interfacing when dealing AI systems compared to other engineering tools.</p>
 </section>
-<section class="level3" id="what-makes-ai-different-from-other-high-end-technologies-we-have">
-<h3 class="anchored" data-anchor-id="what-makes-ai-different-from-other-high-end-technologies-we-have">What makes AI different from other high-end technologies we have?</h3>
+<section class="level3" id="what-makes-ai-different-from-other-high-end-technologies">
+<h3 class="anchored" data-anchor-id="what-makes-ai-different-from-other-high-end-technologies">What makes AI different from other high-end technologies</h3>
 <p>The more advanced a tool, the more you can focus on telling it what you want to do instead of how to do it. For example, with simple tools like a hammer, you control every action. With complex tools like cars, you still don’t say “reach the destination” –at least not yet. Instead, you perform some mid-level actions like steering and accelerating, which in turn translate to lower-level actions like moving pistons.</p>
 <p>That is, as the tool becomes more advanced, the way you use it becomes closer that what you want and farther from what the tool must do to achieve that objective. Artificial intelligence lies in the declarative end, the point where you only tell the tool your end goal and let it figure out all the steps to achieve that. Actually, we could make the case that AI <em>can be defined</em> precisely as the field dedicated to making tools that do what you want.</p>
 <p>Consider driving a car –a regular car, not a self-driven one. To get where yow want, you need the car to steer in the right direction and accelerate or brake at the right times. That is, your high-level objective –getting somewhere– is decomposed into many low-level instructions. You cannot simply ask the car to drive itself –again, a traditional car. You have to steer the car and accelerate it. So the system that is translating a high-level, perhaps abstract instruction like “get me home fast but safely” into precise low-level instructions, is you.</p>
@@ -407,11 +420,33 @@ ul.task-list li input[type="checkbox"] {
 </section>
 </section>
 </section>
+<section class="level2" id="operational-alignment-safety-in-the-harness">
+<h2 class="anchored" data-anchor-id="operational-alignment-safety-in-the-harness">Operational alignment — safety in the harness</h2>
+<p>The previous chapter on agentic AI named a layer that the alignment argument now needs to lean on. The harness is the system between the language model and the world — the code that takes a model’s outputs, decides whether to act on them, performs the action, and feeds the result back. Chapter 6 introduced the harness mechanically. Here it becomes an argument about safety. The reliability of an agentic system, that chapter established, is a property of its harness rather than its model. The same is true of its safety. Models hallucinate at a rate that varies smoothly with size and training; harnesses, by contrast, are ordinary software, and ordinary software can be made arbitrarily strict. That asymmetry is the doorway through this section.</p>
+<p>Everything before this point in the chapter argued that perfectly specifying human values is unsolved, and may be unsolvable in principle. Model-level alignment — the project of training a system whose weights encode the right values — is chasing a target the rest of this chapter argued is not where it appears to be. The honest engineering response is to stop chasing the model and start bounding the system. <em>Operational alignment</em> is the name for that move: the discipline of putting safety in the harness layer, where you can write it down, version it, audit it, and prove it does what it claims. The model can suggest anything; the harness decides what actually happens. You will not prove the model aligned. You can prove the system bounded. The difference is everything, because a bounded system can be deployed today, while the unbounded one waits on a research problem that has been open for thirty years.</p>
+<p>The harness-level discipline comes in a small set of primitives that recur across every agent platform built in the last few years. None of them are new. All of them predate the linguistic agent and were standard practice in the systems-engineering world long before there was a language model to drive them. What is new is that they are now the operational core of how AI systems are kept safe.</p>
+<p><em>Consent at the tool boundary.</em> The harness exposes a finite set of actions to the model. The model proposes; the harness disposes. For any action with consequences the user cannot trivially undo — booking a flight, sending an email, modifying a file, posting to a public forum — the harness pauses and asks for explicit human confirmation before performing it. The Model Context Protocol, the cross-vendor standard for exposing tools to a language-model client introduced by Anthropic in 2024, treats consent as a first-class primitive: a client must request capability before invoking it, and a server can deny.<a class="footnote-ref" href="#fn1" id="fnref1" role="doc-noteref"><sup>1</sup></a> The failure this prevents is the agent that, in a single fluent paragraph, hallucinates a tool call and the harness performs it anyway. The residual risk is the human who approves without reading.</p>
+<p><em>Dry-run by default.</em> The harness can, for any state-changing action, produce a preview of what the action would do before committing it. The pattern is old. Terraform’s <code>plan</code> step renders the infrastructure delta before <code>apply</code> makes it; Kubernetes’ <code>kubectl apply --dry-run=server</code> validates a manifest against the live API without writing; <code>rsync -n</code>, <code>git push --dry-run</code>, and <code>apt-get --simulate</code> exist for the same reason.<a class="footnote-ref" href="#fn2" id="fnref2" role="doc-noteref"><sup>2</sup></a> <a class="footnote-ref" href="#fn3" id="fnref3" role="doc-noteref"><sup>3</sup></a> The model proposes an action; the harness renders the action as a diff; the user reads the diff and then commits. The failure this prevents is the irreversible action taken on the basis of an unread instruction. The residual risk is the diff that looks small but is not.</p>
+<p><em>Permission gates and hooks.</em> The harness wraps every tool invocation in a policy layer. Calls have to pass an allow-list; calls outside the list are refused. Calls generate an audit log. Hooks let the developer interpose code between the model’s request and the harness’s execution — to validate arguments, redact secrets, escalate to a human, or reject the call outright. Anthropic’s documentation for production agent harnesses recommends these as essential rather than optional.<a class="footnote-ref" href="#fn4" id="fnref4" role="doc-noteref"><sup>4</sup></a> The failure this prevents is the agent reaching for capability it should never have had. The residual risk is the policy that is too permissive because the author did not anticipate the failure mode.</p>
+<p><em>Sandboxes.</em> The harness confines the agent’s effects to a contained environment — a working directory, a virtual machine, a temporary database, an ephemeral container — so the blast radius of any action is bounded by the walls of the sandbox rather than by the model’s judgment. The agent can do whatever it likes inside the box; what leaves the box passes through the harness once more. The failure this prevents is the cascading mistake whose damage exceeds the agent’s authority. The residual risk is the escape — the side channel the sandbox forgot to close, or the action whose blast radius is inside the wall.</p>
+<p>Operational alignment bounds behaviour. It does not make the model good. A bounded system running a misaligned model is <em>safer</em>, not <em>safe</em>. The dry-run preview catches only the misbehaviour the user notices when they read it; the consent prompt protects only against the action the user pauses to refuse; the sandbox holds only as long as the model does not find the side channel; the permission gate is exactly as strict as its author thought to make it. Inside the sandbox, the model can still find ways to satisfy the proxy metric without doing the work — the specification-gaming behaviour catalogued at length by alignment researchers.<a class="footnote-ref" href="#fn5" id="fnref5" role="doc-noteref"><sup>5</sup></a> None of this is a silver bullet. The techno-pragmatist position is that there is no silver bullet, only better and worse engineering. Operational alignment is the better engineering available right now: a real partial answer, not the final one. It buys time, and time is the resource the rest of the field is spending.</p>
+<p>The same discipline appears in different costumes elsewhere in this book. The verification gates that govern reliable agentic coding in Part II are the dry-run principle wearing a software-engineering uniform. The human-in-the-loop mandates that the policy chapter discusses are consent at the tool boundary, written into law instead of code. The four primitives are one idea, reapplied at every layer where the field has had to learn the same lesson. The hardest version of the lesson — bounding a system more capable than ourselves with components weaker than it — is what the epilogue returns to.</p>
+</section>
 <section class="level2" id="is-it-all-lost">
 <h2 class="anchored" data-anchor-id="is-it-all-lost">Is it all lost?</h2>
 <p>I hope you now understand why this is a devilishly hard problem to solve. The very nature of intelligence makes this an adversarial situation. We want systems that are both highly self-sufficient but also very dependable. We need them to think and act on their own, but we need to trust them. And the smarter they become, the more blindly that trust has to be, and the more potential for catastrophe we find ourselves in.</p>
 <p>All is not lost, though. There’s an enormous body of research in the alignment problem, and while there are no silver bullets yet –and perhaps never will– we’ve made significant progress.</p>
 <p>One final thought. So far we’ve been focusing on <em>internal</em> challenges to AI alignment –challenges related to the task and the solution. But there’s an elephant in the room. AI alignment is literally having an AI <em>aligned with our values</em>. But <em>whose</em> values? We’re all different, and we all have different opinions about what’s important. So that’s a crucial conversation we need to have as these systems start to impact the daily lives of people all around the world.</p>
+</section>
+<section class="footnotes footnotes-end-of-document" id="footnotes" role="doc-endnotes">
+<hr/>
+<ol>
+<li id="fn1"><p>Anthropic. <em>Model Context Protocol — Specification.</em> 2024. https://modelcontextprotocol.io/. The MCP design treats consent as a first-class primitive: a client must request capability before invoking it, and a server may deny.<a class="footnote-back" href="#fnref1" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>HashiCorp. <em>Terraform CLI — <code>plan</code> command.</em> https://developer.hashicorp.com/terraform/cli/commands/plan. The canonical example of dry-run-by-default in production infrastructure tooling: <code>plan</code> renders the delta, <code>apply</code> commits.<a class="footnote-back" href="#fnref2" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Kubernetes. <em><code>kubectl apply</code> reference — <code>--dry-run</code> mode.</em> https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply. Validates a manifest against the live cluster API without writing state.<a class="footnote-back" href="#fnref3" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Anthropic. <em>Claude Agent SDK — harness design guidance.</em> 2024. https://docs.anthropic.com/en/api/agent-sdk-overview. Production guidance places permission gates, hooks, and audit logging in the harness rather than the model.<a class="footnote-back" href="#fnref4" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Krakovna, V. et al. <em>Specification gaming: the flip side of AI ingenuity.</em> DeepMind, 2020. https://deepmind.google/discover/blog/specification-gaming-the-flip-side-of-ai-ingenuity/. Maintains a public catalogue of around sixty documented cases in which trained systems satisfied a proxy metric without doing the intended task.<a class="footnote-back" href="#fnref5" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -815,13 +850,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
 <div class="nav-page nav-page-previous">
-<a aria-label="Dangers of AI" class="pagination-link" href="../3_dangers/index.html">
-<i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Dangers of AI</span>
+<a aria-label="Dangers" class="pagination-link" href="../3_dangers/index.html">
+<i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Dangers</span>
 </a>
 </div>
 <div class="nav-page nav-page-next">
-<a aria-label="The limits of language models" class="pagination-link" href="../3_dangers/limitations.html">
-<span class="nav-page-text"><span class="chapter-number">13</span>  <span class="chapter-title">The limits of language models</span></span> <i class="bi bi-arrow-right-short"></i>
+<a aria-label="Limits of Language Models" class="pagination-link" href="../3_dangers/limitations.html">
+<span class="nav-page-text"><span class="chapter-number">15</span>  <span class="chapter-title">Limits of Language Models</span></span> <i class="bi bi-arrow-right-short"></i>
 </a>
 </div>
 </nav>

@@ -3,7 +3,7 @@
 <meta charset="utf-8"/>
 <meta content="quarto-1.7.30" name="generator"/>
 <meta content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
-<title>3  Generative AI and Large Language Models – Mostly Harmless AI</title>
+<title>4  Language Modeling – Mostly Harmless AI</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,8 +24,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta content="../" name="quarto:offset"/>
-<link href="../1_foundations/apps.html" rel="next"/>
-<link href="../1_foundations/ml.html" rel="prev"/>
+<link href="../1_foundations/generative.html" rel="next"/>
+<link href="../1_foundations/deep-learning.html" rel="prev"/>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
 <button aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="quarto-btn-toggle btn" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="button" type="button">
 <i class="bi bi-layout-text-sidebar-reverse"></i>
 </button>
-<nav aria-label="breadcrumb" class="quarto-page-breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../1_foundations/index.html">Foundations of AI</a></li><li class="breadcrumb-item"><a href="../1_foundations/llms.html"><span class="chapter-number">3</span>  <span class="chapter-title">Generative AI and Large Language Models</span></a></li></ol></nav>
+<nav aria-label="breadcrumb" class="quarto-page-breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../1_foundations/index.html">Foundations</a></li><li class="breadcrumb-item"><a href="../1_foundations/llms.html"><span class="chapter-number">4</span>  <span class="chapter-title">Language Modeling</span></a></li></ol></nav>
 <a aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" class="flex-grow-1" data-bs-target=".quarto-sidebar-collapse-item" data-bs-toggle="collapse" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }" role="navigation">
 </a>
 <button aria-label="Search" class="btn quarto-search-button" onclick="window.quartoOpenSearch();" type="button">
@@ -118,13 +118,13 @@ ul.task-list li input[type="checkbox"] {
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../intro.html">
-<span class="menu-text">A Brief History of Artificial Intelligence</span></a>
+<span class="menu-text">A Brief History of AI</span></a>
 </div>
 </li>
 <li class="sidebar-item sidebar-item-section">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../1_foundations/index.html">
-<span class="menu-text">Foundations of AI</span></a>
+<span class="menu-text">Foundations</span></a>
 <a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-1" data-bs-toggle="collapse" role="navigation">
 <i class="bi bi-chevron-right ms-2"></i>
 </a>
@@ -133,7 +133,7 @@ ul.task-list li input[type="checkbox"] {
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../1_foundations/ai.html">
-<span class="menu-text"><span class="chapter-number">1</span>  <span class="chapter-title">Foundations of Artificial Intelligence</span></span></a>
+<span class="menu-text"><span class="chapter-number">1</span>  <span class="chapter-title">Classical AI</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
@@ -144,20 +144,26 @@ ul.task-list li input[type="checkbox"] {
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/deep-learning.html">
+<span class="menu-text"><span class="chapter-number">3</span>  <span class="chapter-title">Deep Learning</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link active" href="../1_foundations/llms.html">
-<span class="menu-text"><span class="chapter-number">3</span>  <span class="chapter-title">Generative AI and Large Language Models</span></span></a>
+<span class="menu-text"><span class="chapter-number">4</span>  <span class="chapter-title">Language Modeling</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
-<a class="sidebar-item-text sidebar-link" href="../1_foundations/apps.html">
-<span class="menu-text"><span class="chapter-number">4</span>  <span class="chapter-title">Techniques for LLM Deployment</span></span></a>
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/generative.html">
+<span class="menu-text"><span class="chapter-number">5</span>  <span class="chapter-title">Generative AI</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
-<a class="sidebar-item-text sidebar-link" href="../1_foundations/optimization.html">
-<span class="menu-text"><span class="chapter-number">5</span>  <span class="chapter-title">Optimization of LLMs</span></span></a>
+<a class="sidebar-item-text sidebar-link" href="../1_foundations/agentic.html">
+<span class="menu-text"><span class="chapter-number">6</span>  <span class="chapter-title">Agentic AI</span></span></a>
 </div>
 </li>
 </ul>
@@ -165,7 +171,7 @@ ul.task-list li input[type="checkbox"] {
 <li class="sidebar-item sidebar-item-section">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../2_applications/index.html">
-<span class="menu-text">Applications of AI</span></a>
+<span class="menu-text">Applications</span></a>
 <a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-2" data-bs-toggle="collapse" role="navigation">
 <i class="bi bi-chevron-right ms-2"></i>
 </a>
@@ -174,37 +180,43 @@ ul.task-list li input[type="checkbox"] {
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../2_applications/intro.html">
-<span class="menu-text"><span class="chapter-number">6</span>  <span class="chapter-title">AI for Critical Thinkers</span></span></a>
+<span class="menu-text"><span class="chapter-number">7</span>  <span class="chapter-title">Working With AI</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
-<a class="sidebar-item-text sidebar-link" href="../2_applications/research.html">
-<span class="menu-text"><span class="chapter-number">7</span>  <span class="chapter-title">AI for Knowledge Workers</span></span></a>
+<a class="sidebar-item-text sidebar-link" href="../2_applications/knowledge-work.html">
+<span class="menu-text"><span class="chapter-number">8</span>  <span class="chapter-title">AI for Knowledge Work</span></span></a>
+</div>
+</li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="../2_applications/science.html">
+<span class="menu-text"><span class="chapter-number">9</span>  <span class="chapter-title">AI for Scientific Research</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../2_applications/coding.html">
-<span class="menu-text"><span class="chapter-number">8</span>  <span class="chapter-title">AI for Software Development</span></span></a>
+<span class="menu-text"><span class="chapter-number">10</span>  <span class="chapter-title">AI for Software Development</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../2_applications/education.html">
-<span class="menu-text"><span class="chapter-number">9</span>  <span class="chapter-title">AI for Educators and Learners</span></span></a>
+<span class="menu-text"><span class="chapter-number">11</span>  <span class="chapter-title">AI for Education and Learning</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../2_applications/creative.html">
-<span class="menu-text"><span class="chapter-number">10</span>  <span class="chapter-title">AI for Creative Professionals</span></span></a>
+<span class="menu-text"><span class="chapter-number">12</span>  <span class="chapter-title">AI for Creative Work</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../2_applications/policy.html">
-<span class="menu-text"><span class="chapter-number">11</span>  <span class="chapter-title">AI for Policy-Makers</span></span></a>
+<span class="menu-text"><span class="chapter-number">13</span>  <span class="chapter-title">AI for Policy and Governance</span></span></a>
 </div>
 </li>
 </ul>
@@ -212,7 +224,7 @@ ul.task-list li input[type="checkbox"] {
 <li class="sidebar-item sidebar-item-section">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../3_dangers/index.html">
-<span class="menu-text">Dangers of AI</span></a>
+<span class="menu-text">Dangers</span></a>
 <a aria-expanded="true" aria-label="Toggle section" class="sidebar-item-toggle text-start" data-bs-target="#quarto-sidebar-section-3" data-bs-toggle="collapse" role="navigation">
 <i class="bi bi-chevron-right ms-2"></i>
 </a>
@@ -221,19 +233,19 @@ ul.task-list li input[type="checkbox"] {
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../3_dangers/alignment.html">
-<span class="menu-text"><span class="chapter-number">12</span>  <span class="chapter-title">Why Artificial Intelligence is Hard</span></span></a>
+<span class="menu-text"><span class="chapter-number">14</span>  <span class="chapter-title">The Alignment Problem</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../3_dangers/limitations.html">
-<span class="menu-text"><span class="chapter-number">13</span>  <span class="chapter-title">The limits of language models</span></span></a>
+<span class="menu-text"><span class="chapter-number">15</span>  <span class="chapter-title">Limits of Language Models</span></span></a>
 </div>
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../3_dangers/risks.html">
-<span class="menu-text"><span class="chapter-number">14</span>  <span class="chapter-title">The Actual Risks of AI</span></span></a>
+<span class="menu-text"><span class="chapter-number">16</span>  <span class="chapter-title">Risks of AI</span></span></a>
 </div>
 </li>
 </ul>
@@ -241,7 +253,7 @@ ul.task-list li input[type="checkbox"] {
 <li class="sidebar-item">
 <div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="../epilogue.html">
-<span class="menu-text">Epilogue: The Road Ahead</span></a>
+<span class="menu-text">The Road Ahead</span></a>
 </div>
 </li>
 </ul>
@@ -253,96 +265,138 @@ ul.task-list li input[type="checkbox"] {
 <nav class="toc-active" id="TOC" role="doc-toc">
 <h2 id="toc-title">Table of contents</h2>
 <ul class="collapse">
-<li><a class="nav-link active" data-scroll-target="#the-core-mechanics-how-llms-work" href="#the-core-mechanics-how-llms-work" id="toc-the-core-mechanics-how-llms-work">The Core Mechanics: How LLMs Work</a></li>
-<li><a class="nav-link" data-scroll-target="#what-generative-ai-can-do-capabilities-and-use-cases" href="#what-generative-ai-can-do-capabilities-and-use-cases" id="toc-what-generative-ai-can-do-capabilities-and-use-cases">What Generative AI Can Do: Capabilities and Use Cases</a></li>
-<li><a class="nav-link" data-scroll-target="#generative-ai-beyond-language" href="#generative-ai-beyond-language" id="toc-generative-ai-beyond-language">Generative AI Beyond Language</a></li>
+<li><a class="nav-link active" data-scroll-target="#language-modeling-the-core-mechanic" href="#language-modeling-the-core-mechanic" id="toc-language-modeling-the-core-mechanic">Language modeling, the core mechanic</a></li>
+<li><a class="nav-link" data-scroll-target="#the-path-to-context-the-mechanics-of-attention" href="#the-path-to-context-the-mechanics-of-attention" id="toc-the-path-to-context-the-mechanics-of-attention">The path to context — the mechanics of attention</a></li>
+<li><a class="nav-link" data-scroll-target="#the-rise-of-llms-four-stages-not-three" href="#the-rise-of-llms-four-stages-not-three" id="toc-the-rise-of-llms-four-stages-not-three">The rise of LLMs — four stages, not three</a></li>
+<li><a class="nav-link" data-scroll-target="#tokens-and-the-context-window" href="#tokens-and-the-context-window" id="toc-tokens-and-the-context-window">Tokens and the context window</a></li>
+<li><a class="nav-link" data-scroll-target="#the-conversation-buffer" href="#the-conversation-buffer" id="toc-the-conversation-buffer">The conversation buffer</a></li>
+<li><a class="nav-link" data-scroll-target="#sampling-and-the-reasoning-trace" href="#sampling-and-the-reasoning-trace" id="toc-sampling-and-the-reasoning-trace">Sampling and the reasoning trace</a></li>
+<li><a class="nav-link" data-scroll-target="#operationalizing-language-models" href="#operationalizing-language-models" id="toc-operationalizing-language-models">Operationalizing language models</a></li>
+<li><a class="nav-link" data-scroll-target="#limitations-and-caveats" href="#limitations-and-caveats" id="toc-limitations-and-caveats">Limitations and caveats</a></li>
+<li><a class="nav-link" data-scroll-target="#the-whole-machine" href="#the-whole-machine" id="toc-the-whole-machine">The whole machine</a></li>
 </ul>
 </nav>
 </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
-<header class="quarto-title-block default" id="title-block-header"><nav aria-label="breadcrumb" class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../1_foundations/index.html">Foundations of AI</a></li><li class="breadcrumb-item"><a href="../1_foundations/llms.html"><span class="chapter-number">3</span>  <span class="chapter-title">Generative AI and Large Language Models</span></a></li></ol></nav>
+<header class="quarto-title-block default" id="title-block-header"><nav aria-label="breadcrumb" class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../1_foundations/index.html">Foundations</a></li><li class="breadcrumb-item"><a href="../1_foundations/llms.html"><span class="chapter-number">4</span>  <span class="chapter-title">Language Modeling</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>  <span class="chapter-title">Generative AI and Large Language Models</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>  <span class="chapter-title">Language Modeling</span></h1>
 </div>
 <div class="quarto-title-meta">
 </div>
 </header>
-<p>We are living in the Generative Era, a moment that has captured the public imagination like nothing else in the history of artificial intelligence. In 2022, ChatGPT burst onto the scene, quickly followed by other groundbreaking generative models like DALL-E and Midjourney. These models are capable of generating very plausible content that often seems uncannily human, and for many, may pass for genuine creativity. This has been called the “iPhone moment” of AI—not because the underlying technology was brand new, but because it was the first time this immense power was packaged into an intuitive, accessible interface that anyone could use, sparking a global conversation about the future of technology and humanity.</p>
-<p>This shift has put large-scale generative models squarely in the spotlight, forcing us to rethink what machines are truly capable of, fulfilling a vision first imagined by Ada Lovelace over a century ago. To understand how this is possible from what are, at their core, surprisingly simple statistical principles, I want to take you on a deep dive into the technology behind this revolution. Together, we will look under the hood to understand the core mechanics of how these models work, explore the vast range of capabilities they possess, and conclude with a crucial discussion of the inherent limitations we must all be aware of to wield these tools responsibly.</p>
-<section class="level2" id="the-core-mechanics-how-llms-work">
-<h2 class="anchored" data-anchor-id="the-core-mechanics-how-llms-work">The Core Mechanics: How LLMs Work</h2>
-<p>In machine learning, language modeling is the task of guessing how probable a given sentence is. For example, “the sun rises in the east and sets in the west” is a common sentence with a very high probability. A sentence with random words that don’t mean anything, however, has a low probability of ever being uttered by anyone. This simple yet profound idea—that language can be understood as a system of statistical probabilities rather than a rigid set of grammatical rules—underpins all modern generative AI.</p>
-<p>The practical goal of a language model is to predict the next word (or, more accurately, the next “token,” which can be a word or part of a word) in a sequence. Given the phrase, “The sun rises in the east and sets in the…,” a good model should predict that “west” is the most likely continuation. By repeatedly predicting the next token and appending it to the sequence, a model can generate entire sentences, paragraphs, and even books. This iterative process is the very reason why an LLM can be thought of as an advanced form of “autocomplete.”</p>
-<p>To generate a response, the model doesn’t just pick the single most likely next word. Instead, it calculates a probability distribution across its entire vocabulary. The final choice is often made through a sampling process that can be controlled by a parameter called temperature. Think of it this way: a low temperature (e.g., 0.2) makes the model more conservative and focused, usually picking the most probable word. This is ideal for factual tasks like summarization. A higher temperature (e.g., 0.8), on the other hand, increases randomness, allowing the model to choose less common but potentially more creative words. This is better suited for tasks like writing a poem or brainstorming ideas. This controlled randomness is why you can get different, though semantically similar, responses to the same prompt.</p>
-<section class="level3" id="the-path-to-understanding-context-a-brief-history">
-<h3 class="anchored" data-anchor-id="the-path-to-understanding-context-a-brief-history">The Path to Understanding Context: A Brief History</h3>
-<p>The journey to modern language models was a multi-decade quest to solve one fundamental problem: how to give a machine a true understanding of context. This story began with simple statistical methods and evolved through a series of breakthroughs, each new step building on the last.</p>
-<p>The n-gram model, one of our earliest approaches, works by counting how often sequences of n words (e.g., pairs or triplets) appear together. It would learn, for instance, that the probability of “York” following “New” is very high. However, this method suffers from the “curse of dimensionality.” As n increases, the number of possible word combinations explodes, making it impossible to store probabilities for them all. Its most critical limitation was its reliance on a fixed and tiny context; it simply couldn’t capture meaning beyond its small window of a few words.</p>
-<p>A far more flexible and powerful approach arrived with word embeddings. Models like Word2Vec (2011) learned to represent words as numerical vectors in a multi-dimensional space. The key insight, known as the distributional hypothesis, is that a word’s meaning is defined by the company it keeps. By analyzing which words appear in similar contexts, the model places their vectors close together. This was a massive leap, allowing models to capture deep semantic relationships. The most famous example, which still feels like magic, is the vector equation: vector(‘King’) - vector(‘Man’) + vector(‘Woman’) results in a vector remarkably close to vector(‘Queen’).</p>
-<p>However, these early models still had a critical flaw: they assigned a single, static vector to each word, regardless of its use. For example, the word bank would have the same vector whether it referred to a river bank or a financial institution. This inability to understand context was the major hurdle left to overcome.</p>
-<p>The revolutionary solution, and the one that truly unlocked the door to modern AI, was the transformer architecture (2017). The transformer’s core innovation is the attention mechanism, which allows the model to weigh the importance of different words in the input when processing a specific word. It can “pay attention” to the most relevant context, no matter how far away it is in the sentence. This means a transformer generates a dynamic, context-aware embedding for each word. It can finally distinguish between the different meanings of “bank” based on the other words around it. This fundamental shift is what paved the way for modern LLMs.</p>
+<p>By the end of this chapter you can narrate the loop step by step: how your sentence becomes numbers, how those numbers become more numbers, how one of those numbers gets picked, how that pick becomes the next word, and what you are paying for every spin of the cycle. You can also say, for every behaviour you notice in a chatbot — its manners, its apparent memory, its willingness to think before it answers, the price tag on your invoice — which training step put it there. Nothing in what follows is magic. The astonishing part is that it isn’t.</p>
+<section class="level2" id="language-modeling-the-core-mechanic">
+<h2 class="anchored" data-anchor-id="language-modeling-the-core-mechanic">Language modeling, the core mechanic</h2>
+<p>In machine learning, <em>language modelling</em> is the task of assigning a probability to a sequence of words. The sentence “the sun rises in the east and sets in the west” is, statistically, very likely to be uttered by some English speaker somewhere; the sentence “purple banister axiom rhinoceros plough” is not. A language model is a function that takes a piece of text and returns a number between zero and one, and good language models give common sentences high numbers and rare ones low numbers. The practical version of this task is even narrower. Given a piece of text, predict the <em>next</em> unit of text. Iterate. That is generation.</p>
+<p>The unit, in practice, is not the word but the <em>token</em>. Tokens are short stretches of characters — sometimes a full word, often a piece of one, occasionally a single character. A modern model has a vocabulary of fifty thousand to a few hundred thousand tokens, and any text you give it can be chopped into a sequence drawn from that vocabulary. We will come back to what a token actually is in §4; for now, just hold the idea that the model speaks token-by-token, not word-by-word.</p>
+<p>The model itself, mechanically, is a function that takes a sequence of tokens and returns a probability distribution over the next one. Feed it <em>the sun rises in the east and sets in the</em> and the function emits a vector with one number per token in the vocabulary, summing to one. The number opposite <em>west</em> will be high. The number opposite <em>purple</em> will be tiny. To produce text, the model samples one token from that distribution, appends it to the sequence, and runs again. The whole conversation you ever have with a chatbot is exactly this loop, billions of arithmetic operations per token, run thousands of times until the model decides to stop. That is why a working description of an LLM is <em>advanced autocomplete</em>. The framing is correct, and the astonishing part is what falls out of it.</p>
+<p>Sampling — the step where one token is chosen from the probability vector — is not a single fixed rule. You can pick the most likely token every time. You can pick proportionally to the probabilities and accept some randomness. You can squeeze the distribution toward its peaks or smear it toward its tails. A parameter called the <em>temperature</em> controls how aggressively you do that, and turning it up gives you a model that surprises you more often and is wrong more often in the same breath. That is the one-sentence version. The full treatment, including why the same simple sampling step is what makes reasoning models work, is in §6.</p>
+<p>What we have so far is the smallest possible machine: a fixed function, one cycle, one token at a time. Why this machine, run at enough scale and trained the right way, produces something that feels like a fluent assistant with manners, memory, and the ability to think before it speaks is the rest of the chapter.</p>
 </section>
-<section class="level3" id="the-rise-of-large-language-models-llms">
-<h3 class="anchored" data-anchor-id="the-rise-of-large-language-models-llms">The Rise of Large Language Models (LLMs)</h3>
-<p>Large language models are the latest evolution of this journey, combining the transformer architecture with an unprecedented scale of data and computation. But the process of creating a useful LLM is not magic; it is a deliberate, human-driven, multi-step journey to “tame” the raw power of the base model and instill it with our intentions.</p>
-<section class="level4" id="step-1-self-supervised-pre-training-building-foundational-knowledge">
-<h4 class="anchored" data-anchor-id="step-1-self-supervised-pre-training-building-foundational-knowledge">Step 1: Self-Supervised Pre-training (Building Foundational Knowledge)</h4>
-<p>The process begins by training a raw transformer architecture on a massive corpus of text and code from the internet—trillions of words, equivalent to reading a massive library thousands of times over. The model’s sole task is next-token prediction. This requires immense computational power, often using thousands of specialized GPUs running for months. By learning the statistical patterns of human language at this scale, the model builds a foundational, implicit knowledge of grammar, facts, and reasoning patterns. The resulting “base model” is a powerful completion engine but is not yet a helpful assistant.</p>
+<section class="level2" id="the-path-to-context-the-mechanics-of-attention">
+<h2 class="anchored" data-anchor-id="the-path-to-context-the-mechanics-of-attention">The path to context — the mechanics of attention</h2>
+<p>For the better part of half a century, getting a machine to <em>understand context</em> was the open problem of natural-language processing. Three generations of techniques tried to solve it, each one stumbling on a structural flaw that the next one fixed. This section walks the three stages, not as a history lesson — the intro gave you that — but as a chain of architectural reasons.</p>
+<p>The first stage was the <em>n-gram</em>. To estimate the probability of the next word, count how often it has followed the previous one, or the previous two, or the previous three, in a giant pile of text. The probability of <em>York</em> following <em>New</em> is high because that bigram appears constantly in newspapers. The probability of <em>York</em> following <em>the cat sat on the</em> is harder to estimate from counts alone, because that specific seven-word run barely appears in any corpus, even an internet-sized one. This is the <em>curse of dimensionality</em>: the longer the window of context you try to track, the more possible windows there are, and the sparser your counts become. N-gram models capped out at four or five words of memory. Past that, the data ran out.</p>
+<p>The second stage was the <em>word embedding</em>. Instead of treating each word as an atomic symbol with no internal structure, represent it as a vector of, say, three hundred real numbers. Train the vectors so that words appearing in similar contexts end up close to each other in this high-dimensional space. The underlying claim, which the field calls the <em>distributional hypothesis</em>, is that a word’s meaning is the company it keeps. The result, in models like Word2Vec from 2011, was that you could now do <em>arithmetic</em> on words. The vector for <em>king</em> minus the vector for <em>man</em> plus the vector for <em>woman</em> lands remarkably close to the vector for <em>queen</em>. The geometry, for one fleeting moment, looked like semantics.</p>
+<p>But embeddings had their own flaw. Each word got <em>one</em> vector, no matter where it appeared. The word <em>bank</em> in <em>I sat by the river bank</em> and the word <em>bank</em> in <em>I deposited the cheque at the bank</em> mapped to the same three hundred numbers. The representation could not see the context. To know what a word <em>means in this sentence</em>, the representation had to change depending on its neighbours. Embeddings were static. That was the wall.</p>
+<p>The third stage was the <em>transformer</em>, introduced in 2017 by eight researchers at Google in a paper with one of the boldest titles in computer-science publishing: <em>Attention Is All You Need</em>.<a class="footnote-ref" href="#fn1" id="fnref1" role="doc-noteref"><sup>1</sup></a> The mechanism the paper introduced, <em>self-attention</em>, is the answer to the static-vector problem. For each token in the input, the model looks at every other token in the input and computes a weight saying how much that other token should contribute to the current one’s new representation. Then it mixes them, weighted, into a new vector. The result is that the representation of <em>bank</em> in a sentence about rivers is no longer the same vector as the representation of <em>bank</em> in a sentence about cheques. The vector has been recomputed in context.</p>
+<p>Self-attention is precisely the structural piece chapter 3 said was missing. It is a sequence model without recurrence: every token attends to every other token in parallel, in one pass, with no hidden state being threaded along a chain. Once you can do that, you can stack the operation in many layers and train the whole tower with the same blame-propagation algorithm from the last chapter. What matters from here on is that the model’s representation of a word <em>changes with its neighbours</em>, and that this is the structural prerequisite for everything that follows. Without it, none of the manners-or-memory tricks below would work.</p>
 </section>
-<section class="level4" id="step-2-instruction-fine-tuning-making-the-model-usable">
-<h4 class="anchored" data-anchor-id="step-2-instruction-fine-tuning-making-the-model-usable">Step 2: Instruction Fine-Tuning (Making the Model Usable)</h4>
-<p>A base model can complete text but doesn’t know how to follow instructions. This phase fine-tunes the model on a much smaller, high-quality dataset of instruction-response pairs curated by humans (e.g., Input: “Summarize the following article.” Output: “This article is about…”). This doesn’t teach the model new knowledge; it teaches it a new skill: how to act as a helpful assistant that responds to queries, answers questions, and follows commands.</p>
+<section class="level2" id="the-rise-of-llms-four-stages-not-three">
+<h2 class="anchored" data-anchor-id="the-rise-of-llms-four-stages-not-three">The rise of LLMs — four stages, not three</h2>
+<p>A transformer is an architecture. A <em>large language model</em> is what you get when you train an enormous transformer on an enormous pile of text, then keep working on the result through several more training steps until it stops behaving like an autocomplete and starts behaving like an assistant. Until late 2024, that recipe had three steps. There are now four. They stack on each other in a fixed order, and each one accounts for a different chunk of how a chatbot feels in your hands.</p>
+<section class="level3" id="self-supervised-pretraining">
+<h3 class="anchored" data-anchor-id="self-supervised-pretraining">Self-supervised pretraining</h3>
+<p>The first step is <em>pretraining</em>. Take a freshly initialised transformer, point it at a corpus of trillions of tokens scraped from the public web, and train it on one and only one objective: predict the next token. This is the same self-supervised paradigm chapter 2 introduced, now at internet scale. No human labels anything. The data labels itself: for every sentence in the corpus, every prefix is an input, every following token is the answer. There are no manual annotations to bottleneck the work. The bottleneck is electricity.</p>
+<p>Pretraining is where the model absorbs <em>what is in the data</em>. Grammar, factual knowledge, the texture of legal prose, the syntax of every popular programming language, the cadence of children’s stories, the conventions of academic writing. Nothing in this step teaches the model what to <em>do</em> with that knowledge. The output of pretraining is the <em>base model</em> — a fluent completion engine with no instinct for being helpful. Ask a raw base model a question and it might answer, or it might generate a list of related questions, or it might continue the prompt as if it were the next paragraph of a Reddit thread, because all of those are statistically plausible continuations of a question on the open internet.<a class="footnote-ref" href="#fn2" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>The empirical result from 2020 onward, published as the <em>scaling laws</em>, is that the loss of a pretrained model decreases predictably as you scale data, parameters, and compute together.<a class="footnote-ref" href="#fn3" id="fnref3" role="doc-noteref"><sup>3</sup></a> In 2022, the <em>Chinchilla</em> paper sharpened the recipe by showing that most large models had been over-parameterised and under-trained, and that you get more capability per dollar by holding model size constant and feeding it more tokens.<a class="footnote-ref" href="#fn4" id="fnref4" role="doc-noteref"><sup>4</sup></a> Empiricism, the part of the field that had historically run on guesswork, now had something resembling physics.</p>
 </section>
-<section class="level4" id="step-3-preference-tuning-aligning-the-model-with-human-values">
-<h4 class="anchored" data-anchor-id="step-3-preference-tuning-aligning-the-model-with-human-values">Step 3: Preference Tuning (Aligning the Model with Human Values)</h4>
-<p>An instruction-tuned model is useful but not necessarily safe. It may still generate biased, harmful, or untruthful content learned from the open internet. The final step uses Reinforcement Learning with Human Feedback (RLHF) to align the model with desired values like helpfulness and harmlessness. In this process, the model generates multiple responses to a prompt. Human reviewers then rank these responses from best to worst. This feedback is used to train a separate “reward model,” which learns to predict human preferences. The LLM is then further fine-tuned using this reward model as a guide, teaching it to generate answers that humans are more likely to find helpful and safe. This process is a real-world example of tackling what we will explore in depth in Chapter 11 as the “Alignment Problem.”</p>
+<section class="level3" id="instruction-tuning">
+<h3 class="anchored" data-anchor-id="instruction-tuning">Instruction tuning</h3>
+<p>Pretraining gives the model knowledge. Instruction tuning gives it manners. You take the base model and continue training it on a small, carefully curated dataset of pairs: an instruction, and the kind of answer you wish the model produced. <em>Summarise this article. → Here is a three-sentence summary…</em> A few tens of thousands of such pairs, written by humans who care, are enough to teach the model that when prompted, it should answer rather than free-associate. The published evidence is that quality dominates quantity at this stage: a thousand good examples outperform a hundred thousand mediocre ones. Instruction tuning teaches a skill, not a fact.</p>
 </section>
+<section class="level3" id="preference-optimization">
+<h3 class="anchored" data-anchor-id="preference-optimization">Preference optimization</h3>
+<p>An instruction-tuned model is usable. It is not necessarily safe, not necessarily honest, and not necessarily good. The third step closes that gap. The canonical recipe, <em>reinforcement learning from human feedback</em> or RLHF, is the trick OpenAI made famous: have the model generate several candidate answers to the same prompt, have humans rank them best to worst, train a separate small <em>reward model</em> to predict the human rankings, then use reinforcement learning to nudge the language model toward higher-ranked answers.<a class="footnote-ref" href="#fn5" id="fnref5" role="doc-noteref"><sup>5</sup></a> A small amount of human preference data, multiplied by RL, turns a competent autocomplete into a useful assistant.</p>
+<p>RLHF is the canonical recipe, but a family of cousins now does the same job by different routes: <em>direct preference optimisation</em> dispenses with the separate reward model and trains directly on the ranked pairs; <em>RLAIF</em> and <em>constitutional</em> methods replace the human ranker with another language model judging against a written rubric.<a class="footnote-ref" href="#fn6" id="fnref6" role="doc-noteref"><sup>6</sup></a><a class="footnote-ref" href="#fn7" id="fnref7" role="doc-noteref"><sup>7</sup></a> The recipes differ; the trick is the same. Turn a small amount of preference signal into a behaviour change. The reason this whole step matters beyond the engineering is that it is also a live instance of the <em>alignment problem</em>: how do you get a learning system to do what you actually want, when what you want is something a reward function can only approximate? Part III takes that question apart in earnest.</p>
 </section>
-</section>
-<section class="level2" id="what-generative-ai-can-do-capabilities-and-use-cases">
-<h2 class="anchored" data-anchor-id="what-generative-ai-can-do-capabilities-and-use-cases">What Generative AI Can Do: Capabilities and Use Cases</h2>
-<p>A generative language model is, at its core, a prediction machine. This is where things get truly fascinating. This simple mechanic, it turns out, gives rise to a wide range of surprisingly complex cognitive abilities. These are often called emergent properties—behaviors that are not explicitly programmed but arise as a consequence of the model becoming exceptionally good at its primary task. For example, to accurately predict the next word in a legal document, a model must implicitly learn something about legal concepts.</p>
-<p>This phenomenon, where sophisticated skills emerge from a simple predictive function, is central to understanding LLMs. Models the size of GPT-3 and larger demonstrated in-context learning: the ability to infer a task from a few examples in a prompt without explicit instructions. By providing a few input-output pairs for a task like sentiment analysis, the model recognizes the pattern and correctly completes the final, unanswered example. This is both the source of their power and a reminder of their unpredictability, underscoring our role not as simple operators, but as critical evaluators of a tool whose capabilities can surprise even its creators.</p>
-<p>This leads to what I believe is the most useful mental model for how these systems “reason”: an LLM only thinks out loud. By design, a language model performs a fixed amount of computation for each token it processes. This means a longer, more detailed response isn’t just more verbose—it’s the result of more computation. When you ask a model to “think step-by-step” before giving an answer, you are giving it more tokens to process the problem, which often leads to a better result. For an LLM, the process of generating text is the process of thinking.</p>
-<section class="level3" id="language-capabilities">
-<h3 class="anchored" data-anchor-id="language-capabilities">Language Capabilities</h3>
-<p>The most direct and foundational use of a large language model is text generation, which serves as the basis for nearly all of its other linguistic skills. This can range from drafting simple emails to composing complex fictional narratives. For long-form content, where models can lose coherence over time, a “divide-and-conquer” approach is highly effective: a user can prompt the model to first create a detailed outline, and then work through it section by section, feeding the previously generated text back to the model to ensure consistency.</p>
-<p>Closely related to generation is the task of summarization. LLMs excel at condensing text, a natural extension of their ability to model the statistical essence of information. They are particularly adept at “abstractive” summarization—generating new, concise sentences—which is a much harder and more useful skill than simply extracting key sentences from the original text. However, the more a summary requires critical analysis rather than simple compression, the more it is prone to hallucination.</p>
-<p>The model’s ability to understand and manipulate language also extends to translation, a task for which the transformer architecture was originally designed. By learning a language-independent representation of concepts (an “interlingua”), models can perform zero-shot translation between language pairs they weren’t explicitly trained on. This capability goes beyond simple language-to-language conversion to include style transfer, allowing a user to translate text from a technical to a plain-spoken style, or to adjust its tone from formal to casual.</p>
-<p>Beyond free-form text, LLMs can also process and produce structured information. This capability for structured data extraction allows a model to parse an unstructured sentence like “John needs to schedule a meeting for Friday at 3 PM” and convert it into a clean, machine-readable format like JSON. This is the basis for powerful features like “function calling,” which allow LLMs to interact with external software APIs.</p>
-<p>Perhaps the most transformative capability is code generation. Because they are trained on vast repositories of public code alongside natural language, LLMs learn the syntax and patterns of programming languages. This allows them to generate functional code from a simple English description, fundamentally changing the nature of software development from writing precise syntax to describing high-level intent. This is one of their most powerful capabilities, as code is the most general type of external tool, enabling LLMs to solve problems far beyond the scope of language alone.</p>
-</section>
-<section class="level3" id="limitations-and-caveats">
-<h3 class="anchored" data-anchor-id="limitations-and-caveats">Limitations and Caveats</h3>
-<p>As in everything related to LLMs, we must beware of their inherent limitations. These aren’t just technical footnotes; they are the frontier of our responsibility as users and creators. The statistical nature of these models means they can confidently generate plausible-sounding but factually incorrect information, a phenomenon known as hallucination. This is not a bug to be fixed, but a fundamental trade-off for the model’s ability to generalize and be creative.</p>
-<p>Furthermore, because they are trained on vast amounts of internet data, they can inherit and amplify harmful societal biases present in the text. For instance, a prompt for “a portrait of a doctor” might disproportionately generate images of men, reflecting historical biases in the data. Finally, their “reasoning” is not based on formal logic but on sophisticated pattern-matching, which can lead to failures on complex problems that require multiple steps of deduction. As techno-pragmatists, our task is not to expect a perfect tool, but to understand its flaws so we can use it wisely.</p>
+<section class="level3" id="reasoning-rl">
+<h3 class="anchored" data-anchor-id="reasoning-rl">Reasoning RL</h3>
+<p>The newest layer of the stack is also the strangest. The intro told you the story: in September 2024 OpenAI shipped o1, the first commercial reasoning model. In January 2025, DeepSeek-R1 reproduced the trick in the open with full technical details.<a class="footnote-ref" href="#fn8" id="fnref8" role="doc-noteref"><sup>8</sup></a> By 2026 every major lab has its own reasoning model and non-reasoning models are the budget tier. What changed?</p>
+<p>Mechanically, the change is small. Start from a model that has already been pretrained, instruction-tuned, and preference-optimised. Generate a question with a <em>verifiable</em> answer — a math problem, a coding problem, a logic puzzle, anything where the correctness of the final answer can be checked by program. Have the model generate a long answer, including all its intermediate reasoning steps, before producing the final result. Score the output by whether the final answer is right. Use reinforcement learning to push the model toward generating the kind of intermediate sequences that lead to right answers more often. Repeat at scale.</p>
+<p>The result is a model that, when faced with a hard question, <em>spends tokens thinking before it speaks</em>. It writes out its reasoning, sometimes for thousands of tokens, before producing the final reply. Section 6 is where we unpack why this works at all and what it actually changes about the machine. For now, the structural point is that <em>the four-step stack — pretrain, instruction-tune, preference-optimise, reason-RL — is what turns a transformer into the kind of object you actually talk to</em>. Each step accounts for a distinct property of the assistant in front of you. You can now point at any conversational behaviour and ask which step put it there.</p>
 </section>
 </section>
-<section class="level2" id="generative-ai-beyond-language">
-<h2 class="anchored" data-anchor-id="generative-ai-beyond-language">Generative AI Beyond Language</h2>
-<p>The same core principles powering LLMs—learning statistical patterns from vast datasets using transformer architectures—have been ingeniously adapted to work with pixels and sound waves. This has created a new wave of powerful applications that allow AI to perceive and create in the realms of vision and audio, moving us closer to systems that can interact with the world in a more holistically human-like way.</p>
-<section class="level3" id="vision-models">
-<h3 class="anchored" data-anchor-id="vision-models">Vision Models</h3>
-<p>AI’s expansion into the visual domain has two primary facets: the ability to generate novel images and the capacity to understand them. The generation of images from text descriptions has been one of the most stunning demonstrations of generative AI, a feat accomplished through sophisticated architectural approaches.</p>
-<p>The earliest breakthrough came from Generative Adversarial Networks (GANs), which use a clever game-theoretic process. A GAN pits two neural networks against each other: a Generator that creates forgeries and a Discriminator that acts as a detective, learning to distinguish fakes from real images. Through this adversarial training, the Generator becomes so skilled at creating convincing images that the Discriminator can no longer tell the difference.</p>
-<p>More recently, Diffusion Models have become the dominant architecture, powering systems like DALL-E and Midjourney. Inspired by thermodynamics, these models learn to reverse a process of adding noise to an image. To create a new picture, they start with a canvas of pure random noise and, guided by a text prompt, meticulously denoise it step-by-step until a coherent image emerges. This process is more stable than training GANs and excels at creating diverse, high-quality, images that align closely with user prompts.</p>
-<p>Beyond creating images, AI models must also interpret and understand them. This is the realm of computer vision, which has been revolutionized by models like Contrastive Language-Image Pre-training (CLIP). Instead of classifying images into a fixed set of categories, CLIP learns the relationship between images and their text captions from hundreds of millions of examples online.</p>
-<p>This creates a shared embedding space where an image of a golden retriever and the text “a photo of a golden retriever” are represented by similar vectors. This enables powerful zero-shot classification, allowing the model to categorize an image into a class it has never seen before by finding the closest text label. This also powers multimodal search, allowing users to find photos using natural language queries.</p>
+<section class="level2" id="tokens-and-the-context-window">
+<h2 class="anchored" data-anchor-id="tokens-and-the-context-window">Tokens and the context window</h2>
+<p>The model does not see characters. It sees integers. Before any of the machinery in the previous sections can run, the text you typed has to be broken into a sequence of <em>tokens</em> drawn from a fixed vocabulary, and each token has to be mapped to its integer ID. The component that does this is called a <em>tokenizer</em>, and it sits underneath everything else.</p>
+<p>The dominant scheme, called <em>byte-pair encoding</em> or BPE, is a greedy compression trick. Start with single characters as your vocabulary. Look at a giant corpus. Find the pair of adjacent symbols that occurs most often, glue them into a new symbol, add it to the vocabulary, and repeat — fifty thousand times.<a class="footnote-ref" href="#fn9" id="fnref9" role="doc-noteref"><sup>9</sup></a> What you end up with is a vocabulary where common words like <em>the</em>, <em>and</em>, <em>machine</em> are single tokens, less common words like <em>tokenizer</em> might be two tokens (<em>token</em> and <em>izer</em>), and rare words like <em>antidisestablishmentarianism</em> break into half a dozen pieces. Whitespace and punctuation are folded in. Emoji become tokens. Programming-language operators become tokens. The whole written record of the internet, including the parts that are not English, gets squashed into one finite alphabet of subword pieces.</p>
+<p>The practical consequence is that <em>characters per token</em> is a slippery rule of thumb. English averages about four characters per token. Code averages closer to three. Languages like Mandarin or Arabic, where the tokenizer was trained mostly on English, can swell to one character per token or worse. This matters because <em>cost scales with tokens</em>. Every API I have ever used prices its services per token, both input and output. Talking to a model in a language poorly served by its tokenizer is, mechanically, more expensive than talking to it in English. That is a fact about engineering, not about the languages.</p>
+<p>The <em>context window</em> is the next thing to understand. The transformer cannot look at an arbitrary amount of text in one pass. It has a hard limit, set at training time, on the number of tokens it can process at once. Early models had context windows of two thousand tokens. The state of the art in 2026 is anywhere from a few hundred thousand to a few million, depending on the vendor. Inside that window, every token can attend to every other token. Outside it, the model has no idea anything ever existed.</p>
+<p>The mechanism by which context windows get longer is not free. Self-attention, in its original form, scales <em>quadratically</em> with the length of the input: double the window, quadruple the computation. A long-context model is a model where engineers have spent enormous effort on tricks — rotary positional embeddings, sparse attention patterns, careful kernel implementations — to make the scaling more manageable without giving up the property that every token can in principle see every other one. The names of those tricks are interesting; the implementation is for engineers; the takeaway for you is this: <em>context is finite, and longer context is more expensive</em>.</p>
+<p>Everything that looks like memory in a chatbot, and a large fraction of what makes one model cost more than another to operate, falls out of how long the window is and how the window is filled.</p>
 </section>
-<section class="level3" id="audio-models">
-<h3 class="anchored" data-anchor-id="audio-models">Audio Models</h3>
-<p>The transformer architecture has proven equally adept at processing the sequential data of audio waveforms, revolutionizing how machines interact with spoken language. These capabilities can be seen as two sides of the same coin: translating sound to text and text back to sound. Automatic Speech Recognition (ASR) models like OpenAI’s Whisper have achieved human-level accuracy in transcription.</p>
-<p>They work by converting a raw audio signal into a spectrogram—a visual representation of sound frequencies—and then using a transformer to translate this sequence of features into text. This approach is incredibly robust, capable of handling different languages, accents, and background noise, with massive implications for accessibility and communication.</p>
-<p>The reverse process, Text-to-Speech (TTS), generates natural-sounding human speech from text. Modern TTS systems use a transformer to convert input text into a sequence of linguistic features like phonemes (the basic units of sound) and prosody (the rhythm and intonation of speech). This representation is then passed to a vocoder, which synthesizes the final audio waveform.</p>
-<p>This two-stage process allows for fine-grained control over the generated voice, enabling the creation of highly expressive and lifelike speech. This technology also powers voice cloning, where a model can learn to speak in a specific person’s voice from just a few seconds of audio—a powerful capability that raises important ethical considerations around consent and misuse.</p>
+<section class="level2" id="the-conversation-buffer">
+<h2 class="anchored" data-anchor-id="the-conversation-buffer">The conversation buffer</h2>
+<p>Here is what is actually sent to the model on the second turn of a chat. The whole conversation. From scratch. Every time.</p>
+<p>Imagine you ask a chatbot a question; it answers; you ask a follow-up. On the surface, that looks like a dialogue with continuity. Underneath, it is nothing of the kind. What gets sent to the model on the follow-up is the <em>concatenation</em> of: an invisible system prompt set by whoever built the product, followed by your first message, followed by the model’s first reply, followed by your follow-up. The whole thing, every token of it, packed into the context window. The model reads it as one long document, produces the next token, then the next, and so on until it generates a stop signal. Then it stops. The next time you say something, the whole document is reassembled — system prompt, every turn so far, your new message — and shipped again.</p>
+<p>The model has no persistent memory between turns. There is no state being held inside it. There is no internal narrative being updated. The chatbot’s sense of continuity is, mechanically, an illusion maintained by re-sending the entire conversation on every turn. It feels like memory because it is <em>functionally</em> like memory, but the mechanism is brute. The whole transcript is the memory, and the price of a turn scales with the length of the transcript.</p>
+<p>This has consequences you can derive cleanly from the mechanism. Long conversations slow down and get expensive, because the input to the model is now thousands of tokens of history before your message even starts. Conversations eventually hit the context window’s ceiling, at which point either the chatbot starts dropping early turns silently or the application has to summarise the history into something shorter. Anything you told the model in turn three has to still be in the buffer in turn thirty for it to remember. The moment that turn slides off the end of the window, it is gone, and the model behaves as if the exchange never happened.</p>
+<p>This is also why <em>how do you give a language model a memory that survives the conversation</em> turns out to be the central question once you wrap an agent around it. The answer, in one word, is <em>retrieval</em>: store things outside the model, and put the relevant ones back into the window when you need them. The window is the only memory there is.</p>
 </section>
-<section class="level3" id="multimodality-the-unified-frontier">
-<h3 class="anchored" data-anchor-id="multimodality-the-unified-frontier">Multimodality: The Unified Frontier</h3>
-<p>The cutting edge of generative AI is moving beyond single-modality models to a unified, multimodal approach. Instead of having separate models for text, images, and audio, true multimodal systems are single, end-to-end models trained on a massive, interleaved dataset of all these data types simultaneously.</p>
-<p>The core innovation is a single, shared embedding space where all modalities are represented in a common numerical format. Text tokens, patches of an image, and segments of an audio waveform are all encoded into a uniform vector representation. This allows the transformer’s attention mechanism to find relationships between elements from different modalities—for example, connecting a specific object in an image to the word describing it in a caption, or linking the sound of a bark to the image of a dog.</p>
-<p>This unified approach enables a deeper, more grounded understanding and is moving us toward a future where AI systems can perceive, understand, and generate content across all forms of human communication. This unlocks novel capabilities, such as watching a video tutorial and writing the corresponding code, listening to a meeting and generating a summary slide deck, or analyzing a financial chart within a document and writing a textual summary of its trends. This is a paradigm shift from chaining together separate tools to creating a single, cohesive intelligence that can reason across the full spectrum of human expression.</p>
+<section class="level2" id="sampling-and-the-reasoning-trace">
+<h2 class="anchored" data-anchor-id="sampling-and-the-reasoning-trace">Sampling and the reasoning trace</h2>
+<p>We owe ourselves one piece of unfinished business from §1. The model emits a probability distribution over the vocabulary at every step. It does not emit a word. The step that turns a distribution into a word is <em>sampling</em>, and how you do it shapes how the model feels in your hands.</p>
+<p>The simplest rule is <em>greedy decoding</em>: pick the most likely token, every time. Greedy decoding gives you a deterministic, repeatable output that is also often dull and occasionally pathological — the model can get stuck in repetitive loops, because the most likely token at step n is sometimes the one that makes the most likely token at step n+1 a repeat. To escape that, you sample stochastically, with two main controls. <em>Temperature</em> rescales the probabilities before sampling: low temperatures (say 0.2) sharpen the distribution toward its peak, making the output more conservative and more repeatable; high temperatures (say 1.0 or above) flatten it, making the output more varied and more surprising. <em>Top-p sampling</em>, sometimes called <em>nucleus sampling</em>, keeps only the smallest set of tokens whose probabilities sum to some threshold and samples from that set. Combine the two and you have control over the trade-off between predictability and creativity.</p>
+<p>The failure modes are easy to recognise. Too cold, and the model writes plodding, slightly robotic prose that repeats itself within a paragraph. Too hot, and the model goes off the rails: it picks an unlikely token, then has to keep going from a sentence that no longer makes sense, and the whole reply spirals into nonsense. The right setting depends on the task. Factual answers want low temperatures. Brainstorming wants high ones. Code generation wants something in between with structured grammar enforced on top.</p>
+<p>There is a deeper observation about sampling that turns out to matter enormously. <em>A language model performs a fixed amount of computation per token.</em> The matrix multiplications inside the network have the same cost for every token regardless of how hard the underlying question is. Therefore the only way for a model to <em>spend more compute</em> on a hard problem is to <em>produce more tokens</em>. When you ask it to think step by step, you are not giving the model a richer cognitive process. You are giving it more arithmetic. The intermediate tokens it generates <em>are</em> the thinking; the only place that thinking can happen is in the visible output stream.</p>
+<p>This is what made <em>chain-of-thought</em> prompting work in 2022.<a class="footnote-ref" href="#fn10" id="fnref10" role="doc-noteref"><sup>10</sup></a> On math problems, on logic problems, on multi-step reasoning of any kind, prompting the model to write out its working before producing the answer measurably improved its accuracy. Nothing about the model changed. The only thing that changed was that the model had been <em>given more tokens in which to compute</em>. An LLM only thinks out loud, and step-by-step prompting was the discovery that out-loud thinking is cheap and effective.</p>
+<p>Reasoning models industrialise that discovery. Step 4 of the training stack, which we introduced in §3, is exactly the move that bakes out-loud thinking into the model’s default behaviour. The model is rewarded, during RL, for producing the kind of long intermediate reasoning sequence that leads to a verifiably correct final answer. By the end of training, when faced with a hard problem, it generates that scratch work without being asked. The cost shows up at inference time. A reasoning model can spend tens of seconds and tens of thousands of tokens deliberating before it answers, and on hard problems it really is more accurate than its non-reasoning sibling for the same underlying parameters.</p>
+<p>This is the new scaling law of 2024 onward. The first scaling law said: bigger pretrained models are better. The second one — <em>test-time compute scaling</em> — says: the same model, given more tokens to think with at inference, is also better. The first scaling law is something only the labs can ride, because it requires hundreds of millions of dollars of training compute. The second is something anyone with an API key can ride, simply by paying for more output tokens. That is a new lever, and the field is still working out where it bottoms out.</p>
+<p>Whether what the reasoning model is doing when it writes out its deliberation is <em>really</em> reasoning, in the sense a philosopher or a mathematician would mean the word, is a different question. The token stream looks like reasoning; the reward signal during RL was correctness; the model converges on token sequences that correlate with correctness; the result is, mechanically, a very convincing performance. Whether the performance counts as the thing itself is a question we pick up in Part III. For now, what matters is that the trick works, and that the rest of this book lives in a world where it works.</p>
 </section>
+<section class="level2" id="operationalizing-language-models">
+<h2 class="anchored" data-anchor-id="operationalizing-language-models">Operationalizing language models</h2>
+<p>Up to this section, the chapter has been about the model. This section is about what changes when you have to <em>serve</em> it — give an answer to a real user in real time, on real hardware, for a real price. In 2026, the operational question is no longer mostly “how do I train a better model.” It is mostly “how do I serve this model cheaply enough to stay in business.”</p>
+<p>The starting point is <em>inference economics</em>. Every API call has a per-token cost on input and output. Behind that cost sits a stack of decisions about hardware, batching, and architecture, made by the lab that hosts the model. The two operational levers that matter most are <em>throughput</em> (tokens per second per GPU) and <em>latency</em> (time-to-first-token, plus time-per-output-token thereafter). A high-throughput setup batches many users’ requests together and runs them through one big matrix multiply, which is cheap per token but bad for latency. A low-latency setup processes one request at a time, which feels snappy but costs more per token. Every serving system in the world is some compromise between these two, and every price tag you see is downstream of where on that curve the provider is sitting.</p>
+<p>The other half of inference economics is <em>model size</em>. A model with seventy billion parameters costs roughly seventy times the GPU memory and roughly seventy times the per-token compute of a one-billion-parameter model. If you can serve the same task with a smaller model, you save the difference. That is what most of the historical optimisation literature is about. The techniques fall into a small family.</p>
+<p><em>Fine-tuning</em> is the move of taking a base model and continuing to train it on your own narrow data, hoping that a smaller fine-tuned model can match a larger general one on your specific task. In 2026, fine-tuning is mostly the wrong answer. State-of-the-art prompting with retrieval beats most fine-tuning on most tasks, costs less to set up, and survives the next model release. When fine-tuning does win, it is usually parameter-efficient, in particular <em>LoRA</em> — a technique that trains a tiny adapter on top of the frozen base model instead of updating the original weights. LoRA is cheap, portable, and respectable; it is also the floor of the technique, not the ceiling. Most teams that think they need fine-tuning would be better served by a good retrieval system and a strong base model.</p>
+<p><em>Weight pruning</em> is the move of setting some of the model’s weights to zero, on the theory that many of them barely contribute to the output and can be discarded without serious damage. There are two kinds in serious use. <em>Unstructured</em> pruning zeros out individual weights based on their magnitude and produces sparse weight matrices that are mathematically smaller but hard for standard GPUs to exploit. <em>Structured</em> pruning removes entire neurons, attention heads, or layers, which costs more accuracy per parameter but produces a model the hardware can actually run faster. Structured is what gets used in production; unstructured is mostly an academic story. Either way, pruning typically claws back a factor of two or so, no more, before the model degrades.</p>
+<p><em>Quantisation</em> is the move of representing the model’s weights with fewer bits. The default during training is sixteen-bit floating-point. After training, you can compress the weights down to eight-bit or even four-bit integers, with arithmetic carefully designed so that the multiplications still produce sensible numbers. A well-quantised model loses something on the order of a percent or two of accuracy and gains a factor of two to four in memory and a similar factor in speed. Of all the optimisation techniques, this is the one with the cleanest cost-benefit ratio, and almost every model you actually run locally has been quantised.</p>
+<p><em>Knowledge distillation</em> is the move of training a small student model to imitate the outputs of a larger teacher model. The student learns from the teacher’s full probability distributions rather than from hard labels, which carries strictly more information per example. Distillation is the reason the open-weight reasoning scene exploded so quickly in 2025: smaller models distilled from DeepSeek-R1 work surprisingly well, because the teacher’s reasoning traces are themselves training data of exceptional quality.</p>
+<p><em>Sparse architectures</em> are the modern frontier of getting more capability per dollar at training time. The dominant variant is the <em>mixture of experts</em> (MoE).<a class="footnote-ref" href="#fn11" id="fnref11" role="doc-noteref"><sup>11</sup></a> An MoE model has many sets of feed-forward weights — the “experts” — and a small <em>router</em> that, for each token, picks one or two experts to actually run. Most of the parameters sit idle on any given token; only a fraction of the model is active per forward pass. The result is a model with the knowledge capacity of a large dense model and the inference cost of a much smaller one. Almost every frontier model in 2026 is some flavour of MoE.</p>
+<p>The closing principle is the one I would tattoo on every engineer building with these systems in 2026: <em>the right question is rarely “how do I optimise this model.” It is “do I need a bespoke model at all?”</em> The strong base models hosted by the three big labs are now good enough at most tasks that the optimisation pipeline you would have built for a smaller fine-tuned model is dominated, on cost and on quality, by a well-engineered prompt against a hosted frontier model. Optimisation matters at the operational scale, when you are spending hundreds of thousands of dollars a month on inference and a quantisation pass saves you forty per cent. Below that scale, in the hands of small teams and individual developers, it is mostly a distraction.</p>
+</section>
+<section class="level2" id="limitations-and-caveats">
+<h2 class="anchored" data-anchor-id="limitations-and-caveats">Limitations and caveats</h2>
+<p>Even with all four training stages applied and all the operational tricks in place, the model in front of you is still, mechanically, a statistical generator. That has consequences that no amount of post-training erases. The clearest one is <em>hallucination</em>: the model can produce text that is fluent, confident, and wrong. This is not a bug to be patched away. It is a structural feature of the cycle described in §1. The model picks tokens to maximise the probability of plausible continuations, and the world is full of plausible continuations that are also factually false. Plausibility and truth are different objectives; the model is trained on the first and only loosely correlated with the second. Better models hallucinate less, retrieval-grounded systems hallucinate less, but the floor is not zero.</p>
+<p>The second limitation is <em>inherited bias</em>. A model trained on the internet absorbs the internet’s distribution of opinions, omissions, slurs, and stereotypes, in their statistical proportions. Preference optimisation in step 3 sands down the worst of this, but it cannot un-learn what pretraining baked in. A prompt for <em>a portrait of a doctor</em> generates more men than women, more white than not, more middle-aged than otherwise. The model is acting as a faithful mirror of its training corpus, which is most of what we have ever written down, and the mirror is not flattering.</p>
+<p>The third limitation is the one §6 already named: the model’s apparent reasoning is <em>pattern matching at scale</em>, not formal logic. It is extraordinarily good pattern matching, sometimes good enough to compose into something that looks like deduction, but it has no internal proof checker, no symbolic reasoner, no guarantee against contradiction. On problems that genuinely require formal logic to solve — long arithmetic, complex constraint satisfaction, multi-step planning with hard correctness criteria — it fails in ways that a calculator or a SAT solver does not, and it fails <em>fluently</em>, which makes the failures harder to catch.</p>
+<p>These three caveats are the calibration. Part III takes them apart in earnest, with the failure modes and the social consequences. Here, the job was only to name them, so that when chapter 5 takes the same machine and points it at pixels and waveforms, you carry forward an honest sense of what the machine is and what it is not.</p>
+</section>
+<section class="level2" id="the-whole-machine">
+<h2 class="anchored" data-anchor-id="the-whole-machine">The whole machine</h2>
+<p>You can now narrate the cycle end to end. The text you typed becomes tokens. The tokens become vectors. The vectors flow through a stack of attention layers that recompute each token’s representation in context. The final layer emits a probability distribution over the next token. A sampling rule picks one. The token is appended. The cycle runs again. It keeps running until the model emits a stop signal, and the whole reply you see is the trail of those choices.</p>
+<p>You can also say, for any property of the chatbot, which training step put it there. Knowledge: pretraining. Manners: instruction tuning. Usefulness and refusal of obvious bad behaviour: preference optimisation. Step-by-step deliberation before answering: reasoning RL. Cost of a turn: tokens, multiplied by per-token prices, set by hardware and architecture and the operational choices in §7. Sense of continuity across turns: the conversation buffer, re-sent every time, with no actual memory inside the model. Hallucinations and bias and pattern-matching limits: structural features of the cycle that no amount of training fully removes.</p>
+<p>Two questions are left open on purpose: how you give a model a memory that survives the conversation, and how seriously to take its apparent reasoning. The next chapter leaves language entirely and points the same statistical machinery at pixels and sound.</p>
+</section>
+<section class="footnotes footnotes-end-of-document" id="footnotes" role="doc-endnotes">
+<hr/>
+<ol>
+<li id="fn1"><p>Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., &amp; Polosukhin, I. <em>Attention Is All You Need.</em> NeurIPS, 2017. arXiv:1706.03762.<a class="footnote-back" href="#fnref1" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Brown, T. B. et al. <em>Language Models are Few-Shot Learners.</em> NeurIPS, 2020. arXiv:2005.14165. The paper that demonstrated in-context learning as an emergent property of scale.<a class="footnote-back" href="#fnref2" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Kaplan, J. et al. <em>Scaling Laws for Neural Language Models.</em> arXiv:2001.08361, 2020. The first published curves linking loss to model size, data, and compute over many orders of magnitude.<a class="footnote-back" href="#fnref3" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Hoffmann, J. et al. <em>Training Compute-Optimal Large Language Models.</em> arXiv:2203.15556, 2022. The compute-optimal correction to Kaplan: most large models had been over-parameterised and under-trained.<a class="footnote-back" href="#fnref4" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Ouyang, L. et al. <em>Training language models to follow instructions with human feedback.</em> NeurIPS, 2022. The InstructGPT paper that established RLHF as the canonical post-training recipe.<a class="footnote-back" href="#fnref5" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Rafailov, R., Sharma, A., Mitchell, E., Manning, C. D., Ermon, S., &amp; Finn, C. <em>Direct Preference Optimization: Your Language Model is Secretly a Reward Model.</em> NeurIPS, 2023. arXiv:2305.18290.<a class="footnote-back" href="#fnref6" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Bai, Y. et al. <em>Constitutional AI: Harmlessness from AI Feedback.</em> arXiv:2212.08073, 2022. The Anthropic recipe that replaces human preference data with a written rubric judged by another language model.<a class="footnote-back" href="#fnref7" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>DeepSeek-AI. <em>DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning.</em> arXiv:2501.12948, 2025. The open-weight reasoning model that reproduced the o1 trick in public.<a class="footnote-back" href="#fnref8" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>Sennrich, R., Haddow, B., &amp; Birch, A. <em>Neural Machine Translation of Rare Words with Subword Units.</em> ACL, 2016. arXiv:1508.07909. The BPE recipe that almost every modern tokenizer descends from.<a class="footnote-back" href="#fnref9" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>Wei, J. et al. <em>Chain-of-Thought Prompting Elicits Reasoning in Large Language Models.</em> NeurIPS, 2022. arXiv:2201.11903.<a class="footnote-back" href="#fnref10" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>Fedus, W., Zoph, B., &amp; Shazeer, N. <em>Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity.</em> JMLR, 2022. arXiv:2101.03961. The mixture-of-experts recipe that anchors the modern sparse-architecture line.<a class="footnote-back" href="#fnref11" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -746,13 +800,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
 <div class="nav-page nav-page-previous">
-<a aria-label="Machine Learning" class="pagination-link" href="../1_foundations/ml.html">
-<i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>  <span class="chapter-title">Machine Learning</span></span>
+<a aria-label="Deep Learning" class="pagination-link" href="../1_foundations/deep-learning.html">
+<i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>  <span class="chapter-title">Deep Learning</span></span>
 </a>
 </div>
 <div class="nav-page nav-page-next">
-<a aria-label="Techniques for LLM Deployment" class="pagination-link" href="../1_foundations/apps.html">
-<span class="nav-page-text"><span class="chapter-number">4</span>  <span class="chapter-title">Techniques for LLM Deployment</span></span> <i class="bi bi-arrow-right-short"></i>
+<a aria-label="Generative AI" class="pagination-link" href="../1_foundations/generative.html">
+<span class="nav-page-text"><span class="chapter-number">5</span>  <span class="chapter-title">Generative AI</span></span> <i class="bi bi-arrow-right-short"></i>
 </a>
 </div>
 </nav>
