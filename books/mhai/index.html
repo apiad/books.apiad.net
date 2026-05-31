@@ -111,14 +111,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
 <li class="sidebar-item">
 <div class="sidebar-item-container">
-<a class="sidebar-item-text sidebar-link" href="./prologue.html">
-<span class="menu-text">Prologue</span></a>
-</div>
-</li>
-<li class="sidebar-item">
-<div class="sidebar-item-container">
 <a class="sidebar-item-text sidebar-link" href="./intro.html">
-<span class="menu-text">A Brief History of AI</span></a>
+<span class="menu-text">Prologue</span></a>
 </div>
 </li>
 <li class="sidebar-item sidebar-item-section">
@@ -256,6 +250,12 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">The Road Ahead</span></a>
 </div>
 </li>
+<li class="sidebar-item">
+<div class="sidebar-item-container">
+<a class="sidebar-item-text sidebar-link" href="./glossary.html">
+<span class="menu-text">Glossary</span></a>
+</div>
+</li>
 </ul>
 </div>
 </nav>
@@ -265,7 +265,17 @@ ul.task-list li input[type="checkbox"] {
 <nav class="toc-active" id="TOC" role="doc-toc">
 <h2 id="toc-title">Table of contents</h2>
 <ul class="collapse">
-<li><a class="nav-link active" data-scroll-target="#preface" href="#preface" id="toc-preface">Preface</a></li>
+<li><a class="nav-link active" data-scroll-target="#preface" href="#preface" id="toc-preface">Preface</a>
+<ul class="collapse">
+<li><a class="nav-link" data-scroll-target="#what-is-in-it" href="#what-is-in-it" id="toc-what-is-in-it">What is in it</a></li>
+<li><a class="nav-link" data-scroll-target="#why-i-wrote-it" href="#why-i-wrote-it" id="toc-why-i-wrote-it">Why I wrote it</a></li>
+<li><a class="nav-link" data-scroll-target="#how-to-read-it" href="#how-to-read-it" id="toc-how-to-read-it">How to read it</a></li>
+<li><a class="nav-link" data-scroll-target="#what-is-new-in-this-edition" href="#what-is-new-in-this-edition" id="toc-what-is-new-in-this-edition">What is new in this edition</a></li>
+<li><a class="nav-link" data-scroll-target="#this-book-will-not-be-finished" href="#this-book-will-not-be-finished" id="toc-this-book-will-not-be-finished">This book will not be finished</a></li>
+<li><a class="nav-link" data-scroll-target="#on-supporting-the-book" href="#on-supporting-the-book" id="toc-on-supporting-the-book">On supporting the book</a></li>
+<li><a class="nav-link" data-scroll-target="#on-ais-role-in-writing-this-book" href="#on-ais-role-in-writing-this-book" id="toc-on-ais-role-in-writing-this-book">On AI’s role in writing this book</a></li>
+<li><a class="nav-link" data-scroll-target="#where-the-book-continues" href="#where-the-book-continues" id="toc-where-the-book-continues">Where the book continues</a></li>
+</ul></li>
 </ul>
 </nav>
 </div>
@@ -283,56 +293,63 @@ ul.task-list li input[type="checkbox"] {
 <p>Alejandro Piad Morffis, Ph.D. </p>
 </div>
 </div>
+<div>
+<div class="quarto-title-meta-heading">Published</div>
+<div class="quarto-title-meta-contents">
+<p class="date">Version 2.0 · May 2026</p>
+</div>
+</div>
 </div>
 </header>
 <section class="level1 unnumbered" id="preface">
-<h1 class="unnumbered">Preface</h1><p><img class="quarto-cover-image nolightbox img-fluid" src="covers/mhai-cover-v2.jpg" title="Mostly Harmless AI"/></p>
-<p>For many, the last few of years mark the begining of the <em>Age of Artificial Intelligence</em>.</p>
-<p>It started with the release of ChatGPT, often called the iPhone moment of AI. And while ChatGPT wasn’t a fundamental breakthrough in the scientific or technical advancement of the field, it undeniably marked the inception of the widespread use of AI. To this day, ChatGPT has already had a significant cultural impact. It has reshaped public perception and discourse surrounding AI, bringing awareness of its potential and ability to influence our lives. More than anything, it has made may of us seriously begin to ponder about some of the most profound questions regarding the nature of human intelligence.</p>
-<p>For a long time, Artificial Intelligence had been in the collective imagination, from its portrayal in science fiction to many mildly successful attempts at practical applications. However, with ChatGPT’s release and the subsequent surge in large language models and chatbots, AI has finally become a pervasive technology, available for the general population, even if still nascent and unreliable.</p>
-<p>Reasonably enough, many skeptics–myself included on occasions–question the authenticity and transformative potential of AI in its current form beyond the hype and excitement of the shiny new toy. Debates on whether AI is merely an illusion or a revolutionary force happen daily across all traditional and digital media.</p>
-<p>In this short book, I want to analyze the evolving promises and expectations of AI in general, and the particular subfield of Large Langauge Models (which is what most people think of when they think of AI, at least today), highlighting the tremendous potential this technology carries and also the essential challenges and unresolved issues necessary for it to realize its intended potential.</p>
-<p>Approaching the subject with a healthy balance of skepticism and optimism, I will critique the current state of generative AI from the perspective of a deeply optimist machine learning researcher who loves the field. I will re-examine the most impactful milestones that brought us here and assess the challenges and obstacles ahead.</p>
-<p>By the end, I hope you share with me the excitement of being in the early days of what could potentially be the most important invention of our civilization, with the necessary suspicion and open-mindedness to understand the path forward isn’t guaranteed.</p>
-<section class="level2 unlisted" id="why-do-i-care">
-<h2 class="unlisted anchored" data-anchor-id="why-do-i-care">Why do I care</h2>
-<p>For as long as I can remember, I’ve been captivated by the idea of artificial intelligence. It’s a field that constantly pushes the boundaries of what we thought was possible, blending the rigor of mathematics and logic with the boundless creativity of human thought. This fascination led me to pursue a Ph.D. in Machine Learning, where I now work at the exciting intersection of language modeling and abstract reasoning.</p>
-<p>My journey into AI isn’t just theoretical; it’s deeply personal and rooted in real-world application. I’ve had the privilege of creating Cecilia, the first Cuban language model, a project that showed me firsthand the transformative power of AI when applied to specific cultural contexts. And for years, I’ve shared my insights and passion for AI and programming as a professor in the Computer Science department at the University of Havana, witnessing the spark of understanding in my students’ eyes as they grasp these complex concepts.</p>
-<p>A few years ago, I laid out much of my core philosophy in “The Techno-Pragmatist Manifesto”. I have reproduced it in this book, as it serves as the guiding philosophy for the chapters that follow and, more broadly, for everything I write and do with respect to technology. This isn’t just an academic stance for me; it’s how I approach AI. I believe we stand at a unique moment in history, where this incredibly powerful technology is no longer confined to research labs but is becoming accessible to everyone.</p>
-<p>And that’s precisely why I care so deeply, and why I believe you should too. AI isn’t just a tool; it’s a force that’s reshaping our world, from how we work and learn to how we create and connect. It offers immense potential for good, for solving some of humanity’s most pressing problems and ushering in an era of abundance. But with such power comes responsibility, and a host of complex challenges—from ethical dilemmas to societal disruptions—that we must navigate together.</p>
-<p>The techno-pragmatist philosophy, which guides my work and this book, is rooted in a fundamental belief: the future is not predetermined. We, as individuals and as a collective, possess the power to choose among many potential futures. This isn’t about blind optimism or paralyzing fear; it’s about embracing our responsibility to make choices based on reason and evidence, always respecting the diverse interests of all our fellow humans and being thoughtful about our planet and future generations. Technology, including AI, is a reflection of our decisions. It’s not inherently good or bad, but its impact is profoundly shaped by how we choose to employ and integrate it into our lives.</p>
-<p>My goal with this book is to share my perspective as someone who lives and breathes AI, not just as a researcher, but as an educator and a techno-pragmatist. I want to equip you with the understanding and insights you need to cut through the hype and the fear, to see AI for what it truly is: a powerful technology that we, as a collective, have the agency to shape. Whether you’re a student, a professional, or simply curious about the future, there’s a place for you in this conversation. Understanding AI isn’t just for experts anymore; it’s for everyone who wants to make the best of this new era and contribute to a future where AI truly serves humanity.</p>
+<h1 class="unnumbered">Preface</h1><p><img class="quarto-cover-image nolightbox img-fluid" src="covers/mhai-cover-v4.jpg" title="Mostly Harmless AI"/></p>
+<p>This is the second edition of <em>Mostly Harmless AI</em>. Most of it is new.</p>
+<p>I rewrote it because the first edition, finished in late 2024, did not survive contact with 2026. The pace at which the field moved invalidated specific examples, specific tools, specific benchmarks — but it also invalidated the <em>frame</em>. The first edition was about an emerging technology. The book in your hands is about a technology that has emerged. Different question, different answers, different posture.</p>
+<section class="level2" id="what-is-in-it">
+<h2 class="anchored" data-anchor-id="what-is-in-it">What is in it</h2>
+<p>The book is in three parts.</p>
+<p><strong>Part I</strong> explains how the technology actually works — not the marketing line, the actual mechanism. It walks the seventy-year argument between rationalist and empiricist AI, ends at large language models and agentic systems, and gives you enough of the substrate that the rest of the book is grounded in something other than analogy.</p>
+<p><strong>Part II</strong> is about what the technology is being used for now: knowledge work, science, software, education, creative production, policy. One chapter per domain, each written for the practitioner already in that field who wants an honest account of what these systems do well, what they do badly, and what to bet on.</p>
+<p><strong>Part III</strong> is about what can go wrong: alignment as a research problem, the limitations of current systems, and the real risks — bias, security, labour displacement, environmental cost, concentration of power. Not the doomerist version. Not the dismissive version. The third position.</p>
 </section>
-<section class="level2 unlisted" id="what-you-will-find-in-this-book">
-<h2 class="unlisted anchored" data-anchor-id="what-you-will-find-in-this-book">What you will find in this book</h2>
-<p>This book is designed to be your comprehensive guide to understanding artificial intelligence, its incredible potential, and the critical considerations we must all bear in mind as it reshapes our world. We’ll embark on a journey through the core concepts, practical applications, and significant challenges of AI, ensuring you have the knowledge to navigate this new era.</p>
-<p><strong>Part I: Foundations of AI</strong> will lay the groundwork, demystifying what AI truly is and how the most powerful systems, like large language models, actually work. You’ll discover the mechanics behind these “thinking machines” and learn practical techniques for deploying them, including strategies for effective interaction, enhancing their knowledge, and extending their capabilities with external tools. This part also explores how these powerful models are made more efficient for real-world use.</p>
-<p><strong>Part II: Applications of AI</strong> shifts our focus to the tangible ways AI is transforming various fields. You’ll explore how AI can accelerate discovery and decision-making, how it’s changing software development, and its profound impact on how we teach and acquire knowledge. We’ll also examine how AI influences everything from creative endeavors to government policy and regulation.</p>
-<p>Finally, <strong>Part III: Dangers of AI</strong> addresses the critical challenges and risks associated with this powerful technology. We’ll confront the complex problem of ensuring AI’s goals align with human values, explore the inherent limitations of current AI systems, and discuss the actual risks, from potential societal disruptions to ethical dilemmas and biases. This part is crucial for a balanced understanding and responsible engagement with AI.</p>
-<p>No matter your background, this book has something for you.</p>
-<p>If you’re a student or a lifelong learner, you’ll gain a solid foundation in AI’s core concepts (Part I) and understand its revolutionizing impact on education. For professors and educators, Part II offers insights into AI’s role in the classroom and how it can enhance learning through personalized feedback. Researchers and decision-makers will find value in understanding AI’s capabilities for analysis and discovery, alongside a deep dive into its inherent limitations and risks (Part III).</p>
-<p>If you’re a software developer, you’ll find practical guidance on deploying AI techniques and a comprehensive look at how AI is changing coding. Creative professionals will discover how AI can augment their artistic processes. And for policy-makers and regulators, Part III provides essential context on the societal impacts and ethical considerations necessary for responsible AI governance.</p>
+<section class="level2" id="why-i-wrote-it">
+<h2 class="anchored" data-anchor-id="why-i-wrote-it">Why I wrote it</h2>
+<p>I needed a book like this to hand to people who ask me what to read, and the book did not exist.</p>
+<p>There are excellent textbooks, excellent journalism, excellent polemic. None of them are the kind of book I needed: the working researcher’s version, in plain English, with the technical scaffolding intact and the field’s own contradictions on the page rather than smoothed over. The textbooks are too narrow. The journalism is too breathless. The polemic is too sure of itself. So I wrote this one.</p>
+<p>I am a machine-learning researcher and a professor; I built the first Cuban language model and I have spent the better part of a decade teaching this material to students who came in not knowing what a neural network was and left able to train one. The book is the thing I would hand a sharp newcomer who wanted the honest version. It is also, more selfishly, the thing I needed myself — the document I wished existed so I would not have to keep explaining the same arguments from scratch in conversation.</p>
 </section>
-<section class="level2 unlisted" id="how-to-read-this-book">
-<h2 class="unlisted anchored" data-anchor-id="how-to-read-this-book">How to read this book</h2>
-<p>This book has been designed to be read from top to bottom. [cite_start]The three parts build on each other, moving from the foundational theory of AI [cite: 420][cite_start], to its practical applications [cite: 1778][cite_start], and finally to a nuanced discussion of its dangers and limitations[cite: 2413].</p>
-<p>However, I encourage you to use this book in the way that best serves your interests. On a first read, you might choose to forge your own path:</p>
-<ul>
-<li>If you are most interested in practical, hands-on advice, you can skip the deeper theory in the latter sections of <strong>Part I</strong> and jump straight to the application-focused chapters of <strong>Part II</strong>.</li>
-<li>If your primary concern is the ethical and societal impact of this technology, you might dive directly into <strong>Part III</strong> to grapple with the risks and limitations, and then return to <strong>Part I</strong> later for a deeper understanding of the mechanics that give rise to these challenges.</li>
-</ul>
-<p>If you read nothing else, I urge you to start with Chapter 4, <strong>“AI for Critical Thinkers”</strong>. It contains the most practical, day-to-day advice and establishes the essential mindset for using AI as a “cognitive partner,” a theme that underpins all the chapters that follow.</p>
-<p>That said, I do recommend reading the entire book from beginning to end, even if on a second pass. A complete reading will allow you to appreciate the full nuance of the discussions and see how the technical, practical, and philosophical threads are woven together. Afterward, I hope you will keep it as a bedside reference to return to as you continue your journey in this new era.</p>
+<section class="level2" id="how-to-read-it">
+<h2 class="anchored" data-anchor-id="how-to-read-it">How to read it</h2>
+<p>Top to bottom is the default, and it works. The parts build on each other.</p>
+<p>If you are short on time and want the practical core: skim the back half of Part I (LLMs and agents) and read whichever Part II chapter touches your field. If you want the philosophical argument: start with Part III, then come back to Part I for the mechanisms. The chapters are written to stand on their own; the glossary and the cross-references will hold the whole picture together either way.</p>
 </section>
-<section class="level2 unlisted" id="a-note-on-ais-role-in-this-book">
-<h2 class="unlisted anchored" data-anchor-id="a-note-on-ais-role-in-this-book">A note on AI’s role in this book</h2>
-<p>In the spirit of transparency, and to practice the principles I advocate for within these pages, it is important to disclose the role that artificial intelligence played in the creation of this book. As I argue in the chapter “AI for Educators and Learners,” transparent disclosure is a cornerstone of ethical and responsible engagement with these powerful tools.</p>
-<p>Throughout the writing process, I have used AI applications like Google’s Gemini and Perplexity as cognitive partners. Their role was that of an assistant, not an author. These tools were used to craft background research reports on several topics, to help outline the initial structure of some chapters, to draft new sections or rewrite older blog posts into a tone and style consistent with the book, and to provide criticism and feedback on the style, grammar, and structure of my writing as it evolved.</p>
-<p>However, every idea, argument, and conclusion presented here–especially the core techno-pragmatist framework–is my own. Every chapter, section, and paragraph has been thoroughly reviewed, revised, and heavily edited by me to ensure it aligns with my voice and intent. This workflow is a direct application of the deeply human-centric approach I champion throughout the book: using AI as a tool to augment and accelerate human intellect, not replace it. You, the reader, are holding a work that is human-authored, with AI serving as a powerful but subordinate tool in its construction.</p>
+<section class="level2" id="what-is-new-in-this-edition">
+<h2 class="anchored" data-anchor-id="what-is-new-in-this-edition">What is new in this edition</h2>
+<p>Two structural additions you will notice immediately.</p>
+<p>The <strong>glossary</strong> at the back of the book defines every named system, named technique, named person, and field-of-art term used in the body. Around four hundred entries. Every glossed term in the body is a clickable forward-link to its entry; every entry carries back-links to the pages where the term appears. The intent is that you can read this book at any depth without bringing specific prior vocabulary — and that when a term keeps appearing across chapters, the cross-references will show you the through-line.</p>
+<p>The <strong>references</strong> apparatus has been rebuilt. Every paper, system, and benchmark cited in the body has a footnote with full citation; the footnotes are collected at the end and back-linked to the body. Where the original is online, the link points to the original — not a paraphrase, not a summary, not a third-party explainer.</p>
+<p>Beyond those two, most chapters have been substantially rewritten and several are net-new — particularly in Parts II and III, where the field has moved most.</p>
 </section>
-<section class="level2 unlisted" id="lets-keep-in-touch">
-<h2 class="unlisted anchored" data-anchor-id="lets-keep-in-touch">Let’s keep in touch!</h2>
-<p>If you’d like to stay updated on these discussions, subscribe to my blog, <a href="https://blog.apiad.net/subscribe"><strong>The Computist Journal</strong></a>, and receive new posts directly in your inbox. I look forward to having you join the conversation!</p>
+<section class="level2" id="this-book-will-not-be-finished">
+<h2 class="anchored" data-anchor-id="this-book-will-not-be-finished">This book will not be finished</h2>
+<p>The field is in motion at a pace no static document can keep up with. Any version of this book will be wrong about some specific thing within six months of being printed.</p>
+<p>The honest framing is that this is a permanent beta. Each edition is a snapshot of how the field looks from where I sit at the moment of writing. The next edition will fix what this one got wrong and add what this one missed. The cadence is roughly annual; the patience is the reader’s, and I am grateful for it.</p>
+</section>
+<section class="level2" id="on-supporting-the-book">
+<h2 class="anchored" data-anchor-id="on-supporting-the-book">On supporting the book</h2>
+<p>The book is free to read online at <a href="https://books.apiad.net">books.apiad.net</a>. The PDF, the EPUB, and a few other niceties are on <a href="https://store.apiad.net/l/ai">Gumroad</a> for whatever you can afford.</p>
+<p>If you got this copy from somewhere other than Gumroad and the book is useful to you, the work is worth supporting there. A one-time purchase gives you every future edition in perpetuity — no subscription, no expiring access, and there will not be either. If the price is a real obstacle, write to me at <code>apiad@apiad.net</code> and I will work something out. No one who wants to read this book should be unable to.</p>
+<p>What your support actually funds: the time to keep rewriting the book as the field moves, the cost of the research that goes into each edition, and the next book.</p>
+</section>
+<section class="level2" id="on-ais-role-in-writing-this-book">
+<h2 class="anchored" data-anchor-id="on-ais-role-in-writing-this-book">On AI’s role in writing this book</h2>
+<p>I used AI heavily — for research, for outlining, for criticism, for refactoring chapters that were not landing. Some of the prose was first-drafted by a model and then rewritten in my voice; some was first-drafted by me and then critiqued by a model and rewritten again. Every idea, every argument, every conclusion is mine. Every sentence has been read, weighed, and either rewritten or kept by me deliberately.</p>
+<p>This workflow is the one I argue for throughout the book. It would be dishonest to argue for it in print and not use it.</p>
+</section>
+<section class="level2" id="where-the-book-continues">
+<h2 class="anchored" data-anchor-id="where-the-book-continues">Where the book continues</h2>
+<p>The book stops at the page. The argument does not. Ongoing updates, errata, and the kind of essay that turns into the next edition’s chapter live at the <a href="https://blog.apiad.net">Computist Journal</a>, where I write weekly.</p>
+<p>If you find something off while reading — a factual error, an argument that does not land, a topic that is missing — write to me. The next edition will be better for it.</p>
 </section>
 </section>
 </main> <!-- /main -->
