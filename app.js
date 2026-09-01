@@ -89,9 +89,17 @@ function renderBookCard(book) {
       </div>
     `;
 
+  const disabledReadHtml = `<div class="relative group">
+      <span style="display: block; width: 100%; padding: 16px 24px; font-size: 16px; border-radius: 12px; background-color: transparent; color: #71717a; border: 2px solid #3f3f46; text-align: center; font-weight: 600; cursor: not-allowed;">📖 Read Online</span>
+      <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-zinc-800 text-zinc-200 text-xs rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50">
+        Online reader coming soon
+        <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-zinc-800"></div>
+      </div>
+    </div>`;
+
   const buttonsHtml = isPlanned
     ? ''
-    : `<div class="mt-auto pt-4 space-y-3">${renderButton(book.gumroadUrl, 'Buy - $' + (book.price / 100).toFixed(2), 'primary', '💳', true, book.hint || '')}${renderButton(book.readUrl, 'Read Online', 'secondary', '📖', true)}</div>`;
+    : `<div class="mt-auto pt-4 space-y-3">${renderButton(book.gumroadUrl, 'Buy - $' + (book.price / 100).toFixed(2), 'primary', '💳', true, book.hint || '')}${disabledReadHtml}</div>`;
 
   const compendiumCardCta = isPlanned
     ? ''
@@ -247,9 +255,15 @@ function renderLayout() {
           </div>
         </div>
         <div class="flex justify-center md:justify-end">
-          <a href="${readerLink}" class="inline-flex items-center gap-3 px-8 py-4 bg-emerald-500/20 text-emerald-400 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-[1.02] hover:bg-emerald-500/30 hover:shadow-lg hover:shadow-emerald-500/30" style="transition: transform 0.2s, box-shadow 0.2s;">
-            Try the reader <span class="text-xl">→</span>
-          </a>
+          <div class="relative group">
+            <span class="inline-flex items-center gap-3 px-8 py-4 bg-zinc-800/40 text-zinc-500 rounded-xl font-semibold text-lg" style="cursor: not-allowed; border: 2px solid #3f3f46;">
+              Try the reader <span class="text-xl">→</span>
+            </span>
+            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-zinc-800 text-zinc-200 text-xs rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50">
+              Online reader coming soon
+              <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-zinc-800"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
