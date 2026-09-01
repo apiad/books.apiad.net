@@ -210,60 +210,41 @@ function renderLayout() {
   );
   const totalSales = bookSales + (window.catalogData.compendium.salesCount || 0);
 
-  // Get random book for reader link
-  const allBooksWithReadUrl = window.catalogData.categories
-    .flatMap(c => c.items)
-    .filter(b => b.readUrl);
-  const randomBook = allBooksWithReadUrl[Math.floor(Math.random() * allBooksWithReadUrl.length)];
-  const readerLink = randomBook ? randomBook.readUrl : '#';
-
   const readerBannerHtml = `
-    <div class="rounded-2xl p-6 md:p-8 bg-gradient-to-r from-emerald-500/10 via-card to-cyan-500/10 border border-emerald-500/30 mb-12 hover:border-emerald-500/50 transition-all duration-300">
+    <div class="rounded-2xl p-6 md:p-8 bg-gradient-to-r from-zinc-800/40 via-card to-zinc-800/40 border border-zinc-700/50 mb-12">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
         <div class="md:col-span-2 text-center md:text-left">
           <h2 class="text-2xl md:text-3xl font-bold text-zinc-100 mb-3">
-            📖 All books are free to read online
+            📖 Online reader coming soon
           </h2>
           <p class="text-zinc-400 max-w-xl mb-4">
-            I built a custom web reader that feels like a native experience — install it on mobile, works offline, 100% free. You can buy the EPUB/PDF later if you want to support the author.
+            I'm building a custom web reader — install on mobile, dark mode, works offline. Until it lands, every book ships as PDF (and EPUB when ready) on Gumroad. Buy once, get all future updates forever.
           </p>
           <div class="flex flex-wrap justify-center md:justify-start gap-2">
-            <span class="px-3 py-1.5 bg-zinc-800/60 text-zinc-400 text-xs rounded-full flex items-center gap-1.5 hover:bg-zinc-700/60 hover:text-zinc-300 transition-colors cursor-default">
+            <span class="px-3 py-1.5 bg-zinc-800/60 text-zinc-500 text-xs rounded-full flex items-center gap-1.5 cursor-default">
               🔖 Remembers your place
             </span>
-            <span class="px-3 py-1.5 bg-zinc-800/60 text-zinc-400 text-xs rounded-full flex items-center gap-1.5 hover:bg-zinc-700/60 hover:text-zinc-300 transition-colors cursor-default">
+            <span class="px-3 py-1.5 bg-zinc-800/60 text-zinc-500 text-xs rounded-full flex items-center gap-1.5 cursor-default">
               🌙 Light & dark mode
             </span>
-            <span class="px-3 py-1.5 bg-zinc-800/60 text-zinc-400 text-xs rounded-full flex items-center gap-1.5 hover:bg-zinc-700/60 hover:text-zinc-300 transition-colors cursor-default">
+            <span class="px-3 py-1.5 bg-zinc-800/60 text-zinc-500 text-xs rounded-full flex items-center gap-1.5 cursor-default">
               📊 Reading progress
             </span>
-            <span class="px-3 py-1.5 bg-zinc-800/60 text-zinc-400 text-xs rounded-full flex items-center gap-1.5 hover:bg-zinc-700/60 hover:text-zinc-300 transition-colors cursor-default">
+            <span class="px-3 py-1.5 bg-zinc-800/60 text-zinc-500 text-xs rounded-full flex items-center gap-1.5 cursor-default">
               👆 Swipe navigation
             </span>
-            <span class="px-3 py-1.5 bg-zinc-800/60 text-zinc-400 text-xs rounded-full flex items-center gap-1.5 hover:bg-zinc-700/60 hover:text-zinc-300 transition-colors cursor-default">
-              🔤 Font size controls
-            </span>
-            <span class="px-3 py-1.5 bg-zinc-800/60 text-zinc-400 text-xs rounded-full flex items-center gap-1.5 hover:bg-zinc-700/60 hover:text-zinc-300 transition-colors cursor-default">
-              ⬅️➡️ Chapter arrows
-            </span>
-            <span class="px-3 py-1.5 bg-zinc-800/60 text-zinc-400 text-xs rounded-full flex items-center gap-1.5 hover:bg-zinc-700/60 hover:text-zinc-300 transition-colors cursor-default">
+            <span class="px-3 py-1.5 bg-zinc-800/60 text-zinc-500 text-xs rounded-full flex items-center gap-1.5 cursor-default">
               📱 Add to Home Screen
             </span>
-            <span class="px-3 py-1.5 bg-zinc-800/60 text-zinc-400 text-xs rounded-full flex items-center gap-1.5 hover:bg-zinc-700/60 hover:text-zinc-300 transition-colors cursor-default">
+            <span class="px-3 py-1.5 bg-zinc-800/60 text-zinc-500 text-xs rounded-full flex items-center gap-1.5 cursor-default">
               📥 Works offline
             </span>
           </div>
         </div>
         <div class="flex justify-center md:justify-end">
-          <div class="relative group">
-            <span class="inline-flex items-center gap-3 px-8 py-4 bg-zinc-800/40 text-zinc-500 rounded-xl font-semibold text-lg" style="cursor: not-allowed; border: 2px solid #3f3f46;">
-              Try the reader <span class="text-xl">→</span>
-            </span>
-            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-zinc-800 text-zinc-200 text-xs rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50">
-              Online reader coming soon
-              <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-zinc-800"></div>
-            </div>
-          </div>
+          <span class="inline-flex items-center gap-3 px-8 py-4 bg-zinc-800/40 text-zinc-500 rounded-xl font-semibold text-lg" style="cursor: not-allowed; border: 2px solid #3f3f46;">
+            🚧 In the works
+          </span>
         </div>
       </div>
     </div>
@@ -292,9 +273,9 @@ function renderLayout() {
       <!-- How it works -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
         <div class="text-center">
-          <div class="text-5xl mb-3">📖</div>
-          <h3 class="text-zinc-100 font-semibold mb-2">Read Instantly Online</h3>
-          <p class="text-zinc-400 text-sm">Read free in your browser, or buy PDF & EPUB. Your forever copy.</p>
+          <div class="text-5xl mb-3">📄</div>
+          <h3 class="text-zinc-100 font-semibold mb-2">PDF Today, EPUB Soon</h3>
+          <p class="text-zinc-400 text-sm">Every book ships as PDF on Gumroad. EPUB and web reader coming as they land.</p>
         </div>
         <div class="text-center">
           <div class="text-5xl mb-3">🔄</div>
