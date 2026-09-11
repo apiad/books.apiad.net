@@ -153,11 +153,21 @@ function renderCategory(category) {
   `;
 }
 
+// Categories whose books the compendium bundles. Kept as a list so renaming or
+// splitting a category degrades the numbers instead of blanking the catalog.
+const BUNDLED_CATEGORY_IDS = ['general', 'technical'];
+
+function bundledBooks() {
+  return window.catalogData.categories
+    .filter(c => BUNDLED_CATEGORY_IDS.includes(c.id))
+    .flatMap(c => c.items || []);
+}
+
 function renderCompendium(compendium) {
-  const earlyAccess = window.catalogData.categories.find(c => c.id === 'early-access');
+  const bundled = bundledBooks();
   const backburner = window.catalogData.categories.find(c => c.id === 'backburner');
-  const totalPrice = earlyAccess.items.reduce((sum, book) => sum + (book.price || 0), 0);
-  const bookCount = earlyAccess.items.length;
+  const totalPrice = bundled.reduce((sum, book) => sum + (book.price || 0), 0);
+  const bookCount = bundled.length;
   const futureCount = backburner ? backburner.items.length : 0;
   const savingsCents = totalPrice - compendium.price;
   const savingsPercent = totalPrice > 0 ? Math.round((savingsCents / totalPrice) * 100) : 0;
@@ -201,8 +211,7 @@ function renderLayout() {
   const categoriesHtml = window.catalogData.categories.map(cat => renderCategory(cat)).join('');
 
   // Count books
-  const earlyAccess = window.catalogData.categories.find(c => c.id === 'early-access');
-  const bookCount = earlyAccess ? earlyAccess.items.length : 0;
+  const bookCount = bundledBooks().length;
 
   // Calculate total sales (all books + compendium)
   const bookSales = window.catalogData.categories.reduce((sum, cat) => 
