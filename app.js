@@ -146,7 +146,7 @@ function renderCategory(category) {
       <h2 class="text-3xl font-bold font-serif mb-3 text-zinc-100">${category.name}</h2>
       <p class="text-zinc-400 mb-8 max-w-2xl">${category.description}</p>
       ${bannerHtml}
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         ${cardsHtml}
       </div>
     </section>
